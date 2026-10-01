@@ -158,7 +158,7 @@ export function ArtPlaceholder({
       <Image
         src={
           src ??
-          `https://placehold.co/${width}x${height}/${dark ? '14241f/779589' : 'edf2ee/7d9285'}.png?font=releway&text=${encodeURIComponent(label)}`
+          `https://placehold.co/${width}x${height}/${dark ? 'ffffff/212121' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
         }
         width={width}
         height={height}
