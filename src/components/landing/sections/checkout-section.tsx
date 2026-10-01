@@ -1,7 +1,16 @@
 import Link from 'next/link';
 import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { SectionLabel, ArtPlaceholder } from '../primitives';
-import { frame, section, padding, micro, card, cardTitle, cardDescription, gridThree } from '../styles';
+import {
+  frame,
+  section,
+  padding,
+  micro,
+  card,
+  cardTitle,
+  cardDescription,
+  gridThree,
+} from '../styles';
 import { cn } from '@/lib/utils';
 import { DotPattern } from '../dot-pattern';
 import { StripPattern } from '../strip-pattern';
@@ -73,8 +82,12 @@ export function CheckoutSection() {
               recorte mobile à direita integrado na própria arte, produto fictício, oferta,
               cupom, bump, métodos aptos e total claramente visíveis. Fundo carvão com
               acentos Paragan; sem PAN, contatos ou logos de processadores. Não usar stock. */}
-          <div className="relative z-10 [&_figure]:rounded-none [&_figure]:border-0 [&_figcaption]:hidden">
-            <ArtPlaceholder width={1440} height={760} label="Checkout Catalyst · desktop e mobile" />
+          <div className="relative z-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+            <ArtPlaceholder
+              width={1440}
+              height={760}
+              label="Checkout Catalyst · desktop e mobile"
+            />
           </div>
         </div>
 
