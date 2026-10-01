@@ -121,10 +121,12 @@ Tabs.displayName = 'Tabs';
 
 /* ─────────────────────── TabsList ─────────────────────── */
 
-type TabsListProps = ComponentPropsWithoutRef<typeof TabsPrimitive.List>;
+type TabsListProps = ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
+  radius?: 'md' | 'none';
+};
 
 const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, radius = 'md', ...props }, ref) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isMouseInside, setIsMouseInside] = useState(false);
     const substrate = useSurface();
@@ -190,6 +192,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
     const selectedValue = valueOrderCtx?.selectedValue;
     const selectedIdx = selectedValue !== undefined ? values.indexOf(selectedValue) : -1;
+    const radiusClass = radius === 'none' ? 'rounded-none' : 'rounded-md';
 
     const activeSelectedIdx = selectedIdx >= 0 ? selectedIdx : null;
     const selectedRect = activeSelectedIdx !== null ? itemRects[activeSelectedIdx] : null;
@@ -241,7 +244,8 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
             setHoveredIndex(null);
           }}
           className={cn(
-            'relative inline-flex items-center gap-0.5 rounded-md bg-muted p-1 select-none',
+            'relative inline-flex items-center gap-0.5 bg-muted p-1 select-none',
+            radiusClass,
             className,
           )}
           {...props}
@@ -252,7 +256,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
               className={cn(
                 'pointer-events-none absolute',
                 surfaceClasses(indicatorLevel),
-                'rounded-md',
+                radiusClass,
               )}
               initial={false}
               animate={{
@@ -273,7 +277,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           <AnimatePresence>
             {hoverRect && !isHoveringSelected && selectedRect && (
               <motion.div
-                className="pointer-events-none absolute rounded-md bg-hover"
+                className={cn('pointer-events-none absolute bg-hover', radiusClass)}
                 initial={{
                   left: selectedRect.left,
                   width: selectedRect.width,
@@ -317,7 +321,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
               <motion.div
                 className={cn(
                   'pointer-events-none absolute z-20 border border-accent-1',
-                  'rounded-md',
+                  radiusClass,
                 )}
                 initial={false}
                 animate={{
@@ -350,12 +354,14 @@ interface TabItemProps extends ComponentPropsWithoutRef<typeof TabsPrimitive.Tab
   value: string;
   icon?: IconComponent;
   label: string;
+  eyebrow?: string;
+  description?: string;
   /** @internal Auto-assigned by TabsList. */
   _index?: number;
 }
 
 const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
-  ({ value, icon: Icon, label, _index = 0, className, ...props }, ref) => {
+  ({ value, icon: Icon, label, eyebrow, description, _index = 0, className, ...props }, ref) => {
     const internalRef = useRef<HTMLButtonElement>(null);
     const { registerTab, hoveredIndex, selectedValue, setOptimisticIdx } = useTabsList();
 
@@ -386,36 +392,83 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         )}
         {...props}
       >
-        {Icon && (
-          <Icon
-            size={16}
-            strokeWidth={isActive ? 2 : 1.5}
-            className={cn(
-              'transition-[color,stroke-width] duration-80',
-              isActive ? 'text-foreground' : 'text-muted-foreground',
+        {eyebrow || description ? (
+          <>
+            <span className="flex w-full min-w-0 items-center justify-between gap-2">
+              <span className="font-mono text-xs leading-none tracking-wide text-muted-foreground uppercase">
+                {eyebrow}
+              </span>
+              {Icon && (
+                <Icon
+                  size={18}
+                  strokeWidth={isActive ? 2 : 1.5}
+                  className={cn(
+                    'shrink-0 transition-[color,stroke-width] duration-80',
+                    isActive ? 'text-foreground' : 'text-muted-foreground',
+                  )}
+                />
+              )}
+            </span>
+            <span className="inline-grid w-full min-w-0 text-left text-xl font-medium sm:text-2xl">
+              <span
+                className="invisible col-start-1 row-start-1"
+                style={{ fontVariationSettings: fontWeights.semibold }}
+                aria-hidden="true"
+              >
+                {label}
+              </span>
+              <span
+                className={cn(
+                  'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
+                  isActive ? 'text-foreground' : 'text-muted-foreground',
+                )}
+                style={{
+                  fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
+                }}
+              >
+                {label}
+              </span>
+            </span>
+            {description && (
+              <span className="w-full text-left text-sm leading-relaxed text-muted-foreground">
+                {description}
+              </span>
             )}
-          />
+          </>
+        ) : (
+          <>
+            {Icon && (
+              <Icon
+                size={16}
+                strokeWidth={isActive ? 2 : 1.5}
+                className={cn(
+                  'transition-[color,stroke-width] duration-80',
+                  isActive ? 'text-foreground' : 'text-muted-foreground',
+                )}
+              />
+            )}
+            <span className="inline-grid text-sm whitespace-nowrap">
+              <span
+                className="invisible col-start-1 row-start-1"
+                style={{ fontVariationSettings: fontWeights.semibold }}
+                aria-hidden="true"
+              >
+                {label}
+              </span>
+              <span
+                className={cn(
+                  'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
+                  isActive ? 'text-foreground' : 'text-muted-foreground',
+                )}
+                style={{
+                  fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
+                }}
+              >
+                {label}
+              </span>
+            </span>
+          </>
         )}
-        <span className="inline-grid text-sm whitespace-nowrap">
-          <span
-            className="invisible col-start-1 row-start-1"
-            style={{ fontVariationSettings: fontWeights.semibold }}
-            aria-hidden="true"
-          >
-            {label}
-          </span>
-          <span
-            className={cn(
-              'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
-              isActive ? 'text-foreground' : 'text-muted-foreground',
-            )}
-            style={{
-              fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
-            }}
-          >
-            {label}
-          </span>
-        </span>
       </TabsPrimitive.Tab>
     );
   },

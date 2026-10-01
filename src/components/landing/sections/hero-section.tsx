@@ -6,23 +6,33 @@ import { frame, micro, eyebrow, dot } from '../styles';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { StripPattern } from '../strip-pattern';
+import { icons } from '@/lib/icon-map';
 
 const previews = [
   {
     value: 'gateway',
     label: 'Seu gateway',
+    eyebrow: 'OPERAÇÃO',
+    description: 'Visão consolidada do negócio.',
+    icon: icons.dashboard,
     image: 'Painel do gateway',
     caption: 'Condições comerciais, sellers e financeiro. A operação vista de cima.',
   },
   {
     value: 'seller',
     label: 'Seus sellers',
+    eyebrow: 'GESTÃO DE BASE',
+    description: 'Vendas, produtos e recebimentos.',
+    icon: icons.users,
     image: 'Experiência do seller',
     caption: 'Vendas, produtos e recebimentos. O dia a dia da sua base, conectado.',
   },
   {
     value: 'checkout',
     label: 'Seu checkout',
+    eyebrow: 'PAGAMENTO',
+    description: 'Oferta e jornada com a sua marca.',
+    icon: icons['credit-card'],
     image: 'Checkout white label',
     caption: 'Do produto à confirmação. Uma jornada de compra com a sua identidade.',
   },
@@ -84,23 +94,25 @@ export function HeroSection() {
           Para a sua fintech, a Paragan é a parceira B2B que sustenta a infraestrutura.
         </p>
       </div>
-      <div className="overflow-hidden rounded-t-2xl border border-border shadow-xl shadow-foreground/5 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+      <div className="overflow-hidden rounded-2xl border border-border [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
         <Tabs defaultValue="gateway">
-          <div className="flex items-center justify-between gap-4 border-b border-border bg-background px-1 py-2 md:px-4">
-            <TabsList className="bg-transparent p-0" aria-label="Prévias da plataforma">
-              {previews.map((preview) => (
-                <TabItem
-                  key={preview.value}
-                  value={preview.value}
-                  label={preview.label}
-                  className="min-h-11 px-3 sm:px-5"
-                />
-              ))}
-            </TabsList>
-            <span className={cn(micro, 'hidden text-muted-foreground md:block')}>
-              UMA OPERAÇÃO. DIFERENTES PERSPECTIVAS.
-            </span>
-          </div>
+          <TabsList
+            radius="none"
+            className="grid w-full grid-cols-3 gap-0 rounded-none border-b border-border bg-card p-0"
+            aria-label="Prévias da plataforma"
+          >
+            {previews.map((preview) => (
+              <TabItem
+                key={preview.value}
+                value={preview.value}
+                label={preview.label}
+                eyebrow={preview.eyebrow}
+                description={preview.description}
+                icon={preview.icon}
+                className="min-h-32 min-w-0 flex-col items-stretch justify-start gap-4 rounded-none border-r border-solid border-border px-3 py-4 text-left last:border-r-0 sm:px-5"
+              />
+            ))}
+          </TabsList>
           {previews.map((preview) => (
             <TabPanel key={preview.value} value={preview.value}>
               {/* DIREÇÃO DE ARTE — HERO (1600×860): produzir três prints reais separados.

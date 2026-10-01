@@ -17,3 +17,7 @@
 - [x] `use-fluid-hover.ts` + `fluid-group.tsx`: fallback de raio só para wrapper declarado.
 - [x] `src/**/*.tsx`: substituir utilitários Tailwind com valores arbitrários por escala semântica ou token nomeado.
 - [x] `pnpm format:check` + `pnpm exec tsc --noEmit` + `pnpm lint`: sem erros.
+
+## Fase 4 — Cards de navegação do hero
+
+- [x] `hero-section.tsx` + `tabs.tsx`: cards quadrados com título, kicker, descrição e Hugeicons.
