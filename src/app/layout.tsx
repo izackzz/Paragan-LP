@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ExperienceProvider } from '@/components/landing/experience-provider';
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,8 +27,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-pt-22 antialiased selection:bg-accent selection:text-foreground`}
     >
-      <body className="min-h-full bg-background text-foreground motion-reduce:[&_*]:animate-none motion-reduce:[&_*]:transition-none">
-        <ExperienceProvider>{children}</ExperienceProvider>
+      <body className="min-h-full bg-background text-foreground motion-reduce:**:animate-none motion-reduce:**:transition-none">
+        <ExperienceProvider>
+          {children}
+          <Analytics />
+        </ExperienceProvider>
       </body>
     </html>
   );
