@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { SectionLabel, ArtPlaceholder } from '../primitives';
+import { SectionLabel, ArtPlaceholder, ArrowIcon } from '../primitives';
 import {
   frame,
   section,
@@ -14,7 +14,6 @@ import {
 import { cn } from '@/lib/utils';
 import { DotPattern } from '../dot-pattern';
 import { StripPattern } from '../strip-pattern';
-import { icons } from '@/lib/icon-map';
 
 const checkoutSteps = [
   {
@@ -41,8 +40,6 @@ const checkoutSteps = [
 ];
 
 export function CheckoutSection() {
-  const Arrow = icons['arrow-right'];
-
   return (
     <section id="checkout" className={cn(frame, section)}>
       <SectionLabel number="03">EXPERIÊNCIA DE VENDA</SectionLabel>
@@ -67,7 +64,7 @@ export function CheckoutSection() {
             href="#contato"
             className="inline-flex min-h-11 items-center gap-3 rounded-md border border-border bg-card px-5 py-3 text-xs font-medium text-foreground transition-colors hover:border-accent-1 hover:bg-accent"
           >
-            Conhecer o checkout <Arrow size={15} />
+            Conhecer o checkout <ArrowIcon size={15} />
           </Link>
         </div>
 
