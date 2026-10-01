@@ -281,11 +281,13 @@ export function useFluidHover<T extends HTMLElement>(
         left += ancestor.offsetLeft + ancestor.clientLeft;
         ancestor = ancestor.offsetParent as HTMLElement | null;
       }
+      // FluidGroup registers a layout-only wrapper around its child. Only that
+      // explicitly marked wrapper may delegate its visual radius to the child:
+      // every other registered item owns its computed radius, including a
+      // deliberate `rounded-none` square surface.
       const child = element.firstElementChild;
       const radiusSource =
-        getComputedStyle(element).borderRadius !== '0px' || !(child instanceof HTMLElement)
-          ? element
-          : child;
+        element.dataset.fluidHoverWrapper === 'true' && child instanceof HTMLElement ? child : element;
       rects[index] = {
         top,
         height: element.offsetHeight,

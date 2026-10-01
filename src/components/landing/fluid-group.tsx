@@ -17,7 +17,7 @@ function FluidItem({
   const ref = useRef<HTMLDivElement>(null);
   useRegisterFluidHoverItem(register, index, ref);
   return (
-    <div ref={ref} className="relative z-10 min-w-0">
+    <div ref={ref} data-fluid-hover-wrapper="true" className="relative z-10 min-w-0">
       {children}
     </div>
   );
