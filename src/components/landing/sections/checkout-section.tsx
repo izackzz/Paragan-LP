@@ -11,8 +11,6 @@ import {
   gridThree,
 } from '../styles';
 import { cn } from '@/lib/utils';
-import { DotPattern } from '../dot-pattern';
-import { StripPattern } from '../strip-pattern';
 
 const checkoutSteps = [
   {
@@ -46,15 +44,14 @@ export function CheckoutSection() {
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium">
-              <span className="inline-block size-1.5 rounded-full bg-success" aria-hidden="true" />
               Do produto ao pagamento
             </p>
-            <h2 className="text-4xl leading-tight font-normal tracking-tighter text-balance md:text-5xl xl:text-6xl">
+            <h2 className="text-3xl leading-tight font-medium tracking-tight text-balance md:text-4xl">
               Seus sellers têm uma oferta.
               <br />
               <span className="text-foreground-3">Entregue a experiência.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-7 text-foreground-3 md:text-lg">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
               Produtos, ofertas, cupons e order bumps conectados a um checkout com a sua identidade.
               Mais recursos para vender. Mais contexto para acompanhar.
             </p>
@@ -65,8 +62,6 @@ export function CheckoutSection() {
         </div>
 
         <div className="relative isolate mt-12 overflow-hidden rounded-xl border border-border bg-card">
-          <DotPattern solid grow="x" color="text-accent-1" opacity={8} className="-z-10" />
-          <StripPattern tone="warm" className="top-auto h-1/2 opacity-70" />
           <div className="relative z-10 flex justify-between gap-5 border-b border-border bg-background/70 p-4 text-foreground-3 backdrop-blur-sm md:px-6 md:py-5">
             <span className={micro}>UMA JORNADA, DO INÍCIO AO FIM</span>
             <span className={cn(micro, 'hidden sm:block')}>DESKTOP + MOBILE</span>
@@ -87,7 +82,6 @@ export function CheckoutSection() {
         <CardGroup columns={3} className={gridThree}>
           {checkoutSteps.map((step) => (
             <Card key={step.number} className={cn(card, 'relative isolate overflow-hidden')}>
-              <DotPattern color="text-accent-1" opacity={11} className="-z-10" />
               <CardHeader className="relative z-10">
                 <p className={cn(micro, 'mb-4 text-accent-2')}>
                   {step.number} / {step.eyebrow}

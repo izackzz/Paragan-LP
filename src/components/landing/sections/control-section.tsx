@@ -56,7 +56,7 @@ export function ControlSection() {
           <Tabs defaultValue="operacao" className="mt-14">
             <TabsList
               aria-label="Perspectivas da operação"
-              className="mx-auto mb-7 flex! w-full max-w-full p-1 md:w-fit"
+              className={cn('mx-auto mb-7 flex w-full max-w-full p-1 md:w-fit')}
             >
               {contexts.map((context) => (
                 <TabItem

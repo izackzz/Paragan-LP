@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { Brand } from './primitives';
+import { Brand, ActionLink } from './primitives';
+import { Button } from '@/components/ui/button';
 import { FluidGroup } from './fluid-group';
-import { frame, micro, textLink } from './styles';
+import { frame, micro } from './styles';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -45,19 +46,23 @@ export function SiteFooter() {
               <br />
               Uma operação conectada por trás.
             </p>
+            <ActionLink className="mt-6 text-sm">Criar minha fintech</ActionLink>
           </div>
           {groups.map((group) => (
             <div key={group.title}>
               <h2 className={cn(micro, 'mb-4 text-foreground-3')}>{group.title}</h2>
               <FluidGroup axis="y">
                 {group.links.map(([label, href]) => (
-                  <Link
+                  <Button
                     key={label}
-                    href={href}
-                    className="block min-h-11 px-1.5 py-2.5 text-xs text-foreground-3 transition-colors hover:text-foreground"
+                    asChild
+                    variant="tertiary"
+                    className={cn(
+                      'my-1 h-auto min-h-11 w-full justify-start text-left text-xs whitespace-normal',
+                    )}
                   >
-                    {label}
-                  </Link>
+                    <Link href={href}>{label}</Link>
+                  </Button>
                 ))}
               </FluidGroup>
             </div>
@@ -81,9 +86,9 @@ export function SiteFooter() {
         >
           <span>© {new Date().getFullYear()} Paragan</span>
           <span className="hidden md:block">INFRAESTRUTURA PARA O SEU PRÓXIMO CAPÍTULO</span>
-          <Link href="#inicio" className={textLink}>
-            Voltar ao início ↑
-          </Link>
+          <Button asChild variant="secondary" className={cn('text-xs')}>
+            <Link href="#inicio">Voltar ao início ↑</Link>
+          </Button>
         </div>
       </div>
     </footer>

@@ -34,7 +34,7 @@ export function LaunchSection() {
           muted="começa com um escopo claro."
           description="Cada operação tem seu ponto de partida. A implantação conecta o que sua empresa quer construir ao que precisa funcionar."
         />
-        <CardGroup columns={4} className="mt-12 grid-cols-1! md:grid-cols-2! xl:grid-cols-4!">
+        <CardGroup columns={4} className={cn('mt-12 grid-cols-1 md:grid-cols-2 xl:grid-cols-4')}>
           {steps.map(([title, description], index) => (
             <Card key={title} className={textCard}>
               <CardHeader>

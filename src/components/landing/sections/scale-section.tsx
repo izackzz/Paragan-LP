@@ -1,75 +1,44 @@
 import { SectionLabel, SectionHeading, ArtPlaceholder } from '../primitives';
-import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Reveal } from '../reveal';
-import {
-  frame,
-  section,
-  padding,
-  micro,
-  textCard,
-  cardTitle,
-  cardDescription,
-  gridThree,
-} from '../styles';
+import { frame, section } from '../styles';
 import { cn } from '@/lib/utils';
 
 export function ScaleSection() {
   return (
-    <section id="escala" className="dark scroll-mt-22 bg-background text-foreground">
-      <div className={cn(frame, section)}>
-        <SectionLabel number="06">ESTRUTURA PARA EVOLUIR</SectionLabel>
-        <Reveal className={padding}>
-          <SectionHeading
-            eyebrow="Crescimento com fundamento"
-            title="Amplie sua operação."
-            muted="Preserve o comando."
-            description="Crescer exige mais do que processar mais pagamentos. Exige separar responsabilidades, acompanhar exceções e manter consistência em cada etapa."
+    <section id="escala" className={cn(frame, section)}>
+      <SectionLabel number="06">ESTRUTURA PARA EVOLUIR</SectionLabel>
+      <Reveal className="grid md:grid-cols-3">
+        <div className="flex flex-col justify-between gap-6 border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
+          <SectionHeading title="Cresça a operação." muted="Preserve o comando." />
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Pessoas, dados e responsabilidades no contexto certo, mesmo quando a sua base cresce.
+          </p>
+        </div>
+        <div className="bg-card p-6 md:col-span-2 md:p-10">
+          <ArtPlaceholder
+            width={1200}
+            height={700}
+            label="Arquitetura da operação"
+            className={cn('rounded-none border-0')}
           />
-          <div className="mt-12">
-            {/* LOTTIE ARQUITETURA (1440×430): camadas horizontais de tenants isolados, fila de
-          eventos e observabilidade. Trilhas em verde sobre carvão com espaçamento amplo.
-          Cada evento mantém identificador abstrato até seu destino. Sem mapa global,
-          números de TPS, uptime ou gráficos ascendentes não comprovados. */}
-            <ArtPlaceholder
-              width={1440}
-              height={430}
-              label="Isolamento · consistência · observabilidade"
-              dark
-            />
+        </div>
+        {[
+          ['Fronteiras claras', 'Isolamento por tenant e permissões para cada papel.'],
+          [
+            'Consistência financeira',
+            'Estados e tratamento de repetições para acompanhar cada pagamento.',
+          ],
+          ['Visibilidade operacional', 'Métricas, filas e registros para entender o que acontece.'],
+        ].map(([title, description]) => (
+          <div
+            key={title}
+            className="flex flex-col gap-3 border-t border-border p-6 last:border-r-0 md:border-r md:p-8"
+          >
+            <h3 className="text-sm font-medium">{title}</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
           </div>
-          <CardGroup columns={3} className={cn(gridThree, 'mt-8')}>
-            <Card className={textCard}>
-              <CardHeader>
-                <p className={cn(micro, 'mb-4 text-brand')}>FRONTEIRAS CLARAS</p>
-                <CardTitle className={cardTitle}>Cada contexto no seu lugar.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Arquitetura multi-tenant e permissões para delimitar dados, pessoas e ações.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className={textCard}>
-              <CardHeader>
-                <p className={cn(micro, 'mb-4 text-brand')}>INTEGRIDADE FINANCEIRA</p>
-                <CardTitle className={cardTitle}>Estados, não suposições.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Idempotência e reconciliação para tratar repetições, falhas e resultados
-                  pendentes.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className={textCard}>
-              <CardHeader>
-                <p className={cn(micro, 'mb-4 text-brand')}>VISIBILIDADE OPERACIONAL</p>
-                <CardTitle className={cardTitle}>Saiba onde olhar.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Filas, métricas e registros contextualizados para acompanhar a saúde da
-                  infraestrutura.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </CardGroup>
-        </Reveal>
-      </div>
+        ))}
+      </Reveal>
     </section>
   );
 }

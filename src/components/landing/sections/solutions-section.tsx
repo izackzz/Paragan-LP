@@ -1,120 +1,75 @@
-import { SectionLabel, SectionHeading, ArtPlaceholder } from '../primitives';
-import {
-  Card,
-  CardGroup,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from '@/components/ui/card';
-import Link from 'next/link';
+import { SectionLabel, SectionHeading, ArtPlaceholder, ActionLink } from '../primitives';
 import { Reveal } from '../reveal';
-import {
-  frame,
-  section,
-  padding,
-  card,
-  cardTitle,
-  cardDescription,
-  gridThree,
-  textLink,
-} from '../styles';
+import { frame, section, padding } from '../styles';
 import { cn } from '@/lib/utils';
-import { DotPattern } from '../dot-pattern';
-import { StripPattern } from '../strip-pattern';
+
+const solutions = [
+  {
+    title: 'Sua fintech, do seu jeito.',
+    description:
+      'Para fundadores e operadores que querem lançar uma marca ou deixar para trás uma plataforma limitada.',
+    image: 'Operação de pagamentos white label',
+    cta: 'Desenhar minha fintech',
+  },
+  {
+    title: 'Uma plataforma. Muitos negócios.',
+    description:
+      'Conecte sellers, condições comerciais e integrações ao ecossistema que você já construiu.',
+    image: 'Plataforma e rede de sellers',
+    cta: 'Conectar meu negócio',
+  },
+  {
+    title: 'Da oferta ao recebimento.',
+    description:
+      'Produtos digitais, checkout e acompanhamento da compra na mesma experiência de marca.',
+    image: 'Oferta e experiência de compra',
+    cta: 'Conhecer a plataforma',
+  },
+];
 
 export function SolutionsSection() {
   return (
     <section id="solucoes" className={cn(frame, section)}>
       <SectionLabel number="07">PARA O SEU MODELO DE NEGÓCIO</SectionLabel>
-      <Reveal className={padding}>
+      <div className={padding}>
         <SectionHeading
-          align="center"
-          eyebrow="Diferentes ambições. Uma base sólida."
-          title="Pagamentos como produto."
-          muted="Do seu jeito de fazer negócio."
-          description="Para empresas que querem construir uma operação própria, oferecer mais à sua base e conectar pagamentos à sua estratégia."
+          eyebrow="Para quem quer ir além"
+          title="Pagamentos como negócio."
+          muted="Uma estrutura para cada ambição."
         />
-        <CardGroup
-          columns={3}
-          border="outlined"
-          separated
-          className={cn(
-            gridThree,
-            'mt-14 gap-4! [&_[data-slot=card-footer]]:mt-auto [&_[data-slot=card-footer]]:p-0 [&_[data-slot=card-header]]:pt-6',
-          )}
-        >
-          <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern color="text-accent-1" opacity={18} className="-z-10" />
-            <CardContent className="relative z-10">
-              {/* ARTE GATEWAYS (700×490): central de comando abstrata com três painéis alinhados,
-            marca fictícia e símbolo de configuração. Composição geométrica, fundo menta;
-            comunicar direção operacional, não banco ou autorização regulatória. */}
-              <ArtPlaceholder width={700} height={490} label="Sua operação de pagamentos" dark />
-            </CardContent>
-            <CardHeader className="relative z-10">
-              <CardTitle className={cardTitle}>Gateways & operações próprias</CardTitle>
-              <CardDescription className={cardDescription}>
-                Lance sua marca ou modernize a operação. Conecte condições comerciais, sellers e
-                gestão em uma mesma base.
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="relative z-10">
-              <Link href="#contato" className={textLink}>
-                Desenhar meu gateway <span aria-hidden="true">↗</span>
-              </Link>
-            </CardFooter>
-            <StripPattern tone="warm" className="top-0 h-1/3" />
-          </Card>
-          <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern color="text-accent-1" opacity={18} className="-z-10" />
-            <CardContent className="relative z-10">
-              {/* ARTE PLATAFORMAS (700×490): três participantes com blocos de alocação ligados
-            a uma plataforma central. Sem valores percentuais, marcas externas ou alegação
-            de split bancário imediato. Mesma linguagem geométrica dos outros dois cards. */}
+      </div>
+      <Reveal>
+        {solutions.map((solution, index) => (
+          <div key={solution.title} className="grid border-t border-border md:grid-cols-3">
+            <div
+              className={cn(
+                'flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10',
+                index % 2 === 1 && 'md:order-2',
+              )}
+            >
               <ArtPlaceholder
-                width={800}
-                height={500}
-                label="Uma plataforma, vários participantes"
-                dark
+                width={1200}
+                height={640}
+                label={solution.image}
+                className={cn('rounded-none border-0')}
               />
-            </CardContent>
-            <CardHeader className="relative z-10">
-              <CardTitle className={cardTitle}>Plataformas & marketplaces</CardTitle>
-              <CardDescription className={cardDescription}>
-                Organize participantes, regras de distribuição e integrações. Tenha contexto para
-                supervisionar cada etapa.
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="relative z-10">
-              <Link href="#contato" className={textLink}>
-                Conectar minha plataforma <span aria-hidden="true">↗</span>
-              </Link>
-            </CardFooter>
-          </Card>
-          <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern color="text-accent-1" opacity={18} className="-z-10" />
-            <CardContent className="relative z-10">
-              {/* ARTE DIGITAL (700×490): produto digital e duas ofertas se conectam ao checkout
-            e a um arquivo autorizado. Não desenhar aulas, certificados ou comunidade;
-            o escopo demonstrado é venda, cobrança e acesso aos entregáveis. */}
-              <ArtPlaceholder width={800} height={500} label="Da oferta ao acesso digital" dark />
-            </CardContent>
-            <CardHeader className="relative z-10">
-              <CardTitle className={cardTitle}>Ecossistemas de produtos digitais</CardTitle>
-              <CardDescription className={cardDescription}>
-                Entregue à sua rede de sellers produtos, checkout e recorrência, com acompanhamento
-                da compra e acesso digital.
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="relative z-10">
-              <Link href="#contato" className={textLink}>
-                Estruturar minha operação <span aria-hidden="true">↗</span>
-              </Link>
-            </CardFooter>
-          </Card>
-        </CardGroup>
+            </div>
+            <div
+              className={cn(
+                'flex flex-col items-start justify-end gap-4 border-t border-border p-6 md:border-t-0 md:border-l md:p-8',
+                index % 2 === 1 && 'md:order-1 md:border-r md:border-l-0',
+              )}
+            >
+              <h3 className="text-base font-medium">{solution.title}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {solution.description}
+              </p>
+              <ActionLink secondary className="mt-3 text-sm">
+                {solution.cta}
+              </ActionLink>
+            </div>
+          </div>
+        ))}
       </Reveal>
     </section>
   );
