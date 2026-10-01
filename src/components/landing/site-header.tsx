@@ -57,7 +57,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <ActionLink className="hidden sm:inline-flex">Vamos conversar</ActionLink>
           <Button
-            variant="ghost"
+            variant="secondary"
             size="icon-lg"
             className="min-h-11 min-w-11 lg:hidden"
             aria-label={open ? 'Fechar navegação' : 'Abrir navegação'}

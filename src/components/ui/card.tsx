@@ -875,12 +875,11 @@ function CardFeature({ icon: Icon, title, description }: CardFeatureProps) {
 // Self-contained action button for the footer (keeps Card free of a Button
 // dependency, so it installs standalone). Renders an anchor when `href` is set.
 
-type CardButtonVariant = 'primary' | 'secondary' | 'ghost' | 'link';
+type CardButtonVariant = 'primary' | 'secondary' | 'link';
 
 const CARD_BUTTON_VARIANTS: Record<CardButtonVariant, string> = {
   primary: 'bg-foreground text-background hover:bg-foreground/90 active:bg-foreground/80',
   secondary: 'bg-accent text-foreground hover:bg-accent/80 active:bg-accent',
-  ghost: 'bg-muted text-foreground hover:bg-hover active:bg-active',
   link: 'text-foreground underline-offset-4 hover:underline !px-0 !h-auto',
 };
 
@@ -900,7 +899,7 @@ function CardButton({
   children,
   onClick,
   href,
-  variant = 'ghost',
+  variant = 'secondary',
   icon: Icon,
   iconPosition,
   external = false,
