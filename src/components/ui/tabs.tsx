@@ -21,7 +21,6 @@ import type { IconComponent } from '@/lib/icon-context';
 import { cn } from '@/lib/utils';
 import { springs } from '@/lib/springs';
 import { fontWeights } from '@/lib/font-weight';
-import { useShape } from '@/lib/shape-context';
 import { useSurface } from '@/lib/surface-context';
 import { surfaceClasses } from '@/lib/surface-classes';
 import { useFluidHover as useProximityHover } from '@/hooks/use-fluid-hover';
@@ -128,7 +127,6 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
   ({ children, className, ...props }, ref) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isMouseInside, setIsMouseInside] = useState(false);
-    const shape = useShape();
     const substrate = useSurface();
     const indicatorLevel = Math.min(substrate + 3, 8);
     const valueOrderCtx = useContext(TabsValueOrderContext);
@@ -254,7 +252,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
               className={cn(
                 'pointer-events-none absolute',
                 surfaceClasses(indicatorLevel),
-                shape.bg,
+                'rounded-md',
               )}
               initial={false}
               animate={{
@@ -275,7 +273,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           <AnimatePresence>
             {hoverRect && !isHoveringSelected && selectedRect && (
               <motion.div
-                className={cn('pointer-events-none absolute bg-hover', shape.bg)}
+                className="pointer-events-none absolute rounded-md bg-hover"
                 initial={{
                   left: selectedRect.left,
                   width: selectedRect.width,
@@ -319,7 +317,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
               <motion.div
                 className={cn(
                   'pointer-events-none absolute z-20 border border-accent-1',
-                  shape.focusRing,
+                  'rounded-md',
                 )}
                 initial={false}
                 animate={{

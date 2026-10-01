@@ -10,7 +10,7 @@ export function FinanceSection() {
   return (
     <section id="financeiro" className={cn(frame, section)}>
       <SectionLabel number="04">GESTÃO FINANCEIRA</SectionLabel>
-      <Reveal className={cn(padding, 'grid items-center gap-8 md:grid-cols-[1fr_0.9fr] xl:gap-16')}>
+      <Reveal className={cn(padding, 'grid items-center gap-8 md:grid-cols-2 xl:gap-16')}>
         <div>
           <SectionHeading
             eyebrow="Clareza para decidir"

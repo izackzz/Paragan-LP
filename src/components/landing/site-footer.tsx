@@ -37,7 +37,7 @@ export function SiteFooter() {
   return (
     <footer className="dark bg-background text-foreground">
       <div className={frame}>
-        <div className="grid grid-cols-2 gap-x-5 gap-y-9 px-6 py-10 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:gap-9 md:px-9 md:py-14">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-9 px-6 py-10 md:grid-cols-4 md:gap-9 md:px-9 md:py-14">
           <div>
             <Brand />
             <p className="mt-5 max-w-52 text-sm leading-6 text-foreground-3">
@@ -70,7 +70,7 @@ export function SiteFooter() {
             height={360}
             alt=""
             aria-hidden="true"
-            className="h-auto w-full opacity-[0.07]"
+            className="h-auto w-full opacity-10"
           />
         </div>
         <div

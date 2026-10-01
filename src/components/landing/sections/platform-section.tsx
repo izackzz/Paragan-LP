@@ -32,7 +32,7 @@ export function PlatformSection() {
           eyebrow="Mais do que processar"
           title="Uma marca própria merece"
           muted="uma operação à altura."
-          description="O que acontece antes e depois do pagamento também define o seu negócio. Na Paragan, essas decisões fazem parte da mesma plataforma."
+          description="O que acontece antes e depois do pagamento também define o seu negócio. Sua marca lidera a experiência do cliente final; a Paragan sustenta a excelência operacional ao seu lado."
         />
         <CardGroup columns={3} border="outlined" separated className={cn(gridThree, 'mt-14 gap-4!')}>
           <Card className={cn(card, 'relative isolate overflow-hidden md:col-span-2')}>
