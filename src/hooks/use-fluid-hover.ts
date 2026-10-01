@@ -287,7 +287,9 @@ export function useFluidHover<T extends HTMLElement>(
       // deliberate `rounded-none` square surface.
       const child = element.firstElementChild;
       const radiusSource =
-        element.dataset.fluidHoverWrapper === 'true' && child instanceof HTMLElement ? child : element;
+        element.dataset.fluidHoverWrapper === 'true' && child instanceof HTMLElement
+          ? child
+          : element;
       rects[index] = {
         top,
         height: element.offsetHeight,
