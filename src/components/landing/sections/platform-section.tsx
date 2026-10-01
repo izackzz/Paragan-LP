@@ -1,0 +1,45 @@
+import { Card, CardGroup, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { SectionLabel, SectionHeading, ArtPlaceholder } from "../primitives";
+import { Reveal } from "../reveal";
+import { frame, section, padding, micro, card, cardTitle, cardDescription, gridThree } from "../styles";
+import { cn } from "@/lib/utils";
+
+export function PlatformSection() {
+  return <section id="plataforma" className={cn(frame, section)}>
+    <SectionLabel number="01">A PLATAFORMA</SectionLabel>
+    <Reveal className={padding}><SectionHeading align="center" eyebrow="Mais do que processar" title="Uma marca própria merece" muted="uma operação à altura." description="O que acontece antes e depois do pagamento também define o seu negócio. Na Paragan, essas decisões fazem parte da mesma plataforma." />
+      <CardGroup columns={3} separated className={cn(gridThree, "mt-14 gap-3.5!")}>
+        <Card className={cn(card, "md:col-span-2")}><CardHeader><p className={cn(micro, "mb-3 text-brand")}>01 / IDENTIDADE</p><CardTitle className={cardTitle}>Sua marca não termina no logo.</CardTitle><CardDescription className={cardDescription}>Painel, checkout, domínio e comunicação. Uma experiência que seus sellers reconhecem como sua.</CardDescription></CardHeader><CardContent className="mt-auto">
+          {/* ARTE WL (1000×440): composição com painel desktop e recorte de checkout mobile
+              de uma única marca fictícia. Evidenciar logo, tema e domínio próprios. Sem
+              números de resultado. Fundo menta, janelas frontais, hierarquia editorial. */}
+          <ArtPlaceholder width={1000} height={440} label="Sua identidade, em cada ponto de contato" />
+        </CardContent></Card>
+        <Card className={card}><CardHeader><p className={cn(micro, "mb-3 text-brand")}>02 / REGRAS COMERCIAIS</p><CardTitle className={cardTitle}>O modelo é seu.</CardTitle><CardDescription className={cardDescription}>Configure taxas, comissões e condições por seller. Dê forma à sua estratégia comercial.</CardDescription></CardHeader><CardContent className="mt-auto">
+          {/* LOTTIE FUTURO (600×490): três fichas de configuração “padrão”, “por meio” e
+              “por seller” convergem para uma regra aplicada. Sem percentuais inventados;
+              animação curta acionada na entrada, versão estática com a mesma leitura. */}
+          <ArtPlaceholder width={600} height={490} label="Regras que refletem o seu negócio" />
+        </CardContent></Card>
+        <Card className={card}><CardHeader><p className={cn(micro, "mb-3 text-brand")}>03 / PESSOAS</p><CardTitle className={cardTitle}>Delegue. Sem perder a visão.</CardTitle><CardDescription className={cardDescription}>Carteiras, equipe e permissões para cada pessoa atuar no contexto certo.</CardDescription></CardHeader><CardContent>
+          {/* ARTE EQUIPE (600×390): matriz simplificada de papéis com três cartões
+              “Operação”, “Financeiro”, “Atendimento”; destaque de permissões diferentes.
+              Não usar avatares de pessoas reais nem sugerir acesso cruzado entre tenants. */}
+          <ArtPlaceholder width={600} height={390} label="Pessoas, papéis e permissões" />
+        </CardContent></Card>
+        <Card className={card}><CardHeader><p className={cn(micro, "mb-3 text-brand")}>04 / ADQUIRÊNCIA</p><CardTitle className={cardTitle}>Alternativas com direção.</CardTitle><CardDescription className={cardDescription}>Organize processadores, prioridades e regras para conduzir seus pagamentos.</CardDescription></CardHeader><CardContent>
+          {/* LOTTIE ROTAS (600×390): entrada Pix/cartão/boleto passa por filtro de
+              elegibilidade e alcança uma configuração autorizada. Linhas finas verdes,
+              estados legíveis, sem nomes/logos e sem promessa de aprovação. */}
+          <ArtPlaceholder width={600} height={390} label="Uma política. Rotas elegíveis." />
+        </CardContent></Card>
+        <Card className={card}><CardHeader><p className={cn(micro, "mb-3 text-brand")}>05 / RELACIONAMENTO</p><CardTitle className={cardTitle}>Uma base que faz parte.</CardTitle><CardDescription className={cardDescription}>Campanhas, rankings e premiações para estruturar sua relação com os sellers.</CardDescription></CardHeader><CardContent>
+          {/* ARTE REWARDS (600×390): trilha com três marcos e insígnia central abstrata;
+              pequenos cartões de prêmio sem marcas reais. Diferenciar jornada acumulada
+              de ranking por campanha. Não fabricar nomes de clientes ou faturamento. */}
+          <ArtPlaceholder width={600} height={390} label="Crescimento com reconhecimento" />
+        </CardContent></Card>
+      </CardGroup>
+    </Reveal>
+  </section>;
+}
