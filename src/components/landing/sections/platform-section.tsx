@@ -106,7 +106,6 @@ export function PlatformSection() {
               <ArtPlaceholder
                 width={800}
                 height={500}
-                src="/assets/illustrations/acquirer-cover.svg"
                 label="Uma política. Rotas elegíveis."
                 dark
               />

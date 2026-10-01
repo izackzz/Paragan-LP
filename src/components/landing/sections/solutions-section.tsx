@@ -54,7 +54,6 @@ export function SolutionsSection() {
               <ArtPlaceholder
                 width={700}
                 height={490}
-                src="/assets/illustrations/acquirer-cover.svg"
                 label="Sua operação de pagamentos"
                 dark
               />
@@ -82,7 +81,6 @@ export function SolutionsSection() {
               <ArtPlaceholder
                 width={800}
                 height={500}
-                src="/assets/illustrations/checkout-cover.svg"
                 label="Uma plataforma, vários participantes"
                 dark
               />
@@ -109,7 +107,6 @@ export function SolutionsSection() {
               <ArtPlaceholder
                 width={800}
                 height={500}
-                src="/assets/illustrations/product-cover.svg"
                 label="Da oferta ao acesso digital"
                 dark
               />
