@@ -1,14 +1,11 @@
 // Shared Tailwind compositions: complete literal utilities discoverable by v4.
-export const frame =
-  'landing-frame';
+export const frame = 'landing-frame';
 export const section = 'scroll-mt-22 border-b border-border';
 export const padding = 'px-5 py-12 md:px-7 md:py-16 xl:px-10 xl:pt-22 xl:pb-18';
-export const micro =
-  'font-mono text-xs leading-relaxed font-normal tracking-wider uppercase';
+export const micro = 'font-mono text-xs leading-relaxed font-normal tracking-wider uppercase';
 export const eyebrow =
   'mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs leading-relaxed font-medium';
-export const dot =
-  'inline-block size-1.5 shrink-0 rounded-full bg-success shadow-sm';
+export const dot = 'inline-block size-1.5 shrink-0 rounded-full bg-success shadow-sm';
 export const cardTitle = 'text-xl! leading-snug! font-medium tracking-tight xl:text-2xl!';
 export const cardDescription = 'mt-3 max-w-lg text-base! leading-relaxed! text-muted-foreground';
 export const card =

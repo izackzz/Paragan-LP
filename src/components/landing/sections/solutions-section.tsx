@@ -51,12 +51,7 @@ export function SolutionsSection() {
               {/* ARTE GATEWAYS (700×490): central de comando abstrata com três painéis alinhados,
             marca fictícia e símbolo de configuração. Composição geométrica, fundo menta;
             comunicar direção operacional, não banco ou autorização regulatória. */}
-              <ArtPlaceholder
-                width={700}
-                height={490}
-                label="Sua operação de pagamentos"
-                dark
-              />
+              <ArtPlaceholder width={700} height={490} label="Sua operação de pagamentos" dark />
             </CardContent>
             <CardHeader className="relative z-10">
               <CardTitle className={cardTitle}>Gateways & operações próprias</CardTitle>
@@ -104,12 +99,7 @@ export function SolutionsSection() {
               {/* ARTE DIGITAL (700×490): produto digital e duas ofertas se conectam ao checkout
             e a um arquivo autorizado. Não desenhar aulas, certificados ou comunidade;
             o escopo demonstrado é venda, cobrança e acesso aos entregáveis. */}
-              <ArtPlaceholder
-                width={800}
-                height={500}
-                label="Da oferta ao acesso digital"
-                dark
-              />
+              <ArtPlaceholder width={800} height={500} label="Da oferta ao acesso digital" dark />
             </CardContent>
             <CardHeader className="relative z-10">
               <CardTitle className={cardTitle}>Ecossistemas de produtos digitais</CardTitle>
