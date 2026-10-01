@@ -8,6 +8,9 @@ import {
   Cancel01Icon,
   Menu01Icon,
   Copy01Icon,
+  DashboardSquare01Icon,
+  UserGroupIcon,
+  CreditCardIcon,
 } from '@hugeicons/core-free-icons';
 import type { ComponentType } from 'react';
 
@@ -28,6 +31,9 @@ export const icons = {
   x: wrap(Cancel01Icon),
   menu: wrap(Menu01Icon),
   copy: wrap(Copy01Icon),
+  dashboard: wrap(DashboardSquare01Icon),
+  users: wrap(UserGroupIcon),
+  'credit-card': wrap(CreditCardIcon),
 };
 export type IconName = keyof typeof icons;
 export type IconLibrary = 'hugeicons';
