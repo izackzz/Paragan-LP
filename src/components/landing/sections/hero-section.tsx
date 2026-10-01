@@ -5,6 +5,7 @@ import { FluidGroup } from '../fluid-group';
 import { frame, micro, eyebrow } from '../styles';
 import { cn } from '@/lib/utils';
 import { icons } from '@/lib/icon-map';
+import { Frame } from '@/components/ui/frame';
 
 const previews = [
   {
@@ -73,7 +74,7 @@ export function HeroSection() {
           marca aparece.
         </p>
       </div>
-      <div className="overflow-hidden rounded-2xl border border-border [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+      <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
@@ -116,7 +117,7 @@ export function HeroSection() {
             </TabPanel>
           ))}
         </Tabs>
-      </div>
+      </Frame>
       <div className="grid min-h-32 items-center gap-4 py-6 lg:grid-cols-4 lg:gap-8">
         <span className="text-center text-xs leading-relaxed text-muted-foreground lg:text-left">
           Para quem transforma

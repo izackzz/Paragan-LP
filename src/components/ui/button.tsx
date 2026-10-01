@@ -18,9 +18,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'text-platinum-foreground',
-        secondary: 'border border-foreground-3 text-foreground',
+        primary: 'text-primary-foreground',
+        secondary: 'text-background',
         tertiary: 'border border-foreground-4 text-foreground',
+        platinum: 'text-platinum-foreground',
       },
       size: {
         sm: 'h-8 px-3 text-sm gap-1',
@@ -62,15 +63,17 @@ interface ButtonProps
 }
 
 const bgVariants: Record<string, string> = {
-  primary: 'button-primary-platinum',
-  secondary: 'bg-accent group-hover:bg-muted group-active:bg-secondary',
-  tertiary: 'bg-secondary group-hover:bg-accent group-active:bg-muted',
+  primary: 'bg-primary group-hover:bg-primary/90 group-active:bg-primary/80',
+  secondary: 'bg-foreground group-hover:bg-foreground/90 group-active:bg-foreground/80',
+  tertiary: 'bg-border group-hover:bg-muted group-active:bg-accent',
+  platinum: 'button-primary-platinum',
 };
 
 const activeBgVariants: Record<string, string> = {
-  primary: 'button-primary-platinum',
-  secondary: 'bg-accent',
-  tertiary: 'bg-accent',
+  primary: 'bg-primary/80',
+  secondary: 'bg-foreground/80',
+  tertiary: 'bg-muted',
+  platinum: 'button-primary-platinum',
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
