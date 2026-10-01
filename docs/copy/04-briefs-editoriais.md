@@ -89,13 +89,13 @@
 
 ## 2. Brief das páginas de plataforma
 
-| Página | Sequência obrigatória | Prova principal | Objeção a resolver |
-| --- | --- | --- | --- |
-| Plataforma | Tese → mapa dos papéis → jornada ponta a ponta → módulos → integração → demo | Fluxo gateway/seller/comprador | “São vários módulos soltos?” |
-| White label | Identidade → painéis → checkout → domínios → comunicação → configuração → demo | Antes/depois de duas identidades demonstrativas | “É só trocar o logo?” |
-| Operação | Entrada do seller → análise → condições → carteira → permissões → exceções → avisos | Jornada de revisão e atribuição | “Vou depender de fazer tudo sozinho?” |
-| Financeiro | Política comercial → componentes da receita/custo → saldo → split → reservas → saques → competência | Uma venda acompanhada nos registros | “Vou saber o que está disponível e o que compõe meu resultado?” |
-| Segurança e escala | Fronteiras → identidade → integridade → processamento → observabilidade → responsabilidades | Diagrama simplificado e cenário de repetição/erro | “O controle se mantém quando aumenta a complexidade?” |
+| Página             | Sequência obrigatória                                                                               | Prova principal                                   | Objeção a resolver                                              |
+| ------------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------- |
+| Plataforma         | Tese → mapa dos papéis → jornada ponta a ponta → módulos → integração → demo                        | Fluxo gateway/seller/comprador                    | “São vários módulos soltos?”                                    |
+| White label        | Identidade → painéis → checkout → domínios → comunicação → configuração → demo                      | Antes/depois de duas identidades demonstrativas   | “É só trocar o logo?”                                           |
+| Operação           | Entrada do seller → análise → condições → carteira → permissões → exceções → avisos                 | Jornada de revisão e atribuição                   | “Vou depender de fazer tudo sozinho?”                           |
+| Financeiro         | Política comercial → componentes da receita/custo → saldo → split → reservas → saques → competência | Uma venda acompanhada nos registros               | “Vou saber o que está disponível e o que compõe meu resultado?” |
+| Segurança e escala | Fronteiras → identidade → integridade → processamento → observabilidade → responsabilidades         | Diagrama simplificado e cenário de repetição/erro | “O controle se mantém quando aumenta a complexidade?”           |
 
 ### White label: blocos detalhados
 
@@ -188,11 +188,11 @@ CTA técnico: Consultar documentação. CTA comercial contextual: Avaliar minha 
 
 ## 5. Páginas de solução
 
-| Solução | Situação de entrada | História a contar | Recursos protagonistas |
-| --- | --- | --- | --- |
-| Gateways | Base comercial existente ou projeto de operação própria | Marca → condições → operação → sellers → expansão | WL, OP, FN, PG |
-| Plataformas e marketplaces | Vários participantes e regras de distribuição | Onboarding → transação → alocação → supervisão → integração | OP, FN06, IT |
-| Produtos digitais | Rede de sellers com ofertas e conteúdo | Catálogo → oferta → checkout → cobrança → acesso → relacionamento | CK, RC, GR |
+| Solução                    | Situação de entrada                                     | História a contar                                                 | Recursos protagonistas |
+| -------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------- | ---------------------- |
+| Gateways                   | Base comercial existente ou projeto de operação própria | Marca → condições → operação → sellers → expansão                 | WL, OP, FN, PG         |
+| Plataformas e marketplaces | Vários participantes e regras de distribuição           | Onboarding → transação → alocação → supervisão → integração       | OP, FN06, IT           |
+| Produtos digitais          | Rede de sellers com ofertas e conteúdo                  | Catálogo → oferta → checkout → cobrança → acesso → relacionamento | CK, RC, GR             |
 
 Cada página terá um cenário concreto, mapa do fluxo, responsabilidades, recursos aplicáveis, perguntas específicas e CTA de aderência. Não repetir a home trocando o nome do segmento.
 

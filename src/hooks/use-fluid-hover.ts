@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useRef,
@@ -8,7 +8,7 @@ import {
   type Dispatch,
   type RefObject,
   type SetStateAction,
-} from "react";
+} from 'react';
 
 export interface ItemRect {
   top: number;
@@ -25,7 +25,7 @@ export interface UseFluidHoverOptions {
    *   "xy" — 2-D grids: closest card across both rows AND columns,
    *          measured by Euclidean distance to each item's center
    */
-  axis?: "x" | "y" | "xy";
+  axis?: 'x' | 'y' | 'xy';
   /**
    * Makes an item invisible to hit-testing without unregistering it — for
    * rows that stay mounted while clipped away (a collapsed sub-tree).
@@ -91,7 +91,7 @@ export interface UseFluidHoverReturn {
 }
 
 export interface PickNearestInput {
-  axis: "x" | "y" | "xy";
+  axis: 'x' | 'y' | 'xy';
   /** The pointer, in viewport coordinates. */
   point: { x: number; y: number };
   /** Item rects in the container's layout space (sparse: unregistered slots
@@ -138,7 +138,7 @@ export function pickNearest({
     if (!r) continue;
     if (isDisabled?.(index)) continue;
 
-    if (axis === "xy") {
+    if (axis === 'xy') {
       const left = containerRect.left + (border.x + r.left - scroll.x) * scaleX;
       const top = containerRect.top + (border.y + r.top - scroll.y) * scaleY;
       const width = r.width * scaleX;
@@ -154,7 +154,7 @@ export function pickNearest({
       continue;
     }
 
-    const horizontal = axis === "x";
+    const horizontal = axis === 'x';
     const mousePos = horizontal ? point.x : point.y;
     const scale = horizontal ? scaleX : scaleY;
     const itemStart =
@@ -178,9 +178,9 @@ export function pickNearest({
 }
 
 /** Set on the highlighted item (boolean attribute). */
-export const ACTIVE_ATTR = "data-fluid-hover-active";
+export const ACTIVE_ATTR = 'data-fluid-hover-active';
 /** Set on the container: the highlighted index, or absent. */
-export const ACTIVE_INDEX_ATTR = "data-fluid-hover-active-index";
+export const ACTIVE_INDEX_ATTR = 'data-fluid-hover-active-index';
 
 const ACTIVATOR_SELECTOR =
   "a[href], button, [role='menuitem'], [role='menuitemradio'], [role='menuitemcheckbox'], [role='option'], [role='radio'], [role='checkbox'], [role='tab'], [role='link'], [role='button']";
@@ -192,7 +192,7 @@ const ACTIVATOR_SELECTOR =
  * is what a real click on the row would have reached.
  */
 function resolveActivator(element: HTMLElement): HTMLElement {
-  if (element.matches(ACTIVATOR_SELECTOR) || element.hasAttribute("tabindex")) {
+  if (element.matches(ACTIVATOR_SELECTOR) || element.hasAttribute('tabindex')) {
     return element;
   }
   return element.querySelector<HTMLElement>(ACTIVATOR_SELECTOR) ?? element;
@@ -210,14 +210,16 @@ export function useFluidHover<T extends HTMLElement>(
   containerRef: RefObject<T | null>,
   options: UseFluidHoverOptions = {},
 ): UseFluidHoverReturn {
-  const { axis = "y", isItemDisabled, gapClick = true } = options;
+  const { axis = 'y', isItemDisabled, gapClick = true } = options;
   const gapClickMaxDistance =
-    typeof gapClick === "object" ? (gapClick.maxDistance ?? Infinity) : Infinity;
+    typeof gapClick === 'object' ? (gapClick.maxDistance ?? Infinity) : Infinity;
   const itemsRef = useRef(new Map<number, HTMLElement>());
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   // Mirrored for handlers that read it outside a render (the gap click).
   const activeIndexRef = useRef<number | null>(null);
-  useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
   // The state, in the DOM: `data-fluid-hover-active` on the highlighted item
   // and `data-fluid-hover-active-index` on the container. Devtools shows it
@@ -228,7 +230,7 @@ export function useFluidHover<T extends HTMLElement>(
     if (activeIndex === null) container?.removeAttribute(ACTIVE_INDEX_ATTR);
     else container?.setAttribute(ACTIVE_INDEX_ATTR, String(activeIndex));
     const active = activeIndex === null ? undefined : itemsRef.current.get(activeIndex);
-    active?.setAttribute(ACTIVE_ATTR, "");
+    active?.setAttribute(ACTIVE_ATTR, '');
     return () => active?.removeAttribute(ACTIVE_ATTR);
   }, [activeIndex, containerRef]);
   const [itemRects, setItemRects] = useState<ItemRect[]>([]);
@@ -351,7 +353,7 @@ export function useFluidHover<T extends HTMLElement>(
   // ref points at a different element than the one being observed.
   const itemRoRef = useRef<ResizeObserver | null>(null);
   const getItemRo = useCallback(() => {
-    if (itemRoRef.current === null && typeof ResizeObserver !== "undefined") {
+    if (itemRoRef.current === null && typeof ResizeObserver !== 'undefined') {
       itemRoRef.current = new ResizeObserver(() => scheduleMeasurement(measurementAttempts));
     }
     return itemRoRef.current;
@@ -362,7 +364,7 @@ export function useFluidHover<T extends HTMLElement>(
       if (element) {
         itemsRef.current.set(index, element);
         getItemRo()?.observe(element);
-        if (index === activeIndexRef.current) element.setAttribute(ACTIVE_ATTR, "");
+        if (index === activeIndexRef.current) element.setAttribute(ACTIVE_ATTR, '');
       } else {
         const previous = itemsRef.current.get(index);
         if (previous) itemRoRef.current?.unobserve(previous);
@@ -470,7 +472,7 @@ export function useFluidHover<T extends HTMLElement>(
   // stay usable, and hiding overlays on every reflow would flicker them.
   useEffect(() => {
     const container = containerRef.current;
-    if (!container || typeof ResizeObserver === "undefined") return;
+    if (!container || typeof ResizeObserver === 'undefined') return;
     const ro = new ResizeObserver(() => scheduleMeasurement(measurementAttempts));
     ro.observe(container);
     return () => ro.disconnect();

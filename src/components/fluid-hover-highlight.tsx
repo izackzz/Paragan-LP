@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion, AnimatePresence, useReducedMotion, type Transition } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { spring } from "@/lib/springs";
-import type { ItemRect, UseFluidHoverReturn } from "@/hooks/use-fluid-hover";
+import { motion, AnimatePresence, useReducedMotion, type Transition } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { spring } from '@/lib/springs';
+import type { ItemRect, UseFluidHoverReturn } from '@/hooks/use-fluid-hover';
 
 // ---------------------------------------------------------------------------
 // The one hover highlight every fluid hover list renders: an absolutely
@@ -21,7 +21,7 @@ import type { ItemRect, UseFluidHoverReturn } from "@/hooks/use-fluid-hover";
  *  measured rects, whether they are current, and the pointer session. */
 export type FluidHoverSource = Pick<
   UseFluidHoverReturn,
-  "activeIndex" | "itemRects" | "isMeasured" | "sessionRef"
+  'activeIndex' | 'itemRects' | 'isMeasured' | 'sessionRef'
 >;
 
 interface HighlightFromHook {
@@ -116,7 +116,7 @@ export function FluidHoverHighlight(props: FluidHoverHighlightProps) {
           // re-laying out every frame. Width and height are real layout
           // values, but they only change when the target rect's size does,
           // which in most lists is never.
-          className={cn("pointer-events-none absolute left-0 top-0 bg-hover", className)}
+          className={cn('pointer-events-none absolute top-0 left-0 bg-hover', className)}
           initial={{ opacity: 0, ...toTarget(from ?? rect) }}
           animate={{ opacity: 1, ...toTarget(rect) }}
           exit={{ opacity: 0, transition: spring.fast.exit }}

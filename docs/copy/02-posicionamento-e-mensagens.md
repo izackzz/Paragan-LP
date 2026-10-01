@@ -14,12 +14,12 @@ Complemento argumentativo: conectar checkout, sellers, regras comerciais e gest�
 
 ## 2. Público prioritário
 
-| Prioridade | Comprador | Trabalho que precisa realizar | Argumento de maior peso |
-| --- | --- | --- | --- |
-| Principal | Dono ou futuro operador de gateway com base de sellers ou distribuição própria | Lançar ou modernizar uma operação white label | Controle comercial e operacional com produto para sua base |
-| Secundária | Plataforma que reúne vendedores ou prestadores | Incorporar pagamentos à oferta e governar participantes | Sellers, split, regras, API e visão financeira |
-| Secundária | Operação de produtos digitais e recorrência com ambição de plataforma | Oferecer checkout e gestão a uma rede de sellers | Produtos, ofertas, cobrança e experiência pós-compra |
-| Expansão | SaaS vertical ou operação com integração própria | Conectar pagamentos ao fluxo do software | API, eventos e políticas de acesso |
+| Prioridade | Comprador                                                                      | Trabalho que precisa realizar                           | Argumento de maior peso                                    |
+| ---------- | ------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------------------------------------------------- |
+| Principal  | Dono ou futuro operador de gateway com base de sellers ou distribuição própria | Lançar ou modernizar uma operação white label           | Controle comercial e operacional com produto para sua base |
+| Secundária | Plataforma que reúne vendedores ou prestadores                                 | Incorporar pagamentos à oferta e governar participantes | Sellers, split, regras, API e visão financeira             |
+| Secundária | Operação de produtos digitais e recorrência com ambição de plataforma          | Oferecer checkout e gestão a uma rede de sellers        | Produtos, ofertas, cobrança e experiência pós-compra       |
+| Expansão   | SaaS vertical ou operação com integração própria                               | Conectar pagamentos ao fluxo do software                | API, eventos e políticas de acesso                         |
 
 Não priorizar na home o lojista que só procura uma taxa para receber vendas próprias. Ele é usuário da plataforma do cliente, não necessariamente comprador da infraestrutura Paragan.
 
@@ -27,13 +27,13 @@ Operações reguladas ou de risco específico exigem avaliação de aderência a
 
 ## 3. Comitê de compra
 
-| Pessoa | Pergunta decisiva | Resposta editorial | Prova |
-| --- | --- | --- | --- |
-| Dono/CEO | “O que eu passo a controlar?” | Marca, regras comerciais, base, equipe e operação | Demo gateway-admin |
-| Financeiro | “Como acompanho receitas, custos e disponibilidade?” | Separação dos componentes e visão por competência | Fluxo financeiro com valores demonstrativos identificados |
-| Operações | “Como trato o que sai do fluxo normal?” | Filas, status, revisão, reservas e histórico | Cenário de exceção acompanhado de ponta a ponta |
-| Tecnologia | “Como integra e como falha?” | Contrato, eventos, idempotência e reconciliação | Documentação e exemplo real de resposta |
-| Risco/jurídico | “Quem decide e quem responde?” | Escopos, permissões, evidência e divisão de responsabilidades | Matriz de papéis e termos comerciais |
+| Pessoa         | Pergunta decisiva                                    | Resposta editorial                                            | Prova                                                     |
+| -------------- | ---------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
+| Dono/CEO       | “O que eu passo a controlar?”                        | Marca, regras comerciais, base, equipe e operação             | Demo gateway-admin                                        |
+| Financeiro     | “Como acompanho receitas, custos e disponibilidade?” | Separação dos componentes e visão por competência             | Fluxo financeiro com valores demonstrativos identificados |
+| Operações      | “Como trato o que sai do fluxo normal?”              | Filas, status, revisão, reservas e histórico                  | Cenário de exceção acompanhado de ponta a ponta           |
+| Tecnologia     | “Como integra e como falha?”                         | Contrato, eventos, idempotência e reconciliação               | Documentação e exemplo real de resposta                   |
+| Risco/jurídico | “Quem decide e quem responde?”                       | Escopos, permissões, evidência e divisão de responsabilidades | Matriz de papéis e termos comerciais                      |
 
 ## 4. Cinco pilares de valor
 
@@ -76,15 +76,15 @@ Operações reguladas ou de risco específico exigem avaliação de aderência a
 
 “Dono no controle” precisa aparecer como ações específicas:
 
-| Dimensão | O que demonstrar |
-| --- | --- |
-| Marca | Identidade, temas, assets, suporte e domínios aptos |
-| Comercial | Taxas, comissões, regras e exceções por seller |
-| Processamento | Configurações disponíveis, métodos e prioridades elegíveis |
-| Base | Cadastro, status, acompanhamento e carteira |
-| Pessoas | Permissões, delegação, contexto e revogação |
-| Financeiro | Saldos, reservas, saques e composição de receita/custo |
-| Relacionamento | Avisos, campanhas, ranking e jornada de reconhecimento |
+| Dimensão       | O que demonstrar                                           |
+| -------------- | ---------------------------------------------------------- |
+| Marca          | Identidade, temas, assets, suporte e domínios aptos        |
+| Comercial      | Taxas, comissões, regras e exceções por seller             |
+| Processamento  | Configurações disponíveis, métodos e prioridades elegíveis |
+| Base           | Cadastro, status, acompanhamento e carteira                |
+| Pessoas        | Permissões, delegação, contexto e revogação                |
+| Financeiro     | Saldos, reservas, saques e composição de receita/custo     |
+| Relacionamento | Avisos, campanhas, ranking e jornada de reconhecimento     |
 
 Não usar “controle absoluto de tudo” como afirmação literal. O dono do gateway não administra a plataforma master, a autorização do emissor, as regras do parceiro ou a regulação. A alternativa comercial forte é **“controle das decisões que moldam sua operação”**.
 
@@ -121,10 +121,10 @@ Responder mostrando os mecanismos que existem além da personalização: condiç
 
 ## 9. Direções criativas para testar depois
 
-| Direção | Headline de trabalho | Hipótese |
-| --- | --- | --- |
-| Controle — principal | Seu gateway. Sua marca. O controle da operação. | Identificação rápida com o dono |
-| Negócio | Transforme pagamentos em uma operação sob sua marca. | Melhor compreensão de categoria |
-| Modernização | Evolua seu gateway sem abrir mão de dirigir o negócio. | Mais aderência a operadores existentes |
+| Direção              | Headline de trabalho                                   | Hipótese                               |
+| -------------------- | ------------------------------------------------------ | -------------------------------------- |
+| Controle — principal | Seu gateway. Sua marca. O controle da operação.        | Identificação rápida com o dono        |
+| Negócio              | Transforme pagamentos em uma operação sob sua marca.   | Melhor compreensão de categoria        |
+| Modernização         | Evolua seu gateway sem abrir mão de dirigir o negócio. | Mais aderência a operadores existentes |
 
 Escolher uma direção por experiência. Testar a qualidade das oportunidades geradas, não apenas cliques.
