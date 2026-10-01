@@ -41,7 +41,7 @@ export function FaqSection() {
   return (
     <section id="perguntas" className={cn(frame, section)}>
       <SectionLabel number="09">ANTES DE COMEÇARMOS</SectionLabel>
-      <div className="grid gap-7 px-5 py-12 md:grid-cols-[0.8fr_1.4fr] md:gap-0 md:px-0 md:py-0">
+      <div className="grid gap-7 px-5 py-12 md:grid-cols-2 md:gap-0 md:px-0 md:py-0">
         <div className="relative isolate overflow-hidden md:border-r md:border-border md:px-8 md:py-13 md:[&_h2]:text-3xl">
           <DotPattern color="text-accent-1" opacity={13} className="-z-10" />
           <div className="md:sticky md:top-32">

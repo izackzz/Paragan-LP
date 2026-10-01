@@ -21,12 +21,12 @@ const buttonVariants = cva(
         primary: 'text-primary-foreground',
         secondary: 'text-foreground',
         tertiary: 'border border-border text-foreground',
-        ghost: 'text-muted-foreground hover:text-foreground',
+        ghost: 'border border-border text-foreground',
       },
       size: {
-        sm: 'h-7 px-3 text-[12px] gap-1',
-        md: 'h-8 px-4 text-[13px] gap-1.5',
-        lg: 'h-9 px-5 text-[14px] gap-1.5',
+        sm: 'h-8 px-3 text-sm gap-1',
+        md: 'h-10 px-4 text-base gap-1.5',
+        lg: 'h-11 px-5 text-lg gap-2',
         'icon-sm': 'h-8 w-8 p-0 [&_svg]:h-3.5 [&_svg]:w-3.5',
         icon: 'h-9 w-9 p-0 [&_svg]:h-4 [&_svg]:w-4',
         'icon-lg': 'h-10 w-10 p-0 [&_svg]:h-5 [&_svg]:w-5',
@@ -35,12 +35,12 @@ const buttonVariants = cva(
       iconRight: { true: '' },
     },
     compoundVariants: [
-      { size: 'sm', iconLeft: true, className: 'pl-[6px]' },
-      { size: 'md', iconLeft: true, className: 'pl-[10px]' },
-      { size: 'lg', iconLeft: true, className: 'pl-[14px]' },
-      { size: 'sm', iconRight: true, className: 'pr-[6px]' },
-      { size: 'md', iconRight: true, className: 'pr-[10px]' },
-      { size: 'lg', iconRight: true, className: 'pr-[14px]' },
+      { size: 'sm', iconLeft: true, className: 'pl-2' },
+      { size: 'md', iconLeft: true, className: 'pl-3' },
+      { size: 'lg', iconLeft: true, className: 'pl-4' },
+      { size: 'sm', iconRight: true, className: 'pr-2' },
+      { size: 'md', iconRight: true, className: 'pr-3' },
+      { size: 'lg', iconRight: true, className: 'pr-4' },
     ],
     defaultVariants: {
       variant: 'primary',
@@ -63,15 +63,15 @@ interface ButtonProps
 }
 
 const bgVariants: Record<string, string> = {
-  primary: 'bg-primary group-hover:bg-primary/90 group-active:bg-primary/80',
-  secondary: 'bg-accent group-hover:bg-accent/80 group-active:bg-accent',
-  tertiary: 'bg-transparent group-hover:bg-hover group-active:bg-active',
-  ghost: 'bg-transparent group-hover:bg-hover group-active:bg-active',
+  primary: 'button-primary-platinum',
+  secondary: 'bg-secondary group-hover:bg-accent group-active:bg-active',
+  tertiary: 'bg-card group-hover:bg-accent group-active:bg-active',
+  ghost: 'bg-muted group-hover:bg-accent group-active:bg-active',
 };
 
 const activeBgVariants: Record<string, string> = {
-  primary: 'bg-primary/80',
-  secondary: 'bg-accent',
+  primary: 'button-primary-platinum',
+  secondary: 'bg-active',
   tertiary: 'bg-active',
   ghost: 'bg-active',
 };
@@ -132,14 +132,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <span
           aria-hidden
           className={cn(
-            'absolute inset-0 rounded-[inherit] transition-[background-color,transform] duration-80 group-active:scale-[0.98]',
+            'absolute inset-0 rounded-inherit transition-transform duration-80 group-active:scale-95',
             bgClass,
           )}
         />
-        <span className="relative inline-flex items-center justify-center gap-[inherit]">
+        <span className="relative inline-flex items-center justify-center gap-2">
           {loading ? (
             <>
-              <span className="flex items-center justify-center gap-[inherit] opacity-0">
+              <span className="flex items-center justify-center gap-2 opacity-0">
                 {LeadingIcon && !isIconOnly && <LeadingIcon size={iconSize} strokeWidth={2} />}
                 {children}
                 {TrailingIcon && !isIconOnly && <TrailingIcon size={iconSize} strokeWidth={2} />}

@@ -29,7 +29,7 @@ export function SiteHeader() {
           className="inline-flex min-h-9 items-center gap-2 px-4 text-xs text-foreground-2 transition-colors hover:text-accent-2"
         >
           <Image src="/brand-icon.svg" width={15} height={15} alt="" aria-hidden="true" />
-          <span className="rounded-xs bg-accent-1/15 px-1.5 py-0.5 font-mono text-[0.625rem] tracking-wide text-accent-1 uppercase">
+          <span className="rounded-xs bg-accent-1/15 px-1.5 py-0.5 font-mono text-xs tracking-wide text-accent-1 uppercase">
             PARAGAN
           </span>
           <span>Infraestrutura para quem quer operar com a própria marca</span>

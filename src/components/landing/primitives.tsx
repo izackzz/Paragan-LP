@@ -59,7 +59,7 @@ export function ActionLink({
       variant={secondary ? 'secondary' : 'primary'}
       size="lg"
       className={cn(
-        'min-h-11 rounded-md px-5 py-3 text-xs font-medium motion-reduce:transition-none',
+        'min-h-11 rounded-md px-5 py-3 text-base font-medium motion-reduce:transition-none',
         className,
       )}
     >
@@ -109,7 +109,7 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl leading-tight font-normal tracking-tighter text-balance md:text-4xl xl:text-5xl">
+      <h2 className="text-4xl leading-tight font-normal tracking-tighter text-balance md:text-5xl xl:text-6xl">
         {title}
         {muted && (
           <>
@@ -121,7 +121,7 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            'mt-6 max-w-xl text-sm leading-7 text-muted-foreground md:text-base',
+            'mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg',
             align === 'center' && 'mx-auto',
           )}
         >

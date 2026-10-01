@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Paragan — Seu gateway. Sua marca. O controle da operação.',
+  title: 'Paragan — O modelo de excelência para fintechs com marca própria.',
   description:
-    'Infraestrutura de pagamentos white label para conectar sellers, checkout, regras comerciais e gestão financeira em uma operação sob sua marca.',
+    'Infraestrutura white label para fintechs eficientes: gateway, checkout, sellers e gestão financeira sob a marca da sua operação.',
   icons: { icon: '/brand-icon.svg', apple: '/assets/brand/paragan-fav.png' },
 };
 

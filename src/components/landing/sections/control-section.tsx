@@ -71,7 +71,7 @@ export function ControlSection() {
               <TabPanel
                 key={context.id}
                 value={context.id}
-                className="grid overflow-hidden rounded-xl border border-border md:grid-cols-[0.85fr_1.15fr]"
+                className="grid overflow-hidden rounded-xl border border-border md:grid-cols-2"
               >
                 <div className="px-6 py-8 xl:px-8 xl:py-11">
                   <p className={cn(micro, 'text-brand')}>GATEWAY ADMIN / {context.title}</p>

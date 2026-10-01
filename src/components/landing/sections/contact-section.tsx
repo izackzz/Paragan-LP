@@ -37,7 +37,7 @@ export function ContactSection() {
     <section id="contato" className="dark scroll-mt-22 bg-background text-foreground">
       <div className={cn(frame, section)}>
         <SectionLabel number="10">VAMOS CONSTRUIR O PRÓXIMO CAPÍTULO</SectionLabel>
-        <div className="grid md:grid-cols-[1fr_1.1fr]">
+        <div className="grid md:grid-cols-2">
           <div className="border-b border-border px-6 py-12 md:border-r md:border-b-0 xl:px-10 xl:py-16">
             <SectionHeading
               eyebrow="Seu negócio, com mais possibilidades"

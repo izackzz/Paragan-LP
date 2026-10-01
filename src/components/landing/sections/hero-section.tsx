@@ -40,11 +40,11 @@ export function HeroSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_67%_49%,var(--surface-active)_0%,transparent_55%),radial-gradient(ellipse_at_15%_84%,color-mix(in_oklab,var(--accent-1)_12%,transparent)_0%,transparent_36%)]"
+        className="pointer-events-none absolute inset-0 -z-10 hero-background"
       />
       <StripPattern
         tone="warm"
-        className="-z-10 bg-[repeating-linear-gradient(-28deg,color-mix(in_oklab,var(--accent-2)_14%,transparent)_0_1px,transparent_1px_22px)] [mask-image:linear-gradient(to_bottom,transparent,black_26%,black_78%,transparent)] opacity-50"
+        className="-z-10 hero-strip-pattern opacity-50"
       />
       <Image
         src="/assets/brand/big-clower.svg"
@@ -52,7 +52,7 @@ export function HeroSection() {
         height={260}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute top-36 -right-20 -z-10 size-36 opacity-15 sm:size-52 xl:top-24 xl:right-3"
+        className="hero-brand-mark"
       />
       <div className={cn(micro, 'flex justify-between pt-7 text-muted-foreground')}>
         <span>[ SUA MARCA ]</span>
@@ -65,26 +65,25 @@ export function HeroSection() {
         </p>
         <h1
           id="hero-title"
-          className="text-4xl leading-none font-normal tracking-tighter text-balance sm:text-5xl md:text-6xl xl:text-7xl"
+          className="text-5xl leading-none font-normal tracking-tighter text-balance sm:text-6xl md:text-7xl xl:text-8xl"
         >
-          Seu gateway.
-          <br className="sm:hidden" /> Sua marca.
+          O modelo de excelência
+          <br className="sm:hidden" /> para a sua fintech.
           <br />
-          <span className="text-foreground-3">O controle é seu.</span>
+          <span className="text-foreground-3">Sua marca, em cada pagamento.</span>
         </h1>
-        <p className="mx-auto mt-6 mb-7 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
-          Transforme pagamentos em um negócio sob sua marca.
-          <br className="hidden sm:block" /> Conecte sellers, checkout e gestão financeira.
-          <br className="hidden sm:block" /> Defina as regras. Construa o próximo capítulo.
+        <p className="mx-auto mt-7 mb-8 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Gateway, checkout, sellers e gestão financeira em uma operação eficiente, configurada para
+          a sua marca. Para o cliente final, a experiência é inteiramente sua.
         </p>
         <FluidGroup className="mx-auto flex w-fit flex-wrap justify-center gap-3" axis="x">
-          <ActionLink>Conhecer a Paragan</ActionLink>
+          <ActionLink>Desenhar minha operação</ActionLink>
           <ActionLink href="#plataforma" secondary>
             Explorar a plataforma
           </ActionLink>
         </FluidGroup>
         <p className="mx-auto mt-5 max-w-65 text-xs leading-relaxed text-muted-foreground sm:max-w-none">
-          Sua operação na frente. Nossa infraestrutura nos bastidores.
+          Sua marca lidera a jornada final. A Paragan é sua parceira B2B na infraestrutura.
         </p>
       </div>
       <div className="overflow-hidden rounded-t-2xl border border-border shadow-xl shadow-foreground/5 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
