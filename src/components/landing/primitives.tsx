@@ -3,7 +3,7 @@ import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { dot, micro } from './styles';
+import { micro } from './styles';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
   return (
@@ -76,7 +76,7 @@ export function SectionLabel({ number, children }: { number: string; children: R
     <div
       className={cn(
         micro,
-        'relative flex min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground before:absolute before:-top-0.5 before:-left-0.5 before:size-1 before:bg-brand after:absolute after:-top-0.5 after:-right-0.5 after:size-1 after:bg-brand md:px-8',
+        'flex min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground md:px-8',
       )}
     >
       <span className="text-brand">[ {number} / 10 ]</span>
@@ -105,11 +105,10 @@ export function SectionHeading({
     <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center')}>
       {eyebrow && (
         <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-medium">
-          <span className={dot} aria-hidden="true" />
           {eyebrow}
         </p>
       )}
-      <h2 className="text-4xl leading-tight font-normal tracking-tighter text-balance md:text-5xl xl:text-6xl">
+      <h2 className="text-3xl leading-tight font-medium tracking-tight text-balance md:text-4xl">
         {title}
         {muted && (
           <>
@@ -121,7 +120,7 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            'mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg',
+            'mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base',
             align === 'center' && 'mx-auto',
           )}
         >
@@ -174,7 +173,6 @@ export function ArtPlaceholder({
           'flex flex-wrap items-center gap-2 border-t border-border px-3 py-2.5 text-muted-foreground',
         )}
       >
-        <span className={dot} aria-hidden="true" />
         DIREÇÃO VISUAL <span aria-hidden="true">/</span> {label}
       </figcaption>
     </figure>

@@ -19,8 +19,6 @@ import {
   gridThree,
 } from '../styles';
 import { cn } from '@/lib/utils';
-import { DotPattern } from '../dot-pattern';
-import { StripPattern } from '../strip-pattern';
 
 export function PlatformSection() {
   return (
@@ -28,21 +26,18 @@ export function PlatformSection() {
       <SectionLabel number="01">A PLATAFORMA</SectionLabel>
       <Reveal className={padding}>
         <SectionHeading
-          align="center"
           eyebrow="Mais do que processar"
           title="Uma marca própria merece"
           muted="uma operação à altura."
           description="O que acontece antes e depois do pagamento também define o seu negócio. Sua marca lidera a experiência do cliente final; a Paragan sustenta a excelência operacional ao seu lado."
         />
         <CardGroup
-          columns={3}
+          columns={4}
           border="outlined"
           separated
-          className={cn(gridThree, 'mt-14 gap-4!')}
+          className={cn(gridThree, 'mt-10 gap-4 md:grid-cols-2 xl:grid-cols-4')}
         >
           <Card className={cn(card, 'relative isolate overflow-hidden md:col-span-2')}>
-            <DotPattern solid grow="x" color="text-accent-1" opacity={10} className="-z-10" />
-            <StripPattern tone="warm" className="top-auto h-1/2" />
             <CardHeader className="relative z-10">
               <p className={cn(micro, 'mb-3 text-accent-2')}>01 / IDENTIDADE</p>
               <CardTitle className={cardTitle}>Sua marca não termina no logo.</CardTitle>
@@ -63,7 +58,6 @@ export function PlatformSection() {
             </CardContent>
           </Card>
           <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern color="text-accent-1" opacity={25} className="-z-10" />
             <CardHeader className="relative z-10">
               <p className={cn(micro, 'mb-3 text-accent-2')}>02 / REGRAS COMERCIAIS</p>
               <CardTitle className={cardTitle}>O modelo é seu.</CardTitle>
@@ -80,7 +74,6 @@ export function PlatformSection() {
             </CardContent>
           </Card>
           <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern solid color="text-accent-1" opacity={8} className="-z-10" />
             <CardHeader className="relative z-10">
               <p className={cn(micro, 'mb-3 text-accent-2')}>03 / PESSOAS</p>
               <CardTitle className={cardTitle}>Delegue. Sem perder a visão.</CardTitle>
@@ -96,7 +89,6 @@ export function PlatformSection() {
             </CardContent>
           </Card>
           <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern color="text-accent-1" opacity={22} className="-z-10" />
             <CardHeader className="relative z-10">
               <p className={cn(micro, 'mb-3 text-accent-2')}>04 / ADQUIRÊNCIA</p>
               <CardTitle className={cardTitle}>Alternativas com direção.</CardTitle>
@@ -117,7 +109,6 @@ export function PlatformSection() {
             </CardContent>
           </Card>
           <Card className={cn(card, 'relative isolate overflow-hidden')}>
-            <DotPattern solid color="text-accent-1" opacity={8} className="-z-10" />
             <CardHeader className="relative z-10">
               <p className={cn(micro, 'mb-3 text-accent-2')}>05 / RELACIONAMENTO</p>
               <CardTitle className={cardTitle}>Uma base que faz parte.</CardTitle>
@@ -130,6 +121,30 @@ export function PlatformSection() {
               pequenos cartões de prêmio sem marcas reais. Diferenciar jornada acumulada
               de ranking por campanha. Não fabricar nomes de clientes ou faturamento. */}
               <ArtPlaceholder width={600} height={390} label="Crescimento com reconhecimento" />
+            </CardContent>
+          </Card>
+          <Card className={card}>
+            <CardHeader>
+              <p className={cn(micro, 'mb-3 text-accent-2')}>06 / CHECKOUT</p>
+              <CardTitle className={cardTitle}>Uma compra com a sua marca.</CardTitle>
+              <CardDescription className={cardDescription}>
+                Produtos e ofertas conectados à experiência de pagamento.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ArtPlaceholder width={600} height={390} label="Checkout white label" />
+            </CardContent>
+          </Card>
+          <Card className={card}>
+            <CardHeader>
+              <p className={cn(micro, 'mb-3 text-accent-2')}>07 / INTEGRAÇÕES</p>
+              <CardTitle className={cardTitle}>Seu ecossistema conectado.</CardTitle>
+              <CardDescription className={cardDescription}>
+                API e webhooks para unir os processos da operação.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ArtPlaceholder width={600} height={390} label="API e webhooks" />
             </CardContent>
           </Card>
         </CardGroup>

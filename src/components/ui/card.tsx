@@ -184,15 +184,16 @@ const CardGroup = forwardRef<HTMLDivElement, CardGroupProps>(
           data-orientation={orientation}
           className={cn(
             'relative grid',
+            columns === 1 && 'grid-cols-1',
+            columns === 2 && 'grid-cols-1 md:grid-cols-2',
+            columns === 3 && 'grid-cols-1 md:grid-cols-3',
+            columns >= 4 && 'grid-cols-1 md:grid-cols-2 xl:grid-cols-4',
             // A shared frame clips the highlight + dividers to its rounded
             // corners; separated tiles clip themselves.
             outlined && !separated && `overflow-hidden border border-border/60 ${shape.container}`,
             separated ? 'gap-2' : 'gap-0',
             className,
           )}
-          style={{
-            gridTemplateColumns: `repeat(${Math.max(1, columns)}, minmax(0, 1fr))`,
-          }}
           onMouseEnter={fluidHover ? handlers.onMouseEnter : undefined}
           onMouseMove={fluidHover ? handlers.onMouseMove : undefined}
           onMouseLeave={fluidHover ? handlers.onMouseLeave : undefined}
@@ -520,7 +521,7 @@ const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         ref={ref}
         data-slot="card-header"
         className={cn(
-          'grid auto-rows-min card-header-grid items-start gap-1',
+          'flex flex-col items-start gap-1',
           inlineImage
             ? 'min-w-0'
             : orientation === 'inline'
@@ -542,56 +543,22 @@ CardHeader.displayName = 'CardHeader';
 
 const CardTitle = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, children, ...props }, ref) => {
-    const { emphasized, orientation } = useContext(CardContext);
+    const { emphasized } = useContext(CardContext);
     const sizeClasses = useSize();
     const compact = sizeClasses.variant === 'compact';
-    // Inline rows trim the title to cap height so it centres tightly against
-    // the media/actions; stacked cards keep the natural line box.
-    const trim = orientation === 'inline' ? '[text-box:trim-both_cap_alphabetic]' : '';
-    // Ghost-span pattern: an invisible semibold copy reserves the width so the
-    // resting→active weight animation never reflows the row.
-    //
-    // Truncation support: a consumer's `truncate` lands on this grid, whose
-    // text-overflow can't ellipsize (only a block's own line boxes can — grid
-    // children just clip). The nowrap it sets inherits into the cell spans,
-    // so giving those spans overflow-hidden + ellipsis renders the … there
-    // instead; minmax(0,1fr) clamps the implicit track to the clipped grid's
-    // width so the ellipsis falls inside the visible box. All of it is inert
-    // while titles wrap normally.
     return (
       <span
         ref={ref}
         data-slot="card-title"
         className={cn(
-          'inline-grid card-title-grid leading-snug',
+          'block min-w-0 leading-snug font-medium text-foreground',
           compact ? 'text-control' : 'text-sm',
+          emphasized && 'font-semibold',
           className,
         )}
         {...props}
       >
-        <span
-          className={cn(
-            'invisible col-start-1 row-start-1 min-w-0 overflow-hidden text-ellipsis',
-            trim,
-          )}
-          style={{ fontVariationSettings: fontWeights.semibold }}
-          aria-hidden="true"
-        >
-          {children}
-        </span>
-        <span
-          className={cn(
-            'col-start-1 row-start-1 min-w-0 overflow-hidden text-ellipsis text-foreground transition-[font-variation-settings] duration-80',
-            trim,
-          )}
-          style={{
-            // normal → semibold on emphasis, matching nav-item / menu-item /
-            // table (the opsz-paired tokens keep the advance width ~constant).
-            fontVariationSettings: emphasized ? fontWeights.semibold : fontWeights.normal,
-          }}
-        >
-          {children}
-        </span>
+        {children}
       </span>
     );
   },
@@ -631,10 +598,7 @@ const CardAction = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     <div
       ref={ref}
       data-slot="card-action"
-      className={cn(
-        'relative z-30 col-start-2 row-span-2 row-start-1 self-start justify-self-end',
-        className,
-      )}
+      className={cn('relative z-30 self-start', className)}
       {...props}
     />
   ),
@@ -880,7 +844,7 @@ type CardButtonVariant = 'primary' | 'secondary' | 'link';
 const CARD_BUTTON_VARIANTS: Record<CardButtonVariant, string> = {
   primary: 'bg-foreground text-background hover:bg-foreground/90 active:bg-foreground/80',
   secondary: 'bg-accent text-foreground hover:bg-accent/80 active:bg-accent',
-  link: 'text-foreground underline-offset-4 hover:underline !px-0 !h-auto',
+  link: 'border border-foreground-4 bg-secondary text-foreground hover:bg-accent',
 };
 
 interface CardButtonProps {

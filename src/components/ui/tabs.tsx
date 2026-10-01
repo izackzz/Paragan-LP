@@ -395,8 +395,8 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         {eyebrow || description ? (
           <>
             <span className="flex w-full min-w-0 items-center justify-between gap-2">
-              <span className="font-mono text-caption leading-none tracking-wide text-foreground-4 uppercase">
-                {eyebrow}
+              <span className="text-xs leading-relaxed text-muted-foreground">
+                {description ?? eyebrow}
               </span>
               {Icon && (
                 <Icon
@@ -409,17 +409,10 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
                 />
               )}
             </span>
-            <span className="inline-grid w-full min-w-0 text-left text-xl font-medium sm:text-2xl">
-              <span
-                className="invisible col-start-1 row-start-1"
-                style={{ fontVariationSettings: fontWeights.semibold }}
-                aria-hidden="true"
-              >
-                {label}
-              </span>
+            <span className="block w-full min-w-0 text-left text-sm font-medium sm:text-base">
               <span
                 className={cn(
-                  'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
+                  'block transition-colors duration-80',
                   isActive ? 'text-foreground' : 'text-foreground-2',
                 )}
                 style={{
@@ -429,11 +422,6 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
                 {label}
               </span>
             </span>
-            {description && (
-              <span className="w-full text-left text-xs leading-relaxed text-muted-foreground">
-                {description}
-              </span>
-            )}
           </>
         ) : (
           <>
@@ -447,17 +435,10 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
                 )}
               />
             )}
-            <span className="inline-grid text-sm whitespace-nowrap">
-              <span
-                className="invisible col-start-1 row-start-1"
-                style={{ fontVariationSettings: fontWeights.semibold }}
-                aria-hidden="true"
-              >
-                {label}
-              </span>
+            <span className="block text-sm whitespace-nowrap">
               <span
                 className={cn(
-                  'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
+                  'block transition-colors duration-80',
                   isActive ? 'text-foreground' : 'text-muted-foreground',
                 )}
                 style={{

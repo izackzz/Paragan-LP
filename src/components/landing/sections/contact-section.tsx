@@ -104,7 +104,7 @@ export function ContactSection() {
                     variant="tertiary"
                     active={interest === item}
                     aria-pressed={interest === item}
-                    className="min-h-11 rounded-full! px-3 text-xs aria-pressed:border-brand"
+                    className={cn('min-h-11 rounded-full px-3 text-xs aria-pressed:border-brand')}
                     onClick={() => setInterest(item)}
                   >
                     {item}

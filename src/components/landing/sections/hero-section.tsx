@@ -2,10 +2,8 @@
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
 import { ArtPlaceholder, ActionLink } from '../primitives';
 import { FluidGroup } from '../fluid-group';
-import { frame, micro, eyebrow, dot } from '../styles';
+import { frame, micro, eyebrow } from '../styles';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import { StripPattern } from '../strip-pattern';
 import { icons } from '@/lib/icon-map';
 
 const previews = [
@@ -48,57 +46,38 @@ export function HeroSection() {
         'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
       )}
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 hero-background"
-      />
-      <StripPattern tone="warm" className="-z-10 hero-strip-pattern opacity-50" />
-      <Image
-        src="/assets/brand/big-clower.svg"
-        width={260}
-        height={260}
-        alt=""
-        aria-hidden="true"
-        className="hero-brand-mark"
-      />
       <div className={cn(micro, 'flex justify-between pt-7 text-muted-foreground')}>
         <span>[ SUA MARCA ]</span>
         <span>[ SUAS REGRAS ]</span>
       </div>
-      <div className="pt-12 pb-9 text-center md:pt-17 md:pb-12">
-        <p className={eyebrow}>
-          <span className={dot} />
-          Infraestrutura de pagamentos white label
-        </p>
+      <div className="max-w-3xl pt-16 pb-12 md:pt-24 md:pb-16">
+        <p className={eyebrow}>Para quem quer lançar ou evoluir sua fintech</p>
         <h1
           id="hero-title"
-          className="text-5xl leading-none font-normal tracking-tighter text-balance sm:text-6xl md:text-7xl xl:text-8xl"
+          className="max-w-4xl text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl lg:text-6xl"
         >
-          O modelo de excelência
-          <br className="sm:hidden" /> para a sua fintech.
+          Sua fintech merece crescer.
           <br />
-          <span className="text-foreground-3">Sua marca, em cada pagamento.</span>
+          <span className="text-foreground-3">Sem os limites da sua plataforma.</span>
         </h1>
-        <p className="mx-auto mt-7 mb-8 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          Gateway, checkout, sellers e gestão financeira em uma operação eficiente, configurada para
-          a sua marca. Seu cliente final nunca vê o nome Paragan: no checkout e no pagamento, ele vê
-          somente a sua marca.
+        <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Gateway, checkout e gestão financeira em uma plataforma all-in-one com sua marca.
         </p>
-        <FluidGroup className="mx-auto flex w-fit flex-wrap justify-center gap-3" axis="x">
-          <ActionLink>Desenhar minha operação</ActionLink>
-          <ActionLink href="#plataforma" secondary>
-            Explorar a plataforma
-          </ActionLink>
-        </FluidGroup>
-        <p className="mx-auto mt-5 max-w-65 text-xs leading-relaxed text-muted-foreground sm:max-w-none">
-          Para a sua fintech, a Paragan é a parceira B2B que sustenta a infraestrutura.
+        <ActionLink>Quero minha fintech</ActionLink>
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
+          Plataforma no ar em 1 dia <span className="px-2 text-foreground-4">/</span> Pronta para
+          operação regularizada em até 7 dias
+        </p>
+        <p className="mt-2 max-w-xl text-xs leading-relaxed text-muted-foreground">
+          Ativação sujeita à documentação e aprovação dos parceiros. Para o cliente final, só a sua
+          marca aparece.
         </p>
       </div>
       <div className="overflow-hidden rounded-2xl border border-border [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
-            className="grid w-full grid-cols-3 gap-0 rounded-none border-b border-border bg-card p-0"
+            className={cn('flex w-full gap-0 rounded-none border-b border-border bg-card p-0')}
             aria-label="Prévias da plataforma"
           >
             {previews.map((preview) => (
@@ -109,7 +88,9 @@ export function HeroSection() {
                 eyebrow={preview.eyebrow}
                 description={preview.description}
                 icon={preview.icon}
-                className="min-h-32 min-w-0 flex-col items-stretch justify-start gap-4 rounded-none border-r border-solid border-border px-3 py-4 text-left last:border-r-0 sm:px-5"
+                className={cn(
+                  'min-h-28 min-w-0 flex-1 flex-col items-stretch justify-start gap-2 rounded-none border-r border-solid border-border px-3 py-4 text-left last:border-r-0 sm:px-5',
+                )}
               />
             ))}
           </TabsList>
