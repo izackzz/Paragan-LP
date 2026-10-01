@@ -11,4 +11,4 @@
 
 - [x] `use-fluid-hover.ts` + `fluid-group.tsx`: fallback de raio só para wrapper declarado.
 - [x] `src/**/*.tsx`: substituir utilitários Tailwind com valores arbitrários por escala semântica ou token nomeado.
-- [ ] `pnpm format:check` + `pnpm exec tsc --noEmit` + `pnpm lint`: sem erros.
+- [x] `pnpm format:check` + `pnpm exec tsc --noEmit` + `pnpm lint`: sem erros.

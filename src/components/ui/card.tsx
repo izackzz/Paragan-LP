@@ -520,7 +520,7 @@ const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         ref={ref}
         data-slot="card-header"
         className={cn(
-          'card-header-grid grid auto-rows-min items-start gap-1',
+          'grid auto-rows-min card-header-grid items-start gap-1',
           inlineImage
             ? 'min-w-0'
             : orientation === 'inline'
@@ -563,7 +563,7 @@ const CardTitle = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
         ref={ref}
         data-slot="card-title"
         className={cn(
-          'card-title-grid inline-grid leading-snug',
+          'inline-grid card-title-grid leading-snug',
           compact ? 'text-control' : 'text-sm',
           className,
         )}
