@@ -15,6 +15,7 @@ export interface ItemRect {
   height: number;
   left: number;
   width: number;
+  borderRadius: string;
 }
 
 export interface UseFluidHoverOptions {
@@ -280,11 +281,17 @@ export function useFluidHover<T extends HTMLElement>(
         left += ancestor.offsetLeft + ancestor.clientLeft;
         ancestor = ancestor.offsetParent as HTMLElement | null;
       }
+      const child = element.firstElementChild;
+      const radiusSource =
+        getComputedStyle(element).borderRadius !== '0px' || !(child instanceof HTMLElement)
+          ? element
+          : child;
       rects[index] = {
         top,
         height: element.offsetHeight,
         left,
         width: element.offsetWidth,
+        borderRadius: getComputedStyle(radiusSource).borderRadius,
       };
     });
     if (!everyItemHasLayout) return false;
@@ -302,7 +309,8 @@ export function useFluidHover<T extends HTMLElement>(
         p.top !== r.top ||
         p.left !== r.left ||
         p.width !== r.width ||
-        p.height !== r.height;
+        p.height !== r.height ||
+        p.borderRadius !== r.borderRadius;
     }
     if (changed) {
       itemRectsRef.current = rects;

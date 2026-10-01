@@ -50,7 +50,7 @@ export function FluidGroup({
         if (!event.currentTarget.contains(event.relatedTarget)) hover.setActiveIndex(null);
       }}
     >
-      <FluidHoverHighlight hover={hover} className="rounded-lg" />
+      <FluidHoverHighlight hover={hover} />
       {Children.toArray(children).map((child, index) => (
         <FluidItem key={index} index={index} register={hover.registerItem}>
           {child}

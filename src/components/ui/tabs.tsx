@@ -243,8 +243,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
             setHoveredIndex(null);
           }}
           className={cn(
-            'relative inline-flex items-center gap-0.5 bg-muted p-1 select-none',
-            shape.container,
+            'relative inline-flex items-center gap-0.5 rounded-md bg-muted p-1 select-none',
             className,
           )}
           {...props}
@@ -399,7 +398,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
             )}
           />
         )}
-        <span className="inline-grid text-[13px] whitespace-nowrap">
+        <span className="inline-grid text-sm whitespace-nowrap">
           <span
             className="invisible col-start-1 row-start-1"
             style={{ fontVariationSettings: fontWeights.semibold }}

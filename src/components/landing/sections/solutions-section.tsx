@@ -38,10 +38,11 @@ export function SolutionsSection() {
         />
         <CardGroup
           columns={3}
+          border="outlined"
           separated
           className={cn(
             gridThree,
-            'mt-14 gap-3.5! [&_[data-slot=card-footer]]:mt-auto [&_[data-slot=card-footer]]:p-0 [&_[data-slot=card-header]]:pt-6',
+            'mt-14 gap-4! [&_[data-slot=card-footer]]:mt-auto [&_[data-slot=card-footer]]:p-0 [&_[data-slot=card-header]]:pt-6',
           )}
         >
           <Card className={cn(card, 'relative isolate overflow-hidden')}>
