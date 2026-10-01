@@ -21,3 +21,7 @@
 ## Fase 4 — Cards de navegação do hero
 
 - [x] `hero-section.tsx` + `tabs.tsx`: cards quadrados com título, kicker, descrição e Hugeicons.
+
+## Fase 5 — Hierarquia dos cards do hero
+
+- [x] `tabs.tsx`: reduzir kicker/descrição e reforçar hierarquia do título.
