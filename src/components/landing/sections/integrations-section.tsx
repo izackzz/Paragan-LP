@@ -37,7 +37,6 @@ export function IntegrationsSection() {
           <ArtPlaceholder
             width={1440}
             height={500}
-            src="/assets/illustrations/acquirer-cover.svg"
             label="Sua operação conectada ao seu ecossistema"
             dark
           />
