@@ -12,7 +12,7 @@ export const dot =
 export const cardTitle = 'text-lg! leading-snug! font-medium tracking-tight xl:text-xl!';
 export const cardDescription = 'mt-2 max-w-lg text-sm! leading-relaxed! text-muted-foreground';
 export const card =
-  'min-w-0 rounded-xl! border border-border p-6! [&_[data-slot=card-header]]:mb-6 [&_[data-slot=card-header]]:p-0 [&_[data-slot=card-content]]:p-0 [&_figure]:border-0 [&_figcaption]:hidden';
+  'min-w-0 p-6! [&_[data-slot=card-header]]:mb-6 [&_[data-slot=card-header]]:p-0 [&_[data-slot=card-content]]:p-0 [&_figure]:border-0 [&_figcaption]:hidden';
 export const textCard =
   'min-w-0 border-b border-border px-3! py-7! md:border-b-0 md:px-6! [&_[data-slot=card-header]]:p-0';
 export const gridThree = 'grid-cols-1! md:grid-cols-3!';

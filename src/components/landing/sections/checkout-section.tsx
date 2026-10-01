@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { SectionLabel, ArtPlaceholder, ArrowIcon } from '../primitives';
+import { SectionLabel, ArtPlaceholder, ActionLink } from '../primitives';
 import {
   frame,
   section,
@@ -46,26 +45,23 @@ export function CheckoutSection() {
       <div className={padding}>
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-medium">
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium">
               <span className="inline-block size-1.5 rounded-full bg-success" aria-hidden="true" />
               Do produto ao pagamento
             </p>
-            <h2 className="text-3xl leading-tight font-normal tracking-tighter text-balance md:text-4xl xl:text-5xl">
+            <h2 className="text-4xl leading-tight font-normal tracking-tighter text-balance md:text-5xl xl:text-6xl">
               Seus sellers têm uma oferta.
               <br />
               <span className="text-foreground-3">Entregue a experiência.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-foreground-3 md:text-base">
+            <p className="mt-6 max-w-xl text-base leading-7 text-foreground-3 md:text-lg">
               Produtos, ofertas, cupons e order bumps conectados a um checkout com a sua identidade.
               Mais recursos para vender. Mais contexto para acompanhar.
             </p>
           </div>
-          <Link
-            href="#contato"
-            className="inline-flex min-h-11 items-center gap-3 rounded-md border border-border bg-card px-5 py-3 text-xs font-medium text-foreground transition-colors hover:border-accent-1 hover:bg-accent"
-          >
-            Conhecer o checkout <ArrowIcon size={15} />
-          </Link>
+          <ActionLink href="#contato" secondary>
+            Conhecer o checkout
+          </ActionLink>
         </div>
 
         <div className="relative isolate mt-12 overflow-hidden rounded-xl border border-border bg-card">
@@ -88,7 +84,7 @@ export function CheckoutSection() {
           </div>
         </div>
 
-        <CardGroup columns={3} className={cn(gridThree, 'border-t')}>
+        <CardGroup columns={3} className={gridThree}>
           {checkoutSteps.map((step) => (
             <Card key={step.number} className={cn(card, 'relative isolate overflow-hidden')}>
               <DotPattern color="text-accent-1" opacity={11} className="-z-10" />

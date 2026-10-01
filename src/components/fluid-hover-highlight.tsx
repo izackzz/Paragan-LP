@@ -67,7 +67,13 @@ const snap: Transition = { duration: 0 };
 /** A measured rect as animation targets: position as a transform, size as
  *  layout. Exported for the unit test. */
 export function toTarget(rect: ItemRect) {
-  return { x: rect.left, y: rect.top, width: rect.width, height: rect.height };
+  return {
+    x: rect.left,
+    y: rect.top,
+    width: rect.width,
+    height: rect.height,
+    borderRadius: rect.borderRadius,
+  };
 }
 
 /**
