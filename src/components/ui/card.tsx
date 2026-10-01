@@ -345,7 +345,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             target={external ? '_blank' : undefined}
             rel={external ? 'noopener noreferrer' : undefined}
             aria-label={label}
-            className="absolute inset-0 z-20 rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+            className="absolute inset-0 z-20 rounded-inherit outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           />
         ) : (
           <button
@@ -353,7 +353,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             onClick={onClick}
             aria-label={label}
             aria-pressed={selected || undefined}
-            className="absolute inset-0 z-20 rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+            className="absolute inset-0 z-20 rounded-inherit outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           />
         )
       ) : null;
@@ -400,7 +400,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           data-orientation={orientation}
           aria-disabled={disabled || undefined}
           className={cn(
-            'group/card relative z-10 min-h-[60px] min-w-0',
+            'group/card relative z-10 min-h-15 min-w-0',
             inlineImage
               ? // Image on the left; the text + actions ride in a centred
                 // column beside it (see the wrapper in the body below).
@@ -520,7 +520,7 @@ const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         ref={ref}
         data-slot="card-header"
         className={cn(
-          'grid auto-rows-min items-start gap-1 has-data-[slot=card-action]:grid-cols-[1fr_auto]',
+          'card-header-grid grid auto-rows-min items-start gap-1',
           inlineImage
             ? 'min-w-0'
             : orientation === 'inline'
@@ -563,8 +563,8 @@ const CardTitle = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
         ref={ref}
         data-slot="card-title"
         className={cn(
-          'inline-grid grid-cols-[minmax(0,1fr)] leading-snug',
-          compact ? 'text-[13px]' : 'text-[14px]',
+          'card-title-grid inline-grid leading-snug',
+          compact ? 'text-control' : 'text-sm',
           className,
         )}
         {...props}
@@ -611,7 +611,7 @@ const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLPara
         data-slot="card-description"
         className={cn(
           'leading-normal text-muted-foreground',
-          compact ? 'text-[13px]' : 'text-[14px]',
+          compact ? 'text-control' : 'text-sm',
           className,
         )}
         {...props}
@@ -790,8 +790,8 @@ function CardImage({ src, alt, className }: CardImageProps) {
       // inline, framed or borderless — rather than inheriting a frame's larger
       // clip. (A framed tile still clips the surrounding surface as before.)
       className={cn(
-        'rounded-[2px] object-cover',
-        orientation === 'inline' ? 'size-40 shrink-0' : 'aspect-[16/9] w-full',
+        'rounded-xs object-cover',
+        orientation === 'inline' ? 'size-40 shrink-0' : 'aspect-video w-full',
         className,
       )}
     />
@@ -814,7 +814,7 @@ const CardEyebrow = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>
         ref={ref}
         data-slot="card-eyebrow"
         className={cn(
-          compact ? 'text-[11px]' : 'text-[12px]',
+          compact ? 'text-caption' : 'text-xs',
           'tracking-wide text-muted-foreground uppercase',
           className,
         )}
@@ -860,7 +860,7 @@ function CardFeature({ icon: Icon, title, description }: CardFeatureProps) {
           <span
             className={cn(
               'leading-relaxed text-muted-foreground',
-              compact ? 'text-[11px]' : 'text-[12px]',
+              compact ? 'text-caption' : 'text-xs',
             )}
           >
             {description}
@@ -880,7 +880,7 @@ type CardButtonVariant = 'primary' | 'secondary' | 'ghost' | 'link';
 const CARD_BUTTON_VARIANTS: Record<CardButtonVariant, string> = {
   primary: 'bg-foreground text-background hover:bg-foreground/90 active:bg-foreground/80',
   secondary: 'bg-accent text-foreground hover:bg-accent/80 active:bg-accent',
-  ghost: 'text-muted-foreground hover:text-foreground hover:bg-hover active:bg-active',
+  ghost: 'bg-muted text-foreground hover:bg-hover active:bg-active',
   link: 'text-foreground underline-offset-4 hover:underline !px-0 !h-auto',
 };
 
@@ -916,14 +916,14 @@ function CardButton({
     <Icon
       size={compact ? 12 : 14}
       strokeWidth={1.5}
-      className="shrink-0 transition-[stroke-width] duration-80 group-hover/action:stroke-[2]"
+      className="shrink-0 transition-[stroke-width] duration-80 group-hover/action:stroke-2"
     />
   ) : null;
   const externalGlyph = external ? (
     <ArrowRight
       size={13}
       strokeWidth={1.5}
-      className="shrink-0 -rotate-45 transition-[stroke-width] duration-80 group-hover/action:stroke-[2]"
+      className="shrink-0 -rotate-45 transition-[stroke-width] duration-80 group-hover/action:stroke-2"
     />
   ) : null;
 
@@ -938,7 +938,7 @@ function CardButton({
 
   const classes = cn(
     'group/action relative z-30 inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 px-2.5 outline-none',
-    compact ? 'text-[11px]' : 'text-[12px]',
+    compact ? 'text-caption' : 'text-xs',
     'transition-colors duration-80',
     'focus-visible:ring-2 focus-visible:ring-focus-ring',
     'disabled:pointer-events-none disabled:opacity-50',

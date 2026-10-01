@@ -643,7 +643,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
           {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
         >
           {/* Label with dual-layer text */}
-          <span className="inline-grid flex-1 text-left text-[13px]">
+          <span className="inline-grid flex-1 text-left text-control">
             <span
               className="invisible col-start-1 row-start-1"
               style={{ fontVariationSettings: fontWeights.semibold }}
@@ -750,7 +750,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             {...(props as any)}
           >
-            <div className="px-3 pt-1 pb-3 text-[13px] text-muted-foreground">{children}</div>
+            <div className="px-3 pt-1 pb-3 text-control text-muted-foreground">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
