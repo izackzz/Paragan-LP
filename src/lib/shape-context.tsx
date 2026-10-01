@@ -26,17 +26,17 @@ interface ShapeClasses {
 const shapeMap: Record<ShapeVariant, ShapeClasses> = {
   pill: {
     variant: 'pill',
-    item: 'rounded-[20px]',
-    bg: 'rounded-[20px]',
+    item: 'rounded-pill',
+    bg: 'rounded-pill',
     // +2px over `item` because the focus ring sits 2px outside the element
     // (top/left -2, width/height +4). Circular fallbacks share a center;
     // smooth corners keep the same curve family with an adjusted radius.
     // This is not an exact parallel superellipse (see the cheat sheet).
-    focusRing: 'rounded-[22px]',
+    focusRing: 'rounded-pill-focus',
     mergedBg: 'rounded-2xl',
     container: 'rounded-3xl',
-    button: 'rounded-[20px]',
-    input: 'rounded-[20px]',
+    button: 'rounded-pill',
+    input: 'rounded-pill',
     bgRadius: 20,
     mergedRadius: 16,
   },
@@ -44,7 +44,7 @@ const shapeMap: Record<ShapeVariant, ShapeClasses> = {
     variant: 'rounded',
     item: 'rounded-lg',
     bg: 'rounded-lg',
-    focusRing: 'rounded-[10px]',
+    focusRing: 'rounded-lg',
     mergedBg: 'rounded-lg',
     container: 'rounded-xl',
     button: 'rounded-lg',

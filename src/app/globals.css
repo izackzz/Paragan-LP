@@ -108,6 +108,10 @@
   --shadow-1: var(--shadow-1);
   --color-shadow-color: var(--shadow-color);
   --radius-inherit: inherit;
+  --radius-pill: 1.25rem;
+  --radius-pill-focus: 1.375rem;
+  --text-control: 0.8125rem;
+  --text-caption: 0.6875rem;
 }
 
 :root {
@@ -365,6 +369,18 @@
     top: 6rem;
     right: 0.75rem;
   }
+}
+
+@utility card-header-grid {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+@utility card-title-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@utility icon-stroke {
+  stroke-width: 1.5;
 }
 
 .group:hover .button-primary-platinum {
