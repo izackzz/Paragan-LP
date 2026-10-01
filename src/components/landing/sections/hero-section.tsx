@@ -42,10 +42,7 @@ export function HeroSection() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 hero-background"
       />
-      <StripPattern
-        tone="warm"
-        className="-z-10 hero-strip-pattern opacity-50"
-      />
+      <StripPattern tone="warm" className="-z-10 hero-strip-pattern opacity-50" />
       <Image
         src="/assets/brand/big-clower.svg"
         width={260}

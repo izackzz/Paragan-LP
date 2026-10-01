@@ -34,7 +34,12 @@ export function PlatformSection() {
           muted="uma operação à altura."
           description="O que acontece antes e depois do pagamento também define o seu negócio. Sua marca lidera a experiência do cliente final; a Paragan sustenta a excelência operacional ao seu lado."
         />
-        <CardGroup columns={3} border="outlined" separated className={cn(gridThree, 'mt-14 gap-4!')}>
+        <CardGroup
+          columns={3}
+          border="outlined"
+          separated
+          className={cn(gridThree, 'mt-14 gap-4!')}
+        >
           <Card className={cn(card, 'relative isolate overflow-hidden md:col-span-2')}>
             <DotPattern solid grow="x" color="text-accent-1" opacity={10} className="-z-10" />
             <StripPattern tone="warm" className="top-auto h-1/2" />
