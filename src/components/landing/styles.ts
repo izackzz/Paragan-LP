@@ -8,7 +8,7 @@ export const eyebrow =
 export const cardTitle = 'text-sm leading-snug font-medium tracking-tight';
 export const cardDescription = 'mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground';
 export const card =
-  'min-w-0 rounded-xl bg-card p-5 [&_[data-slot=card-header]]:mb-6 [&_[data-slot=card-header]]:p-0 [&_[data-slot=card-content]]:mt-auto [&_[data-slot=card-content]]:p-0 [&_figure]:border-0 [&_figcaption]:hidden';
+  'min-w-0 rounded-none bg-card/40 p-5 [&_[data-slot=card-header]]:mb-6 [&_[data-slot=card-header]]:p-0 [&_[data-slot=card-content]]:mt-auto [&_[data-slot=card-content]]:p-0 [&_figure]:border-0 [&_figcaption]:hidden';
 export const textCard =
   'min-w-0 border-b border-border px-5 py-7 last:border-b-0 md:border-b-0 md:px-6 [&_[data-slot=card-header]]:p-0';
 export const gridThree = 'grid-cols-1 md:grid-cols-3';

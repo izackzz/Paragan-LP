@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Frame } from '@/components/ui/frame';
 import { micro } from './styles';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
@@ -154,19 +155,21 @@ export function ArtPlaceholder({
     >
       {/* Placeholder temporário global. O briefing de composição e a direção da futura
         arte/print/Lottie ficam imediatamente antes de cada uso deste componente. */}
-      <Image
-        src={
-          src ??
-          `https://placehold.co/${width}x${height}/${dark ? 'ffffff/212121' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
-        }
-        width={width}
-        height={height}
-        alt={src ? label : `Espaço reservado: ${label}`}
-        unoptimized={!src}
-        preload={priority}
-        sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"
-        className="h-auto w-full"
-      />
+      <Frame>
+        <Image
+          src={
+            src ??
+            `https://placehold.co/${width}x${height}/${dark ? 'ffffff/212121' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
+          }
+          width={width}
+          height={height}
+          alt={src ? label : `Espaço reservado: ${label}`}
+          unoptimized={!src}
+          preload={priority}
+          sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"
+          className="h-auto w-full"
+        />
+      </Frame>
       <figcaption
         className={cn(
           micro,

@@ -327,6 +327,36 @@
   stroke-width: 1.5;
 }
 
+@utility frame-outline {
+  border-radius: calc(var(--radius) * 1.4 + 0.375rem + 0.0625rem);
+}
+
+/* Seven tiles: the lead spans two columns. Each shared edge has one owner. */
+.bento-group > [data-slot='card'] {
+  border-top: 0.0625rem solid var(--border);
+  border-radius: 0;
+}
+.bento-group > :nth-child(1 of [data-slot='card']) {
+  border-top: 0;
+}
+@media (width >= 48rem) {
+  .bento-group > :nth-child(2n + 3 of [data-slot='card']) {
+    border-left: 0.0625rem solid var(--border);
+  }
+}
+@media (width >= 80rem) {
+  .bento-group > [data-slot='card'] {
+    border-left: 0.0625rem solid var(--border);
+  }
+  .bento-group > :nth-child(-n + 3 of [data-slot='card']) {
+    border-top: 0;
+  }
+  .bento-group > :nth-child(1 of [data-slot='card']),
+  .bento-group > :nth-child(4 of [data-slot='card']) {
+    border-left: 0;
+  }
+}
+
 .group:hover .button-primary-platinum {
   filter: brightness(1.1);
 }

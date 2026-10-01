@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Brand, ActionLink } from './primitives';
-import { Button } from '@/components/ui/button';
 import { FluidGroup } from './fluid-group';
 import { frame, micro } from './styles';
 import { cn } from '@/lib/utils';
@@ -53,16 +52,13 @@ export function SiteFooter() {
               <h2 className={cn(micro, 'mb-4 text-foreground-3')}>{group.title}</h2>
               <FluidGroup axis="y">
                 {group.links.map(([label, href]) => (
-                  <Button
+                  <Link
                     key={label}
-                    asChild
-                    variant="tertiary"
-                    className={cn(
-                      'my-1 h-auto min-h-11 w-full justify-start text-left text-xs whitespace-normal',
-                    )}
+                    href={href}
+                    className="block min-h-11 rounded-md px-3 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    <Link href={href}>{label}</Link>
-                  </Button>
+                    {label}
+                  </Link>
                 ))}
               </FluidGroup>
             </div>
@@ -86,9 +82,14 @@ export function SiteFooter() {
         >
           <span>© {new Date().getFullYear()} Paragan</span>
           <span className="hidden md:block">INFRAESTRUTURA PARA O SEU PRÓXIMO CAPÍTULO</span>
-          <Button asChild variant="secondary" className={cn('text-xs')}>
-            <Link href="#inicio">Voltar ao início ↑</Link>
-          </Button>
+          <FluidGroup axis="x">
+            <Link
+              href="#inicio"
+              className="block rounded-md px-3 py-3 text-xs transition-colors hover:text-foreground"
+            >
+              Voltar ao início ↑
+            </Link>
+          </FluidGroup>
         </div>
       </div>
     </footer>

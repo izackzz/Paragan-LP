@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Brand, ActionLink } from './primitives';
+import { FluidGroup } from './fluid-group';
 import { icons } from '@/lib/icon-map';
 import { cn } from '@/lib/utils';
 
@@ -40,11 +41,17 @@ export function SiteHeader() {
         <div className="flex min-h-20 items-center justify-between gap-4 px-4 py-3 md:px-6">
           <Brand />
           <nav aria-label="Navegação principal" className="hidden items-center gap-2 lg:flex">
-            {links.map((link) => (
-              <Button key={link.href} asChild variant="tertiary" className={cn('text-sm')}>
-                <Link href={link.href}>{link.label}</Link>
-              </Button>
-            ))}
+            <FluidGroup axis="x" className="flex items-center gap-1">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block rounded-md px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </FluidGroup>
           </nav>
           <div className="flex items-center gap-2">
             <ActionLink className="hidden text-sm sm:inline-flex">Lançar minha fintech</ActionLink>
@@ -68,18 +75,18 @@ export function SiteHeader() {
             aria-label="Navegação mobile"
             className="flex flex-col gap-2 border-t border-border p-4 lg:hidden"
           >
-            {[...links, { href: '#contato', label: 'Lançar minha fintech' }].map((link) => (
-              <Button
-                key={link.href}
-                asChild
-                variant="secondary"
-                className={cn('justify-start text-sm')}
-              >
-                <Link href={link.href} onClick={() => setOpen(false)}>
+            <FluidGroup axis="y">
+              {[...links, { href: '#contato', label: 'Lançar minha fintech' }].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-md px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
                   {link.label}
                 </Link>
-              </Button>
-            ))}
+              ))}
+            </FluidGroup>
           </nav>
         )}
       </div>
