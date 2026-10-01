@@ -64,7 +64,7 @@ export function SiteFooter() {
             </div>
           ))}
         </div>
-        <div className="overflow-hidden border-y border-border px-5 pt-6 md:px-8">
+        <div className="overflow-hidden border-y border-border p-6 md:px-8">
           <Image
             src="/brand-naming.svg"
             width={1230}
