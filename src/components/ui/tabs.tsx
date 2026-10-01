@@ -395,7 +395,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         {eyebrow || description ? (
           <>
             <span className="flex w-full min-w-0 items-center justify-between gap-2">
-              <span className="font-mono text-xs leading-none tracking-wide text-muted-foreground uppercase">
+              <span className="font-mono text-caption leading-none tracking-wide text-foreground-4 uppercase">
                 {eyebrow}
               </span>
               {Icon && (
@@ -420,7 +420,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
               <span
                 className={cn(
                   'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
-                  isActive ? 'text-foreground' : 'text-muted-foreground',
+                  isActive ? 'text-foreground' : 'text-foreground-2',
                 )}
                 style={{
                   fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
@@ -430,7 +430,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
               </span>
             </span>
             {description && (
-              <span className="w-full text-left text-sm leading-relaxed text-muted-foreground">
+              <span className="w-full text-left text-xs leading-relaxed text-muted-foreground">
                 {description}
               </span>
             )}
