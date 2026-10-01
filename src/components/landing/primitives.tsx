@@ -4,7 +4,24 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { dot, micro } from './styles';
-import { icons } from '@/lib/icon-map';
+
+export function ArrowIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14m-6-6 6 6-6 6" />
+    </svg>
+  );
+}
 
 export function Brand({ className }: { className?: string }) {
   return (
@@ -36,7 +53,6 @@ export function ActionLink({
   secondary?: boolean;
   className?: string;
 }) {
-  const Arrow = icons['arrow-right'];
   return (
     <Button
       asChild
@@ -49,7 +65,7 @@ export function ActionLink({
     >
       <Link href={href}>
         {children}
-        <Arrow size={15} />
+        <ArrowIcon size={15} />
       </Link>
     </Button>
   );
