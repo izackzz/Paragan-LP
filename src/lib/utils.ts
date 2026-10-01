@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from "clsx";
-import { extendTailwindMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from 'clsx';
+import { extendTailwindMerge } from 'tailwind-merge';
 
 // The type-scale role utilities (see /docs/sizes) are font sizes, but
 // tailwind-merge can't know that for custom classes — by default anything
@@ -8,7 +8,7 @@ import { extendTailwindMerge } from "tailwind-merge";
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      "font-size": ["text-display", "text-title", "text-subtitle", "text-body", "text-caption"],
+      'font-size': ['text-display', 'text-title', 'text-subtitle', 'text-body', 'text-caption'],
     },
   },
 });

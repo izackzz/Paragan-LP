@@ -1,0 +1,7 @@
+node_modules/
+.next/
+out/
+coverage/
+docs/refs/
+public/assets/brand/*.svg
+public/assets/illustrations/*.svg

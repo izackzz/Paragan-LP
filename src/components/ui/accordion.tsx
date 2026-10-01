@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useRef,
@@ -10,15 +10,15 @@ import {
   forwardRef,
   type ReactNode,
   type HTMLAttributes,
-} from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
-import { cn } from "@/lib/utils";
-import { icons } from "@/lib/icon-map";
-import { springs } from "@/lib/springs";
-import { fontWeights } from "@/lib/font-weight";
-import { useFluidHover as useProximityHover } from "@/hooks/use-fluid-hover";
-import { useShape } from "@/lib/shape-context";
+} from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion';
+import { cn } from '@/lib/utils';
+import { icons } from '@/lib/icon-map';
+import { springs } from '@/lib/springs';
+import { fontWeights } from '@/lib/font-weight';
+import { useFluidHover as useProximityHover } from '@/hooks/use-fluid-hover';
+import { useShape } from '@/lib/shape-context';
 
 // ─── Contexts ────────────────────────────────────────────────────────────────
 
@@ -59,14 +59,14 @@ const AccordionItemContext = createContext<AccordionItemContextValue | null>(nul
 function useAccordionItemContext() {
   const ctx = useContext(AccordionItemContext);
   if (!ctx)
-    throw new Error("AccordionTrigger/AccordionContent must be used within an AccordionItem");
+    throw new Error('AccordionTrigger/AccordionContent must be used within an AccordionItem');
   return ctx;
 }
 
 // ─── AccordionGroup ──────────────────────────────────────────────────────────
 
 type AccordionGroupSingleProps = {
-  type?: "single";
+  type?: 'single';
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
@@ -74,7 +74,7 @@ type AccordionGroupSingleProps = {
 };
 
 type AccordionGroupMultipleProps = {
-  type: "multiple";
+  type: 'multiple';
   value?: string[];
   defaultValue?: string[];
   onValueChange?: (value: string[]) => void;
@@ -85,7 +85,7 @@ type AccordionGroupProps = HTMLAttributes<HTMLDivElement> & {
 } & (AccordionGroupSingleProps | AccordionGroupMultipleProps);
 
 const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, ref) => {
-  const { children, type = "single", className, ...rest } = props;
+  const { children, type = 'single', className, ...rest } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
   const fullItemElementsRef = useRef<Map<number, HTMLElement>>(new Map());
@@ -124,14 +124,14 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   }, []);
 
   const [internalSingleValue, setInternalSingleValue] = useState<string>(() => {
-    if (type === "single") {
+    if (type === 'single') {
       const sp = props as AccordionGroupSingleProps;
-      return sp.defaultValue ?? "";
+      return sp.defaultValue ?? '';
     }
-    return "";
+    return '';
   });
   const [internalMultipleValue, setInternalMultipleValue] = useState<string[]>(() => {
-    if (type === "multiple") {
+    if (type === 'multiple') {
       const mp = props as AccordionGroupMultipleProps;
       return mp.defaultValue ?? [];
     }
@@ -142,7 +142,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   const controlledMultipleValue = (props as AccordionGroupMultipleProps).value;
 
   const openValues = new Set<string>(
-    type === "multiple"
+    type === 'multiple'
       ? ((props as AccordionGroupMultipleProps).value ?? internalMultipleValue)
       : (() => {
           const v = (props as AccordionGroupSingleProps).value ?? internalSingleValue;
@@ -168,11 +168,11 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
 
   const toggleValue = useCallback(
     (val: string) => {
-      if (type === "multiple") {
+      if (type === 'multiple') {
         const current = controlledMultipleValue ?? internalMultipleValue;
         handleMultipleValueChange(current.filter((v) => v !== val));
       } else {
-        handleSingleValueChange("");
+        handleSingleValueChange('');
       }
     },
     [
@@ -189,7 +189,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
     measureFullItems();
   }, [measureItems, measureFullItems, children]);
 
-  const openValuesKey = [...openValues].join(",");
+  const openValuesKey = [...openValues].join(',');
 
   useEffect(() => {
     measureItems();
@@ -216,7 +216,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   // Base UI always uses `value: string[]` and a `multiple: boolean`. In
   // single mode we wrap the active value in a single-element array.
   const baseValue: string[] =
-    type === "multiple"
+    type === 'multiple'
       ? ((props as AccordionGroupMultipleProps).value ?? internalMultipleValue)
       : (() => {
           const v = (props as AccordionGroupSingleProps).value ?? internalSingleValue;
@@ -224,8 +224,8 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
         })();
 
   const baseOnValueChange = (next: string[]) => {
-    if (type === "multiple") handleMultipleValueChange(next);
-    else handleSingleValueChange(next[0] ?? "");
+    if (type === 'multiple') handleMultipleValueChange(next);
+    else handleSingleValueChange(next[0] ?? '');
   };
 
   return (
@@ -247,7 +247,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
       <AccordionPrimitive.Root
         value={baseValue}
         onValueChange={baseOnValueChange}
-        multiple={type === "multiple"}
+        multiple={type === 'multiple'}
         render={(rootProps) => {
           const {
             style: _baseStyle,
@@ -264,7 +264,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
               {...restRoot}
               ref={(node) => {
                 (containerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
-                if (typeof ref === "function") ref(node);
+                if (typeof ref === 'function') ref(node);
                 else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
               }}
               onMouseEnter={handlers.onMouseEnter}
@@ -292,12 +292,12 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
               onMouseLeave={handlers.onMouseLeave}
               onFocus={(e) => {
                 const indexAttr = (e.target as HTMLElement)
-                  .closest("[data-proximity-index]")
-                  ?.getAttribute("data-proximity-index");
+                  .closest('[data-proximity-index]')
+                  ?.getAttribute('data-proximity-index');
                 if (indexAttr != null) {
                   const idx = Number(indexAttr);
                   setActiveIndex(idx);
-                  setFocusedIndex((e.target as HTMLElement).matches(":focus-visible") ? idx : null);
+                  setFocusedIndex((e.target as HTMLElement).matches(':focus-visible') ? idx : null);
                 }
               }}
               onBlur={(e) => {
@@ -305,7 +305,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
                 setFocusedIndex(null);
                 setActiveIndex(null);
               }}
-              className={cn("relative flex flex-col gap-0.5 w-72 max-w-full", className)}
+              className={cn('relative flex w-72 max-w-full flex-col gap-0.5', className)}
               {...(htmlProps as HTMLAttributes<HTMLDivElement>)}
             >
               {/* Expanded item backgrounds */}
@@ -313,7 +313,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
                 {[...openItemRects.entries()].map(([idx, rect]) => (
                   <motion.div
                     key={`expanded-${idx}`}
-                    className={`absolute ${shape.bg} bg-accent/20 dark:bg-accent/12 pointer-events-none`}
+                    className={`absolute ${shape.bg} pointer-events-none bg-accent/20 dark:bg-accent/12`}
                     initial={false}
                     animate={{
                       top: rect.top,
@@ -339,7 +339,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
                 {activeRect && (
                   <motion.div
                     key={sessionRef.current}
-                    className={`absolute ${shape.bg} bg-hover pointer-events-none`}
+                    className={`absolute ${shape.bg} pointer-events-none bg-hover`}
                     initial={{
                       opacity: 0,
                       top: activeRect.top,
@@ -367,7 +367,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
               <AnimatePresence>
                 {focusRect && (
                   <motion.div
-                    className={`absolute ${shape.focusRing} pointer-events-none z-20 border border-[#6B97FF]`}
+                    className={`absolute ${shape.focusRing} pointer-events-none z-20 border border-accent-1`}
                     initial={false}
                     animate={{
                       left: focusRect.left - 2,
@@ -393,13 +393,13 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   );
 });
 
-AccordionGroup.displayName = "AccordionGroup";
+AccordionGroup.displayName = 'AccordionGroup';
 
 // ─── Accordion (Standalone) ──────────────────────────────────────────────────
 
 interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  type?: "single" | "multiple";
+  type?: 'single' | 'multiple';
   collapsible?: boolean;
   defaultValue?: string | string[];
   value?: string | string[];
@@ -410,7 +410,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   (
     {
       children,
-      type = "single",
+      type = 'single',
       collapsible = true,
       defaultValue,
       value,
@@ -423,20 +423,20 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     void collapsible; // Base UI's single-mode is always collapsible.
 
     const [internalSingleValue, setInternalSingleValue] = useState<string>(() => {
-      if (type === "single") {
-        return (defaultValue as string) ?? "";
+      if (type === 'single') {
+        return (defaultValue as string) ?? '';
       }
-      return "";
+      return '';
     });
     const [internalMultipleValue, setInternalMultipleValue] = useState<string[]>(() => {
-      if (type === "multiple") {
+      if (type === 'multiple') {
         return (defaultValue as string[]) ?? [];
       }
       return [];
     });
 
     const openValues = new Set<string>(
-      type === "multiple"
+      type === 'multiple'
         ? ((value as string[] | undefined) ?? internalMultipleValue)
         : (() => {
             const v = (value as string | undefined) ?? internalSingleValue;
@@ -462,18 +462,18 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 
     const standaloneToggle = useCallback(
       (val: string) => {
-        if (type === "multiple") {
+        if (type === 'multiple') {
           const current = (value as string[] | undefined) ?? internalMultipleValue;
           handleMultipleChange(current.filter((v) => v !== val));
         } else {
-          handleSingleChange("");
+          handleSingleChange('');
         }
       },
       [type, value, internalMultipleValue, handleSingleChange, handleMultipleChange],
     );
 
     const baseValue: string[] =
-      type === "multiple"
+      type === 'multiple'
         ? ((value as string[] | undefined) ?? internalMultipleValue)
         : (() => {
             const v = (value as string | undefined) ?? internalSingleValue;
@@ -481,22 +481,22 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
           })();
 
     const baseOnValueChange = (next: string[]) => {
-      if (type === "multiple") handleMultipleChange(next);
-      else handleSingleChange(next[0] ?? "");
+      if (type === 'multiple') handleMultipleChange(next);
+      else handleSingleChange(next[0] ?? '');
     };
 
     return (
       <AccordionPrimitive.Root
         value={baseValue}
         onValueChange={baseOnValueChange}
-        multiple={type === "multiple"}
+        multiple={type === 'multiple'}
         render={(rootProps) => {
           const { style: _s, ...restRoot } = rootProps as React.HTMLAttributes<HTMLDivElement>;
           return (
             <div
               {...restRoot}
               ref={ref}
-              className={cn("w-72 max-w-full flex flex-col gap-0.5", className)}
+              className={cn('flex w-72 max-w-full flex-col gap-0.5', className)}
               {...props}
             >
               <StandaloneOpenContext.Provider value={openValues}>
@@ -512,7 +512,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   },
 );
 
-Accordion.displayName = "Accordion";
+Accordion.displayName = 'Accordion';
 
 const StandaloneOpenContext = createContext<Set<string>>(new Set());
 const StandaloneToggleContext = createContext<(value: string) => void>(() => {});
@@ -576,12 +576,12 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
                 {...restItem}
                 ref={(node) => {
                   (internalRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
-                  if (typeof ref === "function") ref(node);
+                  if (typeof ref === 'function') ref(node);
                   else if (ref)
                     (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
                 }}
                 data-proximity-index={index}
-                className={cn(!groupCtx?.grouped && "relative", className)}
+                className={cn(!groupCtx?.grouped && 'relative', className)}
                 {...props}
               >
                 {/* Standalone expanded background */}
@@ -589,7 +589,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
-                        className={`absolute inset-0 ${shape.bg} bg-accent/20 dark:bg-accent/12 pointer-events-none`}
+                        className={`absolute inset-0 ${shape.bg} pointer-events-none bg-accent/20 dark:bg-accent/12`}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0, transition: { duration: 0.06 } }}
@@ -608,7 +608,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   },
 );
 
-AccordionItem.displayName = "AccordionItem";
+AccordionItem.displayName = 'AccordionItem';
 
 // ─── AccordionTrigger ────────────────────────────────────────────────────────
 
@@ -618,7 +618,7 @@ interface AccordionTriggerProps extends HTMLAttributes<HTMLButtonElement> {
 
 const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   ({ children, className, ...props }, ref) => {
-    const ChevronRight = icons["chevron-right"];
+    const ChevronRight = icons['chevron-right'];
     const groupCtx = useAccordionGroup();
     const { index, isOpen, triggerRef } = useAccordionItemContext();
     const shape = useShape();
@@ -635,17 +635,17 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
         <AccordionPrimitive.Trigger
           ref={ref as React.Ref<HTMLElement>}
           className={cn(
-            `relative z-10 flex items-center gap-2.5 ${shape.item} px-3 py-2 w-full cursor-pointer outline-none select-none`,
+            `relative z-10 flex items-center gap-2.5 ${shape.item} w-full cursor-pointer px-3 py-2 outline-none select-none`,
             !groupCtx?.grouped &&
-              "focus-visible:ring-1 focus-visible:ring-[#6B97FF] focus-visible:ring-offset-0",
+              'focus-visible:ring-2 focus-visible:ring-accent-1 focus-visible:ring-offset-0',
             className,
           )}
           {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
         >
           {/* Label with dual-layer text */}
-          <span className="inline-grid text-[13px] flex-1 text-left">
+          <span className="inline-grid flex-1 text-left text-[13px]">
             <span
-              className="col-start-1 row-start-1 invisible"
+              className="invisible col-start-1 row-start-1"
               style={{ fontVariationSettings: fontWeights.semibold }}
               aria-hidden="true"
             >
@@ -653,8 +653,8 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
             </span>
             <span
               className={cn(
-                "col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80",
-                isOpen || isActive ? "text-foreground" : "text-muted-foreground",
+                'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
+                isOpen || isActive ? 'text-foreground' : 'text-muted-foreground',
               )}
               style={{
                 fontVariationSettings: isOpen ? fontWeights.semibold : fontWeights.normal,
@@ -666,7 +666,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
 
           {/* Chevron */}
           <motion.span
-            className="shrink-0 inline-flex items-center justify-center"
+            className="inline-flex shrink-0 items-center justify-center"
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={springs.fast}
           >
@@ -674,8 +674,8 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
               size={16}
               strokeWidth={isOpen || isActive ? 2 : 1.5}
               className={cn(
-                "transition-[color,stroke-width] duration-80",
-                isOpen || isActive ? "text-foreground" : "text-muted-foreground",
+                'transition-[color,stroke-width] duration-80',
+                isOpen || isActive ? 'text-foreground' : 'text-muted-foreground',
               )}
             />
           </motion.span>
@@ -696,7 +696,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
         <AnimatePresence>
           {isHovered && (
             <motion.div
-              className={`absolute inset-0 ${shape.bg} bg-hover pointer-events-none`}
+              className={`absolute inset-0 ${shape.bg} pointer-events-none bg-hover`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.06 } }}
@@ -710,7 +710,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   },
 );
 
-AccordionTrigger.displayName = "AccordionTrigger";
+AccordionTrigger.displayName = 'AccordionTrigger';
 
 // ─── AccordionContent ────────────────────────────────────────────────────────
 
@@ -734,9 +734,9 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
         {isOpen && (
           <motion.div
             ref={ref}
-            className={cn("overflow-hidden", className)}
+            className={cn('overflow-hidden', className)}
             initial={{ height: 0 }}
-            animate={{ height: "auto" }}
+            animate={{ height: 'auto' }}
             exit={{ height: 0 }}
             // bounce: 0 — pure height looks better without overshoot. See
             // comment in radix flavor.
@@ -750,7 +750,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             {...(props as any)}
           >
-            <div className="px-3 pb-3 pt-1 text-[13px] text-muted-foreground">{children}</div>
+            <div className="px-3 pt-1 pb-3 text-[13px] text-muted-foreground">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -758,7 +758,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
   },
 );
 
-AccordionContent.displayName = "AccordionContent";
+AccordionContent.displayName = 'AccordionContent';
 
 export { Accordion, AccordionGroup, AccordionItem, AccordionTrigger, AccordionContent };
 export default Accordion;

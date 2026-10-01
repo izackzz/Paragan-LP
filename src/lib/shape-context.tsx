@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
 
-type ShapeVariant = "pill" | "rounded";
+type ShapeVariant = 'pill' | 'rounded';
 
-const shapeOrder: ShapeVariant[] = ["rounded", "pill"];
+const shapeOrder: ShapeVariant[] = ['rounded', 'pill'];
 
 // These classes control radius size. The shared shape-context CSS enhances
 // rounded surfaces with superellipse(1.5), keeping these radii as the fallback.
@@ -25,30 +25,30 @@ interface ShapeClasses {
 
 const shapeMap: Record<ShapeVariant, ShapeClasses> = {
   pill: {
-    variant: "pill",
-    item: "rounded-[20px]",
-    bg: "rounded-[20px]",
+    variant: 'pill',
+    item: 'rounded-[20px]',
+    bg: 'rounded-[20px]',
     // +2px over `item` because the focus ring sits 2px outside the element
     // (top/left -2, width/height +4). Circular fallbacks share a center;
     // smooth corners keep the same curve family with an adjusted radius.
     // This is not an exact parallel superellipse (see the cheat sheet).
-    focusRing: "rounded-[22px]",
-    mergedBg: "rounded-2xl",
-    container: "rounded-3xl",
-    button: "rounded-[20px]",
-    input: "rounded-[20px]",
+    focusRing: 'rounded-[22px]',
+    mergedBg: 'rounded-2xl',
+    container: 'rounded-3xl',
+    button: 'rounded-[20px]',
+    input: 'rounded-[20px]',
     bgRadius: 20,
     mergedRadius: 16,
   },
   rounded: {
-    variant: "rounded",
-    item: "rounded-lg",
-    bg: "rounded-lg",
-    focusRing: "rounded-[10px]",
-    mergedBg: "rounded-lg",
-    container: "rounded-xl",
-    button: "rounded-lg",
-    input: "rounded-lg",
+    variant: 'rounded',
+    item: 'rounded-lg',
+    bg: 'rounded-lg',
+    focusRing: 'rounded-[10px]',
+    mergedBg: 'rounded-lg',
+    container: 'rounded-xl',
+    button: 'rounded-lg',
+    input: 'rounded-lg',
     bgRadius: 8,
     mergedRadius: 8,
   },
@@ -70,26 +70,26 @@ function useShape(): ShapeClasses {
 
 function useShapeVariant(): ShapeVariant {
   const ctx = useContext(ShapeContext);
-  return ctx?.shape ?? "pill";
+  return ctx?.shape ?? 'pill';
 }
 
 function useShapeContext() {
   const ctx = useContext(ShapeContext);
-  if (!ctx) throw new Error("useShapeContext must be used within a ShapeProvider");
+  if (!ctx) throw new Error('useShapeContext must be used within a ShapeProvider');
   return ctx;
 }
 
 function transitionShape(callback: () => void) {
   const root = document.documentElement;
-  root.classList.add("transitioning");
+  root.classList.add('transitioning');
   void root.offsetHeight;
   callback();
-  setTimeout(() => root.classList.remove("transitioning"), 200);
+  setTimeout(() => root.classList.remove('transitioning'), 200);
 }
 
 function ShapeProvider({
   children,
-  defaultShape = "pill",
+  defaultShape = 'pill',
 }: {
   children: ReactNode;
   defaultShape?: ShapeVariant;
@@ -103,10 +103,10 @@ function ShapeProvider({
   // Global keyboard shortcut: R to cycle radius
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== "r" && e.key !== "R") return;
+      if (e.key !== 'r' && e.key !== 'R') return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const tag = (e.target as HTMLElement)?.tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA" || (e.target as HTMLElement)?.isContentEditable)
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target as HTMLElement)?.isContentEditable)
         return;
       e.preventDefault();
       transitionShape(() => {
@@ -116,8 +116,8 @@ function ShapeProvider({
         });
       });
     };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
   }, []);
 
   return (

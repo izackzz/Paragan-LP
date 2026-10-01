@@ -1,50 +1,50 @@
-"use client";
+'use client';
 
-import { forwardRef, isValidElement, type ButtonHTMLAttributes, type ReactNode } from "react";
-import { Button as ButtonPrimitive } from "@base-ui/react/button";
-import { cva, type VariantProps } from "class-variance-authority";
-import type { IconComponent } from "@/lib/icon-context";
-import { cn } from "@/lib/utils";
-import { useShape } from "@/lib/shape-context";
+import { forwardRef, isValidElement, type ButtonHTMLAttributes, type ReactNode } from 'react';
+import { Button as ButtonPrimitive } from '@base-ui/react/button';
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { IconComponent } from '@/lib/icon-context';
+import { cn } from '@/lib/utils';
+import { useShape } from '@/lib/shape-context';
 
 const buttonVariants = cva(
   [
-    "group relative isolate inline-flex items-center justify-center outline-none cursor-pointer",
-    "text-box-trim-both text-box-edge-cap-alphabetic",
-    "transition-colors duration-80",
-    "disabled:opacity-50 disabled:pointer-events-none",
-    "focus-visible:ring-1 focus-visible:ring-[#6B97FF]",
+    'group relative isolate inline-flex items-center justify-center outline-none cursor-pointer',
+    'text-box-trim-both text-box-edge-cap-alphabetic',
+    'transition-colors duration-80',
+    'disabled:opacity-50 disabled:pointer-events-none',
+    'focus-visible:ring-2 focus-visible:ring-focus-ring',
   ],
   {
     variants: {
       variant: {
-        primary: "text-background",
-        secondary: "text-foreground",
-        tertiary: "border border-border text-foreground",
-        ghost: "text-muted-foreground hover:text-foreground",
+        primary: 'text-primary-foreground',
+        secondary: 'text-foreground',
+        tertiary: 'border border-border text-foreground',
+        ghost: 'text-muted-foreground hover:text-foreground',
       },
       size: {
-        sm: "h-7 px-3 text-[12px] gap-1",
-        md: "h-8 px-4 text-[13px] gap-1.5",
-        lg: "h-9 px-5 text-[14px] gap-1.5",
-        "icon-sm": "h-8 w-8 p-0 [&_svg]:h-3.5 [&_svg]:w-3.5",
-        icon: "h-9 w-9 p-0 [&_svg]:h-4 [&_svg]:w-4",
-        "icon-lg": "h-10 w-10 p-0 [&_svg]:h-5 [&_svg]:w-5",
+        sm: 'h-7 px-3 text-[12px] gap-1',
+        md: 'h-8 px-4 text-[13px] gap-1.5',
+        lg: 'h-9 px-5 text-[14px] gap-1.5',
+        'icon-sm': 'h-8 w-8 p-0 [&_svg]:h-3.5 [&_svg]:w-3.5',
+        icon: 'h-9 w-9 p-0 [&_svg]:h-4 [&_svg]:w-4',
+        'icon-lg': 'h-10 w-10 p-0 [&_svg]:h-5 [&_svg]:w-5',
       },
-      iconLeft: { true: "" },
-      iconRight: { true: "" },
+      iconLeft: { true: '' },
+      iconRight: { true: '' },
     },
     compoundVariants: [
-      { size: "sm", iconLeft: true, className: "pl-[6px]" },
-      { size: "md", iconLeft: true, className: "pl-[10px]" },
-      { size: "lg", iconLeft: true, className: "pl-[14px]" },
-      { size: "sm", iconRight: true, className: "pr-[6px]" },
-      { size: "md", iconRight: true, className: "pr-[10px]" },
-      { size: "lg", iconRight: true, className: "pr-[14px]" },
+      { size: 'sm', iconLeft: true, className: 'pl-[6px]' },
+      { size: 'md', iconLeft: true, className: 'pl-[10px]' },
+      { size: 'lg', iconLeft: true, className: 'pl-[14px]' },
+      { size: 'sm', iconRight: true, className: 'pr-[6px]' },
+      { size: 'md', iconRight: true, className: 'pr-[10px]' },
+      { size: 'lg', iconRight: true, className: 'pr-[14px]' },
     ],
     defaultVariants: {
-      variant: "primary",
-      size: "md",
+      variant: 'primary',
+      size: 'md',
     },
   },
 );
@@ -63,17 +63,17 @@ interface ButtonProps
 }
 
 const bgVariants: Record<string, string> = {
-  primary: "bg-foreground group-hover:bg-foreground/90 group-active:bg-foreground/80",
-  secondary: "bg-accent group-hover:bg-accent/80 group-active:bg-accent",
-  tertiary: "bg-transparent group-hover:bg-hover group-active:bg-active",
-  ghost: "bg-transparent group-hover:bg-hover group-active:bg-active",
+  primary: 'bg-primary group-hover:bg-primary/90 group-active:bg-primary/80',
+  secondary: 'bg-accent group-hover:bg-accent/80 group-active:bg-accent',
+  tertiary: 'bg-transparent group-hover:bg-hover group-active:bg-active',
+  ghost: 'bg-transparent group-hover:bg-hover group-active:bg-active',
 };
 
 const activeBgVariants: Record<string, string> = {
-  primary: "bg-foreground/80",
-  secondary: "bg-accent",
-  tertiary: "bg-active",
-  ghost: "bg-active",
+  primary: 'bg-primary/80',
+  secondary: 'bg-accent',
+  tertiary: 'bg-active',
+  ghost: 'bg-active',
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -88,23 +88,24 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       trailingIcon: TrailingIcon,
       active = false,
       disabled,
-       children: child,
+      children: child,
       style,
       ...props
     },
     ref,
   ) => {
-    const isIconOnly = size === "icon" || size === "icon-sm" || size === "icon-lg";
-    const iconSize = size === "sm" ? 14 : size === "lg" ? 20 : 16;
+    const isIconOnly = size === 'icon' || size === 'icon-sm' || size === 'icon-lg';
+    const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16;
     const shape = useShape();
     const bgClass = active
-      ? activeBgVariants[variant ?? "primary"]
-      : bgVariants[variant ?? "primary"];
+      ? activeBgVariants[variant ?? 'primary']
+      : bgVariants[variant ?? 'primary'];
 
     // asChild parity: Base UI's `render` prop accepts a single element and
     // clones it. When asChild is true and children is a valid element, route
     // through render so the user's element becomes the outer tag.
-    const renderProp = asChild && isValidElement<{ children?: ReactNode }>(child) ? child : undefined;
+    const renderProp =
+      asChild && isValidElement<{ children?: ReactNode }>(child) ? child : undefined;
     const children = renderProp ? renderProp.props.children : child;
 
     return (
@@ -131,7 +132,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <span
           aria-hidden
           className={cn(
-            "absolute inset-0 rounded-[inherit] transition-[background-color,transform] duration-80 group-active:scale-[0.98]",
+            'absolute inset-0 rounded-[inherit] transition-[background-color,transform] duration-80 group-active:scale-[0.98]',
             bgClass,
           )}
         />
@@ -152,9 +153,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     strokeLinecap="round"
                     pathLength="100"
                     style={{
-                      strokeDasharray: "15 85",
+                      strokeDasharray: '15 85',
                       animation:
-                        "spinner-move 2s linear infinite, spinner-dash 4s ease-in-out infinite",
+                        'spinner-move 2s linear infinite, spinner-dash 4s ease-in-out infinite',
                     }}
                   />
                 </svg>
@@ -189,7 +190,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export { Button, buttonVariants };
 export type { ButtonProps };

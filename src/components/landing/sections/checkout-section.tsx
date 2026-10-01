@@ -1,24 +1,98 @@
-import { SectionLabel, SectionHeading, ArtPlaceholder, ActionLink } from "../primitives";
-import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Reveal } from "../reveal";
-import { frame, section, padding, micro, textCard, cardTitle, cardDescription, gridThree } from "../styles";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { SectionLabel, ArtPlaceholder } from '../primitives';
+import { frame, section, padding, micro, card, cardTitle, cardDescription, gridThree } from '../styles';
+import { cn } from '@/lib/utils';
+import { DotPattern } from '../dot-pattern';
+import { StripPattern } from '../strip-pattern';
+import { icons } from '@/lib/icon-map';
+
+const checkoutSteps = [
+  {
+    number: '01',
+    eyebrow: 'COMPONHA',
+    title: 'Uma oferta, várias possibilidades.',
+    description:
+      'Crie produtos e ofertas avulsas ou recorrentes. Compartilhe links por oferta e organize seu catálogo.',
+  },
+  {
+    number: '02',
+    eyebrow: 'PERSONALIZE',
+    title: 'Cada detalhe tem uma função.',
+    description:
+      'Ajuste aparência, cupons e produtos adicionais para apresentar sua oferta com clareza.',
+  },
+  {
+    number: '03',
+    eyebrow: 'ACOMPANHE',
+    title: 'A venda não termina no clique.',
+    description:
+      'Acompanhe pedidos e confirmação. Na entrega digital, conecte a compra ao acesso autorizado.',
+  },
+];
 
 export function CheckoutSection() {
-  return <section id="checkout" className={cn(frame, section)}><SectionLabel number="03">EXPERIÊNCIA DE VENDA</SectionLabel><Reveal className={padding}>
-    <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end"><SectionHeading eyebrow="Do produto ao pagamento" title="Seus sellers têm uma oferta." muted="Entregue a experiência." description="Produtos, ofertas, cupons e order bumps conectados a um checkout com a sua identidade. Mais recursos para vender. Mais contexto para acompanhar." /><ActionLink href="#contato" secondary>Conhecer o checkout</ActionLink></div>
-    <div className="mt-12 overflow-hidden rounded-xl border border-border [&_figure]:rounded-none [&_figure]:border-0 [&_figcaption]:hidden"><div className="flex justify-between gap-5 p-4 text-muted-foreground md:px-6 md:py-5"><span className={micro}>UMA JORNADA, DO INÍCIO AO FIM</span><span className={micro}>DESKTOP + MOBILE</span></div>
-      {/* PRINT CHECKOUT (1440×760): screenshot Catalyst desktop em primeiro plano,
-          recorte mobile à direita integrado na própria arte, produto fictício, oferta,
-          cupom, bump, métodos aptos e total claramente visíveis. Fundo claro/menta,
-          sem cartões reais, PAN, contatos ou logos de processadores. Não usar imagem
-          de stock. Futuro Lottie pode destacar a seleção de oferta, nunca aprovar cobrança. */}
-      <ArtPlaceholder width={1440} height={760} label="Checkout Catalyst · desktop e mobile" />
-    </div>
-    <CardGroup columns={3} className={cn(gridThree, "border-t")}>
-      <Card className={textCard}><CardHeader><p className={cn(micro, "mb-4 text-brand")}>01 / COMPONHA</p><CardTitle className={cardTitle}>Uma oferta, várias possibilidades.</CardTitle><CardDescription className={cardDescription}>Crie produtos e ofertas avulsas ou recorrentes. Compartilhe links por oferta e organize seu catálogo.</CardDescription></CardHeader></Card>
-      <Card className={textCard}><CardHeader><p className={cn(micro, "mb-4 text-brand")}>02 / PERSONALIZE</p><CardTitle className={cardTitle}>Cada detalhe tem uma função.</CardTitle><CardDescription className={cardDescription}>Ajuste aparência, cupons e produtos adicionais para apresentar sua oferta com clareza.</CardDescription></CardHeader></Card>
-      <Card className={textCard}><CardHeader><p className={cn(micro, "mb-4 text-brand")}>03 / ACOMPANHE</p><CardTitle className={cardTitle}>A venda não termina no clique.</CardTitle><CardDescription className={cardDescription}>Acompanhe pedidos e confirmação. Na entrega digital, conecte a compra ao acesso autorizado.</CardDescription></CardHeader></Card>
-    </CardGroup>
-  </Reveal></section>;
+  const Arrow = icons['arrow-right'];
+
+  return (
+    <section id="checkout" className={cn(frame, section)}>
+      <SectionLabel number="03">EXPERIÊNCIA DE VENDA</SectionLabel>
+      <div className={padding}>
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-medium">
+              <span className="inline-block size-1.5 rounded-full bg-success" aria-hidden="true" />
+              Do produto ao pagamento
+            </p>
+            <h2 className="text-3xl leading-tight font-normal tracking-tighter text-balance md:text-4xl xl:text-5xl">
+              Seus sellers têm uma oferta.
+              <br />
+              <span className="text-foreground-3">Entregue a experiência.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-foreground-3 md:text-base">
+              Produtos, ofertas, cupons e order bumps conectados a um checkout com a sua identidade.
+              Mais recursos para vender. Mais contexto para acompanhar.
+            </p>
+          </div>
+          <Link
+            href="#contato"
+            className="inline-flex min-h-11 items-center gap-3 rounded-md border border-border bg-card px-5 py-3 text-xs font-medium text-foreground transition-colors hover:border-accent-1 hover:bg-accent"
+          >
+            Conhecer o checkout <Arrow size={15} />
+          </Link>
+        </div>
+
+        <div className="relative isolate mt-12 overflow-hidden rounded-xl border border-border bg-card">
+          <DotPattern solid grow="x" color="text-accent-1" opacity={8} className="-z-10" />
+          <StripPattern tone="warm" className="top-auto h-1/2 opacity-70" />
+          <div className="relative z-10 flex justify-between gap-5 border-b border-border bg-background/70 p-4 text-foreground-3 backdrop-blur-sm md:px-6 md:py-5">
+            <span className={micro}>UMA JORNADA, DO INÍCIO AO FIM</span>
+            <span className={cn(micro, 'hidden sm:block')}>DESKTOP + MOBILE</span>
+          </div>
+          {/* PRINT CHECKOUT (1440×760): screenshot Catalyst desktop em primeiro plano,
+              recorte mobile à direita integrado na própria arte, produto fictício, oferta,
+              cupom, bump, métodos aptos e total claramente visíveis. Fundo carvão com
+              acentos Paragan; sem PAN, contatos ou logos de processadores. Não usar stock. */}
+          <div className="relative z-10 [&_figure]:rounded-none [&_figure]:border-0 [&_figcaption]:hidden">
+            <ArtPlaceholder width={1440} height={760} label="Checkout Catalyst · desktop e mobile" />
+          </div>
+        </div>
+
+        <CardGroup columns={3} className={cn(gridThree, 'border-t')}>
+          {checkoutSteps.map((step) => (
+            <Card key={step.number} className={cn(card, 'relative isolate overflow-hidden')}>
+              <DotPattern color="text-accent-1" opacity={11} className="-z-10" />
+              <CardHeader className="relative z-10">
+                <p className={cn(micro, 'mb-4 text-accent-2')}>
+                  {step.number} / {step.eyebrow}
+                </p>
+                <CardTitle className={cardTitle}>{step.title}</CardTitle>
+                <CardDescription className={cardDescription}>{step.description}</CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </CardGroup>
+      </div>
+    </section>
+  );
 }

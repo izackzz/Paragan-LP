@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useRef,
@@ -14,17 +14,17 @@ import {
   cloneElement,
   isValidElement,
   type ComponentPropsWithoutRef,
-} from "react";
-import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
-import { motion, AnimatePresence } from "framer-motion";
-import type { IconComponent } from "@/lib/icon-context";
-import { cn } from "@/lib/utils";
-import { springs } from "@/lib/springs";
-import { fontWeights } from "@/lib/font-weight";
-import { useShape } from "@/lib/shape-context";
-import { useSurface } from "@/lib/surface-context";
-import { surfaceClasses } from "@/lib/surface-classes";
-import { useFluidHover as useProximityHover } from "@/hooks/use-fluid-hover";
+} from 'react';
+import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
+import { motion, AnimatePresence } from 'framer-motion';
+import type { IconComponent } from '@/lib/icon-context';
+import { cn } from '@/lib/utils';
+import { springs } from '@/lib/springs';
+import { fontWeights } from '@/lib/font-weight';
+import { useShape } from '@/lib/shape-context';
+import { useSurface } from '@/lib/surface-context';
+import { surfaceClasses } from '@/lib/surface-classes';
+import { useFluidHover as useProximityHover } from '@/hooks/use-fluid-hover';
 
 /* ─────────────────────── Contexts ─────────────────────── */
 
@@ -47,7 +47,7 @@ const TabsListContext = createContext<TabsListContextValue | null>(null);
 
 function useTabsList() {
   const ctx = useContext(TabsListContext);
-  if (!ctx) throw new Error("TabItem must be used within a TabsList");
+  if (!ctx) throw new Error('TabItem must be used within a TabsList');
   return ctx;
 }
 
@@ -55,7 +55,7 @@ function useTabsList() {
 
 interface TabsProps extends Omit<
   ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
-  "onValueChange" | "value" | "defaultValue" | "onSelect"
+  'onValueChange' | 'value' | 'defaultValue' | 'onSelect'
 > {
   value?: string;
   onValueChange?: (value: string) => void;
@@ -118,7 +118,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   },
 );
 
-Tabs.displayName = "Tabs";
+Tabs.displayName = 'Tabs';
 
 /* ─────────────────────── TabsList ─────────────────────── */
 
@@ -134,10 +134,14 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
     const valueOrderCtx = useContext(TabsValueOrderContext);
     const [, setOptimisticIdx] = useState<number | null>(null);
 
-    const values = useMemo(() => Children.toArray(children)
-      .filter(isValidElement)
-      .map((child) => (child.props as { value?: string }).value)
-      .filter((v): v is string => typeof v === "string"), [children]);
+    const values = useMemo(
+      () =>
+        Children.toArray(children)
+          .filter(isValidElement)
+          .map((child) => (child.props as { value?: string }).value)
+          .filter((v): v is string => typeof v === 'string'),
+      [children],
+    );
     const setValueOrder = valueOrderCtx?.setValueOrder;
 
     useLayoutEffect(() => {
@@ -151,7 +155,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
       handlers,
       registerItem,
       measureItems,
-    } = useProximityHover(containerRef, { axis: "x" });
+    } = useProximityHover(containerRef, { axis: 'x' });
 
     const registerTab = useCallback(
       (index: number, _value: string, el: HTMLElement | null) => {
@@ -217,7 +221,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           activateOnFocus
           ref={(node) => {
             (containerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
-            if (typeof ref === "function") ref(node);
+            if (typeof ref === 'function') ref(node);
             else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
           }}
           onMouseMove={handleMouseMove}
@@ -225,11 +229,11 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           onFocus={(e) => {
             const trigger = (e.target as HTMLElement).closest('[role="tab"]');
             if (!trigger) return;
-            const indexAttr = trigger.getAttribute("data-proximity-index");
+            const indexAttr = trigger.getAttribute('data-proximity-index');
             if (indexAttr != null) {
               const idx = Number(indexAttr);
               setHoveredIndex(idx);
-              setFocusedIndex((e.target as HTMLElement).matches(":focus-visible") ? idx : null);
+              setFocusedIndex((e.target as HTMLElement).matches(':focus-visible') ? idx : null);
             }
           }}
           onBlur={(e) => {
@@ -239,7 +243,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
             setHoveredIndex(null);
           }}
           className={cn(
-            "relative inline-flex items-center gap-0.5 p-1 select-none bg-muted",
+            'relative inline-flex items-center gap-0.5 bg-muted p-1 select-none',
             shape.container,
             className,
           )}
@@ -249,7 +253,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           {selectedRect && (
             <motion.div
               className={cn(
-                "absolute pointer-events-none",
+                'pointer-events-none absolute',
                 surfaceClasses(indicatorLevel),
                 shape.bg,
               )}
@@ -272,7 +276,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           <AnimatePresence>
             {hoverRect && !isHoveringSelected && selectedRect && (
               <motion.div
-                className={cn("absolute pointer-events-none bg-hover", shape.bg)}
+                className={cn('pointer-events-none absolute bg-hover', shape.bg)}
                 initial={{
                   left: selectedRect.left,
                   width: selectedRect.width,
@@ -315,7 +319,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
             {focusRect && (
               <motion.div
                 className={cn(
-                  "absolute pointer-events-none z-20 border border-[#6B97FF]",
+                  'pointer-events-none absolute z-20 border border-accent-1',
                   shape.focusRing,
                 )}
                 initial={false}
@@ -341,7 +345,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
   },
 );
 
-TabsList.displayName = "TabsList";
+TabsList.displayName = 'TabsList';
 
 /* ─────────────────────── TabItem ─────────────────────── */
 
@@ -372,7 +376,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         ref={(node) => {
           (internalRef as React.MutableRefObject<HTMLElement | null>).current =
             node as HTMLButtonElement | null;
-          if (typeof ref === "function") ref(node as HTMLButtonElement);
+          if (typeof ref === 'function') ref(node as HTMLButtonElement);
           else if (ref)
             (ref as React.MutableRefObject<HTMLButtonElement | null>).current =
               node as HTMLButtonElement | null;
@@ -380,7 +384,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         value={value}
         data-proximity-index={_index}
         className={cn(
-          "relative z-10 flex items-center gap-2 px-3 py-1.5 cursor-pointer bg-transparent border-none outline-none",
+          'relative z-10 flex cursor-pointer items-center gap-2 border-none bg-transparent px-3 py-1.5 outline-none',
           className,
         )}
         {...props}
@@ -390,14 +394,14 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
             size={16}
             strokeWidth={isActive ? 2 : 1.5}
             className={cn(
-              "transition-[color,stroke-width] duration-80",
-              isActive ? "text-foreground" : "text-muted-foreground",
+              'transition-[color,stroke-width] duration-80',
+              isActive ? 'text-foreground' : 'text-muted-foreground',
             )}
           />
         )}
         <span className="inline-grid text-[13px] whitespace-nowrap">
           <span
-            className="col-start-1 row-start-1 invisible"
+            className="invisible col-start-1 row-start-1"
             style={{ fontVariationSettings: fontWeights.semibold }}
             aria-hidden="true"
           >
@@ -405,8 +409,8 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
           </span>
           <span
             className={cn(
-              "col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80",
-              isActive ? "text-foreground" : "text-muted-foreground",
+              'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
+              isActive ? 'text-foreground' : 'text-muted-foreground',
             )}
             style={{
               fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
@@ -420,7 +424,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
   },
 );
 
-TabItem.displayName = "TabItem";
+TabItem.displayName = 'TabItem';
 
 /* ─────────────────────── TabPanel ─────────────────────── */
 
@@ -429,10 +433,10 @@ interface TabPanelProps extends ComponentPropsWithoutRef<typeof TabsPrimitive.Pa
 }
 
 const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(({ className, ...props }, ref) => {
-  return <TabsPrimitive.Panel ref={ref} className={cn("outline-none", className)} {...props} />;
+  return <TabsPrimitive.Panel ref={ref} className={cn('outline-none', className)} {...props} />;
 });
 
-TabPanel.displayName = "TabPanel";
+TabPanel.displayName = 'TabPanel';
 
 export { Tabs, TabsList, TabItem, TabPanel };
 export type { TabsProps, TabsListProps, TabItemProps, TabPanelProps };

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useRef,
@@ -8,7 +8,7 @@ import {
   type Dispatch,
   type RefObject,
   type SetStateAction,
-} from "react";
+} from 'react';
 
 export interface ItemRect {
   top: number;
@@ -25,7 +25,7 @@ interface UseProximityHoverOptions {
    *   "xy" — 2-D grids: closest card across both rows AND columns,
    *          measured by Euclidean distance to each item's center
    */
-  axis?: "x" | "y" | "xy";
+  axis?: 'x' | 'y' | 'xy';
   /**
    * Makes an item invisible to hit-testing without unregistering it — for
    * rows that stay mounted while clipped away (a collapsed sub-tree).
@@ -77,7 +77,7 @@ export function useProximityHover<T extends HTMLElement>(
   containerRef: RefObject<T | null>,
   options: UseProximityHoverOptions = {},
 ): UseProximityHoverReturn {
-  const { axis = "y", isItemDisabled } = options;
+  const { axis = 'y', isItemDisabled } = options;
   const itemsRef = useRef(new Map<number, HTMLElement>());
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [itemRects, setItemRects] = useState<ItemRect[]>([]);
@@ -200,7 +200,7 @@ export function useProximityHover<T extends HTMLElement>(
   // ref points at a different element than the one being observed.
   const itemRoRef = useRef<ResizeObserver | null>(null);
   const getItemRo = useCallback(() => {
-    if (itemRoRef.current === null && typeof ResizeObserver !== "undefined") {
+    if (itemRoRef.current === null && typeof ResizeObserver !== 'undefined') {
       itemRoRef.current = new ResizeObserver(() => scheduleMeasurement(measurementAttempts));
     }
     return itemRoRef.current;
@@ -246,7 +246,7 @@ export function useProximityHover<T extends HTMLElement>(
         // pick can't tell which card the cursor is closest to. Resolve
         // by Euclidean distance to each item's center, and prefer any
         // item the cursor is actually inside (point-in-rect).
-        if (axis === "xy") {
+        if (axis === 'xy') {
           let closestIndex: number | null = null;
           let closestDistance = Infinity;
           let containingIndex: number | null = null;
@@ -298,7 +298,7 @@ export function useProximityHover<T extends HTMLElement>(
           return;
         }
 
-        const mousePos = axis === "x" ? mouseX : mouseY;
+        const mousePos = axis === 'x' ? mouseX : mouseY;
 
         let closestIndex: number | null = null;
         let closestDistance = Infinity;
@@ -306,15 +306,15 @@ export function useProximityHover<T extends HTMLElement>(
 
         const rects = itemRectsRef.current;
         // Convert content-relative rects to viewport coords using live scroll
-        const scrollOffset = axis === "x" ? container.scrollLeft : container.scrollTop;
-        const borderOffset = axis === "x" ? container.clientLeft : container.clientTop;
-        const containerEdge = axis === "x" ? containerRect.left : containerRect.top;
+        const scrollOffset = axis === 'x' ? container.scrollLeft : container.scrollTop;
+        const borderOffset = axis === 'x' ? container.clientLeft : container.clientTop;
+        const containerEdge = axis === 'x' ? containerRect.left : containerRect.top;
         // Item rects are layout values (offset*); the container's bounding rect
         // reflects any cumulative ancestor transform: scale. Compute the scale
         // factor so we can map layout coords into the same visual viewport
         // space the mouse cursor lives in.
-        const layoutSize = axis === "x" ? container.offsetWidth : container.offsetHeight;
-        const visualSize = axis === "x" ? containerRect.width : containerRect.height;
+        const layoutSize = axis === 'x' ? container.offsetWidth : container.offsetHeight;
+        const visualSize = axis === 'x' ? containerRect.width : containerRect.height;
         const scale = layoutSize > 0 ? visualSize / layoutSize : 1;
 
         for (let index = 0; index < rects.length; index++) {
@@ -323,9 +323,9 @@ export function useProximityHover<T extends HTMLElement>(
           const el = itemsRef.current.get(index);
           if (el && isItemDisabled?.(el)) continue;
 
-          const contentPos = axis === "x" ? r.left : r.top;
+          const contentPos = axis === 'x' ? r.left : r.top;
           const itemStart = containerEdge + (borderOffset + contentPos - scrollOffset) * scale;
-          const itemSize = (axis === "x" ? r.width : r.height) * scale;
+          const itemSize = (axis === 'x' ? r.width : r.height) * scale;
           const itemEnd = itemStart + itemSize;
 
           if (mousePos >= itemStart && mousePos <= itemEnd) {
@@ -366,7 +366,7 @@ export function useProximityHover<T extends HTMLElement>(
   // stay usable, and hiding overlays on every reflow would flicker them.
   useEffect(() => {
     const container = containerRef.current;
-    if (!container || typeof ResizeObserver === "undefined") return;
+    if (!container || typeof ResizeObserver === 'undefined') return;
     const ro = new ResizeObserver(() => scheduleMeasurement(measurementAttempts));
     ro.observe(container);
     return () => ro.disconnect();
