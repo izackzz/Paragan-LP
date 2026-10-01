@@ -71,7 +71,8 @@ export function HeroSection() {
         </h1>
         <p className="mx-auto mt-7 mb-8 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
           Gateway, checkout, sellers e gestão financeira em uma operação eficiente, configurada para
-          a sua marca. Para o cliente final, a experiência é inteiramente sua.
+          a sua marca. Seu cliente final nunca vê o nome Paragan: no checkout e no pagamento, ele vê
+          somente a sua marca.
         </p>
         <FluidGroup className="mx-auto flex w-fit flex-wrap justify-center gap-3" axis="x">
           <ActionLink>Desenhar minha operação</ActionLink>
@@ -80,7 +81,7 @@ export function HeroSection() {
           </ActionLink>
         </FluidGroup>
         <p className="mx-auto mt-5 max-w-65 text-xs leading-relaxed text-muted-foreground sm:max-w-none">
-          Sua marca lidera a jornada final. A Paragan é sua parceira B2B na infraestrutura.
+          Para a sua fintech, a Paragan é a parceira B2B que sustenta a infraestrutura.
         </p>
       </div>
       <div className="overflow-hidden rounded-t-2xl border border-border shadow-xl shadow-foreground/5 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
