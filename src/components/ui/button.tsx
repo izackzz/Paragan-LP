@@ -13,7 +13,7 @@ const buttonVariants = cva(
     'text-box-trim-both text-box-edge-cap-alphabetic',
     'transition-colors duration-80',
     'disabled:opacity-50 disabled:pointer-events-none',
-    'focus-visible:ring-2 focus-visible:ring-focus-ring',
+    'focus-visible:ring-2 focus-visible:ring-focus-ring rounded-xl',
   ],
   {
     variants: {
@@ -22,7 +22,8 @@ const buttonVariants = cva(
         secondary: 'text-background',
         tertiary: 'border border-foreground-4 text-foreground',
         platinum: 'text-platinum-foreground',
-        shiny: 'shiny-cta text-foreground',
+        'shiny-1': 'shiny-01 text-foreground',
+        'shiny-2': 'shiny-02 text-foreground',
       },
       size: {
         sm: 'h-8 px-3 text-sm gap-1',
@@ -99,7 +100,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const isIconOnly = size === 'icon' || size === 'icon-sm' || size === 'icon-lg';
     const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16;
     const shape = useShape();
-    const shiny = variant === 'shiny';
+    const shiny = variant === 'shiny-1' || variant === 'shiny-2';
     const bgClass = active
       ? activeBgVariants[variant ?? 'primary']
       : bgVariants[variant ?? 'primary'];
@@ -125,8 +126,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             iconLeft: !isIconOnly && !!LeadingIcon,
             iconRight: !isIconOnly && !!TrailingIcon,
           }),
-          shape.button,
-          shiny && 'h-auto rounded-full',
+          !shiny && shape.button,
+          shiny && 'h-auto',
           className,
         )}
         disabled={disabled || loading}
@@ -145,7 +146,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <span
           className={cn(
             'relative inline-flex items-center justify-center gap-2',
-            shiny && 'shiny-cta-content',
+            shiny && 'shiny-content',
           )}
         >
           {loading ? (
