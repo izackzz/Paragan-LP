@@ -140,6 +140,7 @@ export function ArtPlaceholder({
   priority = false,
   src,
   className,
+  frameClassName,
 }: {
   width: number;
   height: number;
@@ -148,6 +149,7 @@ export function ArtPlaceholder({
   priority?: boolean;
   src?: string;
   className?: string;
+  frameClassName?: string;
 }) {
   return (
     <figure
@@ -155,7 +157,7 @@ export function ArtPlaceholder({
     >
       {/* Placeholder temporário global. O briefing de composição e a direção da futura
         arte/print/Lottie ficam imediatamente antes de cada uso deste componente. */}
-      <Frame>
+      <Frame className={cn('shiny-border', frameClassName)}>
         <Image
           src={
             src ??
@@ -170,14 +172,6 @@ export function ArtPlaceholder({
           className="h-auto w-full"
         />
       </Frame>
-      <figcaption
-        className={cn(
-          micro,
-          'flex flex-wrap items-center gap-2 border-t border-border px-3 py-2.5 text-muted-foreground',
-        )}
-      >
-        DIREÇÃO VISUAL <span aria-hidden="true">/</span> {label}
-      </figcaption>
     </figure>
   );
 }

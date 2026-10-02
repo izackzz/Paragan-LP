@@ -328,12 +328,12 @@
 }
 
 @utility frame-outline {
-  border-radius: calc(var(--radius) * 1.4 + 0.375rem + 0.0625rem);
+  border-radius: calc(var(--radius) * 1.4 + 0.375rem + 1px);
 }
 
 /* Seven tiles: the lead spans two columns. Each shared edge has one owner. */
 .bento-group > [data-slot='card'] {
-  border-top: 0.0625rem solid var(--border);
+  border-top: 1px solid var(--border);
   border-radius: 0;
 }
 .bento-group > :nth-child(1 of [data-slot='card']) {
@@ -341,12 +341,12 @@
 }
 @media (width >= 48rem) {
   .bento-group > :nth-child(2n + 3 of [data-slot='card']) {
-    border-left: 0.0625rem solid var(--border);
+    border-left: 1px solid var(--border);
   }
 }
 @media (width >= 80rem) {
   .bento-group > [data-slot='card'] {
-    border-left: 0.0625rem solid var(--border);
+    border-left: 1px solid var(--border);
   }
   .bento-group > :nth-child(-n + 3 of [data-slot='card']) {
     border-top: 0;
@@ -417,7 +417,7 @@
   font-size: 1.125rem;
   line-height: 1.2;
   font-weight: 500;
-  border: 0.0625rem solid transparent;
+  border: 1px solid transparent;
   color: var(--shiny-cta-fg);
   background:
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
@@ -430,7 +430,7 @@
         transparent calc(var(--gradient-percent) * 4)
       )
       border-box;
-  box-shadow: inset 0 0 0 0.0625rem var(--shiny-cta-bg-subtle);
+  box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
   transition: var(--transition);
   transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
 }
@@ -460,7 +460,7 @@
 .shiny-01:active,
 .shiny-02:active,
 .shiny-secondary:active {
-  translate: 0 0.0625rem;
+  translate: 0 1px;
 }
 .shiny-01::before,
 .shiny-02::before,
@@ -649,7 +649,7 @@
   --shiny-border-duration: 3s;
   position: relative;
   isolation: isolate;
-  border: 0.0625rem solid transparent;
+  border: 1px solid transparent;
   background: var(--background) padding-box;
 }
 
@@ -658,7 +658,7 @@
   pointer-events: none;
   position: absolute;
   z-index: -1;
-  inset: -0.0625rem;
+  inset: -1px;
   border-radius: inherit;
   background: conic-gradient(
     from calc(var(--gradient-angle) - var(--shiny-border-angle-offset)),
@@ -672,7 +672,7 @@
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   mask-composite: exclude;
-  padding: 0.0625rem;
+  padding: 1px;
   animation:
     shiny-gradient-angle var(--shiny-border-duration) linear infinite,
     shiny-gradient-angle calc(var(--shiny-border-duration) / 0.4) linear infinite reverse;
