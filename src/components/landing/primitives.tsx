@@ -151,7 +151,7 @@ export function ArtPlaceholder({
 }) {
   return (
     <figure
-      className={cn('m-0 overflow-hidden rounded-lg border border-border bg-muted', className)}
+      className={cn('m-0 overflow-hidden rounded-lg border border-border p-1.5', className)}
     >
       {/* Placeholder temporário global. O briefing de composição e a direção da futura
         arte/print/Lottie ficam imediatamente antes de cada uso deste componente. */}

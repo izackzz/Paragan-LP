@@ -394,7 +394,8 @@
 }
 
 .shiny-01,
-.shiny-02 {
+.shiny-02,
+.shiny-secondary {
   --shiny-cta-bg: var(--background);
   --shiny-cta-bg-subtle: var(--border);
   --shiny-cta-fg: var(--foreground);
@@ -434,7 +435,8 @@
   transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
 }
 .shiny-01[data-size='sm'],
-.shiny-02[data-size='sm'] {
+.shiny-02[data-size='sm'],
+.shiny-secondary[data-size='sm'] {
   padding: 0.875rem 1.5rem;
   font-size: 0.875rem;
 }
@@ -442,8 +444,11 @@
 .shiny-01::after,
 .shiny-02::before,
 .shiny-02::after,
+.shiny-secondary::before,
+.shiny-secondary::after,
 .shiny-01 > .shiny-content::before,
-.shiny-02 > .shiny-content::before {
+.shiny-02 > .shiny-content::before,
+.shiny-secondary > .shiny-content::before {
   content: '';
   pointer-events: none;
   position: absolute;
@@ -453,11 +458,13 @@
   z-index: -1;
 }
 .shiny-01:active,
-.shiny-02:active {
+.shiny-02:active,
+.shiny-secondary:active {
   translate: 0 0.0625rem;
 }
 .shiny-01::before,
-.shiny-02::before {
+.shiny-02::before,
+.shiny-secondary::before {
   --size: calc(100% - var(--shadow-size) * 3);
   --position: 0.125rem;
   --space: calc(var(--position) * 2);
@@ -483,7 +490,8 @@
   );
 }
 .shiny-01::after,
-.shiny-02::after {
+.shiny-02::after,
+.shiny-secondary::after {
   --animation: shiny-shimmer linear infinite;
   width: 100%;
   aspect-ratio: 1;
@@ -494,11 +502,13 @@
   mask-image: radial-gradient(circle at bottom, transparent 40%, black);
 }
 .shiny-01 > .shiny-content,
-.shiny-02 > .shiny-content {
+.shiny-02 > .shiny-content,
+.shiny-secondary > .shiny-content {
   z-index: 1;
 }
 .shiny-01 > .shiny-content::before,
-.shiny-02 > .shiny-content::before {
+.shiny-02 > .shiny-content::before,
+.shiny-secondary > .shiny-content::before {
   --size: calc(100% + 1rem);
   width: var(--size);
   height: var(--size);
@@ -512,14 +522,16 @@
 .shiny-01::after,
 .shiny-02,
 .shiny-02::before,
-.shiny-02::after {
+.shiny-02::after,
+.shiny-secondary {
   animation:
     var(--animation) var(--duration),
     var(--animation) calc(var(--duration) / 0.4) reverse paused;
   animation-composition: add;
 }
 .shiny-01:is(:hover, :focus-visible),
-.shiny-02:is(:hover, :focus-visible) {
+.shiny-02:is(:hover, :focus-visible),
+.shiny-secondary:is(:hover, :focus-visible) {
   --gradient-percent: 20%;
   --gradient-angle-offset: 95deg;
   --gradient-shine: var(--shiny-cta-highlight-subtle);
@@ -529,11 +541,13 @@
 .shiny-01:is(:hover, :focus-visible)::after,
 .shiny-02:is(:hover, :focus-visible),
 .shiny-02:is(:hover, :focus-visible)::before,
-.shiny-02:is(:hover, :focus-visible)::after {
+.shiny-02:is(:hover, :focus-visible)::after,
+.shiny-secondary:is(:hover, :focus-visible) {
   animation-play-state: running;
 }
 .shiny-01:is(:hover, :focus-visible) > .shiny-content::before,
-.shiny-02:is(:hover, :focus-visible) > .shiny-content::before {
+.shiny-02:is(:hover, :focus-visible) > .shiny-content::before,
+.shiny-secondary:is(:hover, :focus-visible) > .shiny-content::before {
   opacity: 1;
 }
 @keyframes shiny-gradient-angle {
@@ -562,7 +576,11 @@
 .shiny-02:is(:disabled, [aria-disabled='true']),
 .shiny-02:is(:disabled, [aria-disabled='true'])::before,
 .shiny-02:is(:disabled, [aria-disabled='true'])::after,
-.shiny-02:is(:disabled, [aria-disabled='true']) > .shiny-content::before {
+.shiny-02:is(:disabled, [aria-disabled='true']) > .shiny-content::before,
+.shiny-secondary:is(:disabled, [aria-disabled='true']),
+.shiny-secondary:is(:disabled, [aria-disabled='true'])::before,
+.shiny-secondary:is(:disabled, [aria-disabled='true'])::after,
+.shiny-secondary:is(:disabled, [aria-disabled='true']) > .shiny-content::before {
   animation-play-state: paused;
 }
 .button-spinner-path {
@@ -579,8 +597,84 @@
   .shiny-02,
   .shiny-02::before,
   .shiny-02::after,
-  .shiny-02 > .shiny-content::before {
+  .shiny-02 > .shiny-content::before,
+  .shiny-secondary,
+  .shiny-secondary::before,
+  .shiny-secondary::after,
+  .shiny-secondary > .shiny-content::before {
     animation: none;
     transition: none;
   }
+}
+
+.shiny-secondary {
+  background:
+    radial-gradient(
+        circle at 0.125rem 0.125rem,
+        var(--foreground) 0.03125rem,
+        transparent 0
+      )
+      0 0 / 0.25rem 0.25rem padding-box,
+    linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
+    conic-gradient(
+        from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+        transparent,
+        var(--shiny-cta-highlight) var(--gradient-percent),
+        var(--gradient-shine) calc(var(--gradient-percent) * 2),
+        var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+        transparent calc(var(--gradient-percent) * 4)
+      )
+      border-box;
+}
+
+.shiny-secondary::before,
+.shiny-secondary::after,
+.shiny-secondary > .shiny-content::before {
+  animation: none;
+}
+
+.shiny-secondary::before {
+  display: none;
+}
+
+.shiny-secondary::after {
+  display: none;
+}
+
+.shiny-border {
+  --shiny-border-highlight: var(--primary);
+  --shiny-border-shine: var(--foreground);
+  --shiny-border-angle-offset: 0deg;
+  --shiny-border-percent: 5%;
+  --shiny-border-duration: 3s;
+  position: relative;
+  isolation: isolate;
+  border: 0.0625rem solid transparent;
+  background: var(--background) padding-box;
+}
+
+.shiny-border::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  inset: -0.0625rem;
+  border-radius: inherit;
+  background: conic-gradient(
+    from calc(var(--gradient-angle) - var(--shiny-border-angle-offset)),
+    transparent,
+    var(--shiny-border-highlight) var(--shiny-border-percent),
+    var(--shiny-border-shine) calc(var(--shiny-border-percent) * 2),
+    var(--shiny-border-highlight) calc(var(--shiny-border-percent) * 3),
+    transparent calc(var(--shiny-border-percent) * 4)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 0.0625rem;
+  animation:
+    shiny-gradient-angle var(--shiny-border-duration) linear infinite,
+    shiny-gradient-angle calc(var(--shiny-border-duration) / 0.4) linear infinite reverse;
+  animation-composition: add;
 }
