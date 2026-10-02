@@ -22,6 +22,7 @@ const buttonVariants = cva(
         secondary: 'text-background',
         tertiary: 'border border-foreground-4 text-foreground',
         platinum: 'text-platinum-foreground',
+        shiny: 'shiny-cta text-foreground',
       },
       size: {
         sm: 'h-8 px-3 text-sm gap-1',
@@ -97,6 +98,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const isIconOnly = size === 'icon' || size === 'icon-sm' || size === 'icon-lg';
     const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16;
     const shape = useShape();
+    const shiny = variant === 'shiny';
     const bgClass = active
       ? activeBgVariants[variant ?? 'primary']
       : bgVariants[variant ?? 'primary'];
@@ -123,20 +125,29 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             iconRight: !isIconOnly && !!TrailingIcon,
           }),
           shape.button,
+          shiny && 'h-auto rounded-full',
           className,
         )}
         disabled={disabled || loading}
+        data-size={size ?? 'md'}
         style={style}
         {...props}
       >
+        {!shiny && (
+          <span
+            aria-hidden
+            className={cn(
+              'absolute inset-0 rounded-inherit transition-transform duration-80 group-active:scale-95',
+              bgClass,
+            )}
+          />
+        )}
         <span
-          aria-hidden
           className={cn(
-            'absolute inset-0 rounded-inherit transition-transform duration-80 group-active:scale-95',
-            bgClass,
+            'relative inline-flex items-center justify-center gap-2',
+            shiny && 'shiny-cta-content',
           )}
-        />
-        <span className="relative inline-flex items-center justify-center gap-2">
+        >
           {loading ? (
             <>
               <span className="flex items-center justify-center gap-2 opacity-0">

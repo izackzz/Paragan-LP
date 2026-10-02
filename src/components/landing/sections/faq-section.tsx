@@ -54,7 +54,7 @@ export function FaqSection() {
         <AccordionGroup
           type="single"
           defaultValue="faq-0"
-          className="grid w-full max-w-full gap-2.5 border-t border-border pt-5 md:border-t-0 md:py-8 md:pr-7"
+          className="grid w-full max-w-full gap-2.5 border-t border-border p-6 pt-5 md:border-t-0"
         >
           {questions.map(([question, answer], index) => (
             <AccordionItem
