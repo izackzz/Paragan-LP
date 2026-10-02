@@ -54,25 +54,22 @@ export function HeroSection() {
           id="hero-title"
           className="max-w-4xl text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl lg:text-6xl"
         >
-          Sua fintech merece crescer.
+          Seu próprio gateway de pagamentos.
           <br />
-          <span className="text-foreground-3">Sem os limites da sua plataforma.</span>
+          <span className="text-foreground-3">Tecnologia pronta. Marca própria.</span>
         </h1>
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          Gateway, checkout e gestão financeira em uma plataforma all-in-one com sua marca.
+          Lance uma operação completa com sua marca, seu domínio e sua estratégia comercial — sem desenvolver uma infraestrutura do zero.
         </p>
         <div className="flex flex-row gap-2">
-          <Button variant="shiny-1">FALAR COM UM ESPECIALISTA</Button>
-          <Button variant="shiny-2">FALAR COM UM ESPECIALISTA</Button>
-          <Button variant="shiny-secondary">FALAR COM UM ESPECIALISTA</Button>
+          <Button size='lg' variant="shiny-2">FALAR COM UM ESPECIALISTA</Button>
         </div>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
-          Plataforma no ar em 1 dia <span className="px-2 text-foreground-4">/</span> Pronta para
-          operação regularizada em até 7 dias
+          Plataforma no ar no 1º dia <span className="px-2 text-foreground-4">/</span> Pronta para
+          operação em até 7 dias.
         </p>
         <p className="mt-2 max-w-xl text-xs leading-relaxed text-muted-foreground">
-          Ativação sujeita à documentação e aprovação dos parceiros. Para o cliente final, só a sua
-          marca aparece.
+          Gateway, checkout, split, gestão financeira e conciliação em uma única plataforma pronta para receber a identidade do seu negócio.
         </p>
       </div>
       <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
