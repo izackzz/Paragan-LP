@@ -51,7 +51,9 @@ const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  extends
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'style'>,
+    VariantProps<typeof buttonVariants> {
   /** When true, the given single React-element child becomes the rendered element (slot-style). */
   asChild?: boolean;
   loading?: boolean;
@@ -90,7 +92,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       active = false,
       disabled,
       children: child,
-      style,
       ...props
     },
     ref,
@@ -130,7 +131,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         disabled={disabled || loading}
         data-size={size ?? 'md'}
-        style={style}
         {...props}
       >
         {!shiny && (
@@ -163,11 +163,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     strokeWidth="1.125"
                     strokeLinecap="round"
                     pathLength="100"
-                    style={{
-                      strokeDasharray: '15 85',
-                      animation:
-                        'spinner-move 2s linear infinite, spinner-dash 4s ease-in-out infinite',
-                    }}
+                    className="button-spinner-path"
                   />
                 </svg>
               </span>

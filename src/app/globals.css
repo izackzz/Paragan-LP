@@ -540,6 +540,12 @@
 .shiny-cta:is(:disabled, [aria-disabled='true']) > .shiny-cta-content::before {
   animation-play-state: paused;
 }
+.button-spinner-path {
+  stroke-dasharray: 15 85;
+  animation:
+    spinner-move 2s linear infinite,
+    spinner-dash 4s ease-in-out infinite;
+}
 @media (prefers-reduced-motion: reduce) {
   .shiny-cta,
   .shiny-cta::before,

@@ -14,7 +14,6 @@ import {
   type ReactNode,
 } from 'react';
 import { cn } from '@/lib/utils';
-import { fontWeights } from '@/lib/font-weight';
 import { useShape } from '@/lib/shape-context';
 import { SizeProvider, useSize, type SizeVariant } from '@/lib/size-context';
 import { type IconComponent } from '@/lib/icon-context';
@@ -421,7 +420,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
               isInline &&
               (dismissOnHover
                 ? '[&:focus-within_[data-slot=card-header]]:pr-10 [&:hover_[data-slot=card-header]]:pr-10'
-                : '[&_[data-slot=card-header]]:pr-10'),
+                : '**:data-[slot=card-header]:pr-10'),
             tileShape,
             disabled && 'pointer-events-none opacity-50',
             className,
@@ -704,7 +703,6 @@ function CardMedia({ logo, logoAlt, icon: Icon, size = 22, className }: CardMedi
               width={size}
               height={size}
               className={cn('object-contain', shape.bg)}
-              style={{ width: size, height: size }}
             />
           </span>
         ))}
@@ -778,11 +776,10 @@ const CardEyebrow = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>
         ref={ref}
         data-slot="card-eyebrow"
         className={cn(
+          'font-semibold tracking-wide text-muted-foreground uppercase',
           compact ? 'text-caption' : 'text-xs',
-          'tracking-wide text-muted-foreground uppercase',
           className,
         )}
-        style={{ fontVariationSettings: fontWeights.semibold }}
         {...props}
       />
     );
@@ -814,12 +811,7 @@ function CardFeature({ icon: Icon, title, description }: CardFeatureProps) {
         />
       )}
       <div className="flex min-w-0 flex-col gap-0.5">
-        <span
-          className={cn('text-foreground [text-box:trim-both_cap_alphabetic]', sizeClasses.text)}
-          style={{ fontVariationSettings: fontWeights.medium }}
-        >
-          {title}
-        </span>
+        <span className={cn('font-medium text-foreground', sizeClasses.text)}>{title}</span>
         {description && (
           <span
             className={cn(
@@ -902,7 +894,7 @@ function CardButton({
   const classes = cn(
     'group/action relative z-30 inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 px-2.5 outline-none',
     compact ? 'text-caption' : 'text-xs',
-    'transition-colors duration-80',
+    'font-medium transition-colors duration-80',
     'focus-visible:ring-2 focus-visible:ring-focus-ring',
     'disabled:pointer-events-none disabled:opacity-50',
     shape.button,
@@ -917,7 +909,6 @@ function CardButton({
         target={external ? '_blank' : undefined}
         rel={external ? 'noopener noreferrer' : undefined}
         className={classes}
-        style={{ fontVariationSettings: fontWeights.medium }}
       >
         {inner}
       </a>
@@ -925,13 +916,7 @@ function CardButton({
   }
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className={classes}
-      style={{ fontVariationSettings: fontWeights.medium }}
-    >
+    <button type="button" onClick={onClick} disabled={disabled} className={classes}>
       {inner}
     </button>
   );
