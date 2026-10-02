@@ -16,7 +16,6 @@ import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion';
 import { cn } from '@/lib/utils';
 import { icons } from '@/lib/icon-map';
 import { springs } from '@/lib/springs';
-import { fontWeights } from '@/lib/font-weight';
 import { useFluidHover as useProximityHover } from '@/hooks/use-fluid-hover';
 import { useShape } from '@/lib/shape-context';
 
@@ -642,26 +641,15 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
           )}
           {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
         >
-          {/* Label with dual-layer text */}
-          <span className="inline-grid flex-1 text-left text-control">
-            <span
-              className="invisible col-start-1 row-start-1"
-              style={{ fontVariationSettings: fontWeights.semibold }}
-              aria-hidden="true"
-            >
-              {children}
-            </span>
-            <span
-              className={cn(
-                'col-start-1 row-start-1 transition-[color,font-variation-settings] duration-80',
-                isOpen || isActive ? 'text-foreground' : 'text-muted-foreground',
-              )}
-              style={{
-                fontVariationSettings: isOpen ? fontWeights.semibold : fontWeights.normal,
-              }}
-            >
-              {children}
-            </span>
+          <span
+            className={cn(
+              'min-w-0 flex-1 text-left text-control transition-colors duration-80',
+              isOpen || isActive
+                ? 'font-semibold text-foreground'
+                : 'font-normal text-muted-foreground',
+            )}
+          >
+            {children}
           </span>
 
           {/* Chevron */}

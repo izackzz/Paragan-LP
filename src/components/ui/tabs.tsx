@@ -20,7 +20,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { IconComponent } from '@/lib/icon-context';
 import { cn } from '@/lib/utils';
 import { springs } from '@/lib/springs';
-import { fontWeights } from '@/lib/font-weight';
 import { useSurface } from '@/lib/surface-context';
 import { surfaceClasses } from '@/lib/surface-classes';
 import { useFluidHover as useProximityHover } from '@/hooks/use-fluid-hover';
@@ -395,9 +394,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         {eyebrow || description ? (
           <>
             <span className="flex w-full min-w-0 items-center justify-between gap-2">
-              <span className="text-xs leading-relaxed text-muted-foreground">
-                {description ?? eyebrow}
-              </span>
+              <span className="text-caption leading-relaxed text-foreground-4">{eyebrow}</span>
               {Icon && (
                 <Icon
                   size={18}
@@ -409,19 +406,20 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
                 />
               )}
             </span>
-            <span className="block w-full min-w-0 text-left text-sm font-medium sm:text-base">
-              <span
-                className={cn(
-                  'block transition-colors duration-80',
-                  isActive ? 'text-foreground' : 'text-foreground-2',
-                )}
-                style={{
-                  fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
-                }}
-              >
-                {label}
-              </span>
+            <span
+              className={cn(
+                'block w-full min-w-0 text-left text-sm transition-colors duration-80 sm:text-base',
+                isSelected ? 'font-semibold' : 'font-normal',
+                isActive ? 'text-foreground' : 'text-foreground-2',
+              )}
+            >
+              {label}
             </span>
+            {description && (
+              <span className="w-full text-left text-xs leading-relaxed text-muted-foreground">
+                {description}
+              </span>
+            )}
           </>
         ) : (
           <>
@@ -439,11 +437,9 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
               <span
                 className={cn(
                   'block transition-colors duration-80',
+                  isSelected ? 'font-semibold' : 'font-normal',
                   isActive ? 'text-foreground' : 'text-muted-foreground',
                 )}
-                style={{
-                  fontVariationSettings: isSelected ? fontWeights.semibold : fontWeights.normal,
-                }}
               >
                 {label}
               </span>
