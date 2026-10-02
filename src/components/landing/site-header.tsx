@@ -1,71 +1,140 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Brand, ActionLink } from './primitives';
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+import { Brand } from './primitives';
 import { FluidGroup } from './fluid-group';
 import { icons } from '@/lib/icon-map';
+import { frame } from './styles';
 import { cn } from '@/lib/utils';
 
-const links = [
-  { href: '#plataforma', label: 'Plataforma' },
-  { href: '#checkout', label: 'Checkout' },
-  { href: '#integracoes', label: 'Integrações' },
+const menus = [
+  {
+    title: 'Plataforma',
+    intro: 'Uma operação completa, com a sua marca.',
+    items: [
+      ['Gateway white label', 'Identidade e condições comerciais da sua operação.'],
+      ['Checkout', 'Da oferta à experiência de pagamento.'],
+      ['Gestão de sellers', 'Sua base, seus papéis e suas permissões.'],
+      ['Financeiro', 'Receitas, custos, saldos e reservas.'],
+      ['Multiadquirência', 'Processadores e regras de roteamento.'],
+      ['Assinaturas', 'Ofertas e cobranças recorrentes.'],
+    ],
+  },
+  {
+    title: 'Soluções',
+    intro: 'Infraestrutura para o seu modelo de negócio.',
+    items: [
+      ['Lançar minha fintech', 'Transforme pagamentos em um negócio próprio.'],
+      ['Migrar minha operação', 'Evolua além dos limites da plataforma atual.'],
+      ['Plataformas e marketplaces', 'Conecte participantes, produtos e pagamentos.'],
+      ['Produtos digitais', 'Venda e entrega em uma experiência integrada.'],
+    ],
+  },
+  {
+    title: 'Desenvolvedores',
+    intro: 'Conecte seu ecossistema à Paragan.',
+    items: [
+      ['Documentação', 'Conceitos e guias de implementação.'],
+      ['Referência da API', 'Recursos e contratos de integração.'],
+      ['Webhooks', 'Eventos que acompanham sua operação.'],
+      ['Integrações', 'Conexões com os seus sistemas.'],
+    ],
+  },
+  {
+    title: 'Empresa',
+    intro: 'Conheça quem está nos bastidores.',
+    items: [
+      ['Sobre a Paragan', 'Um modelo de excelência para fintechs.'],
+      ['Conteúdos', 'Perspectivas sobre operações de pagamentos.'],
+      ['Parceiros', 'Construa novas possibilidades conosco.'],
+      ['Fale com a equipe', 'Vamos entender seu próximo passo.'],
+    ],
+  },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 32);
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    return () => window.removeEventListener('scroll', update);
-  }, []);
-  const Menu = open ? icons.x : icons.menu;
+  const MenuIcon = open ? icons.x : icons.menu;
   return (
-    <header className="pointer-events-none sticky top-3 z-50 px-3 md:px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur-xs">
       <div
-        className={cn(
-          'pointer-events-auto mx-auto border border-border bg-background/85 backdrop-blur-xs transition-all duration-300 motion-reduce:transition-none',
-          scrolled ? 'w-fit max-w-full rounded-2xl' : 'w-full max-w-7xl rounded-md',
-        )}
+        className={cn(frame, 'px-5 md:px-7 xl:px-10')}
         onKeyDown={(event) => {
-          if (event.key === 'Escape') {
+          if (event.key === 'Escape' && open) {
             setOpen(false);
             document.getElementById('navigation-toggle')?.focus();
           }
         }}
       >
-        <div className="flex min-h-20 items-center justify-between gap-4 px-4 py-3 md:px-6">
+        <div className="flex min-h-20 items-center justify-between gap-4">
           <Brand />
-          <nav aria-label="Navegação principal" className="hidden items-center gap-2 lg:flex">
-            <FluidGroup axis="x" className="flex items-center gap-1">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block rounded-md px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
+          <NavigationMenu
+            viewport={false}
+            aria-label="Navegação principal"
+            className="hidden xl:flex"
+          >
+            <NavigationMenuList>
+              {menus.map((menu) => (
+                <NavigationMenuItem key={menu.title}>
+                  <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <p className="border-b border-border px-3 pt-2 pb-4 text-sm text-muted-foreground">
+                      {menu.intro}
+                    </p>
+                    <FluidGroup className="grid grid-cols-2 gap-1 pt-2">
+                      {menu.items.map(([title, description]) => (
+                        <NavigationMenuLink key={title} asChild>
+                          <Link href="#">
+                            <span className="font-medium">{title}</span>
+                            <span className="text-xs leading-relaxed text-muted-foreground">
+                              {description}
+                            </span>
+                          </Link>
+                        </NavigationMenuLink>
+                      ))}
+                    </FluidGroup>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
               ))}
-            </FluidGroup>
-          </nav>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle())}>
+                  <Link href="#">Planos</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
           <div className="flex items-center gap-2">
-            <ActionLink className="hidden text-sm sm:inline-flex">Lançar minha fintech</ActionLink>
+            <Link
+              href="#"
+              className="hidden rounded-md px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground sm:block"
+            >
+              Entrar
+            </Link>
+            <Button asChild variant="shiny" size="sm" className={cn('hidden sm:inline-flex')}>
+              <Link href="#">Criar minha fintech</Link>
+            </Button>
             <Button
               id="navigation-toggle"
-              variant="secondary"
+              variant="tertiary"
               size="icon-lg"
-              className={cn('min-h-11 min-w-11 lg:hidden')}
+              className={cn('min-h-11 min-w-11 xl:hidden')}
               aria-label={open ? 'Fechar navegação' : 'Abrir navegação'}
               aria-expanded={open}
               aria-controls="mobile-navigation"
               onClick={() => setOpen(!open)}
             >
-              <Menu size={22} />
+              <MenuIcon size={22} />
             </Button>
           </div>
         </div>
@@ -73,20 +142,51 @@ export function SiteHeader() {
           <nav
             id="mobile-navigation"
             aria-label="Navegação mobile"
-            className="flex flex-col gap-2 border-t border-border p-4 lg:hidden"
+            className="max-h-dvh overflow-y-auto border-t border-border pb-24 xl:hidden"
           >
-            <FluidGroup axis="y">
-              {[...links, { href: '#contato', label: 'Lançar minha fintech' }].map((link) => (
+            {menus.map((menu) => (
+              <details key={menu.title} className="group/mobile-menu border-b border-border py-2">
+                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-md px-3 text-sm font-medium marker:hidden">
+                  {menu.title}
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-open/mobile-menu:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <FluidGroup axis="y" className="pb-3">
+                  {menu.items.map(([title, description]) => (
+                    <Link
+                      key={title}
+                      href="#"
+                      onClick={() => setOpen(false)}
+                      className="flex flex-col gap-1 rounded-md px-3 py-3 text-sm"
+                    >
+                      <span>{title}</span>
+                      <span className="text-xs text-muted-foreground">{description}</span>
+                    </Link>
+                  ))}
+                </FluidGroup>
+              </details>
+            ))}
+            <FluidGroup axis="y" className="py-3">
+              {['Planos', 'Entrar'].map((title) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  key={title}
+                  href="#"
                   onClick={() => setOpen(false)}
-                  className="block rounded-md px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="block rounded-md px-3 py-3 text-sm"
                 >
-                  {link.label}
+                  {title}
                 </Link>
               ))}
             </FluidGroup>
+            <Button asChild variant="shiny" className={cn('w-full')}>
+              <Link href="#" onClick={() => setOpen(false)}>
+                Criar minha fintech
+              </Link>
+            </Button>
           </nav>
         )}
       </div>
