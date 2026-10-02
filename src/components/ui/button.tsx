@@ -24,6 +24,7 @@ const buttonVariants = cva(
         platinum: 'text-platinum-foreground',
         'shiny-1': 'shiny-01 text-foreground',
         'shiny-2': 'shiny-02 text-foreground',
+        'shiny-secondary': 'shiny-secondary text-foreground',
       },
       size: {
         sm: 'h-8 px-3 text-sm gap-1',
@@ -100,7 +101,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const isIconOnly = size === 'icon' || size === 'icon-sm' || size === 'icon-lg';
     const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16;
     const shape = useShape();
-    const shiny = variant === 'shiny-1' || variant === 'shiny-2';
+    const shiny =
+      variant === 'shiny-1' || variant === 'shiny-2' || variant === 'shiny-secondary';
     const bgClass = active
       ? activeBgVariants[variant ?? 'primary']
       : bgVariants[variant ?? 'primary'];
