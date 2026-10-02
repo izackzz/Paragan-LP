@@ -509,7 +509,6 @@
   box-shadow: inset 0 -1ex 2rem 0.25rem var(--shiny-cta-highlight);
   opacity: 0;
   transition: opacity var(--transition);
-  animation: calc(var(--duration) * 1.5) shiny-breathe linear infinite;
 }
 .shiny-01,
 .shiny-01::before,
