@@ -26,9 +26,9 @@ const buttonVariants = cva(
           'shiny-secondary overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
       },
       size: {
-        sm: 'h-8 px-3 text-sm gap-1',
-        md: 'h-10 px-4 text-base gap-1.5',
-        lg: 'h-11 px-5 text-lg gap-2',
+        sm: 'px-4 py-3 text-sm gap-1',
+        md: 'px-5 py-3 text-base gap-1.5',
+        lg: 'px-8 py-4 text-lg gap-2',
         'icon-sm': 'h-8 w-8 p-0 [&_svg]:h-3.5 [&_svg]:w-3.5',
         icon: 'h-9 w-9 p-0 [&_svg]:h-4 [&_svg]:w-4',
         'icon-lg': 'h-10 w-10 p-0 [&_svg]:h-5 [&_svg]:w-5',

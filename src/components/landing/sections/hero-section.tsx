@@ -48,11 +48,11 @@ export function HeroSection() {
         'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
       )}
     >
-      <div className="max-w-3xl pt-16 pb-12 md:pt-24 md:pb-16">
+      <div className="max-w-3xl pt-16 pb-12 md:pt-8 md:pb-8">
         <p className={eyebrow}>Para quem quer lançar ou evoluir sua fintech</p>
         <h1
           id="hero-title"
-          className="max-w-4xl text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl lg:text-6xl"
+          className="max-w-4xl text-3xl font-medium tracking-tight text-balance lg:text-4xl/10"
         >
           Seu próprio gateway de pagamentos.
           <br />
@@ -62,7 +62,7 @@ export function HeroSection() {
           Lance uma operação completa com sua marca, seu domínio e sua estratégia comercial — sem desenvolver uma infraestrutura do zero.
         </p>
         <div className="flex flex-row gap-2">
-          <Button size='lg' variant="shiny-2">FALAR COM UM ESPECIALISTA</Button>
+          <Button size='lg' className='max-sm:flex flex-row flex-1 items-center' variant="shiny-2">FALAR COM UM ESPECIALISTA</Button>
         </div>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
           Plataforma no ar no 1º dia <span className="px-2 text-foreground-4">/</span> Pronta para
