@@ -1,11 +1,12 @@
 'use client';
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
-import { ArtPlaceholder, ActionLink } from '../primitives';
+import { ArtPlaceholder } from '../primitives';
 import { FluidGroup } from '../fluid-group';
 import { frame, micro, eyebrow } from '../styles';
 import { cn } from '@/lib/utils';
 import { icons } from '@/lib/icon-map';
 import { Frame } from '@/components/ui/frame';
+import { Button } from '@/components/ui/button';
 
 const previews = [
   {
@@ -47,10 +48,6 @@ export function HeroSection() {
         'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
       )}
     >
-      <div className={cn(micro, 'flex justify-between pt-7 text-muted-foreground')}>
-        <span>[ SUA MARCA ]</span>
-        <span>[ SUAS REGRAS ]</span>
-      </div>
       <div className="max-w-3xl pt-16 pb-12 md:pt-24 md:pb-16">
         <p className={eyebrow}>Para quem quer lançar ou evoluir sua fintech</p>
         <h1
@@ -64,7 +61,7 @@ export function HeroSection() {
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
           Gateway, checkout e gestão financeira em uma plataforma all-in-one com sua marca.
         </p>
-        <ActionLink>Quero minha fintech</ActionLink>
+        <Button variant="shiny-2">ENTRAR EM CONTATO</Button>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
           Plataforma no ar em 1 dia <span className="px-2 text-foreground-4">/</span> Pronta para
           operação regularizada em até 7 dias
@@ -109,6 +106,8 @@ export function HeroSection() {
                 height={860}
                 label={preview.image}
                 priority={preview.value === 'gateway'}
+                className='p-1.5'
+                frameClassName='shiny-border'
               />
               <p className="flex justify-between gap-4 bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
