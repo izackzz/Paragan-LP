@@ -61,7 +61,12 @@ export function HeroSection() {
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
           Gateway, checkout e gestão financeira em uma plataforma all-in-one com sua marca.
         </p>
+        <div className='flex flex-row gap-2'>
+
+        <Button variant="shiny-1">ENTRAR EM CONTATO</Button>
         <Button variant="shiny-2">ENTRAR EM CONTATO</Button>
+        <Button variant="shiny-secondary">ENTRAR EM CONTATO</Button>
+        </div>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
           Plataforma no ar em 1 dia <span className="px-2 text-foreground-4">/</span> Pronta para
           operação regularizada em até 7 dias
