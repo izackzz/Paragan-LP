@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="896" height="504" viewBox="0 0 896 504">
+  <defs>
+    <pattern id="row-0" x="-7.5" y="-7.5" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="15" height="15" fill="var(--foreground)"/></pattern>
+    <pattern id="row-1" x="-7.5" y="12.5" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="15" height="15" fill="var(--foreground)"/></pattern>
+    <pattern id="row-2" x="-7.3125" y="32.6875" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="14.625" height="14.625" fill="var(--foreground)"/></pattern>
+    <pattern id="row-3" x="-7" y="53" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="var(--foreground)"/></pattern>
+    <pattern id="row-4" x="-6.6875" y="73.3125" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="13.375" height="13.375" fill="var(--foreground)"/></pattern>
+    <pattern id="row-5" x="-6.375" y="93.625" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="12.75" height="12.75" fill="var(--foreground)"/></pattern>
+    <pattern id="row-6" x="-6.0625" y="113.9375" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="12.125" height="12.125" fill="var(--foreground)"/></pattern>
+    <pattern id="row-7" x="-5.75" y="134.25" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="11.5" height="11.5" fill="var(--foreground)"/></pattern>
+    <pattern id="row-8" x="-5.4375" y="154.5625" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="10.875" height="10.875" fill="var(--foreground)"/></pattern>
+    <pattern id="row-9" x="-5.125" y="174.875" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="10.25" height="10.25" fill="var(--foreground)"/></pattern>
+    <pattern id="row-10" x="-4.8125" y="195.1875" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="9.625" height="9.625" fill="var(--foreground)"/></pattern>
+    <pattern id="row-11" x="-4.5" y="215.5" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="var(--foreground)"/></pattern>
+    <pattern id="row-12" x="-4.1875" y="235.8125" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="8.375" height="8.375" fill="var(--foreground)"/></pattern>
+    <pattern id="row-13" x="-3.875" y="256.125" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="7.75" height="7.75" fill="var(--foreground)"/></pattern>
+    <pattern id="row-14" x="-3.5625" y="276.4375" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="7.125" height="7.125" fill="var(--foreground)"/></pattern>
+    <pattern id="row-15" x="-3.25" y="296.75" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="6.5" height="6.5" fill="var(--foreground)"/></pattern>
+    <pattern id="row-16" x="-2.9375" y="317.0625" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="5.875" height="5.875" fill="var(--foreground)"/></pattern>
+    <pattern id="row-17" x="-2.625" y="337.375" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="5.25" height="5.25" fill="var(--foreground)"/></pattern>
+    <pattern id="row-18" x="-2.3125" y="357.6875" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="4.625" height="4.625" fill="var(--foreground)"/></pattern>
+    <pattern id="row-19" x="-2" y="378" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="var(--foreground)"/></pattern>
+    <pattern id="row-20" x="-1.6875" y="398.3125" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="3.375" height="3.375" fill="var(--foreground)"/></pattern>
+    <pattern id="row-21" x="-1.375" y="418.625" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="2.75" height="2.75" fill="var(--foreground)"/></pattern>
+    <pattern id="row-22" x="-1.0625" y="438.9375" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="2.125" height="2.125" fill="var(--foreground)"/></pattern>
+    <pattern id="row-23" x="-0.75" y="459.25" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="1.5" height="1.5" fill="var(--foreground)"/></pattern>
+    <pattern id="row-24" x="-0.5" y="479.5" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="1" height="1" fill="var(--foreground)"/></pattern>
+    <pattern id="row-25" x="-0.5" y="499.5" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="1" height="1" fill="var(--foreground)"/></pattern>
+  </defs>
+  <g id="texture">
+    <rect class="texture-row" y="-7.5" width="896" height="20" fill="url(#row-0)" opacity="0.15"/>
+    <rect class="texture-row" y="12.5" width="896" height="20" fill="url(#row-1)" opacity="0.15"/>
+    <rect class="texture-row" y="32.6875" width="896" height="20" fill="url(#row-2)" opacity="0.15"/>
+    <rect class="texture-row" y="53" width="896" height="20" fill="url(#row-3)" opacity="0.15"/>
+    <rect class="texture-row" y="73.3125" width="896" height="20" fill="url(#row-4)" opacity="0.15"/>
+    <rect class="texture-row" y="93.625" width="896" height="20" fill="url(#row-5)" opacity="0.15"/>
+    <rect class="texture-row" y="113.9375" width="896" height="20" fill="url(#row-6)" opacity="0.15"/>
+    <rect class="texture-row" y="134.25" width="896" height="20" fill="url(#row-7)" opacity="0.15"/>
+    <rect class="texture-row" y="154.5625" width="896" height="20" fill="url(#row-8)" opacity="0.15"/>
+    <rect class="texture-row" y="174.875" width="896" height="20" fill="url(#row-9)" opacity="0.15"/>
+    <rect class="texture-row" y="195.1875" width="896" height="20" fill="url(#row-10)" opacity="0.15"/>
+    <rect class="texture-row" y="215.5" width="896" height="20" fill="url(#row-11)" opacity="0.15"/>
+    <rect class="texture-row" y="235.8125" width="896" height="20" fill="url(#row-12)" opacity="0.15"/>
+    <rect class="texture-row" y="256.125" width="896" height="20" fill="url(#row-13)" opacity="0.15"/>
+    <rect class="texture-row" y="276.4375" width="896" height="20" fill="url(#row-14)" opacity="0.15"/>
+    <rect class="texture-row" y="296.75" width="896" height="20" fill="url(#row-15)" opacity="0.15"/>
+    <rect class="texture-row" y="317.0625" width="896" height="20" fill="url(#row-16)" opacity="0.15"/>
+    <rect class="texture-row" y="337.375" width="896" height="20" fill="url(#row-17)" opacity="0.15"/>
+    <rect class="texture-row" y="357.6875" width="896" height="20" fill="url(#row-18)" opacity="0.15"/>
+    <rect class="texture-row" y="378" width="896" height="20" fill="url(#row-19)" opacity="0.15"/>
+    <rect class="texture-row" y="398.3125" width="896" height="20" fill="url(#row-20)" opacity="0.15"/>
+    <rect class="texture-row" y="418.625" width="896" height="20" fill="url(#row-21)" opacity="0.15"/>
+    <rect class="texture-row" y="438.9375" width="896" height="20" fill="url(#row-22)" opacity="0.15"/>
+    <rect class="texture-row" y="459.25" width="896" height="20" fill="url(#row-23)" opacity="0.15"/>
+    <rect class="texture-row" y="479.5" width="896" height="20" fill="url(#row-24)" opacity="0.15"/>
+    <rect class="texture-row" y="499.5" width="896" height="20" fill="url(#row-25)" opacity="0.15"/>
+  </g>
+  <script>
+    document.querySelectorAll(".texture-row").forEach((row) => {
+      row.setAttribute("opacity", (0.1 + Math.random() * 0.1).toFixed(2));
+    });
+  </script>
+</svg>

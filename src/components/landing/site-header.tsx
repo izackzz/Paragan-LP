@@ -121,7 +121,7 @@ export function SiteHeader() {
             >
               Entrar
             </Link>
-            <Button asChild variant="shiny" size="sm" className={cn('hidden sm:inline-flex')}>
+            <Button asChild variant="shiny-1" size="sm" className={cn('hidden sm:inline-flex')}>
               <Link href="#">Criar minha fintech</Link>
             </Button>
             <Button
@@ -182,7 +182,7 @@ export function SiteHeader() {
                 </Link>
               ))}
             </FluidGroup>
-            <Button asChild variant="shiny" className={cn('w-full')}>
+            <Button asChild variant="shiny-1" className={cn('w-full')}>
               <Link href="#" onClick={() => setOpen(false)}>
                 Criar minha fintech
               </Link>
