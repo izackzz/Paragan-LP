@@ -9,11 +9,7 @@ import { useShape } from '@/lib/shape-context';
 
 const buttonVariants = cva(
   [
-    'group relative isolate inline-flex items-center justify-center outline-none cursor-pointer',
-    'text-box-trim-both text-box-edge-cap-alphabetic',
-    'transition-colors duration-80',
-    'disabled:opacity-50 disabled:pointer-events-none',
-    'focus-visible:ring-2 focus-visible:ring-focus-ring rounded-xl',
+    'group relative isolate inline-flex items-center justify-center outline-none cursor-pointer text-box-trim-both text-box-edge-cap-alphabetic transition-colors duration-80 disabled:opacity-50 disabled:pointer-events-none focus-visible:ring-2 focus-visible:ring-focus-ring rounded-xl',
   ],
   {
     variants: {
@@ -22,9 +18,12 @@ const buttonVariants = cva(
         secondary: 'text-background',
         tertiary: 'border border-foreground-4 text-foreground',
         platinum: 'text-platinum-foreground',
-        'shiny-1': 'shiny-01 text-foreground',
-        'shiny-2': 'shiny-02 text-foreground',
-        'shiny-secondary': 'shiny-secondary text-foreground',
+        'shiny-1':
+          'shiny-01 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
+        'shiny-2':
+          'shiny-02 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
+        'shiny-secondary':
+          'shiny-secondary overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
       },
       size: {
         sm: 'h-8 px-3 text-sm gap-1',
@@ -44,21 +43,6 @@ const buttonVariants = cva(
       { size: 'sm', iconRight: true, className: 'pr-2' },
       { size: 'md', iconRight: true, className: 'pr-3' },
       { size: 'lg', iconRight: true, className: 'pr-4' },
-      {
-        variant: ['shiny-1', 'shiny-2', 'shiny-secondary'],
-        size: 'sm',
-        className: 'h-auto px-6 py-3.5 text-sm',
-      },
-      {
-        variant: ['shiny-1', 'shiny-2', 'shiny-secondary'],
-        size: 'md',
-        className: 'h-auto px-10 py-5 text-lg',
-      },
-      {
-        variant: ['shiny-1', 'shiny-2', 'shiny-secondary'],
-        size: 'lg',
-        className: 'h-auto px-10 py-5 text-lg',
-      },
     ],
     defaultVariants: {
       variant: 'primary',
@@ -144,7 +128,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             iconRight: !isIconOnly && !!TrailingIcon,
           }),
           !shiny && shape.button,
-          shiny && 'h-auto',
           className,
         )}
         disabled={disabled || loading}
