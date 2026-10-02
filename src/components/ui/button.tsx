@@ -44,6 +44,21 @@ const buttonVariants = cva(
       { size: 'sm', iconRight: true, className: 'pr-2' },
       { size: 'md', iconRight: true, className: 'pr-3' },
       { size: 'lg', iconRight: true, className: 'pr-4' },
+      {
+        variant: ['shiny-1', 'shiny-2', 'shiny-secondary'],
+        size: 'sm',
+        className: 'h-auto px-6 py-3.5 text-sm',
+      },
+      {
+        variant: ['shiny-1', 'shiny-2', 'shiny-secondary'],
+        size: 'md',
+        className: 'h-auto px-10 py-5 text-lg',
+      },
+      {
+        variant: ['shiny-1', 'shiny-2', 'shiny-secondary'],
+        size: 'lg',
+        className: 'h-auto px-10 py-5 text-lg',
+      },
     ],
     defaultVariants: {
       variant: 'primary',
