@@ -416,19 +416,26 @@
       )
       border-box;
 }
-  .shiny-01::before,
+.shiny-01::before,
 .shiny-01::after,
 .shiny-02::before,
 .shiny-02::after,
 .shiny-secondary::before,
-.shiny-secondary::after,{
+.shiny-secondary::after {
   content: '';
   pointer-events: none;
   position: absolute;
   inset-inline-start: 50%;
   inset-block-start: 50%;
   translate: -50% -50%;
-  z-index: -1;
+  z-index: 0;
+}
+
+.shiny-01 > .shiny-content,
+.shiny-02 > .shiny-content,
+.shiny-secondary > .shiny-content {
+  position: relative;
+  z-index: 1;
 }
 .shiny-01::before,
 .shiny-02::before,
@@ -503,11 +510,6 @@
 .shiny-secondary:is(:hover, :focus-visible) {
   animation-play-state: running;
 }
-.shiny-01:is(:hover, :focus-visible) > .shiny-content::before,
-.shiny-02:is(:hover, :focus-visible) > .shiny-content::before,
-.shiny-secondary:is(:hover, :focus-visible) > .shiny-content::before {
-  opacity: 1;
-}
 @keyframes shiny-gradient-angle {
   to {
     --gradient-angle: 360deg;
@@ -526,12 +528,8 @@
 }
 .shiny-secondary {
   background:
-    radial-gradient(
-        circle at 0.125rem 0.125rem,
-        var(--foreground) 0.03125rem,
-        transparent 0
-      )
-      0 0 / 0.25rem 0.25rem padding-box,
+    radial-gradient(circle at 0.125rem 0.125rem, var(--foreground) 0.03125rem, transparent 0) 0 0 /
+      0.25rem 0.25rem padding-box,
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
     conic-gradient(
         from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
@@ -545,7 +543,7 @@
 }
 
 .shiny-secondary::before,
-.shiny-secondary::after{
+.shiny-secondary::after {
   animation: none;
 }
 
