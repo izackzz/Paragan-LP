@@ -122,10 +122,11 @@ Tabs.displayName = 'Tabs';
 
 type TabsListProps = ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
   radius?: 'md' | 'none';
+  hoverAxis?: 'x' | 'y' | 'xy';
 };
 
 const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
-  ({ children, className, radius = 'md', ...props }, ref) => {
+  ({ children, className, radius = 'md', hoverAxis = 'x', ...props }, ref) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isMouseInside, setIsMouseInside] = useState(false);
     const substrate = useSurface();
@@ -154,7 +155,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
       handlers,
       registerItem,
       measureItems,
-    } = useProximityHover(containerRef, { axis: 'x' });
+    } = useProximityHover(containerRef, { axis: hoverAxis });
 
     const registerTab = useCallback(
       (index: number, _value: string, el: HTMLElement | null) => {
