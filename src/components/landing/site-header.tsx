@@ -122,7 +122,7 @@ export function SiteHeader() {
               Entrar
             </Link>
             <Button asChild variant="shiny-1" size="sm" className={cn('hidden sm:inline-flex')}>
-              <Link href="#">Criar minha fintech</Link>
+              <Link href="#">ENTRAR EM CONTATO</Link>
             </Button>
             <Button
               id="navigation-toggle"

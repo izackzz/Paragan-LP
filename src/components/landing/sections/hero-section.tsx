@@ -59,17 +59,19 @@ export function HeroSection() {
           <span className="text-foreground-3">Tecnologia pronta. Marca própria.</span>
         </h1>
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          Lance uma operação completa com sua marca, seu domínio e sua estratégia comercial — sem desenvolver uma infraestrutura do zero.
+          Lance uma operação completa com sua marca, seu domínio e sua estratégia comercial — sem
+          desenvolver uma infraestrutura do zero.
         </p>
         <div className="flex flex-row gap-2">
-          <Button size='lg' className='max-sm:flex flex-row flex-1 items-center' variant="shiny-2">FALAR COM UM ESPECIALISTA</Button>
+          <Button size="lg" className="w-full sm:w-fit" variant="shiny-2">
+            FALAR COM UM ESPECIALISTA
+          </Button>
         </div>
-        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
-          Plataforma no ar no 1º dia <span className="px-2 text-foreground-4">/</span> Pronta para
-          operação em até 7 dias.
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-accent-2">
+          Um ecossistema inteiro entregue em 1 dia.
         </p>
         <p className="mt-2 max-w-xl text-xs leading-relaxed text-muted-foreground">
-          Gateway, checkout, split, gestão financeira e conciliação em uma única plataforma pronta para receber a identidade do seu negócio.
+          Gateway, checkout, split, produtos, membros, e muito mais... Personalize com sua marca e concentre seu time no que realmente gera crescimento: <span className="text-accent-2">produto, clientes e escala.</span>
         </p>
       </div>
       <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
