@@ -416,6 +416,18 @@
       )
       border-box;
 }
+
+.dots {
+  background-image: radial-gradient(
+    circle at 0.125rem 0.125rem,
+    var(--dots-color, var(--foreground)) 0.03125rem,
+    transparent 0
+  );
+  background-position: 0 0;
+  background-size: 0.25rem 0.25rem;
+  background-repeat: repeat;
+}
+
 .shiny-01::before,
 .shiny-01::after,
 .shiny-02::before,
@@ -452,7 +464,7 @@
     )
     padding-box;
   background-size: var(--space) var(--space);
-  background-repeat: space;
+  background-repeat: repeat;
   border-radius: inherit;
   opacity: 0.4;
 }
@@ -476,10 +488,16 @@
 .shiny-01::after {
   mask-image: radial-gradient(circle at bottom, transparent 40%, black);
 }
+.shiny-01,
+.shiny-02,
+.shiny-secondary {
+  box-shadow: 0 0px 0rem 2px var(--shiny-cta-highlight), inset 0 0ex 0rem 0px color-mix(in srgb, var(--shiny-cta-highlight) 0%, transparent);
+  transition: all 1s ease-in-out;
+}
 .shiny-01:hover,
 .shiny-02:hover,
 .shiny-secondary:hover {
-  box-shadow: inset 0 -1ex 2rem 0.25rem var(--shiny-cta-highlight);
+  box-shadow: 0 0px 0rem 2px var(--shiny-cta-highlight), inset 0 1ex 2rem 2px color-mix(in srgb, var(--shiny-cta-highlight) 50%, transparent);
   transition: all 1s ease-in-out;
 }
 .shiny-01,

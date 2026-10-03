@@ -164,7 +164,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                   className="transition-[stroke-width] duration-80 group-hover:stroke-2"
                 />
               )}
-              <span>{children}</span>
+              <span className='z-10'>{children}</span>
               {TrailingIcon && (
                 <TrailingIcon
                   size={iconSize}

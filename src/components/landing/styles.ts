@@ -4,7 +4,7 @@ export const section = 'scroll-mt-22 border-b border-border';
 export const padding = 'px-5 py-12 md:px-7 md:py-16 xl:px-10 xl:pt-22 xl:pb-18';
 export const micro = 'font-mono text-xs leading-relaxed font-normal tracking-wider uppercase';
 export const eyebrow =
-  'mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs leading-relaxed font-medium';
+  'mb-6 dots inline-flex items-center gap-2 rounded-full border border-border px-5 py-1.5 text-xs leading-relaxed font-medium';
 export const cardTitle = 'text-sm leading-snug font-medium tracking-tight';
 export const cardDescription = 'mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground';
 export const card =

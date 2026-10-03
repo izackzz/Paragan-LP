@@ -78,7 +78,10 @@ export function HeroSection() {
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
-            className={cn('flex w-full gap-0 rounded-none border-b border-border bg-card p-0')}
+            hoverAxis="xy"
+            className={cn(
+              'flex w-full flex-col gap-0 rounded-none border-b border-border bg-card p-0 sm:flex-row',
+            )}
             aria-label="Prévias da plataforma"
           >
             {previews.map((preview) => (
@@ -90,7 +93,7 @@ export function HeroSection() {
                 description={preview.description}
                 icon={preview.icon}
                 className={cn(
-                  'min-h-28 min-w-0 flex-1 flex-col items-stretch justify-start gap-2 rounded-none border-r border-solid border-border px-3 py-4 text-left last:border-r-0 sm:px-5',
+                  'min-h-28 w-full min-w-0 flex-none flex-col items-stretch justify-start gap-2 rounded-none border-b border-solid border-border px-3 py-4 text-left last:border-b-0 sm:flex-1 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:px-5',
                 )}
               />
             ))}
