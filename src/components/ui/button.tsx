@@ -138,35 +138,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           <span
             aria-hidden
             className={cn(
-              'absolute inset-0 rounded-inherit transition-transform duration-80 group-active:scale-95',
+              'rounded-inherit',
               bgClass,
             )}
           />
         )}
-        <span
-          className={cn(
-            'relative inline-flex items-center justify-center gap-2',
-            shiny && 'shiny-content',
-          )}
-        >
           {loading ? (
             <>
               <span className="flex items-center justify-center gap-2 opacity-0">
                 {LeadingIcon && !isIconOnly && <LeadingIcon size={iconSize} strokeWidth={2} />}
                 {children}
                 {TrailingIcon && !isIconOnly && <TrailingIcon size={iconSize} strokeWidth={2} />}
-              </span>
-              <span className="absolute inset-0 flex items-center justify-center">
-                <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M 12 12 C 14 8.5 19 8.5 19 12 C 19 15.5 14 15.5 12 12 C 10 8.5 5 8.5 5 12 C 5 15.5 10 15.5 12 12 Z"
-                    stroke="currentColor"
-                    strokeWidth="1.125"
-                    strokeLinecap="round"
-                    pathLength="100"
-                    className="button-spinner-path"
-                  />
-                </svg>
               </span>
             </>
           ) : isIconOnly ? (
@@ -192,7 +174,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               )}
             </>
           )}
-        </span>
       </ButtonPrimitive>
     );
   },

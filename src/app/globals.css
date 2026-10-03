@@ -421,10 +421,7 @@
 .shiny-02::before,
 .shiny-02::after,
 .shiny-secondary::before,
-.shiny-secondary::after,
-.shiny-01 > .shiny-content::before,
-.shiny-02 > .shiny-content::before,
-.shiny-secondary > .shiny-content::before {
+.shiny-secondary::after,{
   content: '';
   pointer-events: none;
   position: absolute;
@@ -472,20 +469,11 @@
 .shiny-01::after {
   mask-image: radial-gradient(circle at bottom, transparent 40%, black);
 }
-.shiny-01 > .shiny-content,
-.shiny-02 > .shiny-content,
-.shiny-secondary > .shiny-content {
-  z-index: 1;
-}
-.shiny-01 > .shiny-content::before,
-.shiny-02 > .shiny-content::before,
-.shiny-secondary > .shiny-content::before {
-  --size: calc(100% + 1rem);
-  width: var(--size);
-  height: var(--size);
+.shiny-01:hover,
+.shiny-02:hover,
+.shiny-secondary:hover {
   box-shadow: inset 0 -1ex 2rem 0.25rem var(--shiny-cta-highlight);
-  opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 1s ease-in-out;
 }
 .shiny-01,
 .shiny-01::before,
@@ -530,44 +518,12 @@
     rotate: 360deg;
   }
 }
-.shiny-01:is(:disabled, [aria-disabled='true']),
-.shiny-01:is(:disabled, [aria-disabled='true'])::before,
-.shiny-01:is(:disabled, [aria-disabled='true'])::after,
-.shiny-01:is(:disabled, [aria-disabled='true']) > .shiny-content::before,
-.shiny-02:is(:disabled, [aria-disabled='true']),
-.shiny-02:is(:disabled, [aria-disabled='true'])::before,
-.shiny-02:is(:disabled, [aria-disabled='true'])::after,
-.shiny-02:is(:disabled, [aria-disabled='true']) > .shiny-content::before,
-.shiny-secondary:is(:disabled, [aria-disabled='true']),
-.shiny-secondary:is(:disabled, [aria-disabled='true'])::before,
-.shiny-secondary:is(:disabled, [aria-disabled='true'])::after,
-.shiny-secondary:is(:disabled, [aria-disabled='true']) > .shiny-content::before {
-  animation-play-state: paused;
-}
 .button-spinner-path {
   stroke-dasharray: 15 85;
   animation:
     spinner-move 2s linear infinite,
     spinner-dash 4s ease-in-out infinite;
 }
-@media (prefers-reduced-motion: reduce) {
-  .shiny-01,
-  .shiny-01::before,
-  .shiny-01::after,
-  .shiny-01 > .shiny-content::before,
-  .shiny-02,
-  .shiny-02::before,
-  .shiny-02::after,
-  .shiny-02 > .shiny-content::before,
-  .shiny-secondary,
-  .shiny-secondary::before,
-  .shiny-secondary::after,
-  .shiny-secondary > .shiny-content::before {
-    animation: none;
-    transition: none;
-  }
-}
-
 .shiny-secondary {
   background:
     radial-gradient(
@@ -589,8 +545,7 @@
 }
 
 .shiny-secondary::before,
-.shiny-secondary::after,
-.shiny-secondary > .shiny-content::before {
+.shiny-secondary::after{
   animation: none;
 }
 
@@ -631,7 +586,7 @@
   );
   mask:
     linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+    linear-gradient(#0000 0 0);
   mask-composite: exclude;
   padding: 1px;
   animation:
