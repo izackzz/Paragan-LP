@@ -184,7 +184,7 @@ export function SiteHeader() {
             </FluidGroup>
             <Button asChild variant="shiny-1" className={cn('w-full')}>
               <Link href="#" onClick={() => setOpen(false)}>
-                Criar minha fintech
+                ENTRAR EM CONTATO
               </Link>
             </Button>
           </nav>
