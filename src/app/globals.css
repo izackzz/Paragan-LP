@@ -420,7 +420,7 @@
 .dots {
   background-image: radial-gradient(
     circle at 0.125rem 0.125rem,
-    var(--dots-color, var(--foreground)) 0.03125rem,
+    color-mix(in srgb, var(--dots-color, var(--foreground)) 30%, transparent) 0.03125rem,
     transparent 0
   );
   background-position: 0 0;
@@ -492,13 +492,13 @@
 .shiny-02,
 .shiny-secondary {
   box-shadow: 0 0px 0rem 2px var(--shiny-cta-highlight), inset 0 0ex 0rem 0px color-mix(in srgb, var(--shiny-cta-highlight) 0%, transparent);
-  transition: all 1s ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 .shiny-01:hover,
 .shiny-02:hover,
 .shiny-secondary:hover {
   box-shadow: 0 0px 0rem 2px var(--shiny-cta-highlight), inset 0 1ex 2rem 2px color-mix(in srgb, var(--shiny-cta-highlight) 50%, transparent);
-  transition: all 1s ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 .shiny-01,
 .shiny-01::before,
