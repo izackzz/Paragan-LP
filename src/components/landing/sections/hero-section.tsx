@@ -48,7 +48,7 @@ export function HeroSection() {
         'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
       )}
     >
-      <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-8 md:pb-8 lg:text-center">
+      <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-8 md:pb-8 lg:text-center lg:justify-center lg:align-center">
         <p className={eyebrow}>White label para plataformas de vendas digitais</p>
         <h1
           id="hero-title"
@@ -58,7 +58,7 @@ export function HeroSection() {
           <br />
           <span className="text-foreground-3">Você no controle da operação</span>
         </h1>
-        <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+        <p className="mt-6 mb-7 max-w-2xl mx-auto text-base leading-7 text-muted-foreground md:text-lg">
           Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e
           produtos que evoluem junto ao mercado
         </p>
@@ -93,7 +93,7 @@ export function HeroSection() {
           <span className="text-accent-2">produto, clientes e escala.</span>
         </p>
       </div>
-      <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0" shiny>
+      <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
