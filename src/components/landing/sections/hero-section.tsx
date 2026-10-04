@@ -93,7 +93,7 @@ export function HeroSection() {
           <span className="text-accent-2">produto, clientes e escala.</span>
         </p>
       </div>
-      <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+      <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0" shiny>
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
