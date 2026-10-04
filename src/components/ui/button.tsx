@@ -5,7 +5,6 @@ import { Button as ButtonPrimitive } from '@base-ui/react/button';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type { IconComponent } from '@/lib/icon-context';
 import { cn } from '@/lib/utils';
-import { useShape } from '@/lib/shape-context';
 
 const buttonVariants = cva(
   [
@@ -14,10 +13,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'text-primary-foreground',
-        secondary: 'text-background',
-        tertiary: 'border border-foreground-4 text-foreground',
-        platinum: 'text-platinum-foreground',
+        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80',
+        secondary:
+          'bg-surface-1 border border-transparent text-background font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--border)] hover:bg-foreground/90 active:bg-foreground/80 active:translate-y-px transition-all duration-500 ease-in-out',
+        tertiary:
+          'bg-border border border-foreground-4 text-foreground hover:bg-muted active:bg-accent',
+        platinum:
+          'button-primary-platinum text-platinum-foreground hover:brightness-110 active:brightness-90',
         'shiny-1':
           'shiny-01 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
         'shiny-2':
@@ -26,23 +28,22 @@ const buttonVariants = cva(
           'shiny-secondary overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
       },
       size: {
-        sm: 'px-4 py-3 text-sm gap-1',
-        md: 'px-5 py-3 text-base gap-1.5',
-        lg: 'px-8 py-4 text-lg gap-2',
-        'icon-sm': 'h-8 w-8 p-0 [&_svg]:h-3.5 [&_svg]:w-3.5',
-        icon: 'h-9 w-9 p-0 [&_svg]:h-4 [&_svg]:w-4',
-        'icon-lg': 'h-10 w-10 p-0 [&_svg]:h-5 [&_svg]:w-5',
+        sm: 'px-4 py-3 text-sm gap-1 [&_svg]:size-3.5 has-[>.button-leading]:pl-2 has-[>.button-trailing]:pr-2',
+        md: 'px-5 py-3 text-base gap-1.5 [&_svg]:size-4 has-[>.button-leading]:pl-3 has-[>.button-trailing]:pr-3',
+        lg: 'px-8 py-4 text-lg gap-2 [&_svg]:size-5 has-[>.button-leading]:pl-4 has-[>.button-trailing]:pr-4',
+        'icon-sm':
+          'h-8 w-8 p-0 [&_svg]:size-3.5 [&_.button-leading]:hidden [&_.button-trailing]:hidden',
+        icon: 'h-9 w-9 p-0 [&_svg]:size-4 [&_.button-leading]:hidden [&_.button-trailing]:hidden',
+        'icon-lg':
+          'h-10 w-10 p-0 [&_svg]:size-5 [&_.button-leading]:hidden [&_.button-trailing]:hidden',
       },
-      iconLeft: { true: '' },
-      iconRight: { true: '' },
+      active: { true: '', false: '' },
     },
     compoundVariants: [
-      { size: 'sm', iconLeft: true, className: 'pl-2' },
-      { size: 'md', iconLeft: true, className: 'pl-3' },
-      { size: 'lg', iconLeft: true, className: 'pl-4' },
-      { size: 'sm', iconRight: true, className: 'pr-2' },
-      { size: 'md', iconRight: true, className: 'pr-3' },
-      { size: 'lg', iconRight: true, className: 'pr-4' },
+      { variant: 'primary', active: true, className: 'bg-primary/80' },
+      { variant: 'secondary', active: true, className: 'bg-foreground/80' },
+      { variant: 'tertiary', active: true, className: 'bg-muted' },
+      { variant: 'platinum', active: true, className: 'brightness-90' },
     ],
     defaultVariants: {
       variant: 'primary',
@@ -66,20 +67,6 @@ interface ButtonProps
   active?: boolean;
 }
 
-const bgVariants: Record<string, string> = {
-  primary: 'bg-primary group-hover:bg-primary/90 group-active:bg-primary/80',
-  secondary: 'bg-foreground group-hover:bg-foreground/90 group-active:bg-foreground/80',
-  tertiary: 'bg-border group-hover:bg-muted group-active:bg-accent',
-  platinum: 'button-primary-platinum',
-};
-
-const activeBgVariants: Record<string, string> = {
-  primary: 'bg-primary/80',
-  secondary: 'bg-foreground/80',
-  tertiary: 'bg-muted',
-  platinum: 'button-primary-platinum',
-};
-
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -97,15 +84,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const isIconOnly = size === 'icon' || size === 'icon-sm' || size === 'icon-lg';
-    const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16;
-    const shape = useShape();
-    const shiny =
-      variant === 'shiny-1' || variant === 'shiny-2' || variant === 'shiny-secondary';
-    const bgClass = active
-      ? activeBgVariants[variant ?? 'primary']
-      : bgVariants[variant ?? 'primary'];
-
     // asChild parity: Base UI's `render` prop accepts a single element and
     // clones it. When asChild is true and children is a valid element, route
     // through render so the user's element becomes the outer tag.
@@ -124,52 +102,39 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({
             variant,
             size,
-            iconLeft: !isIconOnly && !!LeadingIcon,
-            iconRight: !isIconOnly && !!TrailingIcon,
+            active,
           }),
-          !shiny && shape.button,
           className,
         )}
         disabled={disabled || loading}
         data-size={size ?? 'md'}
         {...props}
       >
-        {!shiny && (
-          <span
-            aria-hidden
-            className={cn(
-              'absolute inset-0 rounded-inherit transition-transform duration-80',
-              bgClass,
-            )}
-          />
-        )}
-          {loading ? (
+        {loading ? (
             <>
               <span className="flex items-center justify-center gap-2 opacity-0">
-                {LeadingIcon && !isIconOnly && <LeadingIcon size={iconSize} strokeWidth={2} />}
+                {LeadingIcon && (
+                  <LeadingIcon className="button-icon button-leading" strokeWidth={2} />
+                )}
                 {children}
-                {TrailingIcon && !isIconOnly && <TrailingIcon size={iconSize} strokeWidth={2} />}
+                {TrailingIcon && (
+                  <TrailingIcon className="button-icon button-trailing" strokeWidth={2} />
+                )}
               </span>
             </>
-          ) : isIconOnly ? (
-            <span className="[&_svg]:icon-stroke [&_svg]:transition-[stroke-width] [&_svg]:duration-80 group-hover:[&_svg]:stroke-2">
-              {children}
-            </span>
           ) : (
             <>
               {LeadingIcon && (
                 <LeadingIcon
-                  size={iconSize}
                   strokeWidth={1.5}
-                  className="transition-[stroke-width] duration-80 group-hover:stroke-2"
+                  className="button-icon button-leading transition-[stroke-width] duration-80 group-hover:stroke-2"
                 />
               )}
-              <span className='z-10'>{children}</span>
+              <span className="z-10">{children}</span>
               {TrailingIcon && (
                 <TrailingIcon
-                  size={iconSize}
                   strokeWidth={1.5}
-                  className="transition-[stroke-width] duration-80 group-hover:stroke-2"
+                  className="button-icon button-trailing transition-[stroke-width] duration-80 group-hover:stroke-2"
                 />
               )}
             </>
