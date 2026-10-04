@@ -49,20 +49,22 @@ export function HeroSection() {
       )}
     >
       <div className="max-w-3xl pt-16 pb-12 md:pt-8 md:pb-8">
-        <p className={eyebrow}>Para quem quer lançar ou evoluir sua fintech</p>
+        <p className={eyebrow}>White label para plataformas de vendas digitais</p>
         <h1
           id="hero-title"
-          className="max-w-4xl text-3xl font-medium tracking-tight text-balance lg:text-4xl/10"
+          className="max-w-4xl text-3xl font-medium tracking-tight text-balance lg:text-5xl/12"
         >
-          Seu próprio gateway de pagamentos.
+          Seu plataforma. Sua marca
           <br />
-          <span className="text-foreground-3">Tecnologia pronta. Marca própria.</span>
+          <span className="text-foreground-3">Você no controle da operação</span>
         </h1>
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          Lance uma operação completa com sua marca, seu domínio e sua estratégia comercial — sem
-          desenvolver uma infraestrutura do zero.
+          Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e produtos que evoluem junto ao mercado
         </p>
         <div className="flex flex-row gap-2">
+          <Button size="lg" className="w-full sm:w-fit" variant="shiny-2">
+            FALAR COM UM ESPECIALISTA
+          </Button>
           <Button size="lg" className="w-full sm:w-fit" variant="shiny-2">
             FALAR COM UM ESPECIALISTA
           </Button>
