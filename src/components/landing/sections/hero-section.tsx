@@ -66,7 +66,7 @@ export function HeroSection() {
             FALAR COM UM ESPECIALISTA
           </Button>
           <Button size="lg" className="w-full sm:w-fit" variant="secondary">
-            FALAR COM UM ESPECIALISTA
+            VER EM AÇÃO
           </Button>
         </div>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-accent-2">
