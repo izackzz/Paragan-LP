@@ -77,7 +77,7 @@ export function SectionLabel({ number, children }: { number: string; children: R
     <div
       className={cn(
         micro,
-        'flex min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground md:px-8',
+        'flex dots min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground md:px-8',
       )}
     >
       <span className="text-brand">[ {number} / 10 ]</span>
@@ -170,7 +170,7 @@ export function ArtPlaceholder({
   );
 
   return (
-    <figure className={cn('m-0 overflow-hidden rounded-lg border border-border p-1.5', className)}>
+    <figure className={cn('m-0 overflow-hidden rounded-sm', className)}>
       {/* Placeholder temporário global. O briefing de composição e a direção da futura
         arte/print/Lottie ficam imediatamente antes de cada uso deste componente. */}
       {frame ? <Frame className={cn(frameClassName)}>{image}</Frame> : image}
