@@ -43,12 +43,9 @@ export function HeroSection() {
     <section
       id="inicio"
       aria-labelledby="hero-title"
-      className={cn(
-        frame,
-        'relative isolate scroll-mt-22 overflow-clip border-b border-border md:[&_div]:mx-7 xl:[&_div]:mx-10 [&_div]:mx-5',
-      )}
+      className={cn(frame, 'relative isolate scroll-mt-22 overflow-clip border-b border-border')}
     >
-      <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-25 md:pb-8 lg:text-center lg:justify-center lg:align-center">
+      <div className="mx-auto max-w-3xl px-5 pt-16 pb-12 text-left md:px-7 md:pt-25 md:pb-8 lg:text-center xl:px-10">
         <p className={eyebrow}>White label para plataformas de vendas digitais</p>
         <h1
           id="hero-title"
@@ -58,7 +55,7 @@ export function HeroSection() {
           <br />
           <span className="text-foreground-3">Você no controle da operação</span>
         </h1>
-        <p className="mt-6 mb-7 max-w-2xl md:mx-auto text-base leading-7 text-muted-foreground md:text-lg">
+        <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:mx-auto md:text-lg">
           Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e
           produtos que evoluem junto ao mercado
         </p>
@@ -87,19 +84,19 @@ export function HeroSection() {
             GHOST
           </Button>
         </div> */}
-        <p className="mt-8 mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Gateway, checkout, split, produtos, membros, e muito mais... Personalize com sua marca e
           concentre seu time no que realmente gera crescimento:{' '}
           <span className="text-accent-2">produto, clientes e escala.</span>
         </p>
       </div>
-      <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+      <Frame className="mx-5 md:mx-7 xl:mx-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
             hoverAxis="xy"
             className={cn(
-              'flex w-full flex-col gap-0 rounded-none border-b border-border bg-card p-0 sm:flex-row',
+              'flex w-full flex-col items-stretch gap-0 rounded-none border-b border-border bg-card p-0 sm:flex-row',
             )}
             aria-label="Prévias da plataforma"
           >
@@ -133,7 +130,7 @@ export function HeroSection() {
                 priority={preview.value === 'gateway'}
                 className="p-1.5"
               />
-              <p className="flex justify-between gap-4 bg-card border-t p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
+              <p className="flex justify-between gap-4 border-t bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
                 <span className={cn(micro, 'hidden shrink-0 md:block')}>PRÉVIA DO PRODUTO</span>
               </p>
@@ -141,7 +138,7 @@ export function HeroSection() {
           ))}
         </Tabs>
       </Frame>
-      <div className="text-display mx-0 grid min-h-32 items-center py-6 text-lg [&_div]:mx-0!">
+      <div className="text-display mx-0 grid min-h-32 items-center py-6 text-lg">
         <FluidGroup className="grid grid-cols-2 lg:grid-cols-4 [&_span]:block [&_span]:border-border [&_span]:px-2 [&_span]:py-4 [&_span]:text-center [&_span]:text-sm [&_span]:font-medium">
           <span>White label</span>
           <span className="border-l">Multi-tenant</span>
