@@ -4,9 +4,9 @@ import { ArtPlaceholder } from '../primitives';
 import { FluidGroup } from '../fluid-group';
 import { frame, micro, eyebrow } from '../styles';
 import { cn } from '@/lib/utils';
-import { icons } from '@/lib/icon-map';
 import { Frame } from '@/components/ui/frame';
 import { Button } from '@/components/ui/button';
+import { IconCheckout, IconGateways, IconSellers } from '@/components/assets/custom-icons';
 
 const previews = [
   {
@@ -14,7 +14,7 @@ const previews = [
     label: 'Seu gateway',
     eyebrow: 'OPERAÇÃO',
     description: 'Visão consolidada do negócio.',
-    icon: icons.dashboard,
+    icon: IconGateways,
     image: 'Painel do gateway',
     caption: 'Condições comerciais, sellers e financeiro. A operação vista de cima.',
   },
@@ -23,7 +23,7 @@ const previews = [
     label: 'Seus sellers',
     eyebrow: 'GESTÃO DE BASE',
     description: 'Vendas, produtos e recebimentos.',
-    icon: icons.users,
+    icon: IconSellers,
     image: 'Experiência do seller',
     caption: 'Vendas, produtos e recebimentos. O dia a dia da sua base, conectado.',
   },
@@ -32,7 +32,7 @@ const previews = [
     label: 'Seu checkout',
     eyebrow: 'PAGAMENTO',
     description: 'Oferta e jornada com a sua marca.',
-    icon: icons['credit-card'],
+    icon: IconCheckout,
     image: 'Checkout white label',
     caption: 'Do produto à confirmação. Uma jornada de compra com a sua identidade.',
   },
