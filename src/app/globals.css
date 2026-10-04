@@ -290,6 +290,14 @@
   }
   html {
     @apply font-sans;
+    font-feature-settings:
+      'ss01' on,
+      'ss02' on;
+  }
+  body {
+    font-feature-settings:
+      'ss01' on,
+      'ss02' on;
   }
   h1,
   h2,
@@ -298,6 +306,16 @@
   h5,
   h6 {
     @apply font-display;
+    font-feature-settings:
+      'ss01' on,
+      'ss02' on,
+      'ss03' on;
+  }
+  .font-display {
+    font-feature-settings:
+      'ss01' on,
+      'ss02' on,
+      'ss03' on;
   }
   :focus-visible {
     @apply rounded-lg outline outline-offset-2 outline-focus-ring;
