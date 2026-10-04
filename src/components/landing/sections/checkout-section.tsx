@@ -1,15 +1,5 @@
-import { Card, CardGroup, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { SectionLabel, ArtPlaceholder, ActionLink } from '../primitives';
-import {
-  frame,
-  section,
-  padding,
-  micro,
-  card,
-  cardTitle,
-  cardDescription,
-  gridThree,
-} from '../styles';
+import { frame, section, padding, micro, cardTitle, cardDescription } from '../styles';
 import { cn } from '@/lib/utils';
 
 const checkoutSteps = [
@@ -74,25 +64,25 @@ export function CheckoutSection() {
             <ArtPlaceholder
               width={1440}
               height={760}
-              className='p-1.5'
+              className="p-1.5"
               label="Checkout Catalyst · desktop e mobile"
             />
           </div>
         </div>
-
-        <CardGroup columns={3} className={cn(gridThree, 'mt-5 border rounded-xl overflow-hidden')}>
-          {checkoutSteps.map((step) => (
-            <Card key={step.number} className={cn(card, 'relative isolate overflow-hidden')}>
-              <CardHeader className="relative z-10">
-                <p className={cn(micro, 'mb-4 text-accent-2')}>
-                  {step.number} / {step.eyebrow}
-                </p>
-                <CardTitle className={cardTitle}>{step.title}</CardTitle>
-                <CardDescription className={cardDescription}>{step.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
-        </CardGroup>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {checkoutSteps.map((step) => (
+          <div
+            key={step.number}
+            className="min-w-0 border-t border-border p-6 md:border-r md:p-8 md:last:border-r-0"
+          >
+            <p className={cn(micro, 'mb-4 text-accent-2')}>
+              {step.number} / {step.eyebrow}
+            </p>
+            <h3 className={cardTitle}>{step.title}</h3>
+            <p className={cardDescription}>{step.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
