@@ -560,6 +560,62 @@
     rotate: 360deg;
   }
 }
+
+.frame-shiny {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The absolute inset excludes the frame border; the mask keeps only its padding. */
+.frame-shiny::before {
+  --shiny-cta-highlight: var(--primary);
+  --shiny-cta-highlight-subtle: color-mix(in oklab, var(--primary) 55%, var(--foreground));
+  --gradient-shine: var(--foreground);
+  --duration: 3s;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: inherit;
+  border-radius: inherit;
+  background: conic-gradient(
+    from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+    transparent,
+    var(--shiny-cta-highlight) var(--gradient-percent),
+    var(--gradient-shine) calc(var(--gradient-percent) * 2),
+    var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+    transparent calc(var(--gradient-percent) * 4)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation:
+    shiny-gradient-angle var(--duration) linear infinite,
+    shiny-gradient-angle calc(var(--duration) / 0.4) linear infinite reverse paused;
+  animation-composition: add;
+  transition:
+    --gradient-percent 300ms ease-in-out,
+    --gradient-angle-offset 300ms ease-in-out,
+    --gradient-shine 300ms ease-in-out;
+}
+
+.frame-shiny:is(:hover, :focus-visible, :focus-within)::before {
+  --gradient-percent: 20%;
+  --gradient-angle-offset: 95deg;
+  --gradient-shine: var(--shiny-cta-highlight-subtle);
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame-shiny::before {
+    animation: none;
+    transition: none;
+  }
+}
+
 .button-spinner-path {
   stroke-dasharray: 15 85;
   animation:
