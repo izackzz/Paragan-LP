@@ -438,7 +438,7 @@
 .dots {
   background-image: radial-gradient(
     circle at 0.125rem 0.125rem,
-    color-mix(in srgb, var(--dots-color, var(--foreground)) 30%, transparent) 0.03125rem,
+    color-mix(in srgb, var(--dots-color, var(--foreground)) 20%, transparent) 0.03125rem,
     transparent 0
   );
   background-position: 0 0;
@@ -568,7 +568,7 @@
 }
 .shiny-secondary {
   background:
-    radial-gradient(circle at 0.125rem 0.125rem, var(--foreground) 0.03125rem, transparent 0) 0 0 /
+    radial-gradient(circle at 2px 2px, color-mix(in oklab, var(--foreground) 20%, transparent) 1px, transparent 0) 0 0 /
       0.25rem 0.25rem padding-box,
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
     conic-gradient(
