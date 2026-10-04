@@ -54,18 +54,18 @@ export function HeroSection() {
           id="hero-title"
           className="max-w-4xl text-3xl font-medium tracking-tight text-balance lg:text-5xl/12"
         >
-          Seu plataforma. Sua marca
+          Sua plataforma. Sua marca
           <br />
           <span className="text-foreground-3">Você no controle da operação</span>
         </h1>
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
           Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e produtos que evoluem junto ao mercado
         </p>
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row sm:flex-col w-full gap-2">
           <Button size="lg" className="w-full sm:w-fit" variant="shiny-2">
             FALAR COM UM ESPECIALISTA
           </Button>
-          <Button size="lg" className="w-full sm:w-fit" variant="shiny-2">
+          <Button size="lg" className="w-full sm:w-fit" variant="secondary">
             FALAR COM UM ESPECIALISTA
           </Button>
         </div>
