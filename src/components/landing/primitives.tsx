@@ -138,6 +138,7 @@ export function ArtPlaceholder({
   label,
   dark = true,
   priority = false,
+  frame = false,
   src,
   className,
   frameClassName,
@@ -147,29 +148,32 @@ export function ArtPlaceholder({
   label: string;
   dark?: boolean;
   priority?: boolean;
+  frame?: boolean;
   src?: string;
   className?: string;
   frameClassName?: string;
 }) {
+  const image = (
+    <Image
+      src={
+        src ??
+        `https://placehold.co/${width}x${height}/${dark ? 'ffffff/212121' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
+      }
+      width={width}
+      height={height}
+      alt={src ? label : `Espaço reservado: ${label}`}
+      unoptimized={!src}
+      preload={priority}
+      sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"
+      className="h-auto w-full"
+    />
+  );
+
   return (
     <figure className={cn('m-0 overflow-hidden rounded-lg border border-border p-1.5', className)}>
       {/* Placeholder temporário global. O briefing de composição e a direção da futura
         arte/print/Lottie ficam imediatamente antes de cada uso deste componente. */}
-      <Frame className={cn('shiny-border', frameClassName)}>
-        <Image
-          src={
-            src ??
-            `https://placehold.co/${width}x${height}/${dark ? 'ffffff/212121' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
-          }
-          width={width}
-          height={height}
-          alt={src ? label : `Espaço reservado: ${label}`}
-          unoptimized={!src}
-          preload={priority}
-          sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"
-          className="h-auto w-full"
-        />
-      </Frame>
+      {frame ? <Frame className={cn(frameClassName)}>{image}</Frame> : image}
     </figure>
   );
 }
