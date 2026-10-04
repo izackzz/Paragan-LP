@@ -101,7 +101,7 @@ export function ContactSection() {
                   <Button
                     key={item}
                     type="button"
-                    variant="tertiary"
+                    variant="secondary"
                     active={interest === item}
                     aria-pressed={interest === item}
                     className={cn('min-h-11 rounded-full px-3 text-xs aria-pressed:border-brand')}
@@ -152,7 +152,7 @@ export function ContactSection() {
                 />
                 <Button
                   type="button"
-                  variant="tertiary"
+                  variant="secondary"
                   onClick={copyBrief}
                   className="mt-3 min-h-11"
                 >
