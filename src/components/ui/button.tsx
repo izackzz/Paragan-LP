@@ -15,17 +15,17 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80',
         secondary:
-          'bg-surface-1 border border-transparent text-background font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--border)] hover:bg-foreground/90 active:bg-foreground/80 active:translate-y-px transition-all duration-500 ease-in-out',
+          'bg-surface-1 border border-transparent text-foreground hover:text-background font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--border)] hover:bg-foreground/90 hover:translate-y-px transition-all duration-500 ease-in-out',
         tertiary:
-          'bg-border border border-foreground-4 text-foreground hover:bg-muted active:bg-accent',
+          'bg-border border border-foreground-4 text-foreground hover:bg-muted hover:bg-accent',
         platinum:
-          'button-primary-platinum text-platinum-foreground hover:brightness-110 active:brightness-90',
+          'button-primary-platinum text-platinum-foreground hover:brightness-110 hover:brightness-90',
         'shiny-1':
-          'shiny-01 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
+          'shiny-01 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] hover:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
         'shiny-2':
-          'shiny-02 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
+          'shiny-02 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
         'shiny-secondary':
-          'shiny-secondary overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[inset_0_0_0_1px_var(--shiny-cta-bg-subtle)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
+          'shiny-secondary overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
       },
       size: {
         sm: 'px-4 py-3 text-sm gap-1 [&_svg]:size-3.5 has-[>.button-leading]:pl-2 has-[>.button-trailing]:pr-2',
