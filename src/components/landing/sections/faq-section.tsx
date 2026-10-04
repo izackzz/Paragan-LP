@@ -40,8 +40,8 @@ export function FaqSection() {
   return (
     <section id="perguntas" className={cn(frame, section)}>
       <SectionLabel number="09">ANTES DE COMEÇARMOS</SectionLabel>
-      <div className="grid gap-7 px-5 py-12 md:grid-cols-2 md:gap-0 md:px-0 md:py-0">
-        <div className="relative isolate md:border-r md:border-border md:px-8 md:py-13 md:[&_h2]:text-3xl">
+      <div className="grid gap-0 md:grid-cols-2">
+        <div className="relative isolate px-5 py-12 md:border-r md:border-border md:px-8 md:py-13 md:[&_h2]:text-3xl">
           <div className="sticky top-25 flex flex-col justify-start">
             <SectionHeading
               eyebrow="Perguntas frequentes"
@@ -54,25 +54,23 @@ export function FaqSection() {
         <AccordionGroup
           type="single"
           defaultValue="faq-0"
-          className="grid w-full max-w-full gap-2.5 border-t border-border p-6 pt-5 md:border-t-0"
+          className="grid w-full max-w-full content-start gap-0 rounded-none border-0 p-0 [&>div]:rounded-none"
         >
           {questions.map(([question, answer], index) => (
             <AccordionItem
               key={question}
               value={`faq-${index}`}
               index={index}
-              className="overflow-hidden rounded-lg border border-border bg-card/70"
+              className="overflow-hidden rounded-none border-0 border-b border-border bg-transparent p-0 last:border-b-0"
             >
-              <AccordionTrigger className="min-h-16 px-5 py-4 sm:px-6">
+              <AccordionTrigger className="min-h-16 rounded-none border-0 py-4 pr-6 pl-0">
                 <span className="flex items-baseline gap-3.5 text-left text-sm leading-relaxed font-medium md:gap-5">
                   <span className={cn(micro, 'shrink-0 text-accent-1')}>0{index + 1}</span>
                   {question}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="border-t border-border/70">
-                <p className="pt-4 pr-5 pb-6 pl-11 text-sm leading-7 text-foreground-2 md:pl-14">
-                  {answer}
-                </p>
+              <AccordionContent className="border-t border-border p-0 [&>div]:p-0">
+                <p className="pt-4 pr-6 pb-6 pl-0 text-sm leading-7 text-foreground-2">{answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}
