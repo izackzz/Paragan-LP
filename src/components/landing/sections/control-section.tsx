@@ -46,13 +46,15 @@ export function ControlSection() {
       <div className={cn(frame, section)}>
         <SectionLabel number="02">NO COMANDO</SectionLabel>
         <div className={padding}>
-          <SectionHeading
-            align="center"
-            eyebrow="Decisões conectadas"
-            title="O controle não está em um botão."
-            muted="Está em toda a operação."
-            description="Marca, condições comerciais, pessoas e dinheiro. Diferentes perspectivas do mesmo negócio, com você no centro das decisões."
-          />
+          <div className="sticky top-25 flex flex-col justify-start">
+            <SectionHeading
+              align="center"
+              eyebrow="Decisões conectadas"
+              title="O controle não está em um botão."
+              muted="Está em toda a operação."
+              description="Marca, condições comerciais, pessoas e dinheiro. Diferentes perspectivas do mesmo negócio, com você no centro das decisões."
+            />
+          </div>
           <Tabs defaultValue="operacao" className="mt-14">
             <TabsList
               aria-label="Perspectivas da operação"

@@ -41,8 +41,8 @@ export function FaqSection() {
     <section id="perguntas" className={cn(frame, section)}>
       <SectionLabel number="09">ANTES DE COMEÇARMOS</SectionLabel>
       <div className="grid gap-7 px-5 py-12 md:grid-cols-2 md:gap-0 md:px-0 md:py-0">
-        <div className="relative isolate overflow-hidden md:border-r md:border-border md:px-8 md:py-13 md:[&_h2]:text-3xl">
-          <div className="md:sticky md:top-32">
+        <div className="relative isolate md:border-r md:border-border md:px-8 md:py-13 md:[&_h2]:text-3xl">
+          <div className="sticky top-25 flex flex-col justify-start">
             <SectionHeading
               eyebrow="Perguntas frequentes"
               title="Clareza antes"

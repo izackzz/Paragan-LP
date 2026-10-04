@@ -8,13 +8,16 @@ export function IntegrationsSection() {
     <section id="integracoes" className={cn(frame, section)}>
       <SectionLabel number="05">CONEXÕES QUE FAZEM SENTIDO</SectionLabel>
       <Reveal className="grid md:grid-cols-3">
-        <div className="flex flex-col justify-between gap-8 border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
-          <SectionHeading title="Conecte seu negócio." muted="Mantenha o controle." />
-          <div className="flex flex-col items-start gap-6">
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              API, webhooks e processamento em uma infraestrutura que conversa com os seus sistemas.
-            </p>
-            <ActionLink secondary>Avaliar integração</ActionLink>
+        <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
+          <div className="sticky top-25 flex flex-col justify-start gap-8">
+            <SectionHeading title="Conecte seu negócio." muted="Mantenha o controle." />
+            <div className="flex flex-col items-start gap-6">
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                API, webhooks e processamento em uma infraestrutura que conversa com os seus
+                sistemas.
+              </p>
+              <ActionLink secondary>Avaliar integração</ActionLink>
+            </div>
           </div>
         </div>
         <div className="flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">

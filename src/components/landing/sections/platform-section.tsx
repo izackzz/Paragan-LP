@@ -26,12 +26,14 @@ export function PlatformSection() {
     <section id="plataforma" className={cn(frame, section)}>
       <SectionLabel number="01">A PLATAFORMA</SectionLabel>
       <Reveal className={padding}>
-        <SectionHeading
-          eyebrow="Mais do que processar"
-          title="Uma marca própria merece"
-          muted="uma operação à altura."
-          description="O que acontece antes e depois do pagamento também define o seu negócio. Sua marca lidera a experiência do cliente final; a Paragan sustenta a excelência operacional ao seu lado."
-        />
+        <div className="sticky top-25 flex flex-col justify-start">
+          <SectionHeading
+            eyebrow="Mais do que processar"
+            title="Uma marca própria merece"
+            muted="uma operação à altura."
+            description="O que acontece antes e depois do pagamento também define o seu negócio. Sua marca lidera a experiência do cliente final; a Paragan sustenta a excelência operacional ao seu lado."
+          />
+        </div>
         <Frame className="mt-10">
           <CardGroup
             columns={4}
