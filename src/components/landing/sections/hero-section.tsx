@@ -70,7 +70,7 @@ export function HeroSection() {
             VER EM AÇÃO
           </Button>
         </div>
-        <div className="mt-30 flex w-full flex-col gap-2 sm:flex-row lg:justify-center">
+        {/* <div className="mt-30 flex w-full flex-col gap-2 sm:flex-row lg:justify-center">
           <Button size="sm" className="w-full sm:w-fit" variant="primary">
             PRIMARY
           </Button>
@@ -86,8 +86,8 @@ export function HeroSection() {
           <Button size="sm" className="w-full sm:w-fit" variant="ghost">
             GHOST
           </Button>
-        </div>
-        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+        </div> */}
+        <p className="mt-8 mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Gateway, checkout, split, produtos, membros, e muito mais... Personalize com sua marca e
           concentre seu time no que realmente gera crescimento:{' '}
           <span className="text-accent-2">produto, clientes e escala.</span>
