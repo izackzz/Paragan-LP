@@ -48,7 +48,7 @@ export function HeroSection() {
         'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
       )}
     >
-      <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-8 md:pb-8 lg:text-center lg:justify-center lg:align-center">
+      <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-25 md:pb-8 lg:text-center lg:justify-center lg:align-center">
         <p className={eyebrow}>White label para plataformas de vendas digitais</p>
         <h1
           id="hero-title"
