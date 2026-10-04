@@ -133,7 +133,7 @@ export function HeroSection() {
                 priority={preview.value === 'gateway'}
                 className="p-1.5"
               />
-              <p className="flex justify-between gap-4 bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
+              <p className="flex justify-between gap-4 bg-card border-t p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
                 <span className={cn(micro, 'hidden shrink-0 md:block')}>PRÉVIA DO PRODUTO</span>
               </p>
