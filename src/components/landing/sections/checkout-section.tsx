@@ -74,12 +74,13 @@ export function CheckoutSection() {
             <ArtPlaceholder
               width={1440}
               height={760}
+              className='p-1.5'
               label="Checkout Catalyst · desktop e mobile"
             />
           </div>
         </div>
 
-        <CardGroup columns={3} className={gridThree}>
+        <CardGroup columns={3} className={cn(gridThree, 'mt-5 border rounded-xl overflow-hidden')}>
           {checkoutSteps.map((step) => (
             <Card key={step.number} className={cn(card, 'relative isolate overflow-hidden')}>
               <CardHeader className="relative z-10">
