@@ -141,17 +141,12 @@ export function HeroSection() {
           ))}
         </Tabs>
       </Frame>
-      <div className="grid min-h-32 items-center gap-4 py-6 lg:grid-cols-4 lg:gap-8">
-        <span className="text-center text-xs leading-relaxed text-muted-foreground lg:text-left">
-          Para quem transforma
-          <br />
-          <strong className="font-medium text-foreground">pagamentos em negócio.</strong>
-        </span>
-        <FluidGroup className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:col-span-3 [&_span]:block [&_span]:px-2 [&_span]:py-4 [&_span]:text-center [&_span]:text-sm [&_span]:font-medium">
+      <div className="text-display mx-0 grid min-h-32 items-center py-6 text-lg [&_div]:mx-0!">
+        <FluidGroup className="grid grid-cols-2 lg:grid-cols-4 [&_span]:block [&_span]:border-border [&_span]:px-2 [&_span]:py-4 [&_span]:text-center [&_span]:text-sm [&_span]:font-medium">
           <span>White label</span>
-          <span>Multi-tenant</span>
-          <span>Multiadquirência</span>
-          <span>API + Webhooks</span>
+          <span className="border-l">Multi-tenant</span>
+          <span className="border-t lg:border-t-0 lg:border-l">Multiadquirência</span>
+          <span className="border-t border-l lg:border-t-0">API + Webhooks</span>
         </FluidGroup>
       </div>
     </section>
