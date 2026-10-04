@@ -132,7 +132,6 @@ export function HeroSection() {
                 label={preview.image}
                 priority={preview.value === 'gateway'}
                 className="p-1.5"
-                frameClassName="shiny-border"
               />
               <p className="flex justify-between gap-4 bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
