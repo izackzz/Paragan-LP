@@ -395,13 +395,13 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         {eyebrow || description ? (
           <>
             <span className="flex w-full min-w-0 items-center justify-between gap-2">
-              <span className="text-caption leading-relaxed text-accent-2">{eyebrow}</span>
+              <span className="text-caption leading-relaxed text-muted-foreground">{eyebrow}</span>
               {Icon && (
                 <Icon
                   strokeWidth={1.5}
                   className={cn(
-                    'size-8 shrink-0 transition-[color,stroke-width] duration-80',
-                    isActive ? 'text-primary' : 'text-muted-foreground',
+                    'size-5 shrink-0 transition-[color,stroke-width] duration-80',
+                    isActive ? 'text-foreground' : 'text-muted-foreground',
                   )}
                 />
               )}
@@ -409,7 +409,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
             <span
               className={cn(
                 'block w-full min-w-0 text-left transition-all text-accent-2 duration-80 text-base font-display',
-                isActive ? 'text-foreground' : 'text-foreground-2',
+                isActive ? 'text-foreground' : 'text-muted-foreground',
               )}
             >
               {label}
@@ -424,10 +424,9 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
           <>
             {Icon && (
               <Icon
-                size={16}
                 strokeWidth={isActive ? 2 : 1.5}
                 className={cn(
-                  'transition-[color,stroke-width] duration-80',
+                  'size-5 transition-all duration-80',
                   isActive ? 'text-foreground' : 'text-muted-foreground',
                 )}
               />
