@@ -13,19 +13,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80',
+        primary:
+          'shiny-01 overflow-hidden border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] hover:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-500 ease-in-out',
         secondary:
-          'bg-surface-1 border border-transparent text-foreground hover:text-background font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--border)] hover:bg-foreground/90 hover:translate-y-px transition-all duration-500 ease-in-out',
-        tertiary:
-          'bg-border border border-foreground-4 text-foreground hover:bg-muted hover:bg-accent',
-        platinum:
-          'button-primary-platinum text-platinum-foreground hover:brightness-110 hover:brightness-90',
-        'shiny-1':
-          'shiny-01 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] hover:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
-        'shiny-2':
-          'shiny-02 overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
-        'shiny-secondary':
-          'shiny-secondary overflow-hidden border border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] active:translate-y-px transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]',
+          'bg-surface-3 border-2 border-transparent text-foreground hover:text-background font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--border)] hover:bg-surface-1 hover:translate-y-px transition-all duration-500 ease-in-out',
+        cta: 'shiny-02 overflow-hidden border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-500 ease-in-out',
+        'cta-2':
+          'shiny-secondary overflow-hidden border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-500 ease-in-out',
+        ghost:
+          'border-2 border-transparent text-foreground font-normal outline-offset-1 hover:bg-surface-1 bg-transparent shadow-[0_0px_0rem_0px_var(--border)] hover:shadow-[0_0px_0rem_1px_var(--border)] transition-all duration-500 ease-in-out',
       },
       size: {
         sm: 'px-4 py-3 text-sm gap-1 [&_svg]:size-3.5 has-[>.button-leading]:pl-2 has-[>.button-trailing]:pr-2',
@@ -39,14 +35,8 @@ const buttonVariants = cva(
       },
       active: { true: '', false: '' },
     },
-    compoundVariants: [
-      { variant: 'primary', active: true, className: 'bg-primary/80' },
-      { variant: 'secondary', active: true, className: 'bg-foreground/80' },
-      { variant: 'tertiary', active: true, className: 'bg-muted' },
-      { variant: 'platinum', active: true, className: 'brightness-90' },
-    ],
     defaultVariants: {
-      variant: 'primary',
+      variant: 'secondary',
       size: 'md',
     },
   },
@@ -111,34 +101,34 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading ? (
-            <>
-              <span className="flex items-center justify-center gap-2 opacity-0">
-                {LeadingIcon && (
-                  <LeadingIcon className="button-icon button-leading" strokeWidth={2} />
-                )}
-                {children}
-                {TrailingIcon && (
-                  <TrailingIcon className="button-icon button-trailing" strokeWidth={2} />
-                )}
-              </span>
-            </>
-          ) : (
-            <>
+          <>
+            <span className="flex items-center justify-center gap-2 opacity-0">
               {LeadingIcon && (
-                <LeadingIcon
-                  strokeWidth={1.5}
-                  className="button-icon button-leading transition-[stroke-width] duration-80 group-hover:stroke-2"
-                />
+                <LeadingIcon className="button-icon button-leading" strokeWidth={2} />
               )}
-              <span className="z-10">{children}</span>
+              {children}
               {TrailingIcon && (
-                <TrailingIcon
-                  strokeWidth={1.5}
-                  className="button-icon button-trailing transition-[stroke-width] duration-80 group-hover:stroke-2"
-                />
+                <TrailingIcon className="button-icon button-trailing" strokeWidth={2} />
               )}
-            </>
-          )}
+            </span>
+          </>
+        ) : (
+          <>
+            {LeadingIcon && (
+              <LeadingIcon
+                strokeWidth={1.5}
+                className="button-icon button-leading transition-[stroke-width] duration-80 group-hover:stroke-2"
+              />
+            )}
+            <span className="z-10">{children}</span>
+            {TrailingIcon && (
+              <TrailingIcon
+                strokeWidth={1.5}
+                className="button-icon button-trailing transition-[stroke-width] duration-80 group-hover:stroke-2"
+              />
+            )}
+          </>
+        )}
       </ButtonPrimitive>
     );
   },

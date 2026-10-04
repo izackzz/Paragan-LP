@@ -121,12 +121,12 @@ export function SiteHeader() {
             >
               Entrar
             </Link>
-            <Button asChild variant="shiny-1" size="sm" className={cn('hidden sm:inline-flex')}>
+            <Button asChild variant="primary" size="sm" className={cn('hidden sm:inline-flex')}>
               <Link href="#">ENTRAR EM CONTATO</Link>
             </Button>
             <Button
               id="navigation-toggle"
-              variant="tertiary"
+              variant="secondary"
               size="icon-lg"
               className={cn('min-h-11 min-w-11 xl:hidden')}
               aria-label={open ? 'Fechar navegação' : 'Abrir navegação'}
@@ -182,7 +182,7 @@ export function SiteHeader() {
                 </Link>
               ))}
             </FluidGroup>
-            <Button asChild variant="shiny-1" className={cn('w-full')}>
+            <Button asChild variant="primary" className={cn('w-full')}>
               <Link href="#" onClick={() => setOpen(false)}>
                 ENTRAR EM CONTATO
               </Link>

@@ -62,11 +62,28 @@ export function HeroSection() {
           Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e produtos que evoluem junto ao mercado
         </p>
         <div className="flex sm:flex-row flex-col w-full gap-2">
-          <Button size="lg" className="w-full sm:w-fit" variant="shiny-2">
+          <Button size="lg" className="w-full sm:w-fit" variant="cta">
             FALAR COM UM ESPECIALISTA
           </Button>
           <Button size="lg" className="w-full sm:w-fit" variant="secondary">
             VER EM AÇÃO
+          </Button>
+        </div>
+        <div className="flex sm:flex-row flex-col w-full gap-2 mt-30">
+          <Button size="sm" className="w-full sm:w-fit" variant="primary">
+            PRIMARY
+          </Button>
+          <Button size="sm" className="w-full sm:w-fit" variant="secondary">
+            SECONDARY
+          </Button>
+          <Button size="sm" className="w-full sm:w-fit" variant="cta">
+            CTA
+          </Button>
+          <Button size="sm" className="w-full sm:w-fit" variant="cta-2">
+            CTA-02
+          </Button>
+          <Button size="sm" className="w-full sm:w-fit" variant="ghost">
+            GHOST
           </Button>
         </div>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-accent-2">
