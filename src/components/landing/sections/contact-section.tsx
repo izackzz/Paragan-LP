@@ -39,19 +39,21 @@ export function ContactSection() {
         <SectionLabel number="10">VAMOS CONSTRUIR O PRÓXIMO CAPÍTULO</SectionLabel>
         <div className="grid md:grid-cols-2">
           <div className="border-b border-border px-6 py-12 md:border-r md:border-b-0 xl:px-10 xl:py-16">
-            <SectionHeading
-              eyebrow="Seu negócio, com mais possibilidades"
-              title="A próxima operação"
-              muted="pode levar a sua marca."
-              description="Conte o que você quer construir, o que já existe e o que precisa evoluir. O ponto de partida é o seu negócio."
-            />
-            <div className="mt-12 border-t border-border pt-6">
-              <span className={cn(micro, 'text-brand')}>UMA CONVERSA, TRÊS PERSPECTIVAS</span>
-              <p className="mt-4 text-sm leading-7">
-                Seu modelo de negócio.
-                <br />A experiência dos seus sellers.
-                <br />A estrutura para fazer acontecer.
-              </p>
+            <div className="sticky top-25 flex flex-col justify-start">
+              <SectionHeading
+                eyebrow="Seu negócio, com mais possibilidades"
+                title="A próxima operação"
+                muted="pode levar a sua marca."
+                description="Conte o que você quer construir, o que já existe e o que precisa evoluir. O ponto de partida é o seu negócio."
+              />
+              <div className="mt-12 border-t border-border pt-6">
+                <span className={cn(micro, 'text-brand')}>UMA CONVERSA, TRÊS PERSPECTIVAS</span>
+                <p className="mt-4 text-sm leading-7">
+                  Seu modelo de negócio.
+                  <br />A experiência dos seus sellers.
+                  <br />A estrutura para fazer acontecer.
+                </p>
+              </div>
             </div>
           </div>
           <form

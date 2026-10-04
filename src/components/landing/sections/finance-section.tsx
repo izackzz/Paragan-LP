@@ -8,13 +8,15 @@ export function FinanceSection() {
     <section id="financeiro" className={cn(frame, section)}>
       <SectionLabel number="04">GESTÃO FINANCEIRA</SectionLabel>
       <Reveal className="grid md:grid-cols-3">
-        <div className="flex flex-col gap-5 sticky top-25 border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
-          <SectionHeading title="Seu financeiro." muted="Sem pontos cegos." />
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Volume não é resultado. Enxergue taxas, receitas, reservas e recebimentos na mesma
-            operação.
-          </p>
-          <ActionLink secondary>Conhecer os controles</ActionLink>
+        <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
+          <div className="sticky top-25 flex flex-col justify-start gap-5">
+            <SectionHeading title="Seu financeiro." muted="Sem pontos cegos." />
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Volume não é resultado. Enxergue taxas, receitas, reservas e recebimentos na mesma
+              operação.
+            </p>
+            <ActionLink secondary>Conhecer os controles</ActionLink>
+          </div>
         </div>
         <div className="flex flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">
           <p className={cn(micro, 'mb-6 text-muted-foreground')}>01 / Visão financeira</p>

@@ -31,7 +31,7 @@ export function SolutionsSection() {
   return (
     <section id="solucoes" className={cn(frame, section)}>
       <SectionLabel number="07">PARA O SEU MODELO DE NEGÓCIO</SectionLabel>
-      <div className={padding}>
+      <div className={cn(padding, 'sticky top-25 flex flex-col justify-start')}>
         <SectionHeading
           eyebrow="Para quem quer ir além"
           title="Pagamentos como negócio."
