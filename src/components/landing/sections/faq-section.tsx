@@ -63,14 +63,14 @@ export function FaqSection() {
               index={index}
               className="overflow-hidden rounded-none border-0 border-b border-border bg-transparent p-0 last:border-b-0"
             >
-              <AccordionTrigger className="min-h-16 rounded-none border-0 py-4 pr-6 pl-0">
+              <AccordionTrigger className="min-h-16 rounded-none border-0 px-6 py-4">
                 <span className="flex items-baseline gap-3.5 text-left text-sm leading-relaxed font-medium md:gap-5">
                   <span className={cn(micro, 'shrink-0 text-accent-1')}>0{index + 1}</span>
                   {question}
                 </span>
               </AccordionTrigger>
               <AccordionContent className="border-t border-border p-0 [&>div]:p-0">
-                <p className="pt-4 pr-6 pb-6 pl-0 text-sm leading-7 text-foreground-2">{answer}</p>
+                <p className="px-6 pt-4 pb-6 text-sm leading-7 text-foreground-2">{answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}
