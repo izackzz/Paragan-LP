@@ -48,7 +48,7 @@ export function HeroSection() {
         'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
       )}
     >
-      <div className="max-w-3xl pt-16 pb-12 md:pt-8 md:pb-8">
+      <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-8 md:pb-8 lg:text-center">
         <p className={eyebrow}>White label para plataformas de vendas digitais</p>
         <h1
           id="hero-title"
@@ -59,9 +59,10 @@ export function HeroSection() {
           <span className="text-foreground-3">Você no controle da operação</span>
         </h1>
         <p className="mt-6 mb-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e produtos que evoluem junto ao mercado
+          Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e
+          produtos que evoluem junto ao mercado
         </p>
-        <div className="flex sm:flex-row flex-col w-full gap-2">
+        <div className="flex w-full flex-col gap-2 sm:flex-row lg:justify-center">
           <Button size="lg" className="w-full sm:w-fit" variant="cta">
             FALAR COM UM ESPECIALISTA
           </Button>
@@ -69,7 +70,7 @@ export function HeroSection() {
             VER EM AÇÃO
           </Button>
         </div>
-        <div className="flex sm:flex-row flex-col w-full gap-2 mt-30">
+        <div className="mt-30 flex w-full flex-col gap-2 sm:flex-row lg:justify-center">
           <Button size="sm" className="w-full sm:w-fit" variant="primary">
             PRIMARY
           </Button>
@@ -86,11 +87,10 @@ export function HeroSection() {
             GHOST
           </Button>
         </div>
-        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-accent-2">
-          Um ecossistema inteiro entregue em 1 dia.
-        </p>
-        <p className="mt-2 max-w-xl text-xs leading-relaxed text-muted-foreground">
-          Gateway, checkout, split, produtos, membros, e muito mais... Personalize com sua marca e concentre seu time no que realmente gera crescimento: <span className="text-accent-2">produto, clientes e escala.</span>
+        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Gateway, checkout, split, produtos, membros, e muito mais... Personalize com sua marca e
+          concentre seu time no que realmente gera crescimento:{' '}
+          <span className="text-accent-2">produto, clientes e escala.</span>
         </p>
       </div>
       <Frame className="[&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
@@ -112,7 +112,7 @@ export function HeroSection() {
                 description={preview.description}
                 icon={preview.icon}
                 className={cn(
-                  'min-h-28 w-full min-w-0 flex-none flex-col items-stretch justify-start gap-2 rounded-none border-b border-solid border-border px-3 py-4 text-left last:border-b-0 sm:flex-1 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:px-5',
+                  'min-h-28 w-full min-w-0 flex-none flex-col items-stretch justify-start gap-2 rounded-none border-b border-solid border-border px-3 py-4 text-left last:border-b-0 sm:flex-1 sm:border-r sm:border-b-0 sm:px-5 sm:last:border-r-0',
                 )}
               />
             ))}
