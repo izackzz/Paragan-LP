@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="pt-BR"
-      className={`${faktum.variable} ${galano.variable} ${rationalMix.variable} h-full scroll-pt-22 antialiased selection:bg-accent selection:text-foreground`}
+      className={`${faktum.variable} ${galano.variable} ${rationalMix.variable} h-full scroll-pt-22 tabular-nums antialiased selection:bg-accent selection:text-foreground`}
     >
       <body className="min-h-full bg-background text-foreground motion-reduce:**:animate-none motion-reduce:**:transition-none">
         <ExperienceProvider>
