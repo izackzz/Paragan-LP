@@ -8,7 +8,7 @@ export function ScaleSection() {
     <section id="escala" className={cn(frame, section)}>
       <SectionLabel number="06">ESTRUTURA PARA EVOLUIR</SectionLabel>
       <Reveal className="grid md:grid-cols-3">
-        <div className="flex flex-col justify-between gap-6 border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
+        <div className="flex flex-col sticky top-25 justify-between gap-6 border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
           <SectionHeading title="Cresça a operação." muted="Preserve o comando." />
           <p className="text-sm leading-relaxed text-muted-foreground">
             Pessoas, dados e responsabilidades no contexto certo, mesmo quando a sua base cresce.

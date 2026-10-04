@@ -6,7 +6,7 @@ import { frame, micro, eyebrow } from '../styles';
 import { cn } from '@/lib/utils';
 import { Frame } from '@/components/ui/frame';
 import { Button } from '@/components/ui/button';
-import { IconCheckout, IconGateways, IconSellers } from '@/components/assets/custom-icons';
+import { IconAffiliates, IconGateways, IconSwatchBook } from '@/components/assets/custom-icons';
 
 const previews = [
   {
@@ -23,7 +23,7 @@ const previews = [
     label: 'Seus sellers',
     eyebrow: 'GESTÃO DE BASE',
     description: 'Vendas, produtos e recebimentos.',
-    icon: IconSellers,
+    icon: IconAffiliates,
     image: 'Experiência do seller',
     caption: 'Vendas, produtos e recebimentos. O dia a dia da sua base, conectado.',
   },
@@ -32,7 +32,7 @@ const previews = [
     label: 'Seu checkout',
     eyebrow: 'PAGAMENTO',
     description: 'Oferta e jornada com a sua marca.',
-    icon: IconCheckout,
+    icon: IconSwatchBook,
     image: 'Checkout white label',
     caption: 'Do produto à confirmação. Uma jornada de compra com a sua identidade.',
   },
@@ -45,7 +45,7 @@ export function HeroSection() {
       aria-labelledby="hero-title"
       className={cn(
         frame,
-        'relative isolate scroll-mt-22 overflow-clip border-b border-border px-5 md:px-7 xl:px-10',
+        'relative isolate scroll-mt-22 overflow-clip border-b border-border md:[&_div]:mx-7 xl:[&_div]:mx-10 [&_div]:mx-5',
       )}
     >
       <div className="mx-auto max-w-3xl pt-16 pb-12 text-left md:pt-25 md:pb-8 lg:text-center lg:justify-center lg:align-center">
@@ -58,7 +58,7 @@ export function HeroSection() {
           <br />
           <span className="text-foreground-3">Você no controle da operação</span>
         </h1>
-        <p className="mt-6 mb-7 max-w-2xl mx-auto text-base leading-7 text-muted-foreground md:text-lg">
+        <p className="mt-6 mb-7 max-w-2xl md:mx-auto text-base leading-7 text-muted-foreground md:text-lg">
           Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e
           produtos que evoluem junto ao mercado
         </p>
