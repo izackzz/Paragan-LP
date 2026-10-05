@@ -340,6 +340,28 @@
   }
 }
 
+/* Match the space outside landing-frame, including its 75rem width cap. */
+.landing-side-dots {
+  --landing-side-gutter: 0.75rem;
+  position: fixed;
+  inset-block: 0;
+  width: max(var(--landing-side-gutter), calc((100% - 75rem) / 2));
+  z-index: 60;
+  pointer-events: none;
+}
+
+@media (width >= 48rem) {
+  .landing-side-dots {
+    --landing-side-gutter: 1.25rem;
+  }
+}
+
+@media (width >= 80rem) {
+  .landing-side-dots {
+    --landing-side-gutter: 2.5rem;
+  }
+}
+
 @utility button-primary-platinum {
   background: linear-gradient(
     135deg,
