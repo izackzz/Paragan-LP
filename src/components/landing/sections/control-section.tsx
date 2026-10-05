@@ -46,7 +46,7 @@ export function ControlSection() {
       <div className={cn(frame, section)}>
         <SectionLabel number="02">NO COMANDO</SectionLabel>
         <div className={padding}>
-          <div className="sticky top-25 flex flex-col justify-start">
+          <div className="flex flex-col justify-start">
             <SectionHeading
               align="center"
               eyebrow="Decisões conectadas"

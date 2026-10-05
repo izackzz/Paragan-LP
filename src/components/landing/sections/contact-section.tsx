@@ -39,7 +39,7 @@ export function ContactSection() {
         <SectionLabel number="10">VAMOS CONSTRUIR O PRÓXIMO CAPÍTULO</SectionLabel>
         <div className="grid md:grid-cols-2">
           <div className="border-b border-border px-6 py-12 md:border-r md:border-b-0 xl:px-10 xl:py-16">
-            <div className="sticky top-25 flex flex-col justify-start">
+            <div className="sticky top-20 flex flex-col justify-start">
               <SectionHeading
                 eyebrow="Seu negócio, com mais possibilidades"
                 title="A próxima operação"

@@ -77,7 +77,7 @@ export function SectionLabel({ number, children }: { number: string; children: R
     <div
       className={cn(
         micro,
-        'flex dots min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground md:px-8',
+        'flex dots z-20 bg-background/90 backdrop-blur-xs top-20 sticky min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground md:px-8',
       )}
     >
       <span className="text-brand">[ {number} / 10 ]</span>
@@ -99,7 +99,7 @@ export function SectionHeading({
   eyebrow?: string;
   title: string;
   muted?: string;
-  description?: string;
+  description?: ReactNode;
   align?: 'left' | 'center';
 }) {
   return (

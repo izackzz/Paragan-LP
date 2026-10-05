@@ -9,7 +9,7 @@ export function FinanceSection() {
       <SectionLabel number="04">GESTÃO FINANCEIRA</SectionLabel>
       <Reveal className="grid md:grid-cols-3">
         <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
-          <div className="sticky top-25 flex flex-col justify-start gap-5">
+          <div className="sticky top-47 flex flex-col justify-start gap-5">
             <SectionHeading title="Seu financeiro." muted="Sem pontos cegos." />
             <p className="text-sm leading-relaxed text-muted-foreground">
               Volume não é resultado. Enxergue taxas, receitas, reservas e recebimentos na mesma
