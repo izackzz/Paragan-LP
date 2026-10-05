@@ -42,12 +42,18 @@ export function FaqSection() {
       <SectionLabel number="09">ANTES DE COMEÇARMOS</SectionLabel>
       <div className="grid gap-0 md:grid-cols-2">
         <div className="relative isolate px-5 py-12 md:border-r md:border-border md:px-8 md:py-13 md:[&_h2]:text-3xl">
-          <div className="sticky top-25 flex flex-col justify-start">
+          <div className="sticky top-47 flex flex-col justify-start">
             <SectionHeading
               eyebrow="Perguntas frequentes"
               title="Clareza antes"
               muted="do próximo passo."
-              description="O que vale entender para desenhar sua operação com a Paragan."
+              description={
+                <>
+                  O que vale entender para desenhar
+                  <br />
+                  sua operação com a Paragan.
+                </>
+              }
             />
           </div>
         </div>

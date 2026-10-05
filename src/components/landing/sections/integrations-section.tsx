@@ -9,7 +9,7 @@ export function IntegrationsSection() {
       <SectionLabel number="05">CONEXÕES QUE FAZEM SENTIDO</SectionLabel>
       <Reveal className="grid md:grid-cols-3">
         <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
-          <div className="sticky top-25 flex flex-col justify-start gap-8">
+          <div className="sticky top-47 flex flex-col justify-start gap-8">
             <SectionHeading title="Conecte seu negócio." muted="Mantenha o controle." />
             <div className="flex flex-col items-start gap-6">
               <p className="text-sm leading-relaxed text-muted-foreground">

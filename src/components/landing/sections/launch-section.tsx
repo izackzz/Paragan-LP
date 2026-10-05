@@ -27,7 +27,7 @@ export function LaunchSection() {
     <section id="implantacao" className={cn(frame, section)}>
       <SectionLabel number="08">DO PLANO À OPERAÇÃO</SectionLabel>
       <Reveal>
-        <div className={cn(padding, 'sticky top-25 flex flex-col justify-start')}>
+        <div className={cn(padding, 'flex flex-col justify-start')}>
           <SectionHeading
             eyebrow="Começar com direção"
             title="Seu próximo capítulo"

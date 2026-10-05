@@ -19,7 +19,7 @@ export function PlatformSection() {
     <section id="plataforma" className={cn(frame, section)}>
       <SectionLabel number="01">A PLATAFORMA</SectionLabel>
       <Reveal>
-        <div className={cn(padding, 'sticky top-25 flex flex-col justify-start')}>
+        <div className={cn(padding, 'flex flex-col justify-start')}>
           <SectionHeading
             eyebrow="Mais do que processar"
             title="Uma marca própria merece"

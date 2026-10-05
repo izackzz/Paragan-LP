@@ -16,7 +16,6 @@ import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion';
 import { cn } from '@/lib/utils';
 import { icons } from '@/lib/icon-map';
 import { springs } from '@/lib/springs';
-import { useFluidHover as useProximityHover } from '@/hooks/use-fluid-hover';
 import { useShape } from '@/lib/shape-context';
 
 // ─── Contexts ────────────────────────────────────────────────────────────────
@@ -29,9 +28,7 @@ interface ItemRect {
 }
 
 interface AccordionGroupContextValue {
-  registerItem: (index: number, element: HTMLElement | null) => void;
   registerFullItem: (index: number, element: HTMLElement | null) => void;
-  activeIndex: number | null;
   grouped: true;
   remeasure: () => void;
   openValues: Set<string>;
@@ -89,16 +86,6 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   const containerRef = useRef<HTMLDivElement>(null);
   const fullItemElementsRef = useRef<Map<number, HTMLElement>>(new Map());
   const [openItemRects, setOpenItemRects] = useState<Map<number, ItemRect>>(new Map());
-
-  const {
-    activeIndex,
-    setActiveIndex,
-    itemRects,
-    sessionRef,
-    handlers,
-    registerItem,
-    measureItems,
-  } = useProximityHover(containerRef);
 
   const registerFullItem = useCallback((index: number, element: HTMLElement | null) => {
     if (element) {
@@ -184,22 +171,15 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   );
 
   useEffect(() => {
-    measureItems();
     measureFullItems();
-  }, [measureItems, measureFullItems, children]);
+  }, [measureFullItems, children]);
 
   const openValuesKey = [...openValues].join(',');
 
   useEffect(() => {
-    measureItems();
     measureFullItems();
-  }, [measureItems, measureFullItems, openValuesKey]);
+  }, [measureFullItems, openValuesKey]);
 
-  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
-
-  const activeRect = activeIndex !== null ? itemRects[activeIndex] : null;
-  const focusRect = focusedIndex !== null ? itemRects[focusedIndex] : null;
-  const isHoveringNonOpen = activeIndex !== null && !openItemRects.has(activeIndex);
   const shape = useShape();
 
   const {
@@ -230,12 +210,9 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
   return (
     <AccordionGroupContext.Provider
       value={{
-        registerItem,
         registerFullItem,
-        activeIndex,
         grouped: true,
         remeasure: () => {
-          measureItems();
           measureFullItems();
         },
         openValues,
@@ -266,44 +243,6 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
                 if (typeof ref === 'function') ref(node);
                 else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
               }}
-              onMouseEnter={handlers.onMouseEnter}
-              onMouseMove={(e) => {
-                const container = containerRef.current;
-                if (container) {
-                  const cRect = container.getBoundingClientRect();
-                  const layoutH = container.offsetHeight;
-                  const visualH = cRect.height;
-                  const scale = layoutH > 0 ? visualH / layoutH : 1;
-                  const localY = (e.clientY - cRect.top) / scale + container.scrollTop;
-                  for (const [idx, full] of openItemRects) {
-                    const trigger = itemRects[idx];
-                    if (!trigger) continue;
-                    const contentTop = trigger.top + trigger.height;
-                    const contentBottom = full.top + full.height;
-                    if (localY >= contentTop && localY <= contentBottom) {
-                      setActiveIndex(null);
-                      return;
-                    }
-                  }
-                }
-                handlers.onMouseMove(e);
-              }}
-              onMouseLeave={handlers.onMouseLeave}
-              onFocus={(e) => {
-                const indexAttr = (e.target as HTMLElement)
-                  .closest('[data-proximity-index]')
-                  ?.getAttribute('data-proximity-index');
-                if (indexAttr != null) {
-                  const idx = Number(indexAttr);
-                  setActiveIndex(idx);
-                  setFocusedIndex((e.target as HTMLElement).matches(':focus-visible') ? idx : null);
-                }
-              }}
-              onBlur={(e) => {
-                if (containerRef.current?.contains(e.relatedTarget as Node)) return;
-                setFocusedIndex(null);
-                setActiveIndex(null);
-              }}
               className={cn('relative flex w-72 max-w-full flex-col gap-0.5', className)}
               {...(htmlProps as HTMLAttributes<HTMLDivElement>)}
             >
@@ -319,7 +258,7 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
                       left: rect.left,
                       width: rect.width,
                       height: rect.height,
-                      opacity: isHoveringNonOpen ? 0.7 : 1,
+                      opacity: 1,
                     }}
                     exit={{ opacity: 0, transition: { duration: 0.12 } }}
                     transition={{
@@ -331,56 +270,6 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
                     }}
                   />
                 ))}
-              </AnimatePresence>
-
-              {/* Hover background */}
-              <AnimatePresence>
-                {activeRect && (
-                  <motion.div
-                    key={sessionRef.current}
-                    className={`absolute ${shape.bg} pointer-events-none bg-hover`}
-                    initial={{
-                      opacity: 0,
-                      top: activeRect.top,
-                      left: activeRect.left,
-                      width: activeRect.width,
-                      height: activeRect.height,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      top: activeRect.top,
-                      left: activeRect.left,
-                      width: activeRect.width,
-                      height: activeRect.height,
-                    }}
-                    exit={{ opacity: 0, transition: { duration: 0.06 } }}
-                    transition={{
-                      ...springs.fast,
-                      opacity: { duration: 0.08 },
-                    }}
-                  />
-                )}
-              </AnimatePresence>
-
-              {/* Focus ring */}
-              <AnimatePresence>
-                {focusRect && (
-                  <motion.div
-                    className={`absolute ${shape.focusRing} pointer-events-none z-20 border border-accent-1`}
-                    initial={false}
-                    animate={{
-                      left: focusRect.left - 2,
-                      top: focusRect.top - 2,
-                      width: focusRect.width + 4,
-                      height: focusRect.height + 4,
-                    }}
-                    exit={{ opacity: 0, transition: { duration: 0.06 } }}
-                    transition={{
-                      ...springs.fast,
-                      opacity: { duration: 0.08 },
-                    }}
-                  />
-                )}
               </AnimatePresence>
 
               {children}
@@ -547,13 +436,6 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
     useEffect(() => {
       if (groupCtx?.grouped && index !== undefined) {
-        groupCtx.registerItem(index, triggerRef.current);
-        return () => groupCtx.registerItem(index, null);
-      }
-    }, [index, groupCtx]);
-
-    useEffect(() => {
-      if (groupCtx?.grouped && index !== undefined) {
         if (isOpen) {
           groupCtx.registerFullItem(index, internalRef.current);
         } else {
@@ -619,11 +501,10 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   ({ children, className, ...props }, ref) => {
     const ChevronRight = icons['chevron-right'];
     const groupCtx = useAccordionGroup();
-    const { index, isOpen, triggerRef } = useAccordionItemContext();
+    const { isOpen, triggerRef } = useAccordionItemContext();
     const shape = useShape();
-    const [isHovered, setIsHovered] = useState(false);
 
-    const isActive = groupCtx?.grouped ? groupCtx.activeIndex === index : isHovered;
+    const isActive = isOpen;
 
     const triggerContent = (
       // Render Header as a <div> for parity with the Radix flavour (which
@@ -671,30 +552,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
       </AccordionPrimitive.Header>
     );
 
-    if (groupCtx?.grouped) {
-      return <div ref={triggerRef}>{triggerContent}</div>;
-    }
-
-    return (
-      <div
-        className="relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              className={`absolute inset-0 ${shape.bg} pointer-events-none bg-hover`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.06 } }}
-              transition={{ duration: 0.08 }}
-            />
-          )}
-        </AnimatePresence>
-        {triggerContent}
-      </div>
-    );
+    return groupCtx?.grouped ? <div ref={triggerRef}>{triggerContent}</div> : triggerContent;
   },
 );
 
