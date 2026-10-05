@@ -27,26 +27,28 @@ export function FinanceSection() {
             className={cn('rounded-none border-0')}
           />
         </div>
-        <div className="flex flex-col justify-end gap-3 border-t border-border p-6 md:p-8">
-          <h3 className="text-base font-medium">Condições sob sua gestão.</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Taxas e comissões por seller para refletir o seu modelo de negócio.
-          </p>
-        </div>
-        <div className="border-t border-border bg-card p-6 md:border-x md:p-8">
-          <ArtPlaceholder
-            width={600}
-            height={500}
-            label="Composição de saldo"
-            className={cn('rounded-none border-0')}
-          />
-        </div>
-        <div className="flex flex-col justify-end gap-3 border-t border-border p-6 md:p-8">
-          <h3 className="text-base font-medium">Disponível, pendente, reservado.</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Supervisione solicitações de saque e acompanhe a origem de cada valor.
-          </p>
-        </div>
+        {[
+          [
+            'Entenda seus custos.',
+            'Consulte a visão financeira por competência e acompanhe custos de adquirência, condições comerciais e comissões. Entenda o que compõe a sua operação.',
+          ],
+          [
+            'Planeje seus recebimentos.',
+            'Diferencie saldos disponíveis, pendentes e reservados. Consulte as datas previstas de liberação para organizar os próximos passos com mais contexto.',
+          ],
+          [
+            'Acompanhe cada movimentação.',
+            'Consulte o extrato de pagamentos, taxas e estornos. Supervisione solicitações de saque com fluxo de aprovação e acompanhe o caminho de cada valor.',
+          ],
+        ].map(([title, description]) => (
+          <div
+            key={title}
+            className="flex flex-col gap-3 border-t border-border p-6 last:border-r-0 md:border-r md:p-8"
+          >
+            <h3 className="text-sm font-medium">{title}</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+          </div>
+        ))}
       </Reveal>
     </section>
   );
