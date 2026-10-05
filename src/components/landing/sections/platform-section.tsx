@@ -8,150 +8,139 @@ import {
 } from '@/components/ui/card';
 import { SectionLabel, SectionHeading, ArtPlaceholder } from '../primitives';
 import { Reveal } from '../reveal';
-import { frame, section, padding, micro, cardTitle, cardDescription } from '../styles';
+import { frame, section, padding, micro, cardTitle } from '../styles';
 import { cn } from '@/lib/utils';
 import { Frame } from '@/components/ui/frame';
 
-const card =
-  'relative isolate min-w-0 gap-3 overflow-hidden rounded-none bg-card/40 p-4 md:p-5 [&_[data-slot=card-header]]:mb-0 [&_[data-slot=card-header]]:p-0 [&_[data-slot=card-content]]:p-0 [&_figure]:aspect-[4/1] [&_figure]:w-full [&_figure]:rounded-none [&_figure]:border-0 [&_img]:h-full [&_img]:w-full [&_img]:object-cover [&_figcaption]:hidden';
-
-const wideCard = 'md:grid md:grid-cols-2 md:items-start md:gap-4 md:[&_figure]:aspect-square';
+const platformPairs = [
+  [
+    {
+      number: '01',
+      eyebrow: 'IDENTIDADE',
+      title: 'Sua marca, em cada contato.',
+      description:
+        'Painel, checkout, domínio e comunicação com a sua identidade. Uma experiência que seus sellers reconhecem como sua.',
+      illustration: 'Sua identidade, em cada ponto de contato',
+    },
+    {
+      number: '02',
+      eyebrow: 'REGRAS COMERCIAIS',
+      title: 'Seu modelo vira regra.',
+      description:
+        'Configure taxas, comissões e condições por seller. Organize o padrão da operação e as particularidades de cada relacionamento.',
+      illustration: 'Regras que refletem o seu negócio',
+    },
+  ],
+  [
+    {
+      number: '03',
+      eyebrow: 'PESSOAS',
+      title: 'Cada pessoa, no seu papel.',
+      description:
+        'Organize equipe, carteiras e permissões. Delegue responsabilidades para cada pessoa atuar no contexto certo da operação.',
+      illustration: 'Pessoas, papéis e permissões',
+    },
+    {
+      number: '04',
+      eyebrow: 'RELACIONAMENTO',
+      title: 'Uma base para cultivar.',
+      description:
+        'Estruture campanhas, rankings e premiações para seus sellers. Conecte o relacionamento com a base à sua estratégia comercial.',
+      illustration: 'Crescimento com reconhecimento',
+    },
+  ],
+  [
+    {
+      number: '05',
+      eyebrow: 'ADQUIRÊNCIA',
+      title: 'Rotas com direção.',
+      description:
+        'Organize processadores, prioridades e regras de pagamento. Conduza cada operação conforme os métodos e parceiros habilitados.',
+      illustration: 'Uma política. Rotas elegíveis.',
+    },
+    {
+      number: '06',
+      eyebrow: 'GESTÃO FINANCEIRA',
+      title: 'Cada valor, no contexto.',
+      description:
+        'Acompanhe saldos disponíveis, pendentes e reservados. Consulte o extrato e supervisione solicitações de saque com fluxo de aprovação.',
+      illustration: 'Saldos, reservas e movimentações',
+    },
+  ],
+  [
+    {
+      number: '07',
+      eyebrow: 'CHECKOUT',
+      title: 'Da oferta ao pagamento.',
+      description:
+        'Conecte produtos, ofertas, cupons e adicionais em um checkout com a sua marca. Acompanhe os pedidos e a confirmação do pagamento.',
+      illustration: 'Checkout white label',
+    },
+    {
+      number: '08',
+      eyebrow: 'INTEGRAÇÕES',
+      title: 'Conecte a operação.',
+      description:
+        'Integre seus sistemas por API e webhooks. Consulte o histórico de entrega dos eventos para acompanhar o que acontece em cada conexão.',
+      illustration: 'API e webhooks: eventos no contexto',
+    },
+  ],
+] as const;
 
 export function PlatformSection() {
   return (
     <section id="plataforma" className={cn(frame, section)}>
       <SectionLabel number="01">A PLATAFORMA</SectionLabel>
       <Reveal className={padding}>
-        <div className="flex flex-col justify-start">
-          <SectionHeading
-            eyebrow="Mais do que processar"
-            title="Uma marca própria merece"
-            muted="uma operação à altura."
-            description="O que acontece antes e depois do pagamento também define o seu negócio. Sua marca lidera a experiência do cliente final; a Paragan sustenta a excelência operacional ao seu lado."
-          />
+        <SectionHeading
+          eyebrow="Mais do que processar"
+          title="Uma marca própria merece"
+          muted="uma operação à altura."
+          description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
+        />
+        <div className="platform-stack relative isolate mt-8 grid gap-4">
+          {platformPairs.map((pair, pairIndex) => (
+            <div
+              key={pair[0].number}
+              className="platform-pair grid gap-4 bg-background lg:grid-cols-2"
+              style={{ zIndex: pairIndex + 1 }}
+            >
+              {pair.map((module) => (
+                <Frame
+                  key={module.number}
+                  className="min-w-0 rounded-none! bg-background [&>div]:rounded-none"
+                >
+                  <CardGroup
+                    columns={1}
+                    separated
+                    className="gap-0 rounded-none [&>div]:rounded-none"
+                  >
+                    <Card className="platform-card rounded-none bg-background p-0">
+                      <CardHeader className="min-w-0 p-4 md:p-6">
+                        <p className={cn(micro, 'mb-2 text-accent-2')}>
+                          {module.number} / {module.eyebrow}
+                        </p>
+                        <CardTitle className={cardTitle}>{module.title}</CardTitle>
+                        <CardDescription className="mt-2 text-xs leading-relaxed text-muted-foreground md:text-sm">
+                          {module.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="min-h-0 min-w-0 border-t border-border bg-card p-0">
+                        {/* Arte reservada por módulo, sem números ou resultados simulados. */}
+                        <ArtPlaceholder
+                          width={1000}
+                          height={500}
+                          label={module.illustration}
+                          className="h-full w-full rounded-none [&_img]:h-full [&_img]:w-full [&_img]:rounded-none [&_img]:object-cover"
+                        />
+                      </CardContent>
+                    </Card>
+                  </CardGroup>
+                </Frame>
+              ))}
+            </div>
+          ))}
         </div>
-        <Frame className="mt-8">
-          <CardGroup
-            columns={3}
-            separated
-            className="platform-grid grid-cols-1 gap-0 rounded-none md:grid-cols-3 [&>div]:rounded-none"
-          >
-            <Card className={card}>
-              <CardHeader className="relative z-10">
-                <p className={cn(micro, 'mb-2 text-accent-2')}>01 / IDENTIDADE</p>
-                <CardTitle className={cardTitle}>Sua marca não termina no logo.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Painel, checkout, domínio e comunicação. Uma experiência que seus sellers
-                  reconhecem como sua.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                {/* ARTE WL (1000×440): composição com painel desktop e recorte de checkout mobile
-              de uma única marca fictícia. Evidenciar logo, tema e domínio próprios. Sem
-              números de resultado. Fundo menta, janelas frontais, hierarquia editorial. */}
-                <ArtPlaceholder
-                  width={1000}
-                  height={440}
-                  label="Sua identidade, em cada ponto de contato"
-                />
-              </CardContent>
-            </Card>
-            <Card className={cn(card, wideCard)}>
-              <CardHeader className="relative z-10">
-                <p className={cn(micro, 'mb-2 text-accent-2')}>02 / REGRAS COMERCIAIS</p>
-                <CardTitle className={cardTitle}>O modelo é seu.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Configure taxas, comissões e condições por seller. Dê forma à sua estratégia
-                  comercial.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                {/* LOTTIE FUTURO (600×490): três fichas de configuração “padrão”, “por meio” e
-              “por seller” convergem para uma regra aplicada. Sem percentuais inventados;
-              animação curta acionada na entrada, versão estática com a mesma leitura. */}
-                <ArtPlaceholder
-                  width={600}
-                  height={490}
-                  label="Regras que refletem o seu negócio"
-                />
-              </CardContent>
-            </Card>
-            <Card className={cn(card, 'relative isolate overflow-hidden')}>
-              <CardHeader className="relative z-10">
-                <p className={cn(micro, 'mb-2 text-accent-2')}>03 / PESSOAS</p>
-                <CardTitle className={cardTitle}>Delegue. Sem perder a visão.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Carteiras, equipe e permissões para cada pessoa atuar no contexto certo.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                {/* ARTE EQUIPE (600×390): matriz simplificada de papéis com três cartões
-              “Operação”, “Financeiro”, “Atendimento”; destaque de permissões diferentes.
-              Não usar avatares de pessoas reais nem sugerir acesso cruzado entre tenants. */}
-                <ArtPlaceholder width={600} height={390} label="Pessoas, papéis e permissões" />
-              </CardContent>
-            </Card>
-            <Card className={cn(card, 'relative isolate overflow-hidden')}>
-              <CardHeader className="relative z-10">
-                <p className={cn(micro, 'mb-2 text-accent-2')}>04 / ADQUIRÊNCIA</p>
-                <CardTitle className={cardTitle}>Alternativas com direção.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Organize processadores, prioridades e regras para conduzir seus pagamentos.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                {/* LOTTIE ROTAS (600×390): entrada Pix/cartão/boleto passa por filtro de
-              elegibilidade e alcança uma configuração autorizada. Linhas finas verdes,
-              estados legíveis, sem nomes/logos e sem promessa de aprovação. */}
-                <ArtPlaceholder
-                  width={800}
-                  height={500}
-                  label="Uma política. Rotas elegíveis."
-                  dark
-                />
-              </CardContent>
-            </Card>
-            <Card className={cn(card, 'relative isolate overflow-hidden')}>
-              <CardHeader className="relative z-10">
-                <p className={cn(micro, 'mb-2 text-accent-2')}>05 / RELACIONAMENTO</p>
-                <CardTitle className={cardTitle}>Uma base que faz parte.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Campanhas, rankings e premiações para estruturar sua relação com os sellers.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                {/* ARTE REWARDS (600×390): trilha com três marcos e insígnia central abstrata;
-              pequenos cartões de prêmio sem marcas reais. Diferenciar jornada acumulada
-              de ranking por campanha. Não fabricar nomes de clientes ou faturamento. */}
-                <ArtPlaceholder width={600} height={390} label="Crescimento com reconhecimento" />
-              </CardContent>
-            </Card>
-            <Card className={cn(card, wideCard)}>
-              <CardHeader>
-                <p className={cn(micro, 'mb-2 text-accent-2')}>06 / CHECKOUT</p>
-                <CardTitle className={cardTitle}>Uma compra com a sua marca.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  Produtos e ofertas conectados à experiência de pagamento.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ArtPlaceholder width={600} height={390} label="Checkout white label" />
-              </CardContent>
-            </Card>
-            <Card className={card}>
-              <CardHeader>
-                <p className={cn(micro, 'mb-2 text-accent-2')}>07 / INTEGRAÇÕES</p>
-                <CardTitle className={cardTitle}>Seu ecossistema conectado.</CardTitle>
-                <CardDescription className={cardDescription}>
-                  API e webhooks para unir os processos da operação.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ArtPlaceholder width={600} height={390} label="API e webhooks" />
-              </CardContent>
-            </Card>
-          </CardGroup>
-        </Frame>
       </Reveal>
     </section>
   );

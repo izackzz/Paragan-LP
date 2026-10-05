@@ -25,3 +25,22 @@
 ## Fase 5 — Hierarquia dos cards do hero
 
 - [x] `tabs.tsx`: reduzir kicker/descrição e reforçar hierarquia do título.
+
+## Fase 6 — Plataforma em pares
+
+### Copy e numeração
+
+- [x] `platform-section.tsx`: `01 / IDENTIDADE` — “Sua marca, em cada contato.”; painel, checkout, domínio e comunicação próprios.
+- [x] `platform-section.tsx`: `02 / REGRAS COMERCIAIS` — “Seu modelo vira regra.”; taxas, comissões e condições por seller.
+- [x] `platform-section.tsx`: `03 / PESSOAS` — “Cada pessoa, no seu papel.”; equipe, carteiras e permissões.
+- [x] `platform-section.tsx`: `04 / RELACIONAMENTO` — “Uma base para cultivar.”; campanhas, rankings e premiações para sellers.
+- [x] `platform-section.tsx`: `05 / ADQUIRÊNCIA` — “Rotas com direção.”; processadores, prioridades e regras de pagamento.
+- [x] `platform-section.tsx`: `06 / GESTÃO FINANCEIRA` — “Cada valor, no contexto.”; saldos, extrato, reservas e solicitações de saque.
+- [x] `platform-section.tsx`: `07 / CHECKOUT` — “Da oferta ao pagamento.”; produtos, ofertas, cupons e adicionais.
+- [x] `platform-section.tsx`: `08 / INTEGRAÇÕES` — “Conecte a operação.”; API, webhooks e histórico de entrega.
+
+### Composição e verificação
+
+- [x] `platform-section.tsx`: quatro pares `01–02 / 03–04 / 05–06 / 07–08`; frames de cantos retos, cards quadrados, ilustração em meia área, padding e bordas de `1px`.
+- [x] `globals.css`: substituir `A BB / C D E / FF G`; sticky dos pares com espaço vertical suficiente, mobile empilhado e movimento reduzido respeitado.
+- [x] `platform-section.tsx`: ESLint + Prettier + `tsc --noEmit --incremental false`; `git diff --check`.
