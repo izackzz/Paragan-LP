@@ -16,7 +16,7 @@ const buttonVariants = cva(
         primary:
           'font-display shiny-01 overflow-hidden border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-300 ease-in-out',
         secondary:
-          'bg-clip-padding font-display bg-surface-3 border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--border)] hover:bg-surface-1 transition-all duration-300 ease-in-out',
+          'bg-clip-padding font-display bg-surface-1 border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--muted)] hover:bg-surface-2 transition-all duration-300 ease-in-out',
         cta: 'shiny-02 overflow-hidden border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-300 ease-in-out',
         'cta-2':
           'font-display shiny-secondary overflow-hidden border-2 border-transparent text-foreground font-medium outline-offset-1 shadow-[0_0px_0rem_2px_var(--shiny-cta-highlight),inset_0_0ex_0rem_0px_color-mix(in_srgb,var(--shiny-cta-highlight)_0%,transparent)] transition-[--gradient-angle-offset,--gradient-percent,--gradient-shine] duration-300 ease-in-out',
