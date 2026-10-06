@@ -77,7 +77,7 @@ export function SectionLabel({ number, children }: { number: string; children: R
     <div
       className={cn(
         micro,
-        'flex dots z-20 bg-background/90 backdrop-blur-xs top-20 sticky min-h-14 items-center gap-3 border-b border-border px-5 py-4 text-muted-foreground md:px-8',
+        'dots sticky top-20 z-20 flex min-h-14 items-center gap-3 border-b border-border bg-background/90 px-5 py-4 text-muted-foreground backdrop-blur-xs md:px-8',
       )}
     >
       <span className="text-brand">[ {number} / 10 ]</span>

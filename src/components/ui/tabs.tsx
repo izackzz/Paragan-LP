@@ -408,7 +408,7 @@ const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
             </span>
             <span
               className={cn(
-                'block w-full min-w-0 text-left transition-all text-accent-2 duration-80 text-base font-display',
+                'block w-full min-w-0 text-left font-display text-base text-accent-2 transition-all duration-80',
                 isActive ? 'text-foreground' : 'text-muted-foreground',
               )}
             >

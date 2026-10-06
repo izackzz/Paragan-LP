@@ -1,9 +1,9 @@
 // GLOBAL WRAPPER
-import { cn } from '@/lib/utils'
-import type { LucideProps } from 'lucide-react'
-import * as React from 'react'
+import { cn } from '@/lib/utils';
+import type { LucideProps } from 'lucide-react';
+import * as React from 'react';
 
-type CustomIconProps = LucideProps
+type CustomIconProps = LucideProps;
 
 const SvgIcon = React.forwardRef<SVGSVGElement, CustomIconProps>(
   ({ size = 24, className, children, ...props }, ref) => (
@@ -20,9 +20,9 @@ const SvgIcon = React.forwardRef<SVGSVGElement, CustomIconProps>(
       {children}
     </svg>
   ),
-)
+);
 
-SvgIcon.displayName = 'SvgIcon'
+SvgIcon.displayName = 'SvgIcon';
 
 // PARAGAN
 export const IconParagan = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) => {
@@ -34,10 +34,10 @@ export const IconParagan = React.forwardRef<SVGSVGElement, LucideProps>((props, 
         fillOpacity="1"
       />
     </SvgIcon>
-  )
-})
+  );
+});
 
-IconParagan.displayName = 'IconParagan'
+IconParagan.displayName = 'IconParagan';
 
 // CUSTOM ICONS
 
@@ -45,9 +45,9 @@ export const IconName = React.forwardRef<SVGSVGElement, LucideProps>((props, ref
   <SvgIcon ref={ref} {...props}>
     <path d="M22 8H6V20H22" />
   </SvgIcon>
-))
+));
 
-IconName.displayName = 'IconName'
+IconName.displayName = 'IconName';
 
 // CLOSE TAB
 export const IconCloseTab = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) => {
@@ -67,10 +67,10 @@ export const IconCloseTab = React.forwardRef<SVGSVGElement, LucideProps>((props,
         strokeLinejoin="round"
       />
     </SvgIcon>
-  )
-})
+  );
+});
 
-IconCloseTab.displayName = 'IconCloseTab'
+IconCloseTab.displayName = 'IconCloseTab';
 
 // OPEN TAB
 export const IconOpenTab = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) => {
@@ -90,10 +90,10 @@ export const IconOpenTab = React.forwardRef<SVGSVGElement, LucideProps>((props, 
         strokeLinejoin="round"
       />
     </SvgIcon>
-  )
-})
+  );
+});
 
-IconOpenTab.displayName = 'IconOpenTab'
+IconOpenTab.displayName = 'IconOpenTab';
 
 // KBM Cntrl K
 export const CntrlK = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) => (
@@ -115,9 +115,9 @@ export const CntrlK = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-CntrlK.displayName = 'CntrlK'
+CntrlK.displayName = 'CntrlK';
 
 /////////////////////////////
 
@@ -141,9 +141,9 @@ export const IconDashboard = React.forwardRef<SVGSVGElement, LucideProps>((props
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconDashboard.displayName = 'IconDashboard'
+IconDashboard.displayName = 'IconDashboard';
 
 // ### ANALYTICS:
 
@@ -163,9 +163,9 @@ export const IconAnalytics = React.forwardRef<SVGSVGElement, LucideProps>((props
       fillOpacity="0.5"
     />
   </SvgIcon>
-))
+));
 
-IconAnalytics.displayName = 'IconAnalytics'
+IconAnalytics.displayName = 'IconAnalytics';
 
 // ### GATEWAYS:
 
@@ -209,9 +209,9 @@ export const IconGateways = React.forwardRef<SVGSVGElement, LucideProps>((props,
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconGateways.displayName = 'IconGateways'
+IconGateways.displayName = 'IconGateways';
 
 // ### WORLD:
 
@@ -231,9 +231,9 @@ export const IconWorld = React.forwardRef<SVGSVGElement, LucideProps>((props, re
       fillOpacity="0.5"
     />
   </SvgIcon>
-))
+));
 
-IconWorld.displayName = 'IconWorld'
+IconWorld.displayName = 'IconWorld';
 
 // ### KEY:
 
@@ -253,9 +253,9 @@ export const IconKey = React.forwardRef<SVGSVGElement, LucideProps>((props, ref)
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconKey.displayName = 'IconKey'
+IconKey.displayName = 'IconKey';
 
 // ### SELLERS:
 
@@ -275,9 +275,9 @@ export const IconSellers = React.forwardRef<SVGSVGElement, LucideProps>((props, 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconSellers.displayName = 'IconSellers'
+IconSellers.displayName = 'IconSellers';
 
 // ### COMPLIENCE:
 
@@ -309,16 +309,16 @@ export const IconComplience = React.forwardRef<SVGSVGElement, LucideProps>((prop
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconComplience.displayName = 'IconComplience'
+IconComplience.displayName = 'IconComplience';
 
 // ### BUG:
 
 export const IconBug = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) => {
-  const id = React.useId()
-  const gradient0 = `iconBugPaint0-${id}`
-  const gradient1 = `iconBugPaint1-${id}`
+  const id = React.useId();
+  const gradient0 = `iconBugPaint0-${id}`;
+  const gradient1 = `iconBugPaint1-${id}`;
   return (
     <SvgIcon ref={ref} {...props}>
       <path
@@ -362,15 +362,15 @@ export const IconBug = React.forwardRef<SVGSVGElement, LucideProps>((props, ref)
         </linearGradient>
       </defs>
     </SvgIcon>
-  )
-})
+  );
+});
 
-IconBug.displayName = 'IconBug'
+IconBug.displayName = 'IconBug';
 
 // ### RELATORY:
 
 export const IconRelatory = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) => {
-  const gradientId = `iconRelatoryPaint0-${React.useId()}`
+  const gradientId = `iconRelatoryPaint0-${React.useId()}`;
   return (
     <SvgIcon ref={ref} {...props}>
       <path
@@ -399,10 +399,10 @@ export const IconRelatory = React.forwardRef<SVGSVGElement, LucideProps>((props,
         </linearGradient>
       </defs>
     </SvgIcon>
-  )
-})
+  );
+});
 
-IconRelatory.displayName = 'IconRelatory'
+IconRelatory.displayName = 'IconRelatory';
 
 // ### ADMINS:
 
@@ -429,9 +429,9 @@ export const IconAdmins = React.forwardRef<SVGSVGElement, LucideProps>((props, r
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconAdmins.displayName = 'IconAdmins'
+IconAdmins.displayName = 'IconAdmins';
 
 // ### SERVER STATS:
 
@@ -477,9 +477,9 @@ export const IconServerStats = React.forwardRef<SVGSVGElement, LucideProps>((pro
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconServerStats.displayName = 'IconServerStats'
+IconServerStats.displayName = 'IconServerStats';
 
 // ### SETTINGS:
 
@@ -498,9 +498,9 @@ export const IconSettings = React.forwardRef<SVGSVGElement, LucideProps>((props,
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconSettings.displayName = 'IconSettings'
+IconSettings.displayName = 'IconSettings';
 
 // ### TERMINAL:
 
@@ -520,9 +520,9 @@ export const IconTerminal = React.forwardRef<SVGSVGElement, LucideProps>((props,
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconTerminal.displayName = 'IconTerminal'
+IconTerminal.displayName = 'IconTerminal';
 
 // ### BECKER:
 
@@ -542,9 +542,9 @@ export const IconBecker = React.forwardRef<SVGSVGElement, LucideProps>((props, r
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconBecker.displayName = 'IconBecker'
+IconBecker.displayName = 'IconBecker';
 
 // ### OPERATION:
 
@@ -564,9 +564,9 @@ export const IconOperation = React.forwardRef<SVGSVGElement, LucideProps>((props
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconOperation.displayName = 'IconOperation'
+IconOperation.displayName = 'IconOperation';
 
 // ### MEGAPHONE:
 
@@ -586,9 +586,9 @@ export const IconMegaphone = React.forwardRef<SVGSVGElement, LucideProps>((props
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconMegaphone.displayName = 'IconMegaphone'
+IconMegaphone.displayName = 'IconMegaphone';
 
 // ### BANK:
 
@@ -608,9 +608,9 @@ export const IconBank = React.forwardRef<SVGSVGElement, LucideProps>((props, ref
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconBank.displayName = 'IconBank'
+IconBank.displayName = 'IconBank';
 
 // ### REPORTS:
 
@@ -630,9 +630,9 @@ export const IconReports = React.forwardRef<SVGSVGElement, LucideProps>((props, 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconReports.displayName = 'IconReports'
+IconReports.displayName = 'IconReports';
 
 // ### PAYOUT:
 
@@ -661,9 +661,9 @@ export const IconPayout = React.forwardRef<SVGSVGElement, LucideProps>((props, r
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconPayout.displayName = 'IconPayout'
+IconPayout.displayName = 'IconPayout';
 
 // ### WITHDRAWALS:
 
@@ -692,9 +692,9 @@ export const IconWithdrawals = React.forwardRef<SVGSVGElement, LucideProps>((pro
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconWithdrawals.displayName = 'IconWithdrawals'
+IconWithdrawals.displayName = 'IconWithdrawals';
 
 // ### AFFILIATES:
 
@@ -714,9 +714,9 @@ export const IconAffiliates = React.forwardRef<SVGSVGElement, LucideProps>((prop
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconAffiliates.displayName = 'IconAffiliates'
+IconAffiliates.displayName = 'IconAffiliates';
 
 // ### KYC:
 
@@ -738,9 +738,9 @@ export const IconKyc = React.forwardRef<SVGSVGElement, LucideProps>((props, ref)
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconKyc.displayName = 'IconKyc'
+IconKyc.displayName = 'IconKyc';
 
 // ### ADMIN ACCESS:
 
@@ -762,9 +762,9 @@ export const IconAdminAccess = React.forwardRef<SVGSVGElement, LucideProps>((pro
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconAdminAccess.displayName = 'IconAdminAccess'
+IconAdminAccess.displayName = 'IconAdminAccess';
 
 // ### SWATCH BOOK:
 
@@ -786,9 +786,9 @@ export const IconSwatchBook = React.forwardRef<SVGSVGElement, LucideProps>((prop
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconSwatchBook.displayName = 'IconSwatchBook'
+IconSwatchBook.displayName = 'IconSwatchBook';
 
 // ### CROWN:
 
@@ -825,9 +825,9 @@ export const IconCrown = React.forwardRef<SVGSVGElement, LucideProps>((props, re
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconCrown.displayName = 'IconCrown'
+IconCrown.displayName = 'IconCrown';
 
 // ### TROPHY (leaderboard — Fase 17):
 
@@ -849,9 +849,9 @@ export const IconTrophy = React.forwardRef<SVGSVGElement, LucideProps>((props, r
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconTrophy.displayName = 'IconTrophy'
+IconTrophy.displayName = 'IconTrophy';
 
 // ### GIFT:
 
@@ -880,9 +880,9 @@ export const IconGift = React.forwardRef<SVGSVGElement, LucideProps>((props, ref
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconGift.displayName = 'IconGift'
+IconGift.displayName = 'IconGift';
 
 // ### INBOX:
 
@@ -904,9 +904,9 @@ export const IconInbox = React.forwardRef<SVGSVGElement, LucideProps>((props, re
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconInbox.displayName = 'IconInbox'
+IconInbox.displayName = 'IconInbox';
 
 // ### PIX:
 
@@ -928,9 +928,9 @@ export const IconPix = React.forwardRef<SVGSVGElement, LucideProps>((props, ref)
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconPix.displayName = 'IconPix'
+IconPix.displayName = 'IconPix';
 
 // ### WEBHOOK:
 
@@ -952,9 +952,9 @@ export const IconWebhook = React.forwardRef<SVGSVGElement, LucideProps>((props, 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconWebhook.displayName = 'IconWebhook'
+IconWebhook.displayName = 'IconWebhook';
 
 // ### CHECKOUT:
 
@@ -976,9 +976,9 @@ export const IconCheckout = React.forwardRef<SVGSVGElement, LucideProps>((props,
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconCheckout.displayName = 'IconCheckout'
+IconCheckout.displayName = 'IconCheckout';
 
 // ### INTEGRAÇÕES:
 
@@ -1000,9 +1000,9 @@ export const IconIntegrations = React.forwardRef<SVGSVGElement, LucideProps>((pr
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconIntegrations.displayName = 'IconIntegrations'
+IconIntegrations.displayName = 'IconIntegrations';
 
 // ### API-DOC:
 
@@ -1024,9 +1024,9 @@ export const IconAPI = React.forwardRef<SVGSVGElement, LucideProps>((props, ref)
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconAPI.displayName = 'IconAPI'
+IconAPI.displayName = 'IconAPI';
 
 // ### PRODUCT:
 
@@ -1048,9 +1048,9 @@ export const IconProduct = React.forwardRef<SVGSVGElement, LucideProps>((props, 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconProduct.displayName = 'IconProduct'
+IconProduct.displayName = 'IconProduct';
 
 // ### MARKETPLACE:
 
@@ -1072,9 +1072,9 @@ export const IconMarketplace = React.forwardRef<SVGSVGElement, LucideProps>((pro
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconMarketplace.displayName = 'IconMarketplace'
+IconMarketplace.displayName = 'IconMarketplace';
 
 // ### PLAY:
 
@@ -1096,9 +1096,9 @@ export const IconPlay = React.forwardRef<SVGSVGElement, LucideProps>((props, ref
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconPlay.displayName = 'IconPlay'
+IconPlay.displayName = 'IconPlay';
 
 // ### ACQUIRERS:
 
@@ -1120,17 +1120,17 @@ export const IconAcquirers = React.forwardRef<SVGSVGElement, LucideProps>((props
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconAcquirers.displayName = 'IconAcquirers'
+IconAcquirers.displayName = 'IconAcquirers';
 
 // ### COUPON:
 
-type CouponVariant = 'duotone' | 'solid'
+type CouponVariant = 'duotone' | 'solid';
 
 type CouponIconProps = LucideProps & {
-  variant?: CouponVariant
-}
+  variant?: CouponVariant;
+};
 
 export const IconCoupon = React.forwardRef<SVGSVGElement, CouponIconProps>(
   ({ variant = 'duotone', ...props }, ref) => (
@@ -1172,9 +1172,9 @@ export const IconCoupon = React.forwardRef<SVGSVGElement, CouponIconProps>(
       />
     </SvgIcon>
   ),
-)
+);
 
-IconCoupon.displayName = 'IconCoupon'
+IconCoupon.displayName = 'IconCoupon';
 
 // ### CARD:
 
@@ -1196,9 +1196,9 @@ export const IconCard = React.forwardRef<SVGSVGElement, LucideProps>((props, ref
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconCard.displayName = 'IconCard'
+IconCard.displayName = 'IconCard';
 
 // ### BOLETO:
 
@@ -1220,9 +1220,9 @@ export const IconBoleto = React.forwardRef<SVGSVGElement, LucideProps>((props, r
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconBoleto.displayName = 'IconBoleto'
+IconBoleto.displayName = 'IconBoleto';
 
 // ### QR:
 
@@ -1244,9 +1244,9 @@ export const IconQR = React.forwardRef<SVGSVGElement, LucideProps>((props, ref) 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconQR.displayName = 'IconQR'
+IconQR.displayName = 'IconQR';
 
 // ### TRUCK:
 
@@ -1268,9 +1268,9 @@ export const IconTruck = React.forwardRef<SVGSVGElement, LucideProps>((props, re
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconTruck.displayName = 'IconTruck'
+IconTruck.displayName = 'IconTruck';
 
 // ### TIMER:
 
@@ -1320,9 +1320,9 @@ export const IconTimer = React.forwardRef<SVGSVGElement, LucideProps>((props, re
       />
     </g>
   </SvgIcon>
-))
+));
 
-IconTimer.displayName = 'IconTimer'
+IconTimer.displayName = 'IconTimer';
 
 // ### PIPETTE:
 
@@ -1355,9 +1355,9 @@ export const IconPipette = React.forwardRef<SVGSVGElement, LucideProps>((props, 
       strokeLinejoin="round"
     />
   </SvgIcon>
-))
+));
 
-IconPipette.displayName = 'IconPipette'
+IconPipette.displayName = 'IconPipette';
 
 // ### EYES:
 
@@ -1396,6 +1396,6 @@ export const IconEye = React.forwardRef<SVGSVGElement, LucideProps>(
       </g>
     </SvgIcon>
   ),
-)
+);
 
-IconEye.displayName = 'IconEye'
+IconEye.displayName = 'IconEye';
