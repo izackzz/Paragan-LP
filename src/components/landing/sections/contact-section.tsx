@@ -6,11 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { SectionLabel, SectionHeading } from '../primitives';
-import { FluidGroup } from '../fluid-group';
 import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
 
-const interests = ['Lançar meu gateway', 'Modernizar a operação', 'Integrar minha plataforma'];
+const interests = [
+  'Lançar meu gateway',
+  'Modernizar a operação',
+  'Integrar minha plataforma',
+  'Migrar minha operação / infraestrutura',
+];
 const perspectives = [
   ['Seu modelo', 'O que sua operação quer construir e controlar.'],
   ['Sua experiência', 'Como sua marca se conecta aos sellers e aos clientes.'],
@@ -18,7 +22,7 @@ const perspectives = [
 ];
 
 export function ContactSection() {
-  const [interest, setInterest] = useState(interests[0]);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([interests[0]]);
   const [brief, setBrief] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
 
@@ -26,7 +30,7 @@ export function ContactSection() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     setBrief(
-      `Minha operação com a Paragan\n\nNome: ${data.get('name')}\nEmpresa: ${data.get('company')}\nE-mail: ${data.get('email')}\nObjetivo: ${interest}\n\n${data.get('message')}`,
+      `Minha operação com a Paragan\n\nNome: ${data.get('name')}\nEmpresa ou projeto: ${data.get('company')}\nCargo ou papel: ${data.get('role')}\nE-mail: ${data.get('email')}\nTelefone / WhatsApp: ${data.get('phone')}\nSite: ${data.get('website') || 'Ainda não informado'}\nInteresses: ${interests.filter((item) => selectedInterests.includes(item)).join(', ') || 'Quero explorar as possibilidades'}\nComo conheci a Paragan: ${data.get('source')}\n\nSobre meu projeto:\n${data.get('message')}`,
     );
     setCopyStatus('');
   }
@@ -81,7 +85,7 @@ export function ContactSection() {
                 Vamos entender sua operação.
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Uma apresentação breve para começar uma conversa com direção.
+                Da primeira ideia à operação em crescimento: conte seu momento e o que você quer construir.
               </p>
             </div>
 
@@ -103,13 +107,13 @@ export function ContactSection() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="contact-company" className="text-sm font-normal">
-                    Empresa ou marca
+                    Nome da empresa ou projeto
                   </Label>
                   <Input
                     id="contact-company"
                     name="company"
                     autoComplete="organization"
-                    placeholder="Nome da sua operação"
+                    placeholder="Sua empresa, marca ou ideia em construção"
                     required
                     maxLength={160}
                     className="h-11"
@@ -131,49 +135,130 @@ export function ContactSection() {
                   className="h-11"
                 />
               </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="contact-phone" className="text-sm font-normal">
+                    Telefone / WhatsApp
+                  </Label>
+                  <Input
+                    id="contact-phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="+55 (11) 99999-9999"
+                    required
+                    maxLength={30}
+                    className="h-11"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="contact-role" className="text-sm font-normal">
+                    Seu cargo ou papel no projeto
+                  </Label>
+                  <Input
+                    id="contact-role"
+                    name="role"
+                    autoComplete="organization-title"
+                    list="contact-role-options"
+                    placeholder="Selecione ou escreva seu papel"
+                    required
+                    maxLength={120}
+                    className="h-11"
+                  />
+                  <datalist id="contact-role-options">
+                    {[
+                      'CEO / Fundador(a)',
+                      'CTO / Liderança de tecnologia',
+                      'Designer',
+                      'Developer / Desenvolvedor(a)',
+                      'Idealizador(a) do projeto',
+                      'Produto / Estratégia',
+                      'Financeiro / Operações',
+                      'Comercial / Parcerias',
+                    ].map((role) => <option key={role} value={role} />)}
+                  </datalist>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="contact-website" className="text-sm font-normal">
+                  Site da empresa ou projeto <span className="text-muted-foreground">(opcional)</span>
+                </Label>
+                <Input
+                  id="contact-website"
+                  name="website"
+                  type="url"
+                  autoComplete="url"
+                  placeholder="https://suaempresa.com.br"
+                  maxLength={500}
+                  className="h-11"
+                />
+              </div>
 
               <fieldset className="min-w-0 border-t border-border pt-5">
-                <legend className="pr-3 text-sm">Qual é o seu próximo passo?</legend>
-                <FluidGroup className="flex flex-wrap gap-3">
+                <legend className="pr-3 text-sm">No que você tem interesse?</legend>
+                <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+                  Selecione tudo o que faz sentido para o seu próximo passo.
+                </p>
+                <div className="grid grid-cols-1 border-l border-t border-accent sm:grid-cols-2">
                   {interests.map((item) => (
                     <Button
                       key={item}
                       type="button"
                       size="xs"
-                      variant="primary"
-                      active={interest === item}
-                      aria-pressed={interest === item}
-                      className="min-h-11 rounded-md aria-pressed:ring-2 aria-pressed:ring-accent-2 aria-pressed:ring-offset-2 aria-pressed:ring-offset-background"
-                      onClick={() => setInterest(item)}
+                      variant={selectedInterests.includes(item) ? 'cta-2' : 'ghost'}
+                      active={selectedInterests.includes(item)}
+                      aria-pressed={selectedInterests.includes(item)}
+                      className={cn(
+                        'min-h-11 min-w-0 rounded-none border-0 border-r border-b border-accent px-3.5 py-3 text-sm whitespace-normal shadow-none focus-visible:z-10',
+                        !selectedInterests.includes(item) && 'bg-muted/40 font-normal',
+                      )}
+                      onClick={() => setSelectedInterests((current) =>
+                        current.includes(item)
+                          ? current.filter((selected) => selected !== item)
+                          : [...current, item],
+                      )}
                     >
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'mr-2 inline-block size-1.5 rounded-full bg-foreground',
-                          interest !== item && 'opacity-30',
-                        )}
-                      />
                       {item}
                     </Button>
                   ))}
-                </FluidGroup>
+                </div>
               </fieldset>
 
               <div className="flex flex-col gap-2">
+                <Label htmlFor="contact-source" className="text-sm font-normal">
+                  Onde você conheceu a Paragan?
+                </Label>
+                <Input
+                  id="contact-source"
+                  name="source"
+                  list="contact-source-options"
+                  placeholder="Uma indicação, uma busca, uma rede social…"
+                  required
+                  maxLength={200}
+                  className="h-11"
+                />
+                <datalist id="contact-source-options">
+                  {['Indicação', 'Google / Busca', 'LinkedIn', 'Instagram', 'GitHub', 'Evento / Comunidade'].map((source) => (
+                    <option key={source} value={source} />
+                  ))}
+                </datalist>
+              </div>
+
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="contact-message" className="text-sm font-normal">
-                  O que você quer colocar em movimento?
+                  Conte um pouco sobre o que você quer construir
                 </Label>
                 <Textarea
                   id="contact-message"
                   name="message"
                   rows={4}
                   maxLength={2000}
-                  placeholder="Sua base de sellers, modelo de negócio e o que é prioridade para você."
+                  placeholder="Qual é a sua ideia ou operação? Conte quem você quer atender, o que precisa resolver e quando gostaria de começar."
                   required
                   className="min-h-32"
                 />
                 <p className="text-xs leading-relaxed text-muted-foreground">
-                  Compartilhe o essencial: seu objetivo e o que precisa funcionar primeiro.
+                  Ainda está na fase de ideia? Ótimo. Compartilhe seu objetivo e o que precisa funcionar primeiro.
                 </p>
               </div>
             </div>
