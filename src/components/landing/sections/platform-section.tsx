@@ -108,6 +108,7 @@ export function PlatformSection() {
             title="Uma marca própria merece"
             muted="uma operação à altura."
             description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
+            align="center"
           />
         </div>
         <div className="platform-stack relative isolate grid gap-0">
@@ -125,9 +126,9 @@ export function PlatformSection() {
                 {pair.map((module) => (
                   <Card
                     key={module.number}
-                    className="platform-card gap-3 rounded-none bg-background p-0"
+                    className="platform-card rounded-none bg-background p-6 lg:p-12"
                   >
-                    <CardHeader className="min-w-0 gap-4 p-6 pb-0 lg:px-12 lg:py-10 lg:pb-0 mask-b-from-75%">
+                    <CardHeader className="min-w-0 h-fit gap-4 mask-b-from-75%">
                       <h3 className="flex items-center gap-2 text-md text-accent-2 uppercase tracking-wide font-normal">
                         <module.icon
                           aria-hidden="true"
@@ -138,18 +139,18 @@ export function PlatformSection() {
                           {module.number} / {module.eyebrow}
                         </span>
                       </h3>
-                      <p className="text-2xl/7 font-display text-muted-foreground">
+                      <p className="text-2xl/7 font-display pb-6 text-muted-foreground">
                         <span className="font-medium text-foreground">{module.title}</span>{' '}
                         {module.description}
                       </p>
                     </CardHeader>
-                    <CardContent className="h-fit min-h-0 min-w-0 overflow-hidden border border-border bg-card p-0 px-6 pt-0 lg:px-12">
+                    <CardContent className="h-fit min-h-0 min-w-0 overflow-hidden rounded-sm border">
                       {/* Arte reservada por módulo, sem números ou resultados simulados. */}
                       <ArtPlaceholder
                         width={1000}
                         height={500}
                         label={module.illustration}
-                        className="aspect-video h-fit w-full rounded-none [&_img]:h-fit [&_img]:w-full [&_img]:rounded-none"
+                        className="h-fit w-full [&_img]:h-fit [&_img]:w-full [&_img]:rounded-none"
                       />
                     </CardContent>
                   </Card>

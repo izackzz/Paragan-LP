@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Frame } from '@/components/ui/frame';
 import { micro } from './styles';
+import { ArrowUpRight } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
   return (
@@ -66,7 +68,7 @@ export function ActionLink({
     >
       <Link href={href}>
         {children}
-        <ArrowIcon size={15} />
+        <HugeiconsIcon icon={ArrowUpRight} size={15} />
       </Link>
     </Button>
   );
@@ -100,10 +102,17 @@ export function SectionHeading({
   title: string;
   muted?: string;
   description?: ReactNode;
-  align?: 'left' | 'center';
+  align?: 'left' | 'center' | 'right';
 }) {
   return (
-    <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center')}>
+    <div
+      className={cn(
+        'max-w-2xl',
+        align === 'left' && 'mr-auto text-left',
+        align === 'center' && 'mx-auto text-center',
+        align === 'right' && 'ml-auto text-right',
+      )}
+    >
       {eyebrow && (
         <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-medium">
           {eyebrow}
@@ -122,8 +131,10 @@ export function SectionHeading({
         <p
           className={cn(
             'mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base',
-            align === 'center' && 'mx-auto',
-          )}
+          align === 'left' && 'mr-auto',
+          align === 'center' && 'mx-auto',
+          align === 'right' && 'ml-auto',
+        )}
         >
           {description}
         </p>
@@ -157,7 +168,7 @@ export function ArtPlaceholder({
     <Image
       src={
         src ??
-        `https://placehold.co/${width}x${height}/${dark ? 'ffffff/212121' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
+        `https://placehold.co/${width}x${height}/${dark ? '171717/eeeeee' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
       }
       width={width}
       height={height}

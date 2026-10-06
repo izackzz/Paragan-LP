@@ -92,7 +92,7 @@ export function ControlSection() {
                       </p>
                     ))}
                   </FluidGroup>
-                  <ActionLink href="#contato">Explorar minha operação</ActionLink>
+                  <ActionLink href="#contato" className='w-full'>Explorar minha operação</ActionLink>
                 </div>
                 <div className="flex min-w-0 items-center border-t border-border bg-card p-6 md:border-t-0 md:border-l md:py-9 [&_figure]:w-full">
                   {/* PRINT CONTROLE (1000×850): capturar uma tela real para cada aba: Operação =
