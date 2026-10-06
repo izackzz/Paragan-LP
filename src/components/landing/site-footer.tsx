@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { AppLogo } from '@/components/assets/brand/logo';
+import { AppWordMark } from '@/components/assets/brand/wordmark';
+import { AppBrandMark } from '@/components/assets/brand/brandmark';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
   InstagramIcon,
@@ -86,14 +88,7 @@ export function SiteFooter() {
               aria-label="Paragan — início"
               className="relative z-10 inline-flex min-h-12 items-center gap-3 bg-transparent"
             >
-              <Image src="/brand-icon.svg" width={44} height={44} alt="" className="size-11" />
-              <Image
-                src="/brand-naming.svg"
-                width={205}
-                height={60}
-                alt="Paragan"
-                className="h-10 w-auto"
-              />
+              <AppLogo aria-hidden="true" className="h-10 w-auto" />
             </Link>
             <p className="relative z-10 mt-6 max-w-sm text-base leading-relaxed font-normal tracking-tight">
               Um modelo de excelência.
@@ -107,11 +102,7 @@ export function SiteFooter() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-30"
             />
-            <Image
-              src="/brand-icon.svg"
-              width={256}
-              height={256}
-              alt=""
+            <AppBrandMark
               aria-hidden="true"
               className="pointer-events-none absolute -right-12 -bottom-12 size-64 opacity-5"
             />
@@ -156,18 +147,18 @@ export function SiteFooter() {
 
         <nav
           aria-label="Navegação do rodapé"
-          className="grid gap-6 border-t border-border p-6 md:grid-cols-3 md:p-8"
+          className="grid gap-6 border-t border-border px-6 md:grid-cols-3 md:px-8"
         >
           {groups.map((group, index) => (
             <section key={group.title} className="min-w-0" aria-labelledby={`footer-menu-${index}`}>
-              <h2 id={`footer-menu-${index}`} className="mb-3 px-3 text-sm font-medium">
-                {group.title}
-              </h2>
               <FluidGroup
                 as="ul"
                 axis="y"
-                className="m-0 grid list-none gap-1 rounded-lg border border-border p-2"
+                className="m-0 grid list-none gap-1 border-r border-l border-border p-2"
               >
+              <h2 id={`footer-menu-${index}`} className="py-2 px-3 text-sm font-medium">
+                {group.title}
+              </h2>
                 {group.links.map(([label, href]) => (
                   <Link key={label} href={href} className={linkClass}>
                     {label}
@@ -179,11 +170,7 @@ export function SiteFooter() {
         </nav>
 
         <div className="overflow-hidden border-y border-border px-6 py-6 md:px-8 md:py-8">
-          <Image
-            src="/brand-naming.svg"
-            width={1230}
-            height={360}
-            alt=""
+          <AppWordMark
             aria-hidden="true"
             className="h-auto w-full opacity-20"
           />

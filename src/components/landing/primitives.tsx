@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { AppLogo } from '@/components/assets/brand/logo';
 import { Frame } from '@/components/ui/frame';
 import { micro } from './styles';
 import { ArrowUpRight } from '@hugeicons/core-free-icons';
@@ -33,14 +34,7 @@ export function Brand({ className }: { className?: string }) {
       aria-label="Paragan — início"
       className={cn('inline-flex min-h-11 items-center py-1', className)}
     >
-      <Image
-        src="/brand-naming.svg"
-        width={123}
-        height={36}
-        alt="Paragan"
-        priority
-        className="h-8 w-auto"
-      />
+      <AppLogo aria-hidden="true" className="h-8 w-auto" />
     </Link>
   );
 }
