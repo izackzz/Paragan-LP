@@ -379,6 +379,51 @@
   border-radius: calc(var(--radius) * 1.4 + 0.375rem + 1px);
 }
 
+.footer-links > [data-fluid-hover-wrapper] + [data-fluid-hover-wrapper] {
+  border-top: 1px solid var(--border);
+}
+
+.footer-social-links > [data-fluid-hover-wrapper] {
+  border-top: 1px solid var(--border);
+}
+
+.footer-social-links > :nth-child(2n of [data-fluid-hover-wrapper]) {
+  border-left: 1px solid var(--border);
+}
+
+.footer-menu-column + .footer-menu-column {
+  border-top: 1px solid var(--border);
+}
+
+.footer-legal-links > [data-fluid-hover-wrapper] + [data-fluid-hover-wrapper] {
+  border-top: 1px solid var(--border);
+}
+
+@media (width >= 40rem) {
+  .footer-menu-column + .footer-menu-column {
+    border-top: 0;
+  }
+  .footer-menu-column:nth-child(2n) {
+    border-left: 1px solid var(--border);
+  }
+  .footer-menu-column:nth-child(n + 3) {
+    border-top: 1px solid var(--border);
+  }
+  .footer-legal-links > [data-fluid-hover-wrapper] + [data-fluid-hover-wrapper] {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
+}
+
+@media (width >= 64rem) {
+  .footer-menu-column:nth-child(n) {
+    border-top: 0;
+  }
+  .footer-menu-column + .footer-menu-column {
+    border-left: 1px solid var(--border);
+  }
+}
+
 /* Platform cards size themselves from their content; illustrations keep a
  * horizontal frame below the variable-height module header. */
 .platform-card {
