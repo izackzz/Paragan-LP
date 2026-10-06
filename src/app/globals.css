@@ -382,12 +382,27 @@
 /* Square modules in pairs; illustrations own the lower half of each card. */
 .platform-card {
   display: grid;
-  aspect-ratio: 1;
-  grid-template-rows: minmax(min-content, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+}
+
+.platform-pair [data-slot='card'] + [data-slot='card'] {
+  border-top: 1px solid var(--border);
+}
+
+@media (width >= 64rem) {
+  .platform-card {
+    aspect-ratio: 1;
+    grid-template-rows: minmax(min-content, 1fr) minmax(0, 1fr);
+  }
+
+  .platform-pair [data-slot='card'] + [data-slot='card'] {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
 }
 
 /* Keep the whole pinned pair readable beneath the existing sticky navigation. */
-@media (width >= 64rem) and (height >= 48rem) and (prefers-reduced-motion: no-preference) {
+@media (width >= 64rem) and (height >= 56rem) and (prefers-reduced-motion: no-preference) {
   .platform-pair {
     position: sticky;
     top: 11.75rem;
