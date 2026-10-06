@@ -18,9 +18,9 @@ import { cn } from '@/lib/utils';
 
 const interests = [
   'Lançar meu gateway',
-  'Modernizar a operação',
+  'Planejar operação',
   'Integrar minha plataforma',
-  'Migrar minha operação / infraestrutura',
+  'Migrar minha infraestrutura',
 ];
 const perspectives = [
   ['Seu modelo', 'O que sua operação quer construir e controlar.'],
