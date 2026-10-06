@@ -24,6 +24,7 @@ const buttonVariants = cva(
           'bg-clip-padding border-2 border-transparent text-foreground font-normal outline-offset-1 hover:bg-surface-1 bg-transparent transition-all duration-300 ease-in-out',
       },
       size: {
+        xs: 'px-3 py-2 text-xs gap-1 [&_svg]:size-3 has-[>.button-leading]:pl-2 has-[>.button-trailing]:pr-2',
         sm: 'px-4 py-3 text-sm gap-1 [&_svg]:size-3.5 has-[>.button-leading]:pl-2 has-[>.button-trailing]:pr-2',
         md: 'px-5 py-3 text-base gap-1.5 [&_svg]:size-4 has-[>.button-leading]:pl-3 has-[>.button-trailing]:pr-3',
         lg: 'px-8 py-4 text-lg gap-2 [&_svg]:size-5 has-[>.button-leading]:pl-4 has-[>.button-trailing]:pr-4',
