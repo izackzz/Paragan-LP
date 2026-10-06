@@ -147,18 +147,18 @@ export function SiteFooter() {
 
         <nav
           aria-label="Navegação do rodapé"
-          className="grid gap-6 border-t border-border px-6 md:grid-cols-3 md:px-8"
+          className="grid gap-6 border-t border-border p-6 md:grid-cols-3 md:p-8"
         >
           {groups.map((group, index) => (
             <section key={group.title} className="min-w-0" aria-labelledby={`footer-menu-${index}`}>
+              <h2 id={`footer-menu-${index}`} className="mb-3 px-3 text-sm font-medium">
+                {group.title}
+              </h2>
               <FluidGroup
                 as="ul"
                 axis="y"
-                className="m-0 grid list-none gap-1 border-r border-l border-border p-2"
+                className="m-0 grid list-none gap-1 rounded-lg border border-border p-2"
               >
-              <h2 id={`footer-menu-${index}`} className="py-2 px-3 text-sm font-medium">
-                {group.title}
-              </h2>
                 {group.links.map(([label, href]) => (
                   <Link key={label} href={href} className={linkClass}>
                     {label}
