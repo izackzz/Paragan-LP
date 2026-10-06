@@ -676,8 +676,12 @@
 }
 .shiny-secondary {
   background:
-    radial-gradient(circle at 2px 2px, color-mix(in oklab, var(--foreground) 20%, transparent) 1px, transparent 0) 0 0 /
-      0.25rem 0.25rem padding-box,
+    radial-gradient(
+        circle at 2px 2px,
+        color-mix(in oklab, var(--foreground) 20%, transparent) 1px,
+        transparent 0
+      )
+      0 0 / 0.25rem 0.25rem padding-box,
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
     conic-gradient(
         from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
