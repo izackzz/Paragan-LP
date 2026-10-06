@@ -379,7 +379,8 @@
   border-radius: calc(var(--radius) * 1.4 + 0.375rem + 1px);
 }
 
-/* Square modules in pairs; illustrations own the lower half of each card. */
+/* Platform cards size themselves from their content; illustrations keep a
+ * horizontal frame below the variable-height module header. */
 .platform-card {
   display: grid;
   grid-template-rows: auto auto;
@@ -390,11 +391,6 @@
 }
 
 @media (width >= 64rem) {
-  .platform-card {
-    aspect-ratio: 1;
-    grid-template-rows: minmax(min-content, 1fr) minmax(0, 1fr);
-  }
-
   .platform-pair [data-slot='card'] + [data-slot='card'] {
     border-top: 0;
     border-left: 1px solid var(--border);

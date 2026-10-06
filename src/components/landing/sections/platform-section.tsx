@@ -125,31 +125,31 @@ export function PlatformSection() {
                 {pair.map((module) => (
                   <Card
                     key={module.number}
-                    className="platform-card rounded-none bg-background p-0"
+                    className="platform-card gap-3 rounded-none bg-background p-0"
                   >
-                    <CardHeader className="min-w-0 gap-4 p-6 lg:px-12 lg:py-10">
-                      <h3 className="flex items-center gap-2 text-xs leading-relaxed font-normal text-muted-foreground">
+                    <CardHeader className="min-w-0 gap-4 p-6 pb-0 lg:px-12 lg:py-10 lg:pb-0 mask-b-from-75%">
+                      <h3 className="flex items-center gap-2 text-md text-accent-2 uppercase tracking-wide font-normal">
                         <module.icon
                           aria-hidden="true"
-                          className="size-4 shrink-0"
+                          className="size-5 shrink-0"
                           strokeWidth={1.5}
                         />
                         <span>
                           {module.number} / {module.eyebrow}
                         </span>
                       </h3>
-                      <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
+                      <p className="text-2xl/7 font-display text-muted-foreground">
                         <span className="font-medium text-foreground">{module.title}</span>{' '}
                         {module.description}
                       </p>
                     </CardHeader>
-                    <CardContent className="min-h-0 min-w-0 border-t border-border bg-card p-0">
+                    <CardContent className="h-fit min-h-0 min-w-0 overflow-hidden border border-border bg-card p-0 px-6 pt-0 lg:px-12">
                       {/* Arte reservada por módulo, sem números ou resultados simulados. */}
                       <ArtPlaceholder
                         width={1000}
                         height={500}
                         label={module.illustration}
-                        className="aspect-[2/1] h-full w-full rounded-none lg:aspect-auto [&_img]:h-full [&_img]:w-full [&_img]:rounded-none [&_img]:object-cover"
+                        className="aspect-video h-fit w-full rounded-none [&_img]:h-fit [&_img]:w-full [&_img]:rounded-none"
                       />
                     </CardContent>
                   </Card>
