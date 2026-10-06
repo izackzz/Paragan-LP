@@ -1,22 +1,25 @@
-import {
-  Card,
-  CardGroup,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card';
+import { Card, CardGroup, CardHeader, CardContent } from '@/components/ui/card';
 import { SectionLabel, SectionHeading, ArtPlaceholder } from '../primitives';
 import { Reveal } from '../reveal';
-import { frame, section, padding, micro, cardTitle } from '../styles';
+import { frame, section, padding } from '../styles';
 import { cn } from '@/lib/utils';
-import { Frame } from '@/components/ui/frame';
+import {
+  IconSwatchBook,
+  IconSettings,
+  IconAdmins,
+  IconGift,
+  IconAcquirers,
+  IconReports,
+  IconCheckout,
+  IconWebhook,
+} from '@/components/assets/custom-icons';
 
 const platformPairs = [
   [
     {
       number: '01',
-      eyebrow: 'IDENTIDADE',
+      eyebrow: 'Identidade',
+      icon: IconSwatchBook,
       title: 'Sua marca, em cada contato.',
       description:
         'Painel, checkout, domínio e comunicação com a sua identidade. Uma experiência que seus sellers reconhecem como sua.',
@@ -24,7 +27,8 @@ const platformPairs = [
     },
     {
       number: '02',
-      eyebrow: 'REGRAS COMERCIAIS',
+      eyebrow: 'Regras comerciais',
+      icon: IconSettings,
       title: 'Seu modelo vira regra.',
       description:
         'Configure taxas, comissões e condições por seller. Organize o padrão da operação e as particularidades de cada relacionamento.',
@@ -34,7 +38,8 @@ const platformPairs = [
   [
     {
       number: '03',
-      eyebrow: 'PESSOAS',
+      eyebrow: 'Pessoas',
+      icon: IconAdmins,
       title: 'Cada pessoa, no seu papel.',
       description:
         'Organize equipe, carteiras e permissões. Delegue responsabilidades para cada pessoa atuar no contexto certo da operação.',
@@ -42,7 +47,8 @@ const platformPairs = [
     },
     {
       number: '04',
-      eyebrow: 'RELACIONAMENTO',
+      eyebrow: 'Relacionamento',
+      icon: IconGift,
       title: 'Uma base para cultivar.',
       description:
         'Estruture campanhas, rankings e premiações para seus sellers. Conecte o relacionamento com a base à sua estratégia comercial.',
@@ -52,7 +58,8 @@ const platformPairs = [
   [
     {
       number: '05',
-      eyebrow: 'ADQUIRÊNCIA',
+      eyebrow: 'Adquirência',
+      icon: IconAcquirers,
       title: 'Rotas com direção.',
       description:
         'Organize processadores, prioridades e regras de pagamento. Conduza cada operação conforme os métodos e parceiros habilitados.',
@@ -60,7 +67,8 @@ const platformPairs = [
     },
     {
       number: '06',
-      eyebrow: 'GESTÃO FINANCEIRA',
+      eyebrow: 'Gestão financeira',
+      icon: IconReports,
       title: 'Cada valor, no contexto.',
       description:
         'Acompanhe saldos disponíveis, pendentes e reservados. Consulte o extrato e supervisione solicitações de saque com fluxo de aprovação.',
@@ -70,7 +78,8 @@ const platformPairs = [
   [
     {
       number: '07',
-      eyebrow: 'CHECKOUT',
+      eyebrow: 'Checkout',
+      icon: IconCheckout,
       title: 'Da oferta ao pagamento.',
       description:
         'Conecte produtos, ofertas, cupons e adicionais em um checkout com a sua marca. Acompanhe os pedidos e a confirmação do pagamento.',
@@ -78,7 +87,8 @@ const platformPairs = [
     },
     {
       number: '08',
-      eyebrow: 'INTEGRAÇÕES',
+      eyebrow: 'Integrações',
+      icon: IconWebhook,
       title: 'Conecte a operação.',
       description:
         'Integre seus sistemas por API e webhooks. Consulte o histórico de entrega dos eventos para acompanhar o que acontece em cada conexão.',
@@ -91,53 +101,60 @@ export function PlatformSection() {
   return (
     <section id="plataforma" className={cn(frame, section)}>
       <SectionLabel number="01">A PLATAFORMA</SectionLabel>
-      <Reveal className={padding}>
-        <SectionHeading
-          eyebrow="Mais do que processar"
-          title="Uma marca própria merece"
-          muted="uma operação à altura."
-          description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
-        />
-        <div className="platform-stack relative isolate mt-8 grid gap-4">
+      <Reveal>
+        <div className={padding}>
+          <SectionHeading
+            eyebrow="Mais do que processar"
+            title="Uma marca própria merece"
+            muted="uma operação à altura."
+            description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
+          />
+        </div>
+        <div className="platform-stack relative isolate grid gap-0">
           {platformPairs.map((pair, pairIndex) => (
             <div
               key={pair[0].number}
-              className="platform-pair grid gap-4 bg-background lg:grid-cols-2"
+              className="platform-pair border-t border-border bg-background"
               style={{ zIndex: pairIndex + 1 }}
             >
-              {pair.map((module) => (
-                <Frame
-                  key={module.number}
-                  className="min-w-0 rounded-none! bg-background [&>div]:rounded-none"
-                >
-                  <CardGroup
-                    columns={1}
-                    separated
-                    className="gap-0 rounded-none [&>div]:rounded-none"
+              <CardGroup
+                columns={2}
+                separated
+                className="grid-cols-1 gap-0 rounded-none md:grid-cols-1 lg:grid-cols-2 [&>div]:rounded-none"
+              >
+                {pair.map((module) => (
+                  <Card
+                    key={module.number}
+                    className="platform-card rounded-none bg-background p-0"
                   >
-                    <Card className="platform-card rounded-none bg-background p-0">
-                      <CardHeader className="min-w-0 p-4 md:p-6">
-                        <p className={cn(micro, 'mb-2 text-accent-2')}>
-                          {module.number} / {module.eyebrow}
-                        </p>
-                        <CardTitle className={cardTitle}>{module.title}</CardTitle>
-                        <CardDescription className="mt-2 text-xs leading-relaxed text-muted-foreground md:text-sm">
-                          {module.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="min-h-0 min-w-0 border-t border-border bg-card p-0">
-                        {/* Arte reservada por módulo, sem números ou resultados simulados. */}
-                        <ArtPlaceholder
-                          width={1000}
-                          height={500}
-                          label={module.illustration}
-                          className="h-full w-full rounded-none [&_img]:h-full [&_img]:w-full [&_img]:rounded-none [&_img]:object-cover"
+                    <CardHeader className="min-w-0 gap-4 p-6 lg:px-12 lg:py-10">
+                      <h3 className="flex items-center gap-2 text-xs leading-relaxed font-normal text-muted-foreground">
+                        <module.icon
+                          aria-hidden="true"
+                          className="size-4 shrink-0"
+                          strokeWidth={1.5}
                         />
-                      </CardContent>
-                    </Card>
-                  </CardGroup>
-                </Frame>
-              ))}
+                        <span>
+                          {module.number} / {module.eyebrow}
+                        </span>
+                      </h3>
+                      <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
+                        <span className="font-medium text-foreground">{module.title}</span>{' '}
+                        {module.description}
+                      </p>
+                    </CardHeader>
+                    <CardContent className="min-h-0 min-w-0 border-t border-border bg-card p-0">
+                      {/* Arte reservada por módulo, sem números ou resultados simulados. */}
+                      <ArtPlaceholder
+                        width={1000}
+                        height={500}
+                        label={module.illustration}
+                        className="aspect-[2/1] h-full w-full rounded-none lg:aspect-auto [&_img]:h-full [&_img]:w-full [&_img]:rounded-none [&_img]:object-cover"
+                      />
+                    </CardContent>
+                  </Card>
+                ))}
+              </CardGroup>
             </div>
           ))}
         </div>
