@@ -199,18 +199,20 @@ export function ContactSection() {
                 <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
                   Selecione tudo o que faz sentido para o seu próximo passo.
                 </p>
-                <div className="grid grid-cols-1 border-l border-t border-accent sm:grid-cols-2">
+                <div className="grid grid-cols-1 p-1.5 border rounded-lg border-accent sm:grid-cols-2">
                   {interests.map((item) => (
                     <Button
                       key={item}
                       type="button"
                       size="xs"
-                      variant={selectedInterests.includes(item) ? 'cta-2' : 'ghost'}
+                      variant={selectedInterests.includes(item) ? 'primary' : 'ghost'}
                       active={selectedInterests.includes(item)}
                       aria-pressed={selectedInterests.includes(item)}
                       className={cn(
-                        'min-h-11 min-w-0 rounded-none border-0 border-r border-b border-accent px-3.5 py-3 text-sm whitespace-normal shadow-none focus-visible:z-10',
-                        !selectedInterests.includes(item) && 'bg-muted/40 font-normal',
+                        'min-h-11 min-w-0 rounded-input border-2 font-normal border-accent px-3.5 py-3 text-sm whitespace-normal shadow-none focus-visible:z-10',
+                        selectedInterests.includes(item) &&
+                          'shadow-[inset_0_1ex_2rem_2px_color-mix(in_srgb,var(--primary)_50%,transparent)]!',
+                        !selectedInterests.includes(item) && 'bg-muted/40',
                       )}
                       onClick={() => setSelectedInterests((current) =>
                         current.includes(item)
