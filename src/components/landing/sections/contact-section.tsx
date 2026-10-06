@@ -5,6 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { SectionLabel, SectionHeading } from '../primitives';
 import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
@@ -155,28 +162,31 @@ export function ContactSection() {
                   <Label htmlFor="contact-role" className="text-sm font-normal">
                     Seu cargo ou papel no projeto
                   </Label>
-                  <Input
-                    id="contact-role"
-                    name="role"
-                    autoComplete="organization-title"
-                    list="contact-role-options"
-                    placeholder="Selecione ou escreva seu papel"
-                    required
-                    maxLength={120}
-                    className="h-11"
-                  />
-                  <datalist id="contact-role-options">
-                    {[
-                      'CEO / Fundador(a)',
-                      'CTO / Liderança de tecnologia',
-                      'Designer',
-                      'Developer / Desenvolvedor(a)',
-                      'Idealizador(a) do projeto',
-                      'Produto / Estratégia',
-                      'Financeiro / Operações',
-                      'Comercial / Parcerias',
-                    ].map((role) => <option key={role} value={role} />)}
-                  </datalist>
+                  <Select name="role" required autoComplete="organization-title">
+                    <SelectTrigger
+                      id="contact-role"
+                      className="w-full min-w-0 text-sm data-[size=default]:h-11"
+                    >
+                      <SelectValue placeholder="Selecione seu cargo ou papel" />
+                    </SelectTrigger>
+                    <SelectContent position="popper" className="dark">
+                      {[
+                        'CEO / Fundador(a)',
+                        'CTO / Liderança de tecnologia',
+                        'Designer',
+                        'Developer / Desenvolvedor(a)',
+                        'Idealizador(a) do projeto',
+                        'Produto / Estratégia',
+                        'Financeiro / Operações',
+                        'Comercial / Parcerias',
+                        'Outro cargo ou papel',
+                      ].map((role) => (
+                        <SelectItem key={role} value={role}>
+                          {role}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
               <div className="flex flex-col gap-2">
@@ -230,20 +240,29 @@ export function ContactSection() {
                 <Label htmlFor="contact-source" className="text-sm font-normal">
                   Onde você conheceu a Paragan?
                 </Label>
-                <Input
-                  id="contact-source"
-                  name="source"
-                  list="contact-source-options"
-                  placeholder="Uma indicação, uma busca, uma rede social…"
-                  required
-                  maxLength={200}
-                  className="h-11"
-                />
-                <datalist id="contact-source-options">
-                  {['Indicação', 'Google / Busca', 'LinkedIn', 'Instagram', 'GitHub', 'Evento / Comunidade'].map((source) => (
-                    <option key={source} value={source} />
-                  ))}
-                </datalist>
+                <Select name="source" required>
+                  <SelectTrigger
+                    id="contact-source"
+                    className="w-full min-w-0 text-sm data-[size=default]:h-11"
+                  >
+                    <SelectValue placeholder="Selecione onde nos conheceu" />
+                  </SelectTrigger>
+                  <SelectContent position="popper" className="dark">
+                    {[
+                      'Indicação',
+                      'Google / Busca',
+                      'LinkedIn',
+                      'Instagram',
+                      'GitHub',
+                      'Evento / Comunidade',
+                      'Outro canal',
+                    ].map((source) => (
+                      <SelectItem key={source} value={source}>
+                        {source}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="flex flex-col gap-2">
