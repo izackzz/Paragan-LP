@@ -179,17 +179,13 @@ export function ContactSection() {
             </div>
 
             <div className="flex flex-col items-start gap-4 border-t border-border p-6 sm:flex-row md:p-8">
-              <p className="flex-1 text-xs leading-relaxed text-muted-foreground">
-                Prepare seu resumo para a conversa. Ele fica apenas neste navegador; nenhum dado
-                será enviado automaticamente.
-              </p>
               <Button
                 type="submit"
-                size="xs"
-                variant="primary"
-                className="min-h-11 shrink-0 rounded-md"
+                size="lg"
+                variant="cta"
+                className="min-h-11 shrink-0 rounded-md w-full! sm:w-full!"
               >
-                Preparar conversa
+                PREPARAR CONVERSA
               </Button>
             </div>
 

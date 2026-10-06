@@ -105,7 +105,7 @@ export function SiteFooter() {
             </ActionLink>
             <div
               aria-hidden="true"
-              className="dots pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-30"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-30"
             />
             <Image
               src="/brand-icon.svg"

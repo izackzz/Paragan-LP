@@ -85,7 +85,7 @@ export function SectionLabel({ number, children }: { number: string; children: R
       <span className="text-brand">[ {number} / 10 ]</span>
       <span>{children}</span>
       <span className="ml-auto hidden sm:block" aria-hidden="true">
-        PARAGAN / INFRASTRUCTURE
+        PARAGAN / WHITE LABEL
       </span>
     </div>
   );
