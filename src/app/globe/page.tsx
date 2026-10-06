@@ -21,11 +21,15 @@ export default function GlobePage() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1.06, 1.06, 1.06, -1.06, 0.1, 10);
-    camera.position.set(0, 0, 4);
+    camera.position.set(0, 1.25, 4);
+    camera.lookAt(0, 0, 0);
 
+    const tilt = THREE.MathUtils.degToRad(23.5);
+    const axis = new THREE.Group();
+    axis.rotation.z = -tilt;
+    scene.add(axis);
     const globe = new THREE.Group();
-    globe.rotation.set(THREE.MathUtils.degToRad(18), 0, THREE.MathUtils.degToRad(-8));
-    scene.add(globe);
+    axis.add(globe);
 
     // Depth-only surface hides the far hemisphere without adding a fill color.
     const sphereGeometry = new THREE.SphereGeometry(1, 128, 96);
@@ -68,9 +72,72 @@ export default function GlobePage() {
 
     const lineGeometry = new LineSegmentsGeometry();
     lineGeometry.setPositions(positions);
-    const lineMaterial = new LineMaterial({ linewidth: 1, worldUnits: false });
+    const lineMaterial = new LineMaterial({
+      linewidth: 1,
+      worldUnits: false,
+      depthWrite: false,
+    });
     const lines = new LineSegments2(lineGeometry, lineMaterial);
     globe.add(lines);
+
+    // The sphere's depth separates the faint rear grid from the visible front grid.
+    const rearMaterial = new LineMaterial({
+      linewidth: 1,
+      worldUnits: false,
+      transparent: true,
+      opacity: 0.18,
+      depthWrite: false,
+      depthFunc: THREE.GreaterDepth,
+    });
+    const rearLines = new LineSegments2(lineGeometry, rearMaterial);
+    rearLines.renderOrder = 1;
+    globe.add(rearLines);
+
+    let activePointer: number | null = null;
+    let previousX = 0;
+    let previousY = 0;
+    const pointerDown = (event: PointerEvent) => {
+      if (activePointer !== null || !event.isPrimary || event.button !== 0) return;
+      activePointer = event.pointerId;
+      previousX = event.clientX;
+      previousY = event.clientY;
+      container.setPointerCapture(event.pointerId);
+      container.style.cursor = 'grabbing';
+    };
+    const pointerMove = (event: PointerEvent) => {
+      if (event.pointerId !== activePointer) return;
+      const distance =
+        (event.clientX - previousX) * Math.cos(tilt) +
+        (event.clientY - previousY) * Math.sin(tilt);
+      globe.rotation.y += (distance / Math.max(container.clientWidth, 1)) * Math.PI * 2;
+      previousX = event.clientX;
+      previousY = event.clientY;
+    };
+    const pointerEnd = (event: PointerEvent) => {
+      if (event.pointerId !== activePointer) return;
+      activePointer = null;
+      container.style.cursor = '';
+      if (container.hasPointerCapture(event.pointerId)) {
+        container.releasePointerCapture(event.pointerId);
+      }
+    };
+    container.addEventListener('pointerdown', pointerDown);
+    container.addEventListener('pointermove', pointerMove);
+    container.addEventListener('pointerup', pointerEnd);
+    container.addEventListener('pointercancel', pointerEnd);
+    container.addEventListener('lostpointercapture', pointerEnd);
+
+    let previousTime: number | null = null;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    renderer.setAnimationLoop((time) => {
+      const delta = previousTime === null ? 0 : Math.min((time - previousTime) / 1000, 0.05);
+      previousTime = time;
+      if (activePointer === null && !reducedMotion.matches) {
+        // Positive local-Y rotation is counterclockwise when viewed from the north pole.
+        globe.rotation.y += delta * 0.08;
+      }
+      renderer.render(scene, camera);
+    });
 
     // Resolve CSS colors through Canvas so theme tokens can use oklch as well as rgb.
     const colorCanvas = document.createElement('canvas');
@@ -83,6 +150,7 @@ export default function GlobePage() {
         colorContext.fillRect(0, 0, 1, 1);
         const [red, green, blue] = colorContext.getImageData(0, 0, 1, 1).data;
         lineMaterial.color.setRGB(red / 255, green / 255, blue / 255, THREE.SRGBColorSpace);
+        rearMaterial.color.copy(lineMaterial.color);
       }
       renderer.render(scene, camera);
     };
@@ -109,6 +177,16 @@ export default function GlobePage() {
     resize();
 
     return () => {
+      renderer.setAnimationLoop(null);
+      container.removeEventListener('pointerdown', pointerDown);
+      container.removeEventListener('pointermove', pointerMove);
+      container.removeEventListener('pointerup', pointerEnd);
+      container.removeEventListener('pointercancel', pointerEnd);
+      container.removeEventListener('lostpointercapture', pointerEnd);
+      if (activePointer !== null && container.hasPointerCapture(activePointer)) {
+        container.releasePointerCapture(activePointer);
+      }
+      container.style.cursor = '';
       resizeObserver.disconnect();
       themeObserver.disconnect();
       colorScheme.removeEventListener('change', render);
@@ -116,6 +194,7 @@ export default function GlobePage() {
       sphereMaterial.dispose();
       lineGeometry.dispose();
       lineMaterial.dispose();
+      rearMaterial.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     };
@@ -126,8 +205,8 @@ export default function GlobePage() {
       <div
         ref={containerRef}
         role="img"
-        aria-label="Globo com linhas de latitude e longitude"
-        className="aspect-square w-full max-w-[min(90svh,800px)]"
+        aria-label="Globo inclinado a 23,5 graus com linhas de latitude e longitude; arraste para girar"
+        className="aspect-square w-full max-w-[min(90svh,800px)] cursor-grab touch-none select-none"
       />
     </main>
   );
