@@ -144,7 +144,7 @@ export function PlatformSection() {
                         {module.description}
                       </p>
                     </CardHeader>
-                    <CardContent className="h-fit min-h-0 min-w-0 overflow-hidden rounded-sm border">
+                    <CardContent className="p-0! h-fit min-h-0 min-w-0 overflow-hidden rounded-sm border">
                       {/* Arte reservada por módulo, sem números ou resultados simulados. */}
                       <ArtPlaceholder
                         width={1000}
