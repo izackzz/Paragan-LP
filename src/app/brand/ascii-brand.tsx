@@ -239,7 +239,7 @@ export function AsciiBrand() {
         role="img"
         aria-label="Trevo Paragan animado em caracteres ASCII"
         aria-busy={status === 'loading'}
-        className="absolute inset-0 text-foreground"
+        className="absolute inset-0 text-brand"
       />
       {status === 'loading' && (
         <span role="status" className="sr-only">
