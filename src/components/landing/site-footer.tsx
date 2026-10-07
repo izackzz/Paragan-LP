@@ -101,8 +101,8 @@ export function SiteFooter() {
             <RenderAscii
               render="clover"
               aspect="1/1"
-              className="pointer-events-none absolute top-1/2 right-0 size-64 translate-x-1/2 -translate-y-1/2 text-primary"
-              label="Trevo Paragan animado em caracteres ASCII"
+              className="pointer-events-none absolute top-1/2 right-0 size-135 translate-x-1/2 -translate-y-1/2 text-primary"
+              label="Trevo Paragan animado em pontos halftone"
             />
           </div>
 

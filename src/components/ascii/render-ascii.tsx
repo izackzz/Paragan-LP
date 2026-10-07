@@ -10,7 +10,7 @@ import {
 } from './render-ascii-variants';
 
 const CELL_WIDTH = 10;
-const CELL_HEIGHT = 20;
+const DOT_TEXTURE_SIZE = 20;
 
 function validateFrames(value: unknown, config: AsciiVariant): asserts value is string[] {
   if (
@@ -47,7 +47,7 @@ function AsciiPlayer({
   config,
   aspect = config.aspect,
   className,
-  label = 'Animação em caracteres ASCII',
+  label = 'Animação halftone em pontos',
 }: Omit<RenderAsciiProps, 'render'> & { config: AsciiVariant }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -88,21 +88,31 @@ function AsciiPlayer({
         return;
       }
 
-      // Seven glyphs share one small atlas. Only sprite texture references change
-      // during playback; there is no per-frame text rasterization or texture upload.
+      // The ramp is an intensity encoding. Render it as square dot textures;
+      // all levels share one atlas, with no per-frame rasterization or uploads.
       const atlas = document.createElement('canvas');
       const atlasScale = Math.max(2, Math.ceil(window.devicePixelRatio || 1));
-      atlas.width = CELL_WIDTH * config.ramp.length * atlasScale;
-      atlas.height = CELL_HEIGHT * atlasScale;
+      atlas.width = DOT_TEXTURE_SIZE * config.ramp.length * atlasScale;
+      atlas.height = DOT_TEXTURE_SIZE * atlasScale;
       const context = atlas.getContext('2d');
       if (!context) throw new Error('Canvas 2D unavailable');
       context.scale(atlasScale, atlasScale);
-      context.font = '16px monospace';
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
       context.fillStyle = '#ffffff';
-      [...config.ramp].forEach((char, index) => {
-        context.fillText(char, (index + 0.5) * CELL_WIDTH, CELL_HEIGHT / 2);
+      [...config.ramp].forEach((_, index) => {
+        if (index === 0) return;
+        const intensity = index / (config.ramp.length - 1);
+        // Radius follows sqrt(intensity) so dot area tracks luminance.
+        const radius = DOT_TEXTURE_SIZE * 0.45 * Math.sqrt(intensity);
+        context.globalAlpha = 0.25 + 0.75 * intensity;
+        context.beginPath();
+        context.arc(
+          (index + 0.5) * DOT_TEXTURE_SIZE,
+          DOT_TEXTURE_SIZE / 2,
+          radius,
+          0,
+          Math.PI * 2,
+        );
+        context.fill();
       });
       const atlasTexture = PIXI.Texture.from(atlas);
       const textures = [...config.ramp].map(
@@ -110,10 +120,10 @@ function AsciiPlayer({
           new PIXI.Texture({
             source: atlasTexture.source,
             frame: new PIXI.Rectangle(
-              index * CELL_WIDTH * atlasScale,
+              index * DOT_TEXTURE_SIZE * atlasScale,
               0,
-              CELL_WIDTH * atlasScale,
-              CELL_HEIGHT * atlasScale,
+              DOT_TEXTURE_SIZE * atlasScale,
+              DOT_TEXTURE_SIZE * atlasScale,
             ),
           }),
       );
@@ -124,12 +134,12 @@ function AsciiPlayer({
       const gridWidth = config.columns * CELL_WIDTH;
       const gridHeight = (gridWidth * aspectHeight) / aspectWidth;
       const cellHeight = gridHeight / config.rows;
-      // Keep glyph shapes intact while adapting cell spacing to the source ratio.
-      const glyphScale = Math.min(1, cellHeight / CELL_HEIGHT);
+      // Preserve the existing sample grid while keeping each dot circular (1:1).
+      const dotSize = Math.min(CELL_WIDTH, cellHeight);
       const sprites = Array.from({ length: config.columns * config.rows }, (_, index) => {
         const sprite = new PIXI.Sprite(textures[0]);
-        sprite.width = CELL_WIDTH * glyphScale;
-        sprite.height = CELL_HEIGHT * glyphScale;
+        sprite.width = dotSize;
+        sprite.height = dotSize;
         sprite.position.set(
           (index % config.columns) * CELL_WIDTH + (CELL_WIDTH - sprite.width) / 2,
           Math.floor(index / config.columns) * cellHeight + (cellHeight - sprite.height) / 2,
