@@ -23,17 +23,29 @@ export function fittedBox(width: number, height: number, aspect: string, fit: Re
   const ratio = aspectWidth / aspectHeight;
   const scale = fit === 'cover' ? Math.max(width / ratio, height) : Math.min(width / ratio, height);
   const contentWidth = scale * ratio;
-  return { x: (width - contentWidth) / 2, y: (height - scale) / 2, width: contentWidth, height: scale };
+  return {
+    x: (width - contentWidth) / 2,
+    y: (height - scale) / 2,
+    width: contentWidth,
+    height: scale,
+  };
 }
 
 export function cellProfile(model: 'halftone' | 'pixels', cellSize?: number) {
   const pitch = cellSize ?? (model === 'pixels' ? 8 : 6);
-  if (!Number.isFinite(pitch) || pitch < 2) throw new Error('Cell size must be at least 2 CSS pixels');
+  if (!Number.isFinite(pitch) || pitch < 2)
+    throw new Error('Cell size must be at least 2 CSS pixels');
   const size = pitch * (model === 'pixels' ? 0.75 : 0.5);
   return { pitch, size, gap: pitch - size };
 }
 
-export function adaptiveGrid(width: number, height: number, aspect: string, fit: RenderFit, pitch: number) {
+export function adaptiveGrid(
+  width: number,
+  height: number,
+  aspect: string,
+  fit: RenderFit,
+  pitch: number,
+) {
   const box = fittedBox(width, height, aspect, fit);
   return { ...box, columns: Math.ceil(box.width / pitch), rows: Math.ceil(box.height / pitch) };
 }
