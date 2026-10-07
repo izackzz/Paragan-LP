@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 // Offline only. Requires ffmpeg/ffprobe; run with `pnpm generate:brand`.
 const root = new URL('../', import.meta.url);
-const source = fileURLToPath(new URL('docs/refs/video/trevo.mp4', root));
+const source = fileURLToPath(new URL('docs/refs/video/ascii-clover.mp4', root));
 const probe = JSON.parse(
   execFileSync(
     'ffprobe',
