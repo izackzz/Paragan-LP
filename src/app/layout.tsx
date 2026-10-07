@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { ExperienceProvider } from '@/components/landing/experience-provider';
 import { Analytics } from '@vercel/analytics/next';
+import { themeScript } from '@/lib/theme';
 
 const faktum = localFont({
   src: [
@@ -37,8 +38,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={`${faktum.variable} ${galano.variable} ${rationalMix.variable} h-full scroll-pt-22 tabular-nums antialiased selection:bg-accent selection:text-foreground`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full bg-background text-foreground motion-reduce:**:animate-none motion-reduce:**:transition-none">
         <ExperienceProvider>
           {children}

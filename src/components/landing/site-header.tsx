@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Brand } from './primitives';
 import { FluidGroup } from './fluid-group';
+import { ThemeToggle } from './theme-toggle';
 import { icons } from '@/lib/icon-map';
 import { frame } from './styles';
 import { cn } from '@/lib/utils';
@@ -115,6 +116,7 @@ export function SiteHeader() {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link
               href="#"
               className="hidden rounded-md px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground sm:block"
