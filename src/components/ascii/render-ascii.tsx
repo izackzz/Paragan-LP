@@ -47,8 +47,11 @@ function AsciiPlayer({
   decorative = false,
   aspect = config.aspect,
   className,
-  label = model === 'ascii' ? 'Animação em caracteres ASCII' : model === 'pixels'
-    ? 'Animação em pixels' : 'Animação halftone em pontos',
+  label = model === 'ascii'
+    ? 'Animação em caracteres ASCII'
+    : model === 'pixels'
+      ? 'Animação em pixels'
+      : 'Animação halftone em pontos',
 }: Omit<RenderAsciiProps, 'render'> & { config: AsciiVariant }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -67,9 +70,10 @@ function AsciiPlayer({
       const data = decodeFrames(frames, config, model);
       if (cancelled || !host) return;
 
-      const renderer = model === 'ascii'
-        ? await createAsciiRenderer(data, config, fit)
-        : createGridRenderer(data, config.aspect, model, fit, cellSize);
+      const renderer =
+        model === 'ascii'
+          ? await createAsciiRenderer(data, config, fit)
+          : createGridRenderer(data, config.aspect, model, fit, cellSize);
       dispose = () => renderer.destroy();
       if (cancelled) {
         dispose();
@@ -206,7 +210,7 @@ function AsciiPlayer({
           role="alert"
           className="absolute inset-0 grid place-items-center p-6 text-center text-sm text-foreground-3"
         >
-          Não foi possível carregar a animação ASCII.
+          Não foi possível carregar a animação.
         </p>
       )}
     </div>

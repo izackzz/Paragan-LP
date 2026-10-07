@@ -12,7 +12,7 @@ const code = ts.transpileModule(
 ).outputText;
 const exports = {};
 runInNewContext(code, { exports, Uint8Array });
-const { decodeFrames, gridLayout } = exports;
+const { decodeFrames, gridLayout, adaptiveGrid, cellProfile, fittedBox } = exports;
 const config = { columns: 4, rows: 2, aspect: '1/1', ramp: ' .:-=+X' };
 const rgb = (values) => Buffer.from(values.flatMap((value) => [value, value, value]));
 const animation = (frames) => ({
@@ -76,6 +76,114 @@ test('ASCII retains its original grid and monospace glyph dimensions', () => {
   const decoded = decodeFrames(animation(['66666666        ']), config, 'ascii');
   assert.equal(decoded.rows, 2);
   assert.deepEqual([...decoded.frames[0]], [6, 6, 6, 6, 0, 0, 0, 0]);
+});
+
+test('adaptive grids add cells without changing CSS dot size or gap', () => {
+  const profile = cellProfile('halftone');
+  const small = adaptiveGrid(540, 540, '1/1', 'contain', profile.pitch);
+  const large = adaptiveGrid(2160, 2160, '1/1', 'contain', profile.pitch);
+  assert.equal(profile.size, 3);
+  assert.equal(profile.gap, 3);
+  assert.equal(small.columns, 90);
+  assert.equal(large.columns, 360);
+  assert.equal(large.rows, small.rows * 4);
+  assert.equal(large.width / large.height, small.width / small.height);
+});
+
+test('pixel cells are larger, with proportionally smaller but positive gaps', () => {
+  const dots = cellProfile('halftone');
+  const pixels = cellProfile('pixels');
+  assert.equal(pixels.size, 6);
+  assert.equal(pixels.gap, 2);
+  assert.ok(pixels.size > dots.size);
+  assert.ok(pixels.gap / pixels.size < dots.gap / dots.size);
+  assert.ok(pixels.gap > 0);
+  assert.equal(cellProfile('pixels', 12).size, 9);
+  for (const size of [0, -1, 1, Infinity, NaN]) assert.throws(() => cellProfile('halftone', size));
+});
+
+test('contain and cover preserve proportions for landscape and portrait hosts', () => {
+  for (const [width, height] of [
+    [1920, 1080],
+    [390, 844],
+  ]) {
+    const contain = fittedBox(width, height, '1/1', 'contain');
+    const cover = fittedBox(width, height, '1/1', 'cover');
+    assert.equal(contain.width, contain.height);
+    assert.equal(cover.width, cover.height);
+    assert.ok(contain.width <= width && contain.height <= height);
+    assert.ok(cover.width >= width && cover.height >= height);
+    assert.equal(cover.x * 2 + cover.width, width);
+    assert.equal(cover.y * 2 + cover.height, height);
+  }
+});
+
+test('GPU renderer keeps constant geometry, reuses uploads and restores context', () => {
+  const calls = [];
+  const uniforms = {};
+  const listeners = {};
+  const gl = new Proxy(
+    {},
+    {
+      get(_, name) {
+        if (/^[A-Z_0-9]+$/.test(String(name))) return name;
+        if (['createShader', 'createProgram', 'createBuffer', 'createTexture'].includes(name))
+          return () => ({});
+        if (['getShaderParameter', 'getProgramParameter'].includes(name)) return () => true;
+        if (name === 'getUniformLocation') return (_, uniform) => uniform;
+        if (name === 'getAttribLocation') return () => 0;
+        if (name === 'isContextLost') return () => false;
+        return (...args) => {
+          calls.push({ name, args });
+          if (String(name).startsWith('uniform')) uniforms[args[0]] = args.slice(1);
+        };
+      },
+    },
+  );
+  const canvas = {
+    getContext: () => gl,
+    addEventListener(name, callback) {
+      listeners[name] = callback;
+    },
+    removeEventListener(name) {
+      delete listeners[name];
+    },
+    remove() {},
+  };
+  const rendererModule = {};
+  const rendererCode = ts.transpileModule(
+    readFileSync(new URL('src/components/ascii/render-ascii-webgl.ts', root), 'utf8'),
+    { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } },
+  ).outputText;
+  runInNewContext(rendererCode, {
+    exports: rendererModule,
+    require: () => exports,
+    document: { createElement: () => canvas },
+  });
+  const data = decodeFrames(animation(['6666666666666666']), config, 'halftone');
+  const renderer = rendererModule.createGridRenderer(data, '1/1', 'halftone', 'cover');
+  renderer.resize(540, 540, 1);
+  renderer.draw(0);
+  renderer.resize(1920, 1080, 2);
+  renderer.draw(0);
+  renderer.setTint(255, 0, 128);
+  renderer.draw(0);
+  assert.equal(canvas.width, 3840);
+  assert.equal(canvas.height, 2160);
+  assert.deepEqual([...uniforms.uPitch], [6]);
+  assert.deepEqual([...uniforms.uSize], [3]);
+  assert.deepEqual([...uniforms.uContent], [0, -420, 1920, 1920]);
+  assert.deepEqual([...uniforms.uTint], [1, 0, 128 / 255]);
+  assert.equal(calls.filter(({ name }) => name === 'texSubImage2D').length, 1);
+  assert.equal(calls.filter(({ name }) => name === 'drawArrays').length, 3);
+  assert.equal(calls.find(({ name }) => name === 'texSubImage2D').args.at(-1).length, 16);
+  listeners.webglcontextrestored();
+  assert.equal(calls.filter(({ name }) => name === 'texSubImage2D').length, 2);
+  renderer.destroy();
+  assert.deepEqual(Object.keys(listeners), []);
+  const draws = calls.filter(({ name }) => name === 'drawArrays').length;
+  renderer.draw(0);
+  assert.equal(calls.filter(({ name }) => name === 'drawArrays').length, draws);
 });
 
 test('a circular source stays circular in both visual models', () => {

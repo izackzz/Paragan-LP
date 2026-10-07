@@ -38,7 +38,7 @@ void main() {
   vec2 delta = abs(pixel - center);
   float distance = uPixels > 0.5 ? max(delta.x, delta.y) : length(delta);
   float radius = uSize * 0.5 * (uPixels > 0.5 ? 1.0 : sqrt(intensity));
-  float aa = 0.5 / uDpr;
+  float aa = min(0.5 / uDpr, (uPitch - uSize) * 0.25);
   float alpha = (1.0 - smoothstep(radius - aa, radius + aa, distance))
     * (uPixels > 0.5 ? intensity : 0.25 + 0.75 * intensity);
   gl_FragColor = vec4(uTint * alpha, alpha);
@@ -57,8 +57,12 @@ export function createGridRenderer(
   const profile = cellProfile(model, cellSize);
   const canvas = document.createElement('canvas');
   const gl = canvas.getContext('webgl', {
-    alpha: true, antialias: false, premultipliedAlpha: true,
-    depth: false, stencil: false, preserveDrawingBuffer: false,
+    alpha: true,
+    antialias: false,
+    premultipliedAlpha: true,
+    depth: false,
+    stencil: false,
+    preserveDrawingBuffer: false,
     powerPreference: 'low-power',
   });
   if (!gl) throw new Error('WebGL is unavailable');
@@ -68,7 +72,9 @@ export function createGridRenderer(
   let uniforms: Record<string, WebGLUniformLocation | null> = {};
   let currentFrame = -1;
   let uploadedFrame = -1;
-  let width = 1, height = 1, dpr = 1;
+  let width = 1,
+    height = 1,
+    dpr = 1;
   let tint = [1, 1, 1];
   let destroyed = false;
 
@@ -94,12 +100,16 @@ export function createGridRenderer(
     program = gl.createProgram();
     if (!program) throw new Error('Could not allocate grid program');
     const vertexShader = shader(gl.VERTEX_SHADER, vertex);
-    const fragmentShader = shader(gl.FRAGMENT_SHADER, fragment);
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    gl.deleteShader(vertexShader);
-    gl.deleteShader(fragmentShader);
+    let fragmentShader: WebGLShader | null = null;
+    try {
+      fragmentShader = shader(gl.FRAGMENT_SHADER, fragment);
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+    } finally {
+      gl.deleteShader(vertexShader);
+      gl.deleteShader(fragmentShader);
+    }
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
       throw new Error(`Could not link grid shader: ${gl.getProgramInfoLog(program)}`);
     }
@@ -119,10 +129,23 @@ export function createGridRenderer(
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, data.columns, data.rows, 0,
-      gl.LUMINANCE, gl.UNSIGNED_BYTE, null);
-    uniforms = Object.fromEntries(['uFrame', 'uViewport', 'uContent', 'uDpr', 'uPitch', 'uSize', 'uPixels', 'uTint']
-      .map((name) => [name, gl.getUniformLocation(program, name)]));
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.LUMINANCE,
+      data.columns,
+      data.rows,
+      0,
+      gl.LUMINANCE,
+      gl.UNSIGNED_BYTE,
+      null,
+    );
+    const linkedProgram = program;
+    uniforms = Object.fromEntries(
+      ['uFrame', 'uViewport', 'uContent', 'uDpr', 'uPitch', 'uSize', 'uPixels', 'uTint'].map(
+        (name) => [name, gl.getUniformLocation(linkedProgram, name)],
+      ),
+    );
     gl.uniform1i(uniforms.uFrame, 0);
     gl.uniform1f(uniforms.uPitch, profile.pitch);
     gl.uniform1f(uniforms.uSize, profile.size);
@@ -135,8 +158,17 @@ export function createGridRenderer(
     if (destroyed || gl.isContextLost()) return;
     gl.useProgram(program);
     if (uploadedFrame !== frame) {
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, data.columns, data.rows,
-        gl.LUMINANCE, gl.UNSIGNED_BYTE, data.frames[frame]);
+      gl.texSubImage2D(
+        gl.TEXTURE_2D,
+        0,
+        0,
+        0,
+        data.columns,
+        data.rows,
+        gl.LUMINANCE,
+        gl.UNSIGNED_BYTE,
+        data.frames[frame],
+      );
       uploadedFrame = frame;
     }
     const box = fittedBox(width, height, aspect, fit);
@@ -147,9 +179,13 @@ export function createGridRenderer(
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   };
   const resize = (nextWidth: number, nextHeight: number, nextDpr: number) => {
-    width = nextWidth; height = nextHeight; dpr = nextDpr;
-    canvas.width = Math.max(1, Math.round(width * dpr));
-    canvas.height = Math.max(1, Math.round(height * dpr));
+    width = nextWidth;
+    height = nextHeight;
+    dpr = nextDpr;
+    const physicalWidth = Math.max(1, Math.round(width * dpr));
+    const physicalHeight = Math.max(1, Math.round(height * dpr));
+    if (canvas.width !== physicalWidth) canvas.width = physicalWidth;
+    if (canvas.height !== physicalHeight) canvas.height = physicalHeight;
     gl.viewport(0, 0, canvas.width, canvas.height);
   };
   const onLost = (event: Event) => event.preventDefault();
@@ -161,10 +197,19 @@ export function createGridRenderer(
   };
   canvas.addEventListener('webglcontextlost', onLost);
   canvas.addEventListener('webglcontextrestored', onRestored);
-  try { initialize(); } catch (error) { release(); throw error; }
+  try {
+    initialize();
+  } catch (error) {
+    release();
+    throw error;
+  }
   return {
-    canvas, draw, resize,
-    setTint(red, green, blue) { tint = [red / 255, green / 255, blue / 255]; },
+    canvas,
+    draw,
+    resize,
+    setTint(red, green, blue) {
+      tint = [red / 255, green / 255, blue / 255];
+    },
     destroy() {
       destroyed = true;
       canvas.removeEventListener('webglcontextlost', onLost);
