@@ -11,6 +11,8 @@ import {
   DashboardSquare01Icon,
   UserGroupIcon,
   CreditCardIcon,
+  Sun03Icon,
+  Moon02Icon,
 } from '@hugeicons/core-free-icons';
 import type { ComponentType } from 'react';
 
@@ -30,6 +32,8 @@ export const icons = {
   'arrow-right': wrap(ArrowRight02Icon),
   x: wrap(Cancel01Icon),
   menu: wrap(Menu01Icon),
+  sun: wrap(Sun03Icon),
+  moon: wrap(Moon02Icon),
   copy: wrap(Copy01Icon),
   dashboard: wrap(DashboardSquare01Icon),
   users: wrap(UserGroupIcon),
