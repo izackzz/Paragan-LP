@@ -105,10 +105,21 @@ export const renderAsciiVariants = {
     "rows": 48,
     "aspect": "16/9",
     "ramp": " .:-=+X",
-    "posterFrame": 148,
-    "threshold": 77,
-    "whitePoint": 168,
-    "inverted": false
+    "posterFrame": 37,
+    "threshold": 8,
+    "whitePoint": 175,
+    "inverted": false,
+    "format": 2,
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 720,
+      "canvasWidth": 1344,
+      "canvasHeight": 756,
+      "offsetX": 32,
+      "offsetY": 18
+    }
   }
 } as const satisfies Record<string, AsciiVariant>;
 
