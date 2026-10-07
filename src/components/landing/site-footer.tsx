@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { AppLogo } from '@/components/assets/brand/logo';
 import { AppWordMark } from '@/components/assets/brand/wordmark';
-import { AppBrandMark } from '@/components/assets/brand/brandmark';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
   InstagramIcon,
@@ -13,6 +12,7 @@ import { FluidGroup } from './fluid-group';
 import { frame, micro } from './styles';
 import { cn } from '@/lib/utils';
 import { ActionLink } from './primitives';
+import { RenderAscii } from '../ascii/render-ascii';
 
 const groups = [
   {
@@ -98,13 +98,11 @@ export function SiteFooter() {
             <ActionLink href="#contato" className="relative z-10 mt-6">
               Explorar minha operação
             </ActionLink>
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-30"
-            />
-            <AppBrandMark
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -bottom-12 size-64 opacity-5"
+            <RenderAscii
+              render="clover"
+              aspect="1/1"
+              className="max-w-[min(80svh,42rem)] text-primary pointer-events-none absolute right-0 bottom-0 h-24 -translate-y-1/2"
+              label="Trevo Paragan animado em caracteres ASCII"
             />
           </div>
 
@@ -156,9 +154,9 @@ export function SiteFooter() {
                 axis="y"
                 className="m-0 grid list-none gap-1 border-r border-l border-border p-2"
               >
-              <h2 id={`footer-menu-${index}`} className="py-2 px-3 text-sm font-medium">
-                {group.title}
-              </h2>
+                <h2 id={`footer-menu-${index}`} className="px-3 py-2 text-sm font-medium">
+                  {group.title}
+                </h2>
                 {group.links.map(([label, href]) => (
                   <Link key={label} href={href} className={linkClass}>
                     {label}
@@ -170,10 +168,7 @@ export function SiteFooter() {
         </nav>
 
         <div className="overflow-hidden border-y border-border px-6 py-6 md:px-8 md:py-8">
-          <AppWordMark
-            aria-hidden="true"
-            className="h-auto w-full opacity-20"
-          />
+          <AppWordMark aria-hidden="true" className="h-auto w-full opacity-20" />
         </div>
         <div className="flex flex-wrap items-center gap-3 px-6 py-4 md:px-8">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Paragan</p>
