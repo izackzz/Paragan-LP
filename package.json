@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.12.1",
   "scripts": {
-    "generate:brand": "node scripts/generate-brand-ascii.mjs",
+    "generate:ascii": "node scripts/generate-ascii.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

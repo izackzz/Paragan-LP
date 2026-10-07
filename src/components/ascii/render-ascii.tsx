@@ -1,12 +1,18 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import config from './ascii-config.json';
+import { cn } from '@/lib/utils';
+import {
+  renderAsciiVariants,
+  type AsciiAspect,
+  type AsciiRender,
+  type AsciiVariant,
+} from './render-ascii-variants';
 
 const CELL_WIDTH = 10;
 const CELL_HEIGHT = 20;
 
-function validateFrames(value: unknown): asserts value is string[] {
+function validateFrames(value: unknown, config: AsciiVariant): asserts value is string[] {
   if (
     !Array.isArray(value) ||
     !value.length ||
@@ -25,7 +31,24 @@ function validateFrames(value: unknown): asserts value is string[] {
     throw new Error('Invalid ASCII frames');
 }
 
-export function AsciiBrand() {
+export interface RenderAsciiProps {
+  render: AsciiRender;
+  /** Container ratio. Defaults to the generated video's aspect; content uses contain. */
+  aspect?: AsciiAspect;
+  className?: string;
+  label?: string;
+}
+
+export function RenderAscii({ render, ...props }: RenderAsciiProps) {
+  return <AsciiPlayer key={render} config={renderAsciiVariants[render]} {...props} />;
+}
+
+function AsciiPlayer({
+  config,
+  aspect = config.aspect,
+  className,
+  label = 'Animação em caracteres ASCII',
+}: Omit<RenderAsciiProps, 'render'> & { config: AsciiVariant }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
 
@@ -39,11 +62,11 @@ export function AsciiBrand() {
     async function initialize() {
       const [PIXI, response] = await Promise.all([
         import('pixi.js'),
-        fetch('/brand/trevo-ascii.json', { signal: controller.signal }),
+        fetch(config.src, { signal: controller.signal }),
       ]);
       if (!response.ok) throw new Error('Could not load ASCII frames');
       const frames: unknown = await response.json();
-      validateFrames(frames);
+      validateFrames(frames, config);
       if (cancelled || !host) return;
 
       const app = new PIXI.Application();
@@ -97,13 +120,19 @@ export function AsciiBrand() {
       const glyphs = new PIXI.Container();
       glyphs.eventMode = 'none';
       app.stage.addChild(glyphs);
+      const [aspectWidth, aspectHeight] = config.aspect.split('/').map(Number);
+      const gridWidth = config.columns * CELL_WIDTH;
+      const gridHeight = (gridWidth * aspectHeight) / aspectWidth;
+      const cellHeight = gridHeight / config.rows;
+      // Keep glyph shapes intact while adapting cell spacing to the source ratio.
+      const glyphScale = Math.min(1, cellHeight / CELL_HEIGHT);
       const sprites = Array.from({ length: config.columns * config.rows }, (_, index) => {
         const sprite = new PIXI.Sprite(textures[0]);
-        sprite.width = CELL_WIDTH;
-        sprite.height = CELL_HEIGHT;
+        sprite.width = CELL_WIDTH * glyphScale;
+        sprite.height = CELL_HEIGHT * glyphScale;
         sprite.position.set(
-          (index % config.columns) * CELL_WIDTH,
-          Math.floor(index / config.columns) * CELL_HEIGHT,
+          (index % config.columns) * CELL_WIDTH + (CELL_WIDTH - sprite.width) / 2,
+          Math.floor(index / config.columns) * cellHeight + (cellHeight - sprite.height) / 2,
         );
         glyphs.addChild(sprite);
         return sprite;
@@ -154,10 +183,12 @@ export function AsciiBrand() {
         }
       };
       const resize = () => {
-        const size = host.getBoundingClientRect().width;
-        if (!size) return;
-        app.renderer.resize(size, size, window.devicePixelRatio || 1);
-        glyphs.scale.set(size / (config.columns * CELL_WIDTH));
+        const { width, height } = host.getBoundingClientRect();
+        if (!width || !height) return;
+        app.renderer.resize(width, height, window.devicePixelRatio || 1);
+        const scale = Math.min(width / gridWidth, height / gridHeight);
+        glyphs.scale.set(scale);
+        glyphs.position.set((width - gridWidth * scale) / 2, (height - gridHeight * scale) / 2);
         draw();
       };
       const tintCanvas = document.createElement('canvas');
@@ -230,16 +261,19 @@ export function AsciiBrand() {
       controller.abort();
       dispose();
     };
-  }, []);
+  }, [config]);
 
   return (
-    <div className="relative aspect-square w-full max-w-[min(80svh,42rem)]">
+    <div
+      className={cn('relative w-full overflow-hidden text-primary', className)}
+      style={{ aspectRatio: aspect }}
+    >
       <div
         ref={hostRef}
         role="img"
-        aria-label="Trevo Paragan animado em caracteres ASCII"
+        aria-label={label}
         aria-busy={status === 'loading'}
-        className="absolute inset-0 text-brand"
+        className="absolute inset-0"
       />
       {status === 'loading' && (
         <span role="status" className="sr-only">
