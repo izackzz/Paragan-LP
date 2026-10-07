@@ -465,7 +465,7 @@
 .shiny-01,
 .shiny-02,
 .shiny-secondary {
-  /* These buttons keep their dark palette independently of the page theme. */
+  /* Keep light text and highlights; the light theme overrides the fill below. */
   --background: oklch(0.095 0.046 305);
   --foreground: oklch(0.97 0.006 305);
   --border: oklch(0.34 0.028 305);
@@ -489,6 +489,13 @@
       )
       border-box,
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) border-box;
+}
+
+:root:not(.dark) :is(.shiny-01, .shiny-02, .shiny-secondary) {
+  --background: var(--primary);
+  --border: var(--primary);
+  --shiny-cta-highlight: color-mix(in oklab, var(--primary) 70%, var(--foreground));
+  --shiny-cta-highlight-subtle: var(--foreground);
 }
 
 .dots {
