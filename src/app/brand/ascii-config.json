@@ -1,10 +1,10 @@
 {
-  "fps": 30,
-  "columns": 84,
-  "rows": 42,
+  "fps": 24,
+  "columns": 96,
+  "rows": 48,
   "ramp": " .:-=+X",
-  "posterFrame": 45,
+  "posterFrame": 47,
   "threshold": 8,
-  "whitePoint": 179,
-  "inverted": true
+  "whitePoint": 84,
+  "inverted": false
 }
