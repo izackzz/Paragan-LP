@@ -81,7 +81,7 @@ export function SiteFooter() {
         <div className="grid lg:grid-cols-2">
           <div
             id="footer-brand"
-            className="relative isolate flex scroll-mt-25 flex-col items-start overflow-hidden p-6 md:p-8"
+            className="relative isolate flex scroll-mt-25 md:border-r flex-col items-start overflow-hidden p-6 md:p-8"
           >
             <Link
               href="/#inicio"
