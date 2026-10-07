@@ -66,18 +66,6 @@ export const renderAsciiVariants = {
   },
   "fire-01": {
     "src": "/ascii/fire-01.json",
-    "fps": 23.97601637219404,
-    "columns": 171,
-    "rows": 48,
-    "aspect": "16/9",
-    "ramp": " .:-=+X",
-    "posterFrame": 404,
-    "threshold": 183,
-    "whitePoint": 195,
-    "inverted": false
-  },
-  "fire-02": {
-    "src": "/ascii/fire-02.json",
     "fps": 30,
     "columns": 171,
     "rows": 48,
