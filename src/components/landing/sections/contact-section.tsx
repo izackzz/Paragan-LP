@@ -19,8 +19,10 @@ import { cn } from '@/lib/utils';
 const interests = [
   'Lançar meu gateway',
   'Planejar operação',
-  'Integrar minha plataforma',
-  'Migrar minha infraestrutura',
+  'Migrar minha infra',
+  'Avaliar para um projeto futuro',
+  'Conhecer mais antes de decidir',
+  'Explorar uma parceria',
 ];
 const perspectives = [
   ['Seu modelo', 'O que sua operação quer construir e controlar.'],
@@ -219,10 +221,10 @@ export function ContactSection() {
                       active={selectedInterests.includes(item)}
                       aria-pressed={selectedInterests.includes(item)}
                       className={cn(
-                        'min-h-11 min-w-0 rounded-md border-2 font-normal px-3.5 py-3 whitespace-normal shadow-none focus-visible:z-10',
+                        'min-h-11 min-w-0 rounded-md border-2 font-normal px-3.5 py-3 whitespace-normal shadow-none focus-visible:z-10 text-md text-xs',
                         selectedInterests.includes(item) &&
-                          'shadow-[inset_0_1ex_2rem_2px_color-mix(in_srgb,var(--primary)_50%,transparent)]! border-primary',
-                        !selectedInterests.includes(item) && 'bg-muted/40 border-accent',
+                          'shadow-[inset_0_1ex_2rem_2px_color-mix(in_srgb,var(--primary)_50%,transparent)]! border-primary text-md text-xs',
+                        !selectedInterests.includes(item) && 'bg-muted/40 border-accent text-md text-xs',
                       )}
                       onClick={() => setSelectedInterests((current) =>
                         current.includes(item)

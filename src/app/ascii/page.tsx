@@ -16,31 +16,28 @@ export default function AsciiPage() {
         label="Trevo Paragan animado em caracteres ASCII"
       />
       <RenderAscii
-        render="bh-01"
+        render="clover"
+        aspect="1/1"
+        model='ascii'
+        className="max-w-[min(80svh,42rem)] text-primary"
+        label="Trevo Paragan animado em caracteres ASCII"
+        />
+      <RenderAscii
+        render="shark"
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
         label="Trevo Paragan animado em caracteres ASCII"
-      />
+        />
       <RenderAscii
-        render="bh-02"
-        aspect="16/9"
-        className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
-      />
-      <RenderAscii
-        render="bh-03"
-        aspect="16/9"
-        className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
-      />
-      <RenderAscii
-        render="fire-01"
+        render="shark"
+        model='ascii'
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
         label="Trevo Paragan animado em caracteres ASCII"
       />
       <RenderAscii
         render="shark"
+        model='pixels'
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
         label="Trevo Paragan animado em caracteres ASCII"

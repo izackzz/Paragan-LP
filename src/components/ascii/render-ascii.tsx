@@ -8,14 +8,22 @@ import {
   type AsciiRender,
   type AsciiVariant,
 } from './render-ascii-variants';
-import { CELL_WIDTH, DOT_TEXTURE_SIZE, decodeFrames, gridLayout } from './render-ascii-data';
+import { decodeFrames, type RenderModel, type RenderFit } from './render-ascii-data';
+import { createAsciiRenderer } from './render-ascii-pixi';
+import { createGridRenderer } from './render-ascii-webgl';
 
 export interface RenderAsciiProps {
   render: AsciiRender;
-  /** Visual model; both models read the same frame JSON. Defaults to halftone. */
-  model?: 'ascii' | 'halftone';
+  /** Visual model; all models read the same frame JSON. Defaults to halftone. */
+  model?: RenderModel;
   /** Container ratio. Defaults to the generated video's aspect; content uses contain. */
   aspect?: AsciiAspect;
+  /** Cover fills the host without distortion, cropping overflow. Defaults to contain. */
+  fit?: RenderFit;
+  /** Grid pitch in CSS pixels for halftone/pixels; defaults to 6/8 respectively. */
+  cellSize?: number;
+  /** Hide decorative/background animations from assistive technology. */
+  decorative?: boolean;
   className?: string;
   label?: string;
 }
@@ -34,9 +42,13 @@ export function RenderAscii({ render, model = 'halftone', ...props }: RenderAsci
 function AsciiPlayer({
   config,
   model = 'halftone',
+  fit = 'contain',
+  cellSize,
+  decorative = false,
   aspect = config.aspect,
   className,
-  label = model === 'ascii' ? 'Animação em caracteres ASCII' : 'Animação halftone em pontos',
+  label = model === 'ascii' ? 'Animação em caracteres ASCII' : model === 'pixels'
+    ? 'Animação em pixels' : 'Animação halftone em pontos',
 }: Omit<RenderAsciiProps, 'render'> & { config: AsciiVariant }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -49,117 +61,29 @@ function AsciiPlayer({
     let dispose = () => {};
 
     async function initialize() {
-      const [PIXI, response] = await Promise.all([
-        import('pixi.js'),
-        fetch(`${config.src}?format=2`, { signal: controller.signal }),
-      ]);
+      const response = await fetch(`${config.src}?format=2`, { signal: controller.signal });
       if (!response.ok) throw new Error('Could not load ASCII frames');
       const frames: unknown = await response.json();
-      const { columns, rows, frames: encoded } = decodeFrames(frames, config, model);
+      const data = decodeFrames(frames, config, model);
       if (cancelled || !host) return;
 
-      const app = new PIXI.Application();
-      await app.init({
-        width: 1,
-        height: 1,
-        autoStart: false,
-        sharedTicker: false,
-        autoDensity: true,
-        resolution: window.devicePixelRatio || 1,
-        backgroundAlpha: 0,
-        preference: 'webgl',
-        powerPreference: 'low-power',
-        antialias: false,
-      });
-      dispose = () => app.destroy({ removeView: true }, { children: true });
+      const renderer = model === 'ascii'
+        ? await createAsciiRenderer(data, config, fit)
+        : createGridRenderer(data, config.aspect, model, fit, cellSize);
+      dispose = () => renderer.destroy();
       if (cancelled) {
         dispose();
         return;
       }
 
-      // Both models share one atlas, with no per-frame rasterization or uploads.
-      const textureWidth = model === 'ascii' ? CELL_WIDTH : DOT_TEXTURE_SIZE;
-      const atlas = document.createElement('canvas');
-      const atlasScale = Math.max(2, Math.ceil(window.devicePixelRatio || 1));
-      atlas.width = textureWidth * config.ramp.length * atlasScale;
-      atlas.height = DOT_TEXTURE_SIZE * atlasScale;
-      const context = atlas.getContext('2d');
-      if (!context) throw new Error('Canvas 2D unavailable');
-      context.scale(atlasScale, atlasScale);
-      context.fillStyle = '#ffffff';
-      context.font = '16px monospace';
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      [...config.ramp].forEach((char, index) => {
-        if (index === 0) return;
-        if (model === 'ascii') {
-          context.fillText(char, (index + 0.5) * textureWidth, DOT_TEXTURE_SIZE / 2);
-          return;
-        }
-        const intensity = index / (config.ramp.length - 1);
-        // Radius follows sqrt(intensity) so dot area tracks luminance.
-        const radius = (DOT_TEXTURE_SIZE / 2) * Math.sqrt(intensity);
-        context.globalAlpha = 0.25 + 0.75 * intensity;
-        context.beginPath();
-        context.arc((index + 0.5) * DOT_TEXTURE_SIZE, DOT_TEXTURE_SIZE / 2, radius, 0, Math.PI * 2);
-        context.fill();
-      });
-      const atlasTexture = PIXI.Texture.from(atlas);
-      const textures = [...config.ramp].map(
-        (_, index) =>
-          new PIXI.Texture({
-            source: atlasTexture.source,
-            frame: new PIXI.Rectangle(
-              index * textureWidth * atlasScale,
-              0,
-              textureWidth * atlasScale,
-              DOT_TEXTURE_SIZE * atlasScale,
-            ),
-          }),
-      );
-      const glyphs = new PIXI.Container();
-      glyphs.eventMode = 'none';
-      app.stage.addChild(glyphs);
-      const { gridWidth, gridHeight, cellWidth, cellHeight, spriteWidth, spriteHeight } =
-        gridLayout(columns, rows, config.aspect, model);
-      // Never allocate GPU sprites for cells that stay blank throughout the clip.
-      const occupied = new Uint8Array(columns * rows);
-      for (const cells of encoded) {
-        cells.forEach((level, index) => {
-          if (level) occupied[index] = 1;
-        });
-      }
-      const activeIndices = Array.from(occupied.keys()).filter((index) => occupied[index]);
-      const sprites = activeIndices.map((index) => {
-        const sprite = new PIXI.Sprite(textures[0]);
-        sprite.width = spriteWidth;
-        sprite.height = spriteHeight;
-        sprite.position.set(
-          (index % columns) * cellWidth + (cellWidth - sprite.width) / 2,
-          Math.floor(index / columns) * cellHeight + (cellHeight - sprite.height) / 2,
-        );
-        glyphs.addChild(sprite);
-        return { sprite, index };
-      });
-      let frame = Math.min(config.posterFrame, encoded.length - 1);
-      let paintedFrame = -1;
+      let frame = Math.min(config.posterFrame, data.frames.length - 1);
       let raf = 0;
       let previousTime = 0;
       let elapsed = 0;
       let visible = false;
       const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const scheme = window.matchMedia('(prefers-color-scheme: dark)');
-      const draw = () => {
-        if (paintedFrame !== frame) {
-          const cells = encoded[frame];
-          sprites.forEach(({ sprite, index }) => {
-            sprite.visible = cells[index] !== 0;
-            if (sprite.texture !== textures[cells[index]]) sprite.texture = textures[cells[index]];
-          });
-          paintedFrame = frame;
-        }
-        app.render();
-      };
+      const draw = () => renderer.draw(frame);
       const tick = (time: number) => {
         raf = 0;
         if (previousTime) elapsed += time - previousTime;
@@ -167,7 +91,7 @@ function AsciiPlayer({
         const steps = Math.floor(elapsed / (1000 / config.fps));
         if (steps) {
           elapsed %= 1000 / config.fps;
-          frame = (frame + steps) % encoded.length;
+          frame = (frame + steps) % data.frames.length;
           draw();
         }
         raf = requestAnimationFrame(tick);
@@ -177,7 +101,7 @@ function AsciiPlayer({
         raf = 0;
         previousTime = 0;
         if (motion.matches) {
-          frame = config.posterFrame;
+          frame = Math.min(config.posterFrame, data.frames.length - 1);
           draw();
         } else if (visible && !document.hidden) {
           raf = requestAnimationFrame(tick);
@@ -186,10 +110,7 @@ function AsciiPlayer({
       const resize = () => {
         const { width, height } = host.getBoundingClientRect();
         if (!width || !height) return;
-        app.renderer.resize(width, height, window.devicePixelRatio || 1);
-        const scale = Math.min(width / gridWidth, height / gridHeight);
-        glyphs.scale.set(scale);
-        glyphs.position.set((width - gridWidth * scale) / 2, (height - gridHeight * scale) / 2);
+        renderer.resize(width, height, window.devicePixelRatio || 1);
         draw();
       };
       const tintCanvas = document.createElement('canvas');
@@ -201,7 +122,7 @@ function AsciiPlayer({
           tintContext.fillStyle = getComputedStyle(host).color;
           tintContext.fillRect(0, 0, 1, 1);
           const [red, green, blue] = tintContext.getImageData(0, 0, 1, 1).data;
-          glyphs.tint = (red << 16) | (green << 8) | blue;
+          renderer.setTint(red, green, blue);
         }
         draw();
       };
@@ -234,15 +155,13 @@ function AsciiPlayer({
         scheme.removeEventListener('change', syncTheme);
         density.removeEventListener('change', syncDensity);
         document.removeEventListener('visibilitychange', syncPlayback);
-        app.destroy({ removeView: true }, { children: true });
-        textures.forEach((texture) => texture.destroy());
-        atlasTexture.destroy(true);
+        renderer.destroy();
       };
-      app.canvas.className = 'block h-full w-full';
-      app.canvas.setAttribute('aria-hidden', 'true');
-      host.appendChild(app.canvas);
-      syncTheme();
+      renderer.canvas.className = 'block h-full w-full';
+      renderer.canvas.setAttribute('aria-hidden', 'true');
+      host.appendChild(renderer.canvas);
       resize();
+      syncTheme();
       observer.observe(host);
       resizer.observe(host);
       motion.addEventListener('change', syncPlayback);
@@ -262,17 +181,18 @@ function AsciiPlayer({
       controller.abort();
       dispose();
     };
-  }, [config, model]);
+  }, [config, model, fit, cellSize]);
 
   return (
     <div
       className={cn('relative w-full overflow-hidden text-primary', className)}
       style={{ aspectRatio: aspect }}
+      aria-hidden={decorative || undefined}
     >
       <div
         ref={hostRef}
-        role="img"
-        aria-label={label}
+        role={decorative ? undefined : 'img'}
+        aria-label={decorative ? undefined : label}
         aria-busy={status === 'loading'}
         className="absolute inset-0"
       />
