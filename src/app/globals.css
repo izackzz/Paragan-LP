@@ -491,7 +491,7 @@
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) border-box;
 }
 
-:root:not(.dark) :is(.shiny-01, .shiny-02, .shiny-secondary) {
+:root:not(.dark) :is(.shiny-01, .shiny-02, .shiny-secondary):not(.dark, .dark *) {
   --background: var(--primary);
   --border: var(--primary);
   --shiny-cta-highlight: color-mix(in oklab, var(--primary) 70%, var(--foreground));
