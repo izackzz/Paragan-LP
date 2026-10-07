@@ -40,12 +40,6 @@ export default function AsciiPage() {
         label="Trevo Paragan animado em caracteres ASCII"
       />
       <RenderAscii
-        render="fire-02"
-        aspect="16/9"
-        className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
-      />
-      <RenderAscii
         render="shark"
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
