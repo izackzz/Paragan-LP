@@ -465,6 +465,10 @@
 .shiny-01,
 .shiny-02,
 .shiny-secondary {
+  /* These buttons keep their dark palette independently of the page theme. */
+  --background: oklch(0.095 0.046 305);
+  --foreground: oklch(0.97 0.006 305);
+  --border: oklch(0.34 0.028 305);
   --shiny-cta-bg: var(--background);
   --shiny-cta-bg-subtle: var(--border);
   --shiny-cta-highlight: var(--primary);
@@ -483,7 +487,8 @@
         var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
         transparent calc(var(--gradient-percent) * 4)
       )
-      border-box;
+      border-box,
+    linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) border-box;
 }
 
 .dots {
@@ -690,7 +695,8 @@
         var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
         transparent calc(var(--gradient-percent) * 4)
       )
-      border-box;
+      border-box,
+    linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) border-box;
 }
 
 .shiny-secondary::before,
