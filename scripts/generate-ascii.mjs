@@ -3,6 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
+import { analyzePixels, contentCrop, encodePixels, packFrames } from './ascii-processing.mjs';
 
 // Offline only. Requires ffmpeg/ffprobe; run `pnpm generate:ascii --help`.
 const root = new URL('../', import.meta.url);
@@ -16,7 +17,7 @@ const { values, positionals } = parseArgs({
 });
 if (values.help) {
   console.log(
-    'pnpm generate:ascii <video-path> [--name clover] [--aspect 1/1|16/9]\nFixed shorter visual axis: 96 columns for portrait, 48 rows for landscape. Default aspect: source ratio. Output: public/ascii/<video-name>.json. Existing outputs are replaced.',
+    'pnpm generate:ascii <video-path> [--name clover] [--aspect 1/1|16/9]\nSquare numeric grid; fixed shorter axis: 96 samples. One content crop across all frames, with safety margin and aspect preserved. ASCII keeps 1:2 cells. Output: public/ascii/<video-name>.json. Existing outputs are replaced.',
   );
   process.exit(0);
 }
@@ -86,78 +87,64 @@ if (!Number.isFinite(ratio) || aspectWidth <= 0 || aspectHeight <= 0)
 // Normalize the shorter visual axis, accounting for 1:2 monospace cells.
 const columns = ratio < 1 ? 96 : Math.round(96 * ratio);
 const rows = ratio < 1 ? Math.round(48 / ratio) : 48;
-// Center crop to the requested display aspect before sampling the normalized grid.
-const crop = `crop=w=min(iw\\,ih*${ratio}):h=min(ih\\,iw/${ratio}):exact=1`;
+// Analyze a square-pixel grid before cropping, without distorting the source.
+const analysisColumns = sourceRatio < 1 ? 96 : Math.round(96 * sourceRatio);
+const analysisRows = Math.round(analysisColumns / sourceRatio);
 const ramp = ' .:-=+X';
-const raw = execFileSync(
-  'ffmpeg',
-  [
-    '-v',
-    'error',
-    '-threads',
-    '1',
-    '-i',
-    source,
-    '-an',
-    '-vf',
-    `fps=${fps},${crop},scale=${columns}:${rows}:flags=area`,
-    '-f',
-    'rawvideo',
-    '-pix_fmt',
-    'rgb24',
-    '-threads',
-    '1',
-    'pipe:1',
-  ],
-  { maxBuffer: 64 * 1024 * 1024 },
-);
-const cells = columns * rows;
-if (!raw.length || raw.length % (cells * 3)) throw new Error('Incomplete decoded frames');
-const luminance = new Uint8Array(raw.length / 3);
-const border = [];
-for (let index = 0; index < luminance.length; index++) {
-  luminance[index] = Math.round(
-    raw[index * 3] * 0.2126 + raw[index * 3 + 1] * 0.7152 + raw[index * 3 + 2] * 0.0722,
+const decode = (filter) =>
+  execFileSync(
+    'ffmpeg',
+    [
+      '-v',
+      'error',
+      '-threads',
+      '1',
+      '-i',
+      source,
+      '-an',
+      '-vf',
+      `fps=${fps},${filter}`,
+      '-f',
+      'rawvideo',
+      '-pix_fmt',
+      'rgb24',
+      '-threads',
+      '1',
+      'pipe:1',
+    ],
+    { maxBuffer: 64 * 1024 * 1024 },
   );
-  const cell = index % cells;
-  const x = cell % columns;
-  const y = Math.floor(cell / columns);
-  if (x < 2 || x >= columns - 2 || y < 2 || y >= rows - 2) border.push(luminance[index]);
-}
-const percentile = (values, fraction) => {
-  const sorted = Array.from(values).sort((a, b) => a - b);
-  return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * fraction))];
+const analysis = analyzePixels(
+  decode(`scale=${analysisColumns}:${analysisRows}:flags=area`),
+  analysisColumns,
+  analysisRows,
+);
+const { threshold, whitePoint, inverted } = analysis;
+const crop = contentCrop(
+  analysis.signal,
+  analysisColumns,
+  analysisRows,
+  threshold,
+  probe.width,
+  probe.height,
+  ratio,
+);
+// Pad only if the aspect/safety margin exceeds the video boundary; never trim useful pixels.
+const transform = `format=rgb24,crop=${crop.width}:${crop.height}:${crop.x}:${crop.y}:exact=1,pad=${crop.canvasWidth}:${crop.canvasHeight}:${crop.offsetX}:${crop.offsetY}:color=${inverted ? 'white' : 'black'}`;
+const squareRows = Math.round(columns / ratio);
+const { frames, posterFrame } = encodePixels(
+  decode(`${transform},scale=${columns}:${squareRows}:flags=area`),
+  columns,
+  squareRows,
+  analysis,
+);
+const animation = {
+  version: 2,
+  encoding: 'trimmed-rows',
+  columns,
+  rows: squareRows,
+  frames: packFrames(frames, columns, squareRows),
 };
-const inverted = percentile(border, 0.5) > 127;
-const signal = luminance.map((value) => (inverted ? 255 - value : value));
-const noise = border.map((value) => (inverted ? 255 - value : value));
-// One global exposure/threshold avoids brightness pumping between frames.
-const threshold = Math.max(8, percentile(noise, 0.99) + 3);
-const whitePoint = Math.max(threshold + 1, percentile(signal, 0.995));
-const frames = [];
-let posterFrame = 0;
-let maximumCoverage = -1;
-for (let start = 0; start < signal.length; start += cells) {
-  const lines = [];
-  let coverage = 0;
-  for (let y = 0; y < rows; y++) {
-    let line = '';
-    for (let x = 0; x < columns; x++) {
-      const value = signal[start + y * columns + x];
-      const normalized = Math.min(1, Math.max(0, (value - threshold) / (whitePoint - threshold)));
-      const level =
-        normalized === 0 ? 0 : Math.min(ramp.length - 1, Math.ceil(normalized * (ramp.length - 1)));
-      line += ramp[level];
-      if (level > 0) coverage++;
-    }
-    lines.push(line);
-  }
-  if (coverage > maximumCoverage) {
-    maximumCoverage = coverage;
-    posterFrame = frames.length;
-  }
-  frames.push(lines.join('\n'));
-}
 const output = new URL(`public/ascii/${stem}.json`, root);
 mkdirSync(new URL('.', output), { recursive: true });
 const variant = {
@@ -171,6 +158,8 @@ const variant = {
   threshold,
   whitePoint,
   inverted,
+  format: 2,
+  crop,
 };
 // Keep aliases coherent when the same output is regenerated with new settings.
 for (const key of Object.keys(variants)) {
@@ -180,7 +169,8 @@ variants[name] = variant;
 const sortedVariants = Object.fromEntries(
   Object.entries(variants).sort(([a], [b]) => a.localeCompare(b)),
 );
-writeFileSync(output, JSON.stringify(frames) + '\n');
+const json = JSON.stringify(animation) + '\n';
+writeFileSync(output, json);
 writeFileSync(
   registryFile,
   registryText.replace(
@@ -189,5 +179,5 @@ writeFileSync(
   ),
 );
 console.log(
-  `${name} → ${fileURLToPath(output)}\n${frames.length} frames; ${columns}x${rows}; ${aspect}; ${fps} FPS; threshold ${threshold}; ${Buffer.byteLength(JSON.stringify(frames))} bytes`,
+  `${name} → ${fileURLToPath(output)}\n${frames.length} frames; square ${columns}x${squareRows}; ASCII ${columns}x${rows}; ${aspect}; ${fps} FPS; threshold ${threshold}; crop ${crop.width}x${crop.height} at ${crop.x},${crop.y}; ${Buffer.byteLength(json)} bytes`,
 );

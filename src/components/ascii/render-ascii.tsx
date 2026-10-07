@@ -8,46 +8,35 @@ import {
   type AsciiRender,
   type AsciiVariant,
 } from './render-ascii-variants';
-
-const CELL_WIDTH = 10;
-const DOT_TEXTURE_SIZE = 20;
-
-function validateFrames(value: unknown, config: AsciiVariant): asserts value is string[] {
-  if (
-    !Array.isArray(value) ||
-    !value.length ||
-    !value.every((frame) => {
-      if (typeof frame !== 'string') return false;
-      const rows = frame.split('\n');
-      return (
-        rows.length === config.rows &&
-        rows.every(
-          (row) =>
-            row.length === config.columns && [...row].every((char) => config.ramp.includes(char)),
-        )
-      );
-    })
-  )
-    throw new Error('Invalid ASCII frames');
-}
+import { CELL_WIDTH, DOT_TEXTURE_SIZE, decodeFrames, gridLayout } from './render-ascii-data';
 
 export interface RenderAsciiProps {
   render: AsciiRender;
+  /** Visual model; both models read the same frame JSON. Defaults to halftone. */
+  model?: 'ascii' | 'halftone';
   /** Container ratio. Defaults to the generated video's aspect; content uses contain. */
   aspect?: AsciiAspect;
   className?: string;
   label?: string;
 }
 
-export function RenderAscii({ render, ...props }: RenderAsciiProps) {
-  return <AsciiPlayer key={render} config={renderAsciiVariants[render]} {...props} />;
+export function RenderAscii({ render, model = 'halftone', ...props }: RenderAsciiProps) {
+  return (
+    <AsciiPlayer
+      key={`${render}:${model}`}
+      config={renderAsciiVariants[render]}
+      model={model}
+      {...props}
+    />
+  );
 }
 
 function AsciiPlayer({
   config,
+  model = 'halftone',
   aspect = config.aspect,
   className,
-  label = 'Animação halftone em pontos',
+  label = model === 'ascii' ? 'Animação em caracteres ASCII' : 'Animação halftone em pontos',
 }: Omit<RenderAsciiProps, 'render'> & { config: AsciiVariant }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -62,11 +51,11 @@ function AsciiPlayer({
     async function initialize() {
       const [PIXI, response] = await Promise.all([
         import('pixi.js'),
-        fetch(config.src, { signal: controller.signal }),
+        fetch(`${config.src}?format=2`, { signal: controller.signal }),
       ]);
       if (!response.ok) throw new Error('Could not load ASCII frames');
       const frames: unknown = await response.json();
-      validateFrames(frames, config);
+      const { columns, rows, frames: encoded } = decodeFrames(frames, config, model);
       if (cancelled || !host) return;
 
       const app = new PIXI.Application();
@@ -88,30 +77,31 @@ function AsciiPlayer({
         return;
       }
 
-      // The ramp is an intensity encoding. Render it as square dot textures;
-      // all levels share one atlas, with no per-frame rasterization or uploads.
+      // Both models share one atlas, with no per-frame rasterization or uploads.
+      const textureWidth = model === 'ascii' ? CELL_WIDTH : DOT_TEXTURE_SIZE;
       const atlas = document.createElement('canvas');
       const atlasScale = Math.max(2, Math.ceil(window.devicePixelRatio || 1));
-      atlas.width = DOT_TEXTURE_SIZE * config.ramp.length * atlasScale;
+      atlas.width = textureWidth * config.ramp.length * atlasScale;
       atlas.height = DOT_TEXTURE_SIZE * atlasScale;
       const context = atlas.getContext('2d');
       if (!context) throw new Error('Canvas 2D unavailable');
       context.scale(atlasScale, atlasScale);
       context.fillStyle = '#ffffff';
-      [...config.ramp].forEach((_, index) => {
+      context.font = '16px monospace';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      [...config.ramp].forEach((char, index) => {
         if (index === 0) return;
+        if (model === 'ascii') {
+          context.fillText(char, (index + 0.5) * textureWidth, DOT_TEXTURE_SIZE / 2);
+          return;
+        }
         const intensity = index / (config.ramp.length - 1);
         // Radius follows sqrt(intensity) so dot area tracks luminance.
-        const radius = DOT_TEXTURE_SIZE * 0.45 * Math.sqrt(intensity);
+        const radius = (DOT_TEXTURE_SIZE / 2) * Math.sqrt(intensity);
         context.globalAlpha = 0.25 + 0.75 * intensity;
         context.beginPath();
-        context.arc(
-          (index + 0.5) * DOT_TEXTURE_SIZE,
-          DOT_TEXTURE_SIZE / 2,
-          radius,
-          0,
-          Math.PI * 2,
-        );
+        context.arc((index + 0.5) * DOT_TEXTURE_SIZE, DOT_TEXTURE_SIZE / 2, radius, 0, Math.PI * 2);
         context.fill();
       });
       const atlasTexture = PIXI.Texture.from(atlas);
@@ -120,9 +110,9 @@ function AsciiPlayer({
           new PIXI.Texture({
             source: atlasTexture.source,
             frame: new PIXI.Rectangle(
-              index * DOT_TEXTURE_SIZE * atlasScale,
+              index * textureWidth * atlasScale,
               0,
-              DOT_TEXTURE_SIZE * atlasScale,
+              textureWidth * atlasScale,
               DOT_TEXTURE_SIZE * atlasScale,
             ),
           }),
@@ -130,26 +120,27 @@ function AsciiPlayer({
       const glyphs = new PIXI.Container();
       glyphs.eventMode = 'none';
       app.stage.addChild(glyphs);
-      const [aspectWidth, aspectHeight] = config.aspect.split('/').map(Number);
-      const gridWidth = config.columns * CELL_WIDTH;
-      const gridHeight = (gridWidth * aspectHeight) / aspectWidth;
-      const cellHeight = gridHeight / config.rows;
-      // Preserve the existing sample grid while keeping each dot circular (1:1).
-      const dotSize = Math.min(CELL_WIDTH, cellHeight);
-      const sprites = Array.from({ length: config.columns * config.rows }, (_, index) => {
+      const { gridWidth, gridHeight, cellWidth, cellHeight, spriteWidth, spriteHeight } =
+        gridLayout(columns, rows, config.aspect, model);
+      // Never allocate GPU sprites for cells that stay blank throughout the clip.
+      const occupied = new Uint8Array(columns * rows);
+      for (const cells of encoded) {
+        cells.forEach((level, index) => {
+          if (level) occupied[index] = 1;
+        });
+      }
+      const activeIndices = Array.from(occupied.keys()).filter((index) => occupied[index]);
+      const sprites = activeIndices.map((index) => {
         const sprite = new PIXI.Sprite(textures[0]);
-        sprite.width = dotSize;
-        sprite.height = dotSize;
+        sprite.width = spriteWidth;
+        sprite.height = spriteHeight;
         sprite.position.set(
-          (index % config.columns) * CELL_WIDTH + (CELL_WIDTH - sprite.width) / 2,
-          Math.floor(index / config.columns) * cellHeight + (cellHeight - sprite.height) / 2,
+          (index % columns) * cellWidth + (cellWidth - sprite.width) / 2,
+          Math.floor(index / columns) * cellHeight + (cellHeight - sprite.height) / 2,
         );
         glyphs.addChild(sprite);
-        return sprite;
+        return { sprite, index };
       });
-      const encoded = frames.map((frame) =>
-        Uint8Array.from(frame.replaceAll('\n', ''), (char) => config.ramp.indexOf(char)),
-      );
       let frame = Math.min(config.posterFrame, encoded.length - 1);
       let paintedFrame = -1;
       let raf = 0;
@@ -161,9 +152,9 @@ function AsciiPlayer({
       const draw = () => {
         if (paintedFrame !== frame) {
           const cells = encoded[frame];
-          sprites.forEach((sprite, index) => {
+          sprites.forEach(({ sprite, index }) => {
             sprite.visible = cells[index] !== 0;
-            sprite.texture = textures[cells[index]];
+            if (sprite.texture !== textures[cells[index]]) sprite.texture = textures[cells[index]];
           });
           paintedFrame = frame;
         }
@@ -271,7 +262,7 @@ function AsciiPlayer({
       controller.abort();
       dispose();
     };
-  }, [config]);
+  }, [config, model]);
 
   return (
     <div
