@@ -501,8 +501,8 @@
 .stripes {
   background-image: repeating-linear-gradient(
     45deg,
-    color-mix(in srgb, var(--stripes-color, var(--foreground)) 20%, transparent) 0 0.5px,
-    transparent 0.5px 4px
+    color-mix(in srgb, var(--stripes-color, var(--foreground)) 5%, transparent) 0 1px,
+    transparent 1px 8px
   );
   background-position: 0 0;
   background-repeat: repeat;
@@ -535,12 +535,7 @@
   --size: calc(100% - var(--shadow-size) * 3);
   width: var(--size);
   height: var(--size);
-  background: 
-  radial-gradient(
-      circle at 2px 2px,
-      var(--foreground) 0.5px,
-      transparent 0
-    ) padding-box;
+  background: radial-gradient(circle at 2px 2px, var(--foreground) 0.5px, transparent 0) padding-box;
   background-size: 4px 4px;
   background-repeat: repeat;
   border-radius: inherit;
