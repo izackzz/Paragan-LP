@@ -16,8 +16,8 @@ import { ContactSection } from '@/components/landing/sections/contact-section';
 export default function Home() {
   return (
     <>
-      <div aria-hidden="true" className="dots landing-side-dots left-0" />
-      <div aria-hidden="true" className="dots landing-side-dots right-0" />
+      <div aria-hidden="true" className="stripes landing-side-stripes left-0" />
+      <div aria-hidden="true" className="stripes landing-side-stripes right-0" />
       <Link
         href="#conteudo"
         className="fixed -top-20 left-4 z-100 rounded-lg bg-foreground px-5 py-3.5 text-background focus:top-3"
