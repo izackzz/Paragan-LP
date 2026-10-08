@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Fragment } from 'react';
 import { AppLogo } from '@/components/assets/brand/logo';
 import { AppWordMark } from '@/components/assets/brand/wordmark';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -81,7 +82,7 @@ export function SiteFooter() {
         <div className="grid lg:grid-cols-2">
           <div
             id="footer-brand"
-            className="relative isolate flex scroll-mt-25 md:border-r flex-col items-start overflow-hidden p-6 md:p-8"
+            className="relative isolate flex scroll-mt-25 flex-col items-start overflow-hidden p-6 md:border-r md:p-8"
           >
             <Link
               href="/#inicio"
@@ -145,25 +146,25 @@ export function SiteFooter() {
 
         <nav
           aria-label="Navegação do rodapé"
-          className="grid gap-6 border-t border-border px-6 md:grid-cols-3 md:px-8"
+          className="grid gap-5 border-t border-border p-6 md:grid-cols-3 md:p-8"
         >
           {groups.map((group, index) => (
-            <section key={group.title} className="min-w-0" aria-labelledby={`footer-menu-${index}`}>
-              <FluidGroup
-                as="ul"
-                axis="y"
-                className="m-0 grid list-none gap-1 border-r border-l border-border p-2"
-              >
-                <h2 id={`footer-menu-${index}`} className="px-3 py-2 text-sm font-medium">
+            <Fragment key={group.title}>
+              <section className="min-w-0 gap-0.5 border p-2" aria-labelledby={`footer-menu-${index}`}>
+                <h2 id={`footer-menu-${index}`} className="rounded-md bg-surface-1 px-3 py-2 text-sm font-medium">
                   {group.title}
                 </h2>
-                {group.links.map(([label, href]) => (
-                  <Link key={label} href={href} className={linkClass}>
-                    {label}
-                  </Link>
-                ))}
-              </FluidGroup>
-            </section>
+                <FluidGroup as="ul" axis="y" className="m-0 grid list-none gap-0">
+                  {group.links.map(([label, href]) => (
+                    <Link key={label} href={href} className={linkClass}>
+                      {label}
+                    </Link>
+                  ))}
+                </FluidGroup>
+              </section>
+
+              {index < groups.length - 1 && <span className="hidden h-px w-full bg-border max-md:block" />}
+            </Fragment>
           ))}
         </nav>
 
