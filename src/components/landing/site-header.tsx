@@ -117,12 +117,6 @@ export function SiteHeader() {
           </NavigationMenu>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link
-              href="#"
-              className="hidden rounded-md px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground sm:block"
-            >
-              Entrar
-            </Link>
             <Button asChild variant="primary" size="sm" className={cn('hidden sm:inline-flex')}>
               <Link href="#">ENTRAR EM CONTATO</Link>
             </Button>
