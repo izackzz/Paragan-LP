@@ -344,7 +344,7 @@
 }
 
 /* Match the space outside landing-frame, including its 75rem width cap. */
-.landing-side-dots {
+.landing-side-stripes {
   --landing-side-gutter: 0.75rem;
   position: fixed;
   inset-block: 0;
@@ -354,13 +354,13 @@
 }
 
 @media (width >= 48rem) {
-  .landing-side-dots {
+  .landing-side-stripes {
     --landing-side-gutter: 1.25rem;
   }
 }
 
 @media (width >= 80rem) {
-  .landing-side-dots {
+  .landing-side-stripes {
     --landing-side-gutter: 2.5rem;
   }
 }
@@ -498,14 +498,13 @@
   --shiny-cta-highlight-subtle: var(--foreground);
 }
 
-.dots {
-  background-image: radial-gradient(
-    circle at 0.125rem 0.125rem,
-    color-mix(in srgb, var(--dots-color, var(--foreground)) 20%, transparent) 0.03125rem,
-    transparent 0
+.stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--stripes-color, var(--foreground)) 20%, transparent) 0 0.5px,
+    transparent 0.5px 4px
   );
   background-position: 0 0;
-  background-size: 0.25rem 0.25rem;
   background-repeat: repeat;
 }
 
@@ -534,17 +533,15 @@
 .shiny-02::before,
 .shiny-secondary::before {
   --size: calc(100% - var(--shadow-size) * 3);
-  --position: 0.125rem;
-  --space: calc(var(--position) * 2);
   width: var(--size);
   height: var(--size);
-  background: radial-gradient(
-      circle at var(--position) var(--position),
-      var(--foreground) calc(var(--position) / 4),
+  background: 
+  radial-gradient(
+      circle at 2px 2px,
+      var(--foreground) 0.5px,
       transparent 0
-    )
-    padding-box;
-  background-size: var(--space) var(--space);
+    ) padding-box;
+  background-size: 4px 4px;
   background-repeat: repeat;
   border-radius: inherit;
   opacity: 0.4;
@@ -692,7 +689,7 @@
         color-mix(in oklab, var(--foreground) 20%, transparent) 1px,
         transparent 0
       )
-      0 0 / 0.25rem 0.25rem padding-box,
+      0 0 / 4px 4px padding-box,
     linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
     conic-gradient(
         from calc(var(--gradient-angle) - var(--gradient-angle-offset)),

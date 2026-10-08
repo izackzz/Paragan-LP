@@ -72,7 +72,7 @@ export function SiteFooter() {
       className="dark border-t border-border bg-background text-foreground"
     >
       <div className={frame}>
-        <div className="dots flex flex-wrap items-center gap-3 border-b border-border px-6 py-4 md:px-8">
+        <div className="stripes flex flex-wrap items-center gap-3 border-b border-border px-6 py-4 md:px-8">
           <p className={cn(micro, 'text-muted-foreground')}>Paragan / Próximas conexões</p>
           <p className="text-xs text-muted-foreground md:ml-auto">
             Sua marca. Seu próximo capítulo.
