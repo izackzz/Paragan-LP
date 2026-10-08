@@ -91,7 +91,9 @@ export function SectionHeading({
   muted,
   description,
   align = 'left',
+  className,
 }: {
+  className?: string;
   eyebrow?: string;
   title: string;
   muted?: string;
@@ -104,7 +106,7 @@ export function SectionHeading({
         'max-w-2xl',
         align === 'left' && 'mr-auto text-left',
         align === 'center' && 'mx-auto text-center',
-        align === 'right' && 'ml-auto text-right',
+        align === 'right' && 'ml-auto text-right', className
       )}
     >
       {eyebrow && (
