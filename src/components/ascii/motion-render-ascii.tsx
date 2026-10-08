@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { decodeFrames, fittedBox, cellProfile } from './render-ascii-data';
 import { renderAsciiVariants, type AsciiRender, type AsciiVariant } from './render-ascii-variants';
-import { MotionAsciiField, brushWeight, motionScale } from './motion-ascii-field';
+import { MotionAsciiField, brushWeight, motionScale, usesPrimaryColor } from './motion-ascii-field';
 import type { RenderAsciiProps } from './render-ascii';
 
 export interface MotionRenderAsciiProps extends Omit<RenderAsciiProps, 'render'> {
@@ -48,12 +48,12 @@ function MotionAsciiPlayer({
   className,
   decorative = true,
   label = 'Paragan em pontos interativos',
-  brushRadius = 120,
+  brushRadius = 180,
   scaleFactor = 3,
-  accentColor = 'var(--accent-2)',
+  accentColor,
   baseOpacity = 1,
   holdDuration = 2000,
-  fadeDuration = 5000,
+  fadeDuration = 3000,
   fallback,
 }: MotionRenderAsciiProps) {
   const config = source ?? (render ? renderAsciiVariants[render] : undefined);
@@ -92,7 +92,6 @@ function MotionAsciiPlayer({
       const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const scheme = window.matchMedia('(prefers-color-scheme: dark)');
       const colorProbe = document.createElement('span');
-      colorProbe.style.color = accentColor;
       colorProbe.style.display = 'none';
       host.appendChild(colorProbe);
       const colorCanvas = document.createElement('canvas');
@@ -112,13 +111,11 @@ function MotionAsciiPlayer({
         rows = 1;
       let box = fittedBox(1, 1, config.aspect, fit);
       let field = new MotionAsciiField(1, holdDuration, fadeDuration);
-      let shown = new Float32Array(1);
       let xs = new Float32Array(1),
         ys = new Float32Array(1);
       let sampled = new Float32Array(1);
       let frame = -1,
         raf = 0,
-        timer = 0,
         lastDraw = 0,
         visible = false;
       const start = performance.now();
@@ -133,6 +130,11 @@ function MotionAsciiPlayer({
       };
       const theme = () => {
         const base = readColor(getComputedStyle(host).color);
+        colorProbe.style.color = 'var(--primary)';
+        const primary = readColor(getComputedStyle(colorProbe).color);
+        colorProbe.style.color =
+          accentColor ??
+          (usesPrimaryColor(base, primary) ? 'var(--muted-foreground)' : 'var(--primary)');
         const accent = readColor(getComputedStyle(colorProbe).color);
         palette = Array.from({ length: 101 }, (_, n) => {
           const t = n / 100;
@@ -140,8 +142,8 @@ function MotionAsciiPlayer({
         });
         draw(performance.now(), true);
       };
-      const stamp = (x: number, y: number, now: number) => {
-        const radius = Math.min(brushRadius, Math.max(40, width * 0.25));
+      const stamp = (x: number, y: number, now: number, retrigger = false) => {
+        const radius = Math.min(brushRadius, Math.max(64, width * 0.35));
         const left = Math.max(0, Math.floor((x - radius - box.x) / pitchX));
         const right = Math.min(columns - 1, Math.ceil((x + radius - box.x) / pitchX));
         const top = Math.max(0, Math.floor((y - radius - box.y) / pitchY));
@@ -160,6 +162,8 @@ function MotionAsciiPlayer({
               distance > 0.001 ? dx / distance : Math.cos(angle),
               distance > 0.001 ? dy / distance : Math.sin(angle),
               now,
+              radius * 1.4,
+              retrigger,
             );
           }
       };
@@ -217,17 +221,14 @@ function MotionAsciiPlayer({
           previous = pointer;
         }
         field.prune(now);
-        const dt = lastDraw ? Math.min(100, now - lastDraw) : 33;
+        for (const index of field.active) field.advance(index, now);
         lastDraw = now;
         context.clearRect(0, 0, width, height);
         context.textAlign = 'center';
         context.textBaseline = 'middle';
         context.font = `${Math.min(pitchY * 0.8, pitchX * 1.6)}px monospace`;
         for (let i = 0; i < sampled.length; i++) {
-          const target = motion.matches ? 0 : field.value(i, now);
-          shown[i] =
-            target > shown[i] ? shown[i] + (target - shown[i]) * (1 - Math.exp(-dt / 40)) : target;
-          const amount = shown[i];
+          const amount = motion.matches ? 0 : field.value(i, now);
           const level = Math.min(6, Math.round(sampled[i]));
           if (!level) continue;
           context.fillStyle = palette[Math.round(amount * 100)];
@@ -235,19 +236,16 @@ function MotionAsciiPlayer({
             (baseOpacity + (1 - baseOpacity) * amount) *
             (model === 'pixels' ? level / 6 : 0.25 + (0.75 * level) / 6);
           const scale = motionScale(model, amount, scaleFactor);
+          const x = xs[i] + (model === 'pixels' ? 0 : field.offsetX[i]);
+          const y = ys[i] + (model === 'pixels' ? 0 : field.offsetY[i]);
           if (model === 'ascii') {
-            const displacement = Math.min(pitchX, pitchY) * 1.5 * amount;
-            context.fillText(
-              '.:-=+X'[level - 1],
-              xs[i] + field.dx[i] * displacement,
-              ys[i] + field.dy[i] * displacement,
-            );
+            context.fillText('.:-=+X'[level - 1], x, y);
           } else if (model === 'pixels') {
             const side = size * scale;
             context.fillRect(xs[i] - side / 2, ys[i] - side / 2, side, side);
           } else {
             context.beginPath();
-            context.arc(xs[i], ys[i], (size * Math.sqrt(level / 6) * scale) / 2, 0, Math.PI * 2);
+            context.arc(x, y, (size * Math.sqrt(level / 6)) / 2, 0, Math.PI * 2);
             context.fill();
           }
         }
@@ -256,25 +254,11 @@ function MotionAsciiPlayer({
       const tick = (now: number) => {
         raf = 0;
         if (!visible || document.hidden || motion.matches) return;
-        if (now - lastDraw >= 1000 / 30) draw(now);
-        let settled = true;
-        let nextFade = Infinity;
-        for (const i of field.active) {
-          if (Math.abs(shown[i] - field.value(i, now)) > 0.001) settled = false;
-          nextFade = Math.min(nextFade, field.touched[i] + holdDuration);
-        }
-        if (!pointer && data.frames.length === 1 && settled && nextFade > now) {
-          if (Number.isFinite(nextFade))
-            timer = window.setTimeout(() => {
-              timer = 0;
-              wake();
-            }, nextFade - now);
-        } else if (pointer || field.active.size || data.frames.length > 1)
+        if (now - lastDraw >= 1000 / 60) draw(now);
+        if (pointer || field.active.size || data.frames.length > 1)
           raf = requestAnimationFrame(tick);
       };
       const wake = () => {
-        clearTimeout(timer);
-        timer = 0;
         if (visible && !document.hidden && !motion.matches && !raf)
           raf = requestAnimationFrame(tick);
       };
@@ -298,7 +282,6 @@ function MotionAsciiPlayer({
         size = profile.size;
         const count = columns * rows;
         field = new MotionAsciiField(count, holdDuration, fadeDuration);
-        shown = new Float32Array(count);
         sampled = new Float32Array(count);
         xs = Float32Array.from({ length: count }, (_, i) => box.x + ((i % columns) + 0.5) * pitchX);
         ys = Float32Array.from(
@@ -340,7 +323,7 @@ function MotionAsciiPlayer({
       };
       const press = (event: PointerEvent) => {
         if (motion.matches) return;
-        stamp(event.clientX - bounds.left, event.clientY - bounds.top, performance.now());
+        stamp(event.clientX - bounds.left, event.clientY - bounds.top, performance.now(), true);
         wake();
       };
       const refreshBounds = () => {
@@ -349,12 +332,9 @@ function MotionAsciiPlayer({
       const sync = () => {
         cancelAnimationFrame(raf);
         raf = 0;
-        clearTimeout(timer);
-        timer = 0;
         if (!visible || document.hidden) pointer = previous = null;
         if (motion.matches) {
           field = new MotionAsciiField(columns * rows, holdDuration, fadeDuration);
-          shown.fill(0);
           pointer = previous = null;
         }
         if (visible && !document.hidden) {
@@ -393,7 +373,6 @@ function MotionAsciiPlayer({
       document.addEventListener('visibilitychange', sync);
       dispose = () => {
         cancelAnimationFrame(raf);
-        clearTimeout(timer);
         observer.disconnect();
         resizer.disconnect();
         themeObserver.disconnect();
