@@ -117,8 +117,8 @@ export function PlatformSection() {
             render="shark"
             aspect="16/9"
             model="halftone"
-            cellSize={5}
-            className="pointer-events-none absolute -bottom-1/6 left-1/2 z-0 h-100 w-auto max-w-full -translate-x-1/2 -translate-y-1/2 text-primary"
+            cellSize={8}
+            className="pointer-events-none absolute -bottom-1/4 left-1/2 z-0 h-100 w-auto max-w-full -translate-x-1/2 text-primary"
             fit="cover"
             label="Shark"
           />
