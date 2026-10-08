@@ -14,6 +14,7 @@ import { frame, micro } from './styles';
 import { cn } from '@/lib/utils';
 import { ActionLink } from './primitives';
 import { RenderAscii } from '../ascii/render-ascii';
+import { MotionRenderAscii } from '../ascii/motion-render-ascii';
 
 const groups = [
   {
@@ -169,7 +170,13 @@ export function SiteFooter() {
         </nav>
 
         <div className="overflow-hidden border-y border-border px-6 py-6 md:px-8 md:py-8">
-          <AppWordMark aria-hidden="true" className="h-auto w-full opacity-20" />
+          <MotionRenderAscii
+            render="paragan-wordmark"
+            model="halftone"
+            className="text-foreground"
+            baseOpacity={0.2}
+            fallback={<AppWordMark aria-hidden="true" className="h-auto w-full opacity-20" />}
+          />
         </div>
         <div className="flex flex-wrap items-center gap-3 px-6 py-4 md:px-8">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Paragan</p>

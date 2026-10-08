@@ -5,6 +5,7 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "generate:ascii": "node scripts/generate-ascii.mjs",
+    "generate:ascii:static": "node scripts/generate-static-ascii.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

@@ -120,6 +120,19 @@ export const renderAsciiVariants = {
       "offsetX": 32,
       "offsetY": 18
     }
+  },
+  "paragan-wordmark": {
+    "src": "/ascii/paragan-wordmark.json",
+    "fps": 1,
+    "columns": 470,
+    "rows": 48,
+    "aspect": "1225/250",
+    "ramp": " .:-=+X",
+    "posterFrame": 0,
+    "threshold": 8,
+    "whitePoint": 255,
+    "inverted": false,
+    "format": 2
   }
 } as const satisfies Record<string, AsciiVariant>;
 
