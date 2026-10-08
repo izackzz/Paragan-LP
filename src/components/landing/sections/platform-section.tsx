@@ -103,16 +103,25 @@ export function PlatformSection() {
     <section id="plataforma" className={cn(frame, section)}>
       <SectionLabel number="01">A PLATAFORMA</SectionLabel>
       <Reveal>
-        <div className={cn("relative", padding)}>
-          <SectionHeading
-            eyebrow="Mais do que processar"
-            title="Uma marca própria merece"
-            muted="uma operação à altura."
-            description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
-            align="center"
-            className="z-10"
+        <div className={cn('relative isolate overflow-hidden', padding)}>
+          <div className="relative z-10">
+            <SectionHeading
+              eyebrow="Mais do que processar"
+              title="Uma marca própria merece"
+              muted="uma operação à altura."
+              description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
+              align="center"
+            />
+          </div>
+          <RenderAscii
+            render="shark"
+            aspect="16/9"
+            model="halftone"
+            cellSize={5}
+            className="pointer-events-none absolute -bottom-1/6 left-1/2 z-0 h-100 w-auto max-w-full -translate-x-1/2 -translate-y-1/2 text-primary"
+            fit="cover"
+            label="Shark"
           />
-          <RenderAscii render='shark' aspect='16/9' model='halftone' cellSize={3} className='text-primary z-0 h-135 w-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' fit='cover' label='Shark' />
         </div>
         <div className="platform-stack relative isolate grid gap-0">
           {platformPairs.map((pair, pairIndex) => (

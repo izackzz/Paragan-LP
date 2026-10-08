@@ -150,7 +150,7 @@ export function SiteFooter() {
         >
           {groups.map((group, index) => (
             <Fragment key={group.title}>
-              <section className="min-w-0 gap-0.5 border p-2" aria-labelledby={`footer-menu-${index}`}>
+              <section className="min-w-0 gap-0.5 border p-2 rounded-md flex flex-col" aria-labelledby={`footer-menu-${index}`}>
                 <h2 id={`footer-menu-${index}`} className="rounded-md bg-surface-1 px-3 py-2 text-sm font-medium">
                   {group.title}
                 </h2>
