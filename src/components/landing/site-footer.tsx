@@ -44,10 +44,10 @@ const groups = [
 ] as const;
 
 const socialChannels = [
-  { label: 'Instagram', icon: InstagramIcon, url: process.env.PARAGAN_INSTAGRAM_URL },
-  { label: 'X (Twitter)', icon: NewTwitterIcon, url: process.env.PARAGAN_X_URL },
-  { label: 'Telegram', icon: TelegramIcon, url: process.env.PARAGAN_TELEGRAM_URL },
-  { label: 'WhatsApp', icon: WhatsappIcon, url: process.env.PARAGAN_WHATSAPP_URL },
+  { label: 'Instagram', icon: InstagramIcon, url: 'https://instagram.com/paraganlabs' },
+  { label: 'X (Twitter)', icon: NewTwitterIcon, url: 'https://x.com' },
+  { label: 'Telegram', icon: TelegramIcon, url: 'https://paraganlabs.t.me' },
+  { label: 'WhatsApp', icon: WhatsappIcon, url: 'https://wa.me/5573988801054' },
 ];
 
 function socialDestination(value: string | undefined) {
