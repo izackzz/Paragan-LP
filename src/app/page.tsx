@@ -30,12 +30,12 @@ export default function Home() {
       <main id="conteudo" tabIndex={-1}>
         <HeroSection />
         <PlatformSection />
+        <SolutionsSection />
         <ControlSection />
-        <CheckoutSection />
         <FinanceSection />
+        <CheckoutSection />
         <IntegrationsSection />
         <ScaleSection />
-        <SolutionsSection />
         <LaunchSection />
         <FaqSection />
         <ContactSection />
