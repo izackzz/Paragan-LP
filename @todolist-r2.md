@@ -228,8 +228,8 @@
 
 ### 9.3 — Entregáveis e verificação
 
-- [ ] `docs/copy/09-copy-e-ctas.md`: copy por componente e destinos funcionais na ordem da homepage.
-- [ ] `docs/copy/10-producao-de-assets.md`: fichas H01–I02, O02/O03 opcionais e slots de integrações; cena, campos, legenda, alt e condição de uso.
-- [ ] `docs/copy/11-confirmacoes-internas.md`: pendências comerciais/técnicas separadas e estados remotos condicionados ao envio real.
-- [ ] Arquivos alterados: Prettier, ESLint direcionado, typecheck, i18n e whitespace; sem build ou release.
-- [ ] Homepage em dev: conferir cards, CTAs/assuntos, histórico, validação e resumo em desktop/mobile; sem overflow ou erros de hidratação.
+- [x] `docs/copy/09-copy-e-ctas.md`: copy por componente e destinos funcionais na ordem da homepage.
+- [x] `docs/copy/10-producao-de-assets.md`: fichas H01–I02, O02/O03 opcionais e slots de integrações; cena, campos, legenda, alt e condição de uso.
+- [x] `docs/copy/11-confirmacoes-internas.md`: pendências comerciais/técnicas separadas e estados remotos condicionados ao envio real.
+- [x] Arquivos alterados: Prettier, ESLint direcionado, typecheck, i18n e whitespace; sem build ou release.
+- [x] Homepage em dev: conferir cards, CTAs/assuntos, histórico, validação e resumo em desktop/mobile; sem overflow ou erros de hidratação.
