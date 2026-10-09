@@ -151,7 +151,7 @@
 - [x] `scale-section.tsx` + catálogo: biblioteca em duas colunas com Documentação / Sandbox / Demonstrações / Relatórios publicáveis / Informações operacionais; tipo, nome, descrição, versão/data quando existente e acesso.
 - [x] `src/config/site.ts` + `scale-section.tsx`: links e estados de evidências configurados; recursos pendentes não apresentados como publicados nem acessos falsos.
 - [x] `scale-section.tsx` + catálogo: bloco compacto de empresa, time/responsáveis, manutenção e canal de avaliação técnica; dados desconhecidos como placeholders explícitos.
-- [ ] `scale-section.tsx` + `site-footer.tsx`: referências institucionais somente com nome, vínculo/status, escopo e link verificável; não transformar badges atuais em certificações ou parcerias presumidas.
+- [x] `scale-section.tsx` + `site-footer.tsx`: referências institucionais somente com nome, vínculo/status, escopo e link verificável; não transformar badges atuais em certificações ou parcerias presumidas.
 
 ### 8.11 — Bloco 08: Contratação, implantação e migração
 
@@ -191,12 +191,12 @@
 
 ### 8.14 — Rodapé
 
-- [ ] `site-footer.tsx`: área principal Institucional / Plataforma / Desenvolvedores / Empresa e atendimento em quatro colunas desktop; mesma ordem empilhada mobile.
-- [ ] `site-footer.tsx` + catálogo `footer`: institucional com marca, descrição curta, identificação da empresa e contato principal confirmado; preservar tema dark e assets existentes.
-- [ ] `site-footer.tsx` + `src/config/site.ts`: Plataforma com Visão geral / Operação / Financeiro / Checkout / Integrações; destinos atualizados para os novos blocos.
-- [ ] `site-footer.tsx` + catálogo/config: Desenvolvedores com Documentação / API / Webhooks / Recursos técnicos; recursos não publicados seguem tratamento explícito do header.
-- [ ] `site-footer.tsx` + catálogo/config: Empresa e atendimento com Sobre / Contratação e implantação / FAQ / Contato / Redes; canais oficiais somente quando confirmados.
-- [ ] `site-footer.tsx`: linha final com copyright, políticas aplicáveis, suporte separado somente se existente e retorno ao início; preservar wordmark/arte sem criar novo bloco de conteúdo.
+- [x] `site-footer.tsx`: área principal Institucional / Plataforma / Desenvolvedores / Empresa e atendimento em quatro colunas desktop; mesma ordem empilhada mobile.
+- [x] `site-footer.tsx` + catálogo `footer`: institucional com marca, descrição curta, identificação da empresa e contato principal confirmado; preservar tema dark e assets existentes.
+- [x] `site-footer.tsx` + `src/config/site.ts`: Plataforma com Visão geral / Operação / Financeiro / Checkout / Integrações; destinos atualizados para os novos blocos.
+- [x] `site-footer.tsx` + catálogo/config: Desenvolvedores com Documentação / API / Webhooks / Recursos técnicos; recursos não publicados seguem tratamento explícito do header.
+- [x] `site-footer.tsx` + catálogo/config: Empresa e atendimento com Sobre / Contratação e implantação / FAQ / Contato / Redes; canais oficiais somente quando confirmados.
+- [x] `site-footer.tsx`: linha final com copyright, políticas aplicáveis, suporte separado somente se existente e retorno ao início; preservar wordmark/arte sem criar novo bloco de conteúdo.
 
 ### 8.15 — Consolidação e aceitação
 
