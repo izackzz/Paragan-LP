@@ -4,6 +4,7 @@ import './globals.css';
 import { ExperienceProvider } from '@/components/landing/experience-provider';
 import { Analytics } from '@vercel/analytics/next';
 import { themeScript } from '@/lib/theme';
+import { locale, t } from '@/i18n';
 
 const faktum = localFont({
   src: [
@@ -28,16 +29,15 @@ const rationalMix = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Paragan — O modelo de excelência para fintechs com marca própria.',
-  description:
-    'Infraestrutura white label para fintechs eficientes: gateway, checkout, sellers e gestão financeira sob a marca da sua operação.',
+  title: t('metadata.title'),
+  description: t('metadata.description'),
   icons: { icon: '/brandmark.svg', apple: '/assets/brand/paragan-fav.png' },
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
-      lang="pt-BR"
+      lang={locale}
       suppressHydrationWarning
       className={`${faktum.variable} ${galano.variable} ${rationalMix.variable} h-full scroll-pt-22 tabular-nums antialiased selection:bg-accent selection:text-foreground`}
     >

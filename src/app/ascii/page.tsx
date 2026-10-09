@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { RenderAscii } from '@/components/ascii/render-ascii';
+import { t } from '@/i18n';
 
 export const metadata: Metadata = {
-  title: 'Brand — Paragan',
-  description: 'Trevo Paragan em animação ASCII.',
+  title: t('metadata.brandTitle'),
+  description: t('metadata.brandDescription'),
 };
 
 export default function AsciiPage() {
@@ -13,41 +14,41 @@ export default function AsciiPage() {
         render="clover"
         aspect="1/1"
         className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em halftone"
+        label={t('artwork.clover.halftone')}
       />
       <RenderAscii
         render="clover"
         model="pixels"
         aspect="1/1"
         className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em pixels"
+        label={t('artwork.clover.pixels')}
       />
       <RenderAscii
         render="clover"
         aspect="1/1"
         model="ascii"
         className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
+        label={t('artwork.clover.ascii')}
       />
       <RenderAscii
         render="shark"
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
+        label={t('artwork.clover.ascii')}
       />
       <RenderAscii
         render="shark"
         model="ascii"
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
+        label={t('artwork.clover.ascii')}
       />
       <RenderAscii
         render="shark"
         model="pixels"
         aspect="16/9"
         className="max-w-[min(80svh,42rem)] text-primary"
-        label="Trevo Paragan animado em caracteres ASCII"
+        label={t('artwork.clover.ascii')}
       />
     </main>
   );

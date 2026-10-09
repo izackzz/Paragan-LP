@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { t } from '@/i18n';
 import {
   renderAsciiVariants,
   type AsciiAspect,
@@ -47,11 +48,7 @@ function AsciiPlayer({
   decorative = false,
   aspect = config.aspect,
   className,
-  label = model === 'ascii'
-    ? 'Animação em caracteres ASCII'
-    : model === 'pixels'
-      ? 'Animação em pixels'
-      : 'Animação halftone em pontos',
+  label = t(`artwork.defaults.${model}`),
 }: Omit<RenderAsciiProps, 'render'> & { config: AsciiVariant }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -202,7 +199,7 @@ function AsciiPlayer({
       />
       {status === 'loading' && (
         <span role="status" className="sr-only">
-          Carregando animação
+          {t('artwork.loading')}
         </span>
       )}
       {status === 'error' && (
@@ -210,7 +207,7 @@ function AsciiPlayer({
           role="alert"
           className="absolute inset-0 grid place-items-center p-6 text-center text-sm text-foreground-3"
         >
-          Não foi possível carregar a animação.
+          {t('artwork.failed')}
         </p>
       )}
     </div>

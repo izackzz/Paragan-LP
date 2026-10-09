@@ -2,45 +2,26 @@ import { SectionLabel, SectionHeading, ArtPlaceholder, ActionLink } from '../pri
 import { Reveal } from '../reveal';
 import { frame, section, padding } from '../styles';
 import { cn } from '@/lib/utils';
+import { content, formatIndex } from '@/i18n';
+import { presentation } from '@/config/site';
 
-const solutions = [
-  {
-    title: 'Sua fintech, do seu jeito.',
-    description:
-      'Para fundadores e operadores que querem lançar uma marca ou deixar para trás uma plataforma limitada.',
-    image: 'Operação de pagamentos white label',
-    cta: 'Desenhar minha fintech',
-  },
-  {
-    title: 'Uma plataforma. Muitos negócios.',
-    description:
-      'Conecte sellers, condições comerciais e integrações ao ecossistema que você já construiu.',
-    image: 'Plataforma e rede de sellers',
-    cta: 'Conectar meu negócio',
-  },
-  {
-    title: 'Da oferta ao recebimento.',
-    description:
-      'Produtos digitais, checkout e acompanhamento da compra na mesma experiência de marca.',
-    image: 'Oferta e experiência de compra',
-    cta: 'Conhecer a plataforma',
-  },
-];
+const copy = content('audience');
+const solutions = Object.entries(copy.items);
 
 export function SolutionsSection() {
   return (
     <section id="solucoes" className={cn(frame, section)}>
-      <SectionLabel number="07">PARA O SEU MODELO DE NEGÓCIO</SectionLabel>
+      <SectionLabel number={formatIndex(presentation.sections.audience)}>{copy.label}</SectionLabel>
       <div className={cn(padding, 'flex flex-col justify-start')}>
         <SectionHeading
-          eyebrow="Para quem quer ir além"
-          title="Pagamentos como negócio."
-          muted="Uma estrutura para cada ambição."
+          eyebrow={copy.heading.eyebrow}
+          title={copy.heading.primary}
+          muted={copy.heading.secondary}
         />
       </div>
       <Reveal>
-        {solutions.map((solution, index) => (
-          <div key={solution.title} className="grid border-t border-border md:grid-cols-3">
+        {solutions.map(([id, solution], index) => (
+          <div key={id} className="grid border-t border-border md:grid-cols-3">
             <div
               className={cn(
                 'flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10',

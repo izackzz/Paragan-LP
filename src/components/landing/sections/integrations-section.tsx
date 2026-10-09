@@ -2,30 +2,33 @@ import { SectionLabel, SectionHeading, ArtPlaceholder, ActionLink } from '../pri
 import { Reveal } from '../reveal';
 import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
+import { content, formatIndex, t } from '@/i18n';
+import { presentation } from '@/config/site';
+
+const copy = content('connectivity');
 
 export function IntegrationsSection() {
   return (
     <section id="integracoes" className={cn(frame, section)}>
-      <SectionLabel number="05">CONEXÕES QUE FAZEM SENTIDO</SectionLabel>
+      <SectionLabel number={formatIndex(presentation.sections.connectivity)}>
+        {copy.label}
+      </SectionLabel>
       <Reveal className="grid md:grid-cols-3">
         <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
           <div className="sticky top-47 flex flex-col justify-start gap-8">
-            <SectionHeading title="Conecte seu negócio." muted="Mantenha o controle." />
+            <SectionHeading title={copy.heading.primary} muted={copy.heading.secondary} />
             <div className="flex flex-col items-start gap-6">
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                API, webhooks e processamento em uma infraestrutura que conversa com os seus
-                sistemas.
-              </p>
-              <ActionLink secondary>Avaliar integração</ActionLink>
+              <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
+              <ActionLink secondary>{t('actions.integration')}</ActionLink>
             </div>
           </div>
         </div>
         <div className="flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">
-          <p className={cn(micro, 'mb-6 text-muted-foreground')}>01 / Seu ecossistema</p>
+          <p className={cn(micro, 'mb-6 text-muted-foreground')}>{copy.illustrationLabel}</p>
           <ArtPlaceholder
             width={1200}
             height={720}
-            label="Conexões da operação"
+            label={copy.illustration}
             className={cn('rounded-none border-0')}
           />
         </div>
@@ -33,19 +36,14 @@ export function IntegrationsSection() {
           <ArtPlaceholder
             width={1200}
             height={600}
-            label="API e entrega de eventos"
+            label={copy.eventsIllustration}
             className={cn('rounded-none border-0')}
           />
         </div>
         <div className="flex flex-col justify-end gap-4 border-t border-border p-6 md:border-l md:p-8">
-          <h3 className="text-base font-medium">Cada evento, no contexto certo.</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Contratos documentados, permissões por escopo e histórico de entrega. Integre sem perder
-            a rastreabilidade.
-          </p>
-          <p className="text-xs leading-relaxed text-muted-foreground">
-            Métodos e parceiros disponíveis são definidos no escopo da sua operação.
-          </p>
+          <h3 className="text-base font-medium">{copy.events.title}</h3>
+          <p className="text-sm leading-relaxed text-muted-foreground">{copy.events.description}</p>
+          <p className="text-xs leading-relaxed text-muted-foreground">{copy.events.note}</p>
         </div>
       </Reveal>
     </section>

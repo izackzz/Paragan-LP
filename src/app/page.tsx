@@ -12,6 +12,8 @@ import { SolutionsSection } from '@/components/landing/sections/solutions-sectio
 import { LaunchSection } from '@/components/landing/sections/launch-section';
 import { FaqSection } from '@/components/landing/sections/faq-section';
 import { ContactSection } from '@/components/landing/sections/contact-section';
+import { t } from '@/i18n';
+import { destinations } from '@/config/site';
 
 export default function Home() {
   return (
@@ -19,10 +21,10 @@ export default function Home() {
       <div aria-hidden="true" className="stripes landing-side-stripes left-0" />
       <div aria-hidden="true" className="stripes landing-side-stripes right-0" />
       <Link
-        href="#conteudo"
+        href={destinations.content}
         className="fixed -top-20 left-4 z-100 rounded-lg bg-foreground px-5 py-3.5 text-background focus:top-3"
       >
-        Pular para o conteúdo
+        {t('accessibility.skipContent')}
       </Link>
       <SiteHeader />
       <main id="conteudo" tabIndex={-1}>

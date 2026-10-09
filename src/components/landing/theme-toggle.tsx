@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
 import { icons } from '@/lib/icon-map';
+import { t } from '@/i18n';
 import {
   applyTheme,
   isTheme,
@@ -49,8 +50,8 @@ function getServerSnapshot() {
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const label = theme
-    ? `Ativar tema ${theme === 'dark' ? 'claro' : 'escuro'}`
-    : 'Alternar tema claro e escuro';
+    ? t(theme === 'dark' ? 'accessibility.lightTheme' : 'accessibility.darkTheme')
+    : t('accessibility.toggleTheme');
   const SunIcon = icons.sun;
   const MoonIcon = icons.moon;
 

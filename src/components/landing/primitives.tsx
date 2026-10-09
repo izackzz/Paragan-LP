@@ -8,6 +8,8 @@ import { Frame } from '@/components/ui/frame';
 import { micro } from './styles';
 import { ArrowUpRight } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { t } from '@/i18n';
+import { destinations, presentation } from '@/config/site';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
   return (
@@ -30,8 +32,8 @@ export function ArrowIcon({ size = 16 }: { size?: number }) {
 export function Brand({ className }: { className?: string }) {
   return (
     <Link
-      href="#inicio"
-      aria-label="Paragan — início"
+      href={destinations.home}
+      aria-label={t('brand.home')}
       className={cn('inline-flex min-h-11 items-center py-1', className)}
     >
       <AppLogo aria-hidden="true" className="h-8 w-auto" />
@@ -41,7 +43,7 @@ export function Brand({ className }: { className?: string }) {
 
 export function ActionLink({
   children,
-  href = '#contato',
+  href = destinations.contact,
   secondary = false,
   className,
 }: {
@@ -76,10 +78,12 @@ export function SectionLabel({ number, children }: { number: string; children: R
         'stripes sticky top-20 z-20 flex min-h-14 items-center gap-3 border-b border-border bg-background/90 px-5 py-4 text-muted-foreground backdrop-blur-xs md:px-8',
       )}
     >
-      <span className="text-brand">[ {number} / 10 ]</span>
+      <span className="text-brand">
+        {t('accessibility.sectionIndex', { number, total: presentation.sectionCount })}
+      </span>
       <span>{children}</span>
       <span className="ml-auto hidden sm:block" aria-hidden="true">
-        PARAGAN / WHITE LABEL
+        {t('brand.signature')}
       </span>
     </div>
   );
@@ -106,7 +110,8 @@ export function SectionHeading({
         'max-w-2xl',
         align === 'left' && 'mr-auto text-left',
         align === 'center' && 'mx-auto text-center',
-        align === 'right' && 'ml-auto text-right', className
+        align === 'right' && 'ml-auto text-right',
+        className,
       )}
     >
       {eyebrow && (
@@ -127,10 +132,10 @@ export function SectionHeading({
         <p
           className={cn(
             'mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base',
-          align === 'left' && 'mr-auto',
-          align === 'center' && 'mx-auto',
-          align === 'right' && 'ml-auto',
-        )}
+            align === 'left' && 'mr-auto',
+            align === 'center' && 'mx-auto',
+            align === 'right' && 'ml-auto',
+          )}
         >
           {description}
         </p>
@@ -164,11 +169,11 @@ export function ArtPlaceholder({
     <Image
       src={
         src ??
-        `https://placehold.co/${width}x${height}/${dark ? '171717/eeeeee' : 'edf2ee/7d9285'}.png?font=poppins&text=${encodeURIComponent(label)}`
+        `${presentation.placeholder.origin}/${width}x${height}/${dark ? presentation.placeholder.darkPalette : presentation.placeholder.lightPalette}.png?font=${presentation.placeholder.font}&text=${encodeURIComponent(label)}`
       }
       width={width}
       height={height}
-      alt={src ? label : `Espaço reservado: ${label}`}
+      alt={src ? label : t('accessibility.placeholder', { label })}
       unoptimized={!src}
       preload={priority}
       sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"

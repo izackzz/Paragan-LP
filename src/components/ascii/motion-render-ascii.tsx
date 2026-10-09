@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+import { t } from '@/i18n';
 import { decodeFrames, fittedBox, cellProfile } from './render-ascii-data';
 import { renderAsciiVariants, type AsciiRender, type AsciiVariant } from './render-ascii-variants';
 import { MotionAsciiField, brushWeight, motionScale, usesPrimaryColor } from './motion-ascii-field';
@@ -47,7 +48,7 @@ function MotionAsciiPlayer({
   aspect,
   className,
   decorative = true,
-  label = 'Paragan em pontos interativos',
+  label = t('artwork.interactive'),
   brushRadius = 180,
   scaleFactor = 3,
   accentColor,

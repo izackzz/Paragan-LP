@@ -18,51 +18,10 @@ import { ThemeToggle } from './theme-toggle';
 import { icons } from '@/lib/icon-map';
 import { frame } from './styles';
 import { cn } from '@/lib/utils';
+import { content, t } from '@/i18n';
+import { destinations } from '@/config/site';
 
-const menus = [
-  {
-    title: 'Plataforma',
-    intro: 'Uma operação completa, com a sua marca.',
-    items: [
-      ['Gateway white label', 'Identidade e condições comerciais da sua operação.'],
-      ['Checkout', 'Da oferta à experiência de pagamento.'],
-      ['Gestão de sellers', 'Sua base, seus papéis e suas permissões.'],
-      ['Financeiro', 'Receitas, custos, saldos e reservas.'],
-      ['Multiadquirência', 'Processadores e regras de roteamento.'],
-      ['Assinaturas', 'Ofertas e cobranças recorrentes.'],
-    ],
-  },
-  {
-    title: 'Soluções',
-    intro: 'Infraestrutura para o seu modelo de negócio.',
-    items: [
-      ['Lançar minha fintech', 'Transforme pagamentos em um negócio próprio.'],
-      ['Migrar minha operação', 'Evolua além dos limites da plataforma atual.'],
-      ['Plataformas e marketplaces', 'Conecte participantes, produtos e pagamentos.'],
-      ['Produtos digitais', 'Venda e entrega em uma experiência integrada.'],
-    ],
-  },
-  {
-    title: 'Desenvolvedores',
-    intro: 'Conecte seu ecossistema à Paragan.',
-    items: [
-      ['Documentação', 'Conceitos e guias de implementação.'],
-      ['Referência da API', 'Recursos e contratos de integração.'],
-      ['Webhooks', 'Eventos que acompanham sua operação.'],
-      ['Integrações', 'Conexões com os seus sistemas.'],
-    ],
-  },
-  {
-    title: 'Empresa',
-    intro: 'Conheça quem está nos bastidores.',
-    items: [
-      ['Sobre a Paragan', 'Um modelo de excelência para fintechs.'],
-      ['Conteúdos', 'Perspectivas sobre operações de pagamentos.'],
-      ['Parceiros', 'Construa novas possibilidades conosco.'],
-      ['Fale com a equipe', 'Vamos entender seu próximo passo.'],
-    ],
-  },
-];
+const menus = Object.entries(content('navigation'));
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -82,21 +41,27 @@ export function SiteHeader() {
           <Brand />
           <NavigationMenu
             viewport={false}
-            aria-label="Navegação principal"
+            aria-label={t('accessibility.primaryNavigation')}
             className="hidden xl:flex"
           >
             <NavigationMenuList>
-              {menus.map((menu) => (
-                <NavigationMenuItem key={menu.title}>
+              {menus.map(([id, menu]) => (
+                <NavigationMenuItem key={id}>
                   <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <p className="border-b border-border px-3 pt-2 pb-4 text-sm text-muted-foreground">
                       {menu.intro}
                     </p>
                     <FluidGroup className="grid grid-cols-2 gap-1 pt-2">
-                      {menu.items.map(([title, description]) => (
-                        <NavigationMenuLink key={title} asChild>
-                          <Link href="#">
+                      {Object.entries(menu.items).map(([itemId, { title, description }]) => (
+                        <NavigationMenuLink key={itemId} asChild>
+                          <Link
+                            href={
+                              destinations.header.items[
+                                itemId as keyof typeof destinations.header.items
+                              ]
+                            }
+                          >
                             <span className="font-medium">{title}</span>
                             <span className="text-xs leading-relaxed text-muted-foreground">
                               {description}
@@ -110,7 +75,7 @@ export function SiteHeader() {
               ))}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle())}>
-                  <Link href="#">Planos</Link>
+                  <Link href={destinations.header.actions.plans}>{t('actions.plans')}</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -118,14 +83,16 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button asChild variant="primary" size="sm" className={cn('hidden sm:inline-flex')}>
-              <Link href="#">ENTRAR EM CONTATO</Link>
+              <Link href={destinations.header.actions.contact}>{t('actions.contact')}</Link>
             </Button>
             <Button
               id="navigation-toggle"
               variant="secondary"
               size="icon-lg"
               className={cn('min-h-11 min-w-11 xl:hidden')}
-              aria-label={open ? 'Fechar navegação' : 'Abrir navegação'}
+              aria-label={t(
+                open ? 'accessibility.closeNavigation' : 'accessibility.openNavigation',
+              )}
               aria-expanded={open}
               aria-controls="mobile-navigation"
               onClick={() => setOpen(!open)}
@@ -137,11 +104,11 @@ export function SiteHeader() {
         {open && (
           <nav
             id="mobile-navigation"
-            aria-label="Navegação mobile"
+            aria-label={t('accessibility.mobileNavigation')}
             className="max-h-dvh overflow-y-auto border-t border-border pb-24 xl:hidden"
           >
-            {menus.map((menu) => (
-              <details key={menu.title} className="group/mobile-menu border-b border-border py-2">
+            {menus.map(([id, menu]) => (
+              <details key={id} className="group/mobile-menu border-b border-border py-2">
                 <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-md px-3 text-sm font-medium marker:hidden">
                   {menu.title}
                   <span
@@ -152,10 +119,12 @@ export function SiteHeader() {
                   </span>
                 </summary>
                 <FluidGroup axis="y" className="pb-3">
-                  {menu.items.map(([title, description]) => (
+                  {Object.entries(menu.items).map(([itemId, { title, description }]) => (
                     <Link
-                      key={title}
-                      href="#"
+                      key={itemId}
+                      href={
+                        destinations.header.items[itemId as keyof typeof destinations.header.items]
+                      }
                       onClick={() => setOpen(false)}
                       className="flex flex-col gap-1 rounded-md px-3 py-3 text-sm"
                     >
@@ -167,20 +136,20 @@ export function SiteHeader() {
               </details>
             ))}
             <FluidGroup axis="y" className="py-3">
-              {['Planos', 'Entrar'].map((title) => (
+              {(['plans', 'signIn'] as const).map((action) => (
                 <Link
-                  key={title}
-                  href="#"
+                  key={action}
+                  href={destinations.header.actions[action]}
                   onClick={() => setOpen(false)}
                   className="block rounded-md px-3 py-3 text-sm"
                 >
-                  {title}
+                  {t(`actions.${action}`)}
                 </Link>
               ))}
             </FluidGroup>
             <Button asChild variant="primary" className={cn('w-full')}>
-              <Link href="#" onClick={() => setOpen(false)}>
-                ENTRAR EM CONTATO
+              <Link href={destinations.header.actions.contact} onClick={() => setOpen(false)}>
+                {t('actions.contact')}
               </Link>
             </Button>
           </nav>
