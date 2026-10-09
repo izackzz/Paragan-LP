@@ -508,6 +508,17 @@
   background-repeat: repeat;
 }
 
+.dots {
+  background-image: radial-gradient(
+    circle at 3px 3px,
+    color-mix(in srgb, var(--dots-color, var(--foreground)) 20%, transparent) 0.5px,
+    transparent 0
+  );
+  background-position: 0 0;
+  background-size: 6px 6px;
+  background-repeat: repeat;
+}
+
 .shiny-01::before,
 .shiny-01::after,
 .shiny-02::before,

@@ -72,20 +72,24 @@ export function ActionLink({
 
 export function SectionLabel({ number, children }: { number: string; children: ReactNode }) {
   return (
-    <div
-      className={cn(
-        micro,
-        'stripes sticky top-20 z-20 flex min-h-14 items-center gap-3 border-b border-border bg-background/90 px-5 py-4 text-muted-foreground backdrop-blur-xs md:px-8',
-      )}
-    >
-      <span className="text-brand">
-        {t('accessibility.sectionIndex', { number, total: presentation.sectionCount })}
-      </span>
-      <span>{children}</span>
-      <span className="ml-auto hidden sm:block" aria-hidden="true">
-        {t('brand.signature')}
-      </span>
-    </div>
+    <>
+      <span className='border-b border-border h-20 dots flex' />
+
+      <div
+        className={cn(
+          micro,
+          'stripes sticky top-20 z-20 flex min-h-14 items-center gap-3 border-b border-border bg-background/90 px-5 py-4 text-muted-foreground backdrop-blur-xs md:px-8',
+        )}
+      >
+        <span className="text-brand">
+          {t('accessibility.sectionIndex', { number, total: presentation.sectionCount })}
+        </span>
+        <span>{children}</span>
+        <span className="ml-auto hidden sm:block" aria-hidden="true">
+          {t('brand.signature')}
+        </span>
+      </div>
+    </>
   );
 }
 
