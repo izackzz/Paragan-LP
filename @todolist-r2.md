@@ -57,14 +57,14 @@
 
 - [x] `node_modules/next/dist/docs/`: ler guias de composição e navegação antes de implementar os componentes afetados.
 - [x] `src/app/page.tsx`: ordenar hero → cenários → operação → financeiro → checkout → integrações → confiança → implantação → FAQ → contato → rodapé; header antes do `main`.
-- [ ] `src/config/site.ts`: definir `inicio / solucoes / operacao / financeiro / checkout / integracoes / estrutura / implantacao / perguntas / contato`; IDs únicos e destinos válidos.
-- [ ] `src/config/site.ts` + `sections/*`: numerar os dez blocos conforme roteiro; hero 01 sem faixa nova, cenários 02 até contato 10.
-- [ ] `src/i18n/messages/pt-BR.ts`: títulos de seção conforme roteiro; preservar parágrafos reaproveitáveis e usar placeholders curtos nas lacunas, sem nova copy persuasiva.
+- [x] `src/config/site.ts`: definir `inicio / solucoes / operacao / financeiro / checkout / integracoes / estrutura / implantacao / perguntas / contato`; IDs únicos e destinos válidos.
+- [x] `src/config/site.ts` + `sections/*`: numerar os dez blocos conforme roteiro; hero 01 sem faixa nova, cenários 02 até contato 10.
+- [x] `src/i18n/messages/pt-BR.ts`: títulos de seção conforme roteiro; preservar parágrafos reaproveitáveis e usar placeholders curtos nas lacunas, sem nova copy persuasiva.
 - [x] `src/i18n/messages/pt-BR.ts` + `src/config/site.ts`: textos e labels no catálogo; URLs, IDs, índices, estágios e configuração fora das traduções.
-- [ ] `sections/*` + `landing/styles.ts`: grid desktop de 12 colunas; mobile em uma coluna, grades de 3/4 itens em duas colunas intermediárias e sequência DOM conforme roteiro.
-- [ ] `sections/*` + `landing/primitives.tsx`: um H1; H2 por seção; H3 para módulos, cards, etapas e perguntas; identificador acima e descrição abaixo do H2.
-- [ ] `sections/*` + `globals.css`: preservar tokens, fontes, frame, padding, hairlines, raios, temas, fluid hover e motion do `DESIGN.md`; nenhuma reformulação visual.
-- [ ] `sections/*`: manter conteúdo estático no servidor; estado client somente em navegação, tabs, expansíveis e formulário.
+- [x] `sections/*` + `landing/styles.ts`: grid desktop de 12 colunas; mobile em uma coluna, grades de 3/4 itens em duas colunas intermediárias e sequência DOM conforme roteiro.
+- [x] `sections/*` + `landing/primitives.tsx`: um H1; H2 por seção; H3 para módulos, cards, etapas e perguntas; identificador acima e descrição abaixo do H2.
+- [x] `sections/*` + `globals.css`: preservar tokens, fontes, frame, padding, hairlines, raios, temas, fluid hover e motion do `DESIGN.md`; nenhuma reformulação visual.
+- [x] `sections/*`: manter conteúdo estático no servidor; estado client somente em navegação, tabs, expansíveis e formulário.
 
 ### 8.2 — Continuidade comercial
 
@@ -81,7 +81,7 @@
 - [x] `site-header.tsx` + catálogo `navigation.solutions`: três cenários em sequência; destinos próprios nos cards de lançamento, migração e incorporação.
 - [x] `site-header.tsx` + catálogo `navigation.developers`: grade de duas colunas com documentação, API, webhooks e catálogo de integrações.
 - [x] `site-header.tsx` + catálogo `navigation.company`: lista Sobre / Estrutura e confiança / Parceiros / Contato; conteúdos editoriais somente como acesso secundário configurado.
-- [ ] `src/config/site.ts` + `site-header.tsx`: trocar `#` por âncoras existentes; recurso externo não publicado leva ao bloco de avaliação correspondente, sem simular documentação pronta.
+- [x] `src/config/site.ts` + `site-header.tsx`: trocar `#` por âncoras existentes; recurso externo não publicado leva ao bloco de avaliação correspondente, sem simular documentação pronta.
 - [x] `site-header.tsx`: mobile com marca, toggle, navegação vertical e CTA final; fechar ao navegar, Escape devolve foco e alvos mínimos de 44px.
 
 ### 8.4 — Bloco 01: Hero e prévia do produto
@@ -95,16 +95,16 @@
 
 ### 8.5 — Bloco 02: Cenários de contratação
 
-- [x] `solutions-section.tsx` + catálogo `audience`: H2 “Cenários de contratação”, identificador e introdução; mover seção imediatamente após hero.
+- [x] `solutions-section.tsx` + catálogo `structure.scenarios`: H2 “Cenários de contratação”, identificador e introdução; mover seção imediatamente após hero.
 - [x] `solutions-section.tsx`: substituir linhas alternadas por três cards conectados Lançamento / Migração / Incorporação a uma plataforma; 1 → 2 → 3 colunas.
-- [x] `solutions-section.tsx` + catálogo `audience.items`: cada card com identificador, H3, situação inicial, lista de escopo, requisito inicial e CTA contextual.
+- [x] `solutions-section.tsx` + catálogo `structure.scenarios.items`: cada card com identificador, H3, situação inicial, lista de escopo, requisito inicial e CTA contextual.
 - [x] `solutions-section.tsx`: separar lançamento de migração hoje reunidos em `operators`; retirar produtos digitais como cenário independente e aproveitar texto pertinente no checkout.
 - [x] `solutions-section.tsx`: IDs próprios nos três cenários e pré-seleção correspondente no contato via CTA.
 - [x] `solutions-section.tsx`: faixa Paragan → Empresa contratante/operador → Sellers → Compradores; papel e relação por unidade, mesma ordem no mobile.
 
 ### 8.6 — Bloco 03: Controle da operação e modelo comercial
 
-- [x] `control-section.tsx` + catálogo `operations`: ID `operacao`, H2 “Controle da operação e modelo comercial”, identificador e descrição; preservar banda dark existente.
+- [x] `control-section.tsx` + catálogo `structure.operation`: ID `operacao`, H2 “Controle da operação e modelo comercial”, identificador e descrição; preservar banda dark existente.
 - [x] `control-section.tsx`: corpo 5/12 conteúdo + 7/12 demonstração; mobile com todos os módulos antes da mídia.
 - [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.identity`; H3 “Identidade da operação”, parágrafo e lista Painel / Checkout / Domínio / Comunicação.
 - [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.policies` e contexto Comercial; H3 “Condições comerciais”, condições por seller, taxas/comissões, padrão e exceções suportadas.
@@ -116,7 +116,7 @@
 
 ### 8.7 — Bloco 04: Gestão financeira
 
-- [x] `finance-section.tsx` + catálogo `ledger`: H2 “Gestão financeira”, identificador e descrição; reaproveitar módulo financeiro e contexto Financeiro da operação.
+- [x] `finance-section.tsx` + catálogo `structure.finance`: H2 “Gestão financeira”, identificador e descrição; reaproveitar `ledger.items` e contexto Financeiro da operação.
 - [x] `finance-section.tsx`: demonstração 7/12 + composição 5/12; exemplo identificado, painel/fluxo, legenda e dados explicitamente demonstrativos.
 - [x] `finance-section.tsx` + catálogo: composição com valor da cobrança, taxas, receita, participantes, reservas, saldo e disponibilidade prevista; valores apenas fictícios e consistentes ou placeholders.
 - [x] `finance-section.tsx`: composição em lista estruturada semântica desktop e registros empilhados mobile, mantendo nomes e campos.
@@ -126,16 +126,16 @@
 
 ### 8.8 — Bloco 05: Experiência dos sellers e compradores
 
-- [x] `checkout-section.tsx` + catálogo `sales`: H2 “Experiência dos sellers e compradores”, identificador, descrição e CTA da demonstração existente.
+- [x] `checkout-section.tsx` + catálogo `structure.checkout`: H2 “Experiência dos sellers e compradores”, identificador, descrição e CTA da demonstração existente.
 - [x] `checkout-section.tsx`: prévia desktop e mobile do mesmo cenário de compra, legenda associada e identificação demonstrativa; reservar proporções de mídia.
-- [x] `checkout-section.tsx` + catálogo `sales.steps`: quatro etapas Oferta / Checkout / Confirmação / Entrega e acesso; número, H3, descrição e recursos por etapa.
+- [x] `checkout-section.tsx` + catálogo `structure.checkout.steps`: quatro etapas Oferta / Checkout / Confirmação / Entrega e acesso; número, H3, descrição e recursos por etapa.
 - [x] `checkout-section.tsx`: separar confirmação de entrega hoje reunidas em `track`; grade 1 → 2 → 4, mantendo sequência DOM.
 - [x] `checkout-section.tsx` + catálogo: dois complementos Recorrência / Split; descrição, dependências de método/provedor, participantes/configurações e acesso ao detalhamento disponível.
 - [x] `checkout-section.tsx`: aproveitar conteúdo de produtos digitais do cenário antigo; não ampliar entrega digital para uma plataforma de cursos completa.
 
 ### 8.9 — Bloco 06: Adquirência e integrações
 
-- [x] `integrations-section.tsx` + catálogo `connectivity`: H2 “Adquirência e integrações”, identificador e descrição; absorver `capabilities.items.acquiring` e `integrations`.
+- [x] `integrations-section.tsx` + catálogo `structure.integrations`: H2 “Adquirência e integrações”, identificador e descrição; absorver conteúdo de adquirência e integrações da plataforma.
 - [x] `integrations-section.tsx`: processamento em 4/12 introdução + 8/12 matriz; H3, descrição, controles, contratos/credenciais e habilitação da operação.
 - [x] `src/config/site.ts` + catálogo: registros de provedor com métodos, recursos, estágio, requisitos e detalhes; sem afirmar integração ativa sem informação confirmada.
 - [x] `integrations-section.tsx`: matriz desktop e registros completos empilhados mobile; separar processamento de movimentação/parceiros financeiros quando houver registros.
@@ -145,7 +145,7 @@
 
 ### 8.10 — Bloco 07: Confiança operacional
 
-- [x] `scale-section.tsx` + catálogo `reliability`: ID `estrutura`, H2 “Confiança operacional”, identificador e descrição; reutilizar seção existente sem nova linguagem visual.
+- [x] `scale-section.tsx` + catálogo `structure.trust`: ID `estrutura`, H2 “Confiança operacional”, identificador e descrição; reutilizar seção existente sem nova linguagem visual.
 - [x] `scale-section.tsx`: quatro pilares em 2×2 desktop e empilhados mobile: Separação entre operações / Integridade financeira / Diagnóstico e recuperação / Sustentação.
 - [x] `scale-section.tsx` + catálogo: cada pilar com H3, descrição, informação específica e referência; reaproveitar isolamento, consistência e visibilidade existentes.
 - [x] `scale-section.tsx` + catálogo: biblioteca em duas colunas com Documentação / Sandbox / Demonstrações / Relatórios publicáveis / Informações operacionais; tipo, nome, descrição, versão/data quando existente e acesso.
@@ -155,7 +155,7 @@
 
 ### 8.11 — Bloco 08: Contratação, implantação e migração
 
-- [x] `launch-section.tsx` + catálogo `onboarding`: H2 “Contratação, implantação e migração”, identificador e descrição.
+- [x] `launch-section.tsx` + catálogo `structure.onboarding`: H2 “Contratação, implantação e migração”, identificador e descrição.
 - [x] `launch-section.tsx`: escopo em duas colunas; composição da entrega antes da composição comercial no DOM.
 - [x] `launch-section.tsx` + catálogo: grupos Base de produto / Configurações incluídas / Opcionais e dependências externas; H3, descrição e lista de elementos por grupo.
 - [x] `launch-section.tsx` + catálogo: composição comercial com item, abrangência, composição do custo, responsável pela cobrança e complemento; sem criar preços ou pacotes.
@@ -169,7 +169,7 @@
 ### 8.12 — Bloco 09: Perguntas frequentes
 
 - [x] `faq-section.tsx`: introdução 4/12 + accordion 8/12; identificador, H2 “Perguntas frequentes” e descrição.
-- [x] `faq-section.tsx` + catálogo `questions`: oito perguntas sobre licenciamento/customização, contratos/credenciais, migração de dados/tokens, atualizações/manutenção, suporte/responsabilidades, exportação/encerramento, custos e entrega digital.
+- [x] `faq-section.tsx` + catálogo `structure.faq`: oito perguntas sobre licenciamento/customização, contratos/credenciais, migração de dados/tokens, atualizações/manutenção, suporte/responsabilidades, exportação/encerramento, custos e entrega digital.
 - [x] `faq-section.tsx` + catálogo: reaproveitar respostas compatíveis; lacunas com texto provisório sem inventar cláusulas contratuais, SLA ou direitos de exportação.
 - [x] `faq-section.tsx` + `ui/accordion.tsx`: perguntas com H3 semântico e trigger acessível; resposta principal, condição e link somente quando disponível.
 - [x] `faq-section.tsx`: manter accordion e interações existentes; acesso final ao contato para avaliação da operação.
@@ -177,7 +177,7 @@
 ### 8.13 — Bloco 10: Contato e qualificação
 
 - [x] `contact-section.tsx`: contexto 5/12 + formulário 7/12, preservando banda dark e componentes de campos existentes.
-- [x] `contact-section.tsx` + catálogo `inquiry`: H2 “Contato e qualificação”, identificador, objetivo, pontos Aderência da operação / Escopo e integrações / Próximos passos e informação de retorno sem prazo inventado.
+- [x] `contact-section.tsx` + catálogo `structure.contact`: H2 “Contato e qualificação”, identificador, objetivo, pontos Aderência da operação / Escopo e integrações / Próximos passos e informação de retorno sem prazo inventado.
 - [x] `contact-section.tsx`: identificação Nome / Empresa ou projeto em dois campos desktop; labels visíveis e autocomplete preservado.
 - [x] `contact-section.tsx`: seleção E-mail / WhatsApp e apenas campo correspondente obrigatório; validar formato e preservar valores ao alternar canal.
 - [x] `contact-section.tsx`: cenário único Lançamento / Migração / Incorporação a uma plataforma; substituir interesses múltiplos e permitir alterar opção recebida do CTA.
@@ -200,12 +200,15 @@
 
 ### 8.15 — Consolidação e aceitação
 
-- [ ] `src/app/page.tsx` + `platform-section.tsx`: retirar seção independente de plataforma da composição somente após redistribuir seus oito módulos; nenhum conteúdo necessário perdido ou seção repetida.
-- [ ] `globals.css`: remover somente regras do antigo stack de pares que ficarem sem consumidores; preservar regras e efeitos usados em outras composições.
-- [ ] `src/i18n/messages/pt-BR.ts` + `src/config/site.ts`: consolidar chaves/índices/destinos após redistribuição; sem namespaces duplicados para o mesmo conteúdo nem links `#` sem destino.
-- [ ] `DESIGN.md`: atualizar somente inventário, ordem, IDs, grids e comportamentos efetivamente implementados; manter diretrizes visuais e distinguir recursos pendentes.
-- [ ] Arquivos alterados: Prettier + ESLint direcionados + `pnpm exec tsc --noEmit --incremental false` + `pnpm check:i18n`; sem build, deploy ou release.
-- [ ] Homepage em dev: conferir 360/390, 768, 1024, 1280 e tela ampla; duas colunas intermediárias, registros mobile completos, bordas únicas e ausência de overflow.
-- [ ] Homepage em dev: conferir temas claro/escuro, primeira dobra preservada, zoom 200%, tela baixa, teclado e reduced motion; foco e sticky não ocultam conteúdo.
-- [ ] CTAs e contato: conferir três cenários, troca entre CTAs, carregamento com parâmetros, histórico, seleção manual, origem, canal e mensagem opcional; escolha preservada sem dados pessoais na URL.
-- [ ] Formulário: conferir validação por campo e resumo local honesto; loading/erro/confirmação de recebimento apenas se canal real de envio estiver integrado.
+- [x] `src/app/page.tsx` + `platform-section.tsx`: retirar seção independente de plataforma da composição somente após redistribuir seus oito módulos; nenhum conteúdo necessário perdido ou seção repetida.
+- [x] `globals.css`: remover somente regras do antigo stack de pares que ficarem sem consumidores; preservar regras e efeitos usados em outras composições.
+- [x] `src/i18n/messages/pt-BR.ts` + `src/config/site.ts`: consolidar `structure.*` e fontes de parágrafos reaproveitados; índices/destinos sem seção duplicada ou link `#` sem destino.
+- [x] `DESIGN.md`: atualizar somente inventário, ordem, IDs, grids e comportamentos efetivamente implementados; manter diretrizes visuais e distinguir recursos pendentes.
+- [x] [P1] `ui/accordion.tsx`: observar resize do grupo; fundo expandido acompanha largura sem overflow.
+- [x] [P1] `landing/action-link.tsx` + `site-footer.tsx`: composição client do link/botão e listas sem `li` aninhado; hidratação sem erro.
+- [x] [P1] `contact-section.tsx`: ignorar seleção vazia transitória do Select; cenário recebido pela URL não apagado na hidratação.
+- [x] Arquivos alterados: Prettier + ESLint direcionados + `pnpm exec tsc --noEmit --incremental false` + `pnpm check:i18n`; sem build, deploy ou release.
+- [x] Homepage em dev: conferir 360/390, 768, 1024, 1280 e tela ampla; duas colunas intermediárias, registros mobile completos, bordas únicas e ausência de overflow.
+- [x] Homepage em dev: conferir temas claro/escuro, primeira dobra preservada, viewport CSS equivalente a zoom 200%, tela baixa, teclado e reduced motion; foco e sticky não ocultam conteúdo.
+- [x] CTAs e contato: conferir três cenários, troca entre CTAs, carregamento com parâmetros, histórico, seleção manual, origem, canal e mensagem opcional; escolha preservada sem dados pessoais na URL.
+- [x] Formulário: conferir validação por campo e resumo local honesto; loading/erro/confirmação de recebimento apenas se canal real de envio estiver integrado.

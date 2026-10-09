@@ -25,18 +25,31 @@ export const destinations = {
   content: '#conteudo',
   home: '#inicio',
   contact: '#contato',
+  productPreview: '#previa-produto',
+  checkoutDemo: '#demonstracao-checkout',
   footer: {
     home: '/#inicio',
     contact: '/#contato',
     groups: {
-      platform: { overview: '/#inicio', operations: '/#operacao', finance: '/#financeiro', checkout: '/#checkout', integrations: '/#integracoes' },
+      platform: {
+        overview: '/#inicio',
+        operations: '/#operacao',
+        finance: '/#financeiro',
+        checkout: '/#checkout',
+        integrations: '/#integracoes',
+      },
       developers: {
         documentation: '/#recursos-tecnicos',
         api: '/#api',
         webhooks: '/#webhooks',
         resources: '/#evidencias',
       },
-      company: { about: '/#responsaveis', onboarding: '/#implantacao', questions: '/#perguntas', contact: '/#contato' },
+      company: {
+        about: '/#responsaveis',
+        onboarding: '/#implantacao',
+        questions: '/#perguntas',
+        contact: '/#contato',
+      },
     },
   },
   social: {
@@ -71,8 +84,24 @@ export const presentation = {
 
 export const contactScenarios = ['launch', 'migration', 'platforms'] as const;
 export type ContactScenario = (typeof contactScenarios)[number];
-export const contactOrigins = ['inicio', 'solucoes', 'operacao', 'financeiro', 'checkout', 'integracoes', 'estrutura', 'implantacao', 'perguntas'] as const;
+export const contactOrigins = [
+  'inicio',
+  'solucoes',
+  'operacao',
+  'financeiro',
+  'checkout',
+  'integracoes',
+  'estrutura',
+  'implantacao',
+  'perguntas',
+] as const;
 export type ContactOrigin = (typeof contactOrigins)[number];
 export const integrationCatalog = { published: false };
-export const evidenceResources = ['documentation', 'sandbox', 'demonstrations', 'reports', 'operations'] as const;
+export const evidenceResources = [
+  'documentation',
+  'sandbox',
+  'demonstrations',
+  'reports',
+  'operations',
+] as const;
 export const contactDelivery = { mode: 'local' } as const;

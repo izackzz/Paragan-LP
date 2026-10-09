@@ -109,6 +109,14 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
     setOpenItemRects(next);
   }, []);
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new ResizeObserver(measureFullItems);
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [measureFullItems]);
+
   const [internalSingleValue, setInternalSingleValue] = useState<string>(() => {
     if (type === 'single') {
       const sp = props as AccordionGroupSingleProps;
