@@ -126,12 +126,12 @@
 
 ### 8.8 — Bloco 05: Experiência dos sellers e compradores
 
-- [ ] `checkout-section.tsx` + catálogo `sales`: H2 “Experiência dos sellers e compradores”, identificador, descrição e CTA da demonstração existente.
-- [ ] `checkout-section.tsx`: prévia desktop e mobile do mesmo cenário de compra, legenda associada e identificação demonstrativa; reservar proporções de mídia.
-- [ ] `checkout-section.tsx` + catálogo `sales.steps`: quatro etapas Oferta / Checkout / Confirmação / Entrega e acesso; número, H3, descrição e recursos por etapa.
-- [ ] `checkout-section.tsx`: separar confirmação de entrega hoje reunidas em `track`; grade 1 → 2 → 4, mantendo sequência DOM.
-- [ ] `checkout-section.tsx` + catálogo: dois complementos Recorrência / Split; descrição, dependências de método/provedor, participantes/configurações e acesso ao detalhamento disponível.
-- [ ] `checkout-section.tsx`: aproveitar conteúdo de produtos digitais do cenário antigo; não ampliar entrega digital para uma plataforma de cursos completa.
+- [x] `checkout-section.tsx` + catálogo `sales`: H2 “Experiência dos sellers e compradores”, identificador, descrição e CTA da demonstração existente.
+- [x] `checkout-section.tsx`: prévia desktop e mobile do mesmo cenário de compra, legenda associada e identificação demonstrativa; reservar proporções de mídia.
+- [x] `checkout-section.tsx` + catálogo `sales.steps`: quatro etapas Oferta / Checkout / Confirmação / Entrega e acesso; número, H3, descrição e recursos por etapa.
+- [x] `checkout-section.tsx`: separar confirmação de entrega hoje reunidas em `track`; grade 1 → 2 → 4, mantendo sequência DOM.
+- [x] `checkout-section.tsx` + catálogo: dois complementos Recorrência / Split; descrição, dependências de método/provedor, participantes/configurações e acesso ao detalhamento disponível.
+- [x] `checkout-section.tsx`: aproveitar conteúdo de produtos digitais do cenário antigo; não ampliar entrega digital para uma plataforma de cursos completa.
 
 ### 8.9 — Bloco 06: Adquirência e integrações
 
