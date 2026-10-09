@@ -23,6 +23,16 @@ export function contactIntentHref({ scenario, origin }: ContactIntent) {
   return `${params.size ? `?${params}` : ''}#contato`;
 }
 
+export function updateContactIntent(intent: ContactIntent) {
+  const url = new URL(window.location.href);
+  if (intent.scenario) url.searchParams.set('cenario', intent.scenario);
+  else url.searchParams.delete('cenario');
+  if (intent.origin) url.searchParams.set('origem', intent.origin);
+  else url.searchParams.delete('origem');
+  window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  window.dispatchEvent(new CustomEvent<ContactIntent>(contactIntentEvent, { detail: intent }));
+}
+
 export function ContactIntentLink({ scenario, origin, onClick, ...props }: ComponentProps<'a'> & ContactIntent) {
   return <a {...props} href={contactIntentHref({ scenario, origin })} onClick={event => {
     onClick?.(event);
@@ -36,13 +46,10 @@ export function ContactIntentLink({ scenario, origin, onClick, ...props }: Compo
     else url.searchParams.delete('cenario');
     if (intent.origin) url.searchParams.set('origem', intent.origin);
     else url.searchParams.delete('origem');
-    const previousHash = url.hash;
-    url.hash = '';
-    window.history.pushState(null, '', `${url.pathname}${url.search}${previousHash}`);
+    url.hash = 'contato';
+    window.history.pushState(null, '', `${url.pathname}${url.search}${url.hash}`);
     window.dispatchEvent(new CustomEvent<ContactIntent>(contactIntentEvent, { detail: intent }));
-    if (window.location.hash === '#contato') {
-      document.getElementById('contato')?.scrollIntoView();
-      document.getElementById('contact-form-title')?.focus({ preventScroll: true });
-    } else window.location.hash = 'contato';
+    document.getElementById('contato')?.scrollIntoView();
+    document.getElementById('contact-form-title')?.focus({ preventScroll: true });
   }} />;
 }
