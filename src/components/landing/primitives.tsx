@@ -73,7 +73,7 @@ export function ActionLink({
 export function SectionLabel({ number, children }: { number: string; children: ReactNode }) {
   return (
     <>
-      <span className='border-b border-border h-20 dots flex' />
+      <span className='border-b border-border h-20 dots' />
 
       <div
         className={cn(
