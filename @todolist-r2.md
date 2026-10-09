@@ -155,16 +155,16 @@
 
 ### 8.11 — Bloco 08: Contratação, implantação e migração
 
-- [ ] `launch-section.tsx` + catálogo `onboarding`: H2 “Contratação, implantação e migração”, identificador e descrição.
-- [ ] `launch-section.tsx`: escopo em duas colunas; composição da entrega antes da composição comercial no DOM.
-- [ ] `launch-section.tsx` + catálogo: grupos Base de produto / Configurações incluídas / Opcionais e dependências externas; H3, descrição e lista de elementos por grupo.
-- [ ] `launch-section.tsx` + catálogo: composição comercial com item, abrangência, composição do custo, responsável pela cobrança e complemento; sem criar preços ou pacotes.
-- [ ] `launch-section.tsx`: composição comercial em tabela/lista desktop e registros empilhados mobile com os mesmos campos.
-- [ ] `launch-section.tsx`: reutilizar `Tabs` para Ativação de uma operação / Migração de uma operação existente; cinco etapas verticais por caminho.
-- [ ] `launch-section.tsx` + catálogo: ativação Configuração / Habilitações / Validação / Ativação / Acompanhamento; número, entrega, responsável e condição de conclusão por etapa.
-- [ ] `launch-section.tsx` + catálogo: migração Diagnóstico de origem / Escopo de migração / Ensaio / Transição / Acompanhamento; número, entrega, responsável e condição de conclusão por etapa.
-- [ ] `launch-section.tsx`: faixa posterior Treinamento / Manutenção e atualizações / Suporte; identificação e descrição curta.
-- [ ] `launch-section.tsx`: nota de escopo/prazo e CTA de avaliação; caminho migração preenche cenário migração, ativação preserva lançamento/incorporação quando já escolhido.
+- [x] `launch-section.tsx` + catálogo `onboarding`: H2 “Contratação, implantação e migração”, identificador e descrição.
+- [x] `launch-section.tsx`: escopo em duas colunas; composição da entrega antes da composição comercial no DOM.
+- [x] `launch-section.tsx` + catálogo: grupos Base de produto / Configurações incluídas / Opcionais e dependências externas; H3, descrição e lista de elementos por grupo.
+- [x] `launch-section.tsx` + catálogo: composição comercial com item, abrangência, composição do custo, responsável pela cobrança e complemento; sem criar preços ou pacotes.
+- [x] `launch-section.tsx`: composição comercial em tabela/lista desktop e registros empilhados mobile com os mesmos campos.
+- [x] `launch-section.tsx`: reutilizar `Tabs` para Ativação de uma operação / Migração de uma operação existente; cinco etapas verticais por caminho.
+- [x] `launch-section.tsx` + catálogo: ativação Configuração / Habilitações / Validação / Ativação / Acompanhamento; número, entrega, responsável e condição de conclusão por etapa.
+- [x] `launch-section.tsx` + catálogo: migração Diagnóstico de origem / Escopo de migração / Ensaio / Transição / Acompanhamento; número, entrega, responsável e condição de conclusão por etapa.
+- [x] `launch-section.tsx`: faixa posterior Treinamento / Manutenção e atualizações / Suporte; identificação e descrição curta.
+- [x] `launch-section.tsx`: nota de escopo/prazo e CTA de avaliação; caminho migração preenche cenário migração, ativação preserva lançamento/incorporação quando já escolhido.
 
 ### 8.12 — Bloco 09: Perguntas frequentes
 
