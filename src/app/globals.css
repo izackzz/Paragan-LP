@@ -382,6 +382,32 @@
   border-radius: calc(var(--radius) * 1.4 + 0.375rem + 1px);
 }
 
+/* Platform cards size themselves from their content; illustrations keep a
+ * horizontal frame below the variable-height module header. */
+.platform-card {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.platform-pair [data-slot='card'] + [data-slot='card'] {
+  border-top: 1px solid var(--border);
+}
+
+@media (width >= 64rem) {
+  .platform-pair [data-slot='card'] + [data-slot='card'] {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
+}
+
+/* Keep the whole pinned pair readable beneath the existing sticky navigation. */
+@media (width >= 64rem) and (height >= 56rem) and (prefers-reduced-motion: no-preference) {
+  .platform-pair {
+    position: sticky;
+    top: 11.75rem;
+  }
+}
+
 /* Seven tiles: the lead spans two columns. Each shared edge has one owner. */
 .bento-group > [data-slot='card'] {
   border-top: 1px solid var(--border);

@@ -52,12 +52,7 @@ export function SiteHeader() {
                     <p className="border-b border-border px-3 pt-2 pb-4 text-sm text-muted-foreground">
                       {menu.intro}
                     </p>
-                    <FluidGroup
-                      className={cn(
-                        'grid gap-1 pt-2',
-                        (id === 'platform' || id === 'developers') && 'grid-cols-2',
-                      )}
-                    >
+                    <FluidGroup className="grid grid-cols-2 gap-1 pt-2">
                       {Object.entries(menu.items).map(([itemId, { title, description }]) => (
                         <NavigationMenuLink key={itemId} asChild>
                           <Link
@@ -141,7 +136,7 @@ export function SiteHeader() {
               </details>
             ))}
             <FluidGroup axis="y" className="py-3">
-              {(['plans'] as const).map((action) => (
+              {(['plans', 'signIn'] as const).map((action) => (
                 <Link
                   key={action}
                   href={destinations.header.actions[action]}
