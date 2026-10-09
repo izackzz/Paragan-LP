@@ -104,15 +104,15 @@
 
 ### 8.6 — Bloco 03: Controle da operação e modelo comercial
 
-- [ ] `control-section.tsx` + catálogo `operations`: ID `operacao`, H2 “Controle da operação e modelo comercial”, identificador e descrição; preservar banda dark existente.
-- [ ] `control-section.tsx`: corpo 5/12 conteúdo + 7/12 demonstração; mobile com todos os módulos antes da mídia.
-- [ ] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.identity`; H3 “Identidade da operação”, parágrafo e lista Painel / Checkout / Domínio / Comunicação.
-- [ ] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.policies` e contexto Comercial; H3 “Condições comerciais”, condições por seller, taxas/comissões, padrão e exceções suportadas.
-- [ ] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.people` e contexto Operação; H3 “Governança da base e da equipe”, sellers, papéis/permissões, carteiras/responsabilidades e histórico de decisões.
-- [ ] `control-section.tsx`: demonstração de configuração/decisão com tarefa identificada, mídia e legenda; no máximo dois recortes complementares, sem nova seção de perspectivas redundante.
+- [x] `control-section.tsx` + catálogo `operations`: ID `operacao`, H2 “Controle da operação e modelo comercial”, identificador e descrição; preservar banda dark existente.
+- [x] `control-section.tsx`: corpo 5/12 conteúdo + 7/12 demonstração; mobile com todos os módulos antes da mídia.
+- [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.identity`; H3 “Identidade da operação”, parágrafo e lista Painel / Checkout / Domínio / Comunicação.
+- [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.policies` e contexto Comercial; H3 “Condições comerciais”, condições por seller, taxas/comissões, padrão e exceções suportadas.
+- [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.people` e contexto Operação; H3 “Governança da base e da equipe”, sellers, papéis/permissões, carteiras/responsabilidades e histórico de decisões.
+- [x] `control-section.tsx`: demonstração de configuração/decisão com tarefa identificada, mídia e legenda; no máximo dois recortes complementares, sem nova seção de perspectivas redundante.
 - [ ] `control-section.tsx`: mover contexto Financeiro para `finance-section.tsx`; não manter aba financeira neste bloco.
-- [ ] `control-section.tsx` + catálogo: expansível complementar com campanhas, rankings, premiações e outros recursos confirmados; nome e descrição por item.
-- [ ] `control-section.tsx`: CTA final para avaliar configuração da operação com origem preservada no contato.
+- [x] `control-section.tsx` + catálogo: expansível complementar com campanhas, rankings, premiações e outros recursos confirmados; nome e descrição por item.
+- [x] `control-section.tsx`: CTA final para avaliar configuração da operação com origem preservada no contato.
 
 ### 8.7 — Bloco 04: Gestão financeira
 
