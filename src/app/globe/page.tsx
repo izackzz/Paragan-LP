@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
 import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
 import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
+import { t } from '@/i18n';
 
 export default function GlobePage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,8 +108,7 @@ export default function GlobePage() {
     const pointerMove = (event: PointerEvent) => {
       if (event.pointerId !== activePointer) return;
       const distance =
-        (event.clientX - previousX) * Math.cos(tilt) +
-        (event.clientY - previousY) * Math.sin(tilt);
+        (event.clientX - previousX) * Math.cos(tilt) + (event.clientY - previousY) * Math.sin(tilt);
       globe.rotation.y += (distance / Math.max(container.clientWidth, 1)) * Math.PI * 2;
       previousX = event.clientX;
       previousY = event.clientY;
@@ -205,7 +205,7 @@ export default function GlobePage() {
       <div
         ref={containerRef}
         role="img"
-        aria-label="Globo inclinado a 23,5 graus com linhas de latitude e longitude; arraste para girar"
+        aria-label={t('accessibility.globe')}
         className="aspect-square w-full max-w-[min(90svh,800px)] cursor-grab touch-none select-none"
       />
     </main>

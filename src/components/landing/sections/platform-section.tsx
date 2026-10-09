@@ -14,102 +14,44 @@ import {
   IconWebhook,
 } from '@/components/assets/custom-icons';
 import { RenderAscii } from '@/components/ascii/render-ascii';
+import { content, formatIndex, t } from '@/i18n';
+import { presentation } from '@/config/site';
 
-const platformPairs = [
-  [
-    {
-      number: '01',
-      eyebrow: 'Identidade',
-      icon: IconSwatchBook,
-      title: 'Sua marca, em cada contato.',
-      description:
-        'Painel, checkout, domínio e comunicação com a sua identidade. Uma experiência que seus sellers reconhecem como sua.',
-      illustration: 'Sua identidade, em cada ponto de contato',
-    },
-    {
-      number: '02',
-      eyebrow: 'Regras comerciais',
-      icon: IconSettings,
-      title: 'Seu modelo vira regra.',
-      description:
-        'Configure taxas, comissões e condições por seller. Organize o padrão da operação e as particularidades de cada relacionamento.',
-      illustration: 'Regras que refletem o seu negócio',
-    },
-  ],
-  [
-    {
-      number: '03',
-      eyebrow: 'Pessoas',
-      icon: IconAdmins,
-      title: 'Cada pessoa, no seu papel.',
-      description:
-        'Organize equipe, carteiras e permissões. Delegue responsabilidades para cada pessoa atuar no contexto certo da operação.',
-      illustration: 'Pessoas, papéis e permissões',
-    },
-    {
-      number: '04',
-      eyebrow: 'Relacionamento',
-      icon: IconGift,
-      title: 'Uma base para cultivar.',
-      description:
-        'Estruture campanhas, rankings e premiações para seus sellers. Conecte o relacionamento com a base à sua estratégia comercial.',
-      illustration: 'Crescimento com reconhecimento',
-    },
-  ],
-  [
-    {
-      number: '05',
-      eyebrow: 'Adquirência',
-      icon: IconAcquirers,
-      title: 'Rotas com direção.',
-      description:
-        'Organize processadores, prioridades e regras de pagamento. Conduza cada operação conforme os métodos e parceiros habilitados.',
-      illustration: 'Uma política. Rotas elegíveis.',
-    },
-    {
-      number: '06',
-      eyebrow: 'Gestão financeira',
-      icon: IconReports,
-      title: 'Cada valor, no contexto.',
-      description:
-        'Acompanhe saldos disponíveis, pendentes e reservados. Consulte o extrato e supervisione solicitações de saque com fluxo de aprovação.',
-      illustration: 'Saldos, reservas e movimentações',
-    },
-  ],
-  [
-    {
-      number: '07',
-      eyebrow: 'Checkout',
-      icon: IconCheckout,
-      title: 'Da oferta ao pagamento.',
-      description:
-        'Conecte produtos, ofertas, cupons e adicionais em um checkout com a sua marca. Acompanhe os pedidos e a confirmação do pagamento.',
-      illustration: 'Checkout white label',
-    },
-    {
-      number: '08',
-      eyebrow: 'Integrações',
-      icon: IconWebhook,
-      title: 'Conecte a operação.',
-      description:
-        'Integre seus sistemas por API e webhooks. Consulte o histórico de entrega dos eventos para acompanhar o que acontece em cada conexão.',
-      illustration: 'API e webhooks: eventos no contexto',
-    },
-  ],
-] as const;
+const copy = content('capabilities');
+const moduleIcons = {
+  identity: IconSwatchBook,
+  policies: IconSettings,
+  people: IconAdmins,
+  engagement: IconGift,
+  acquiring: IconAcquirers,
+  finance: IconReports,
+  checkout: IconCheckout,
+  integrations: IconWebhook,
+};
+const modules = Object.entries(copy.items).map(([id, item], index) => ({
+  ...item,
+  id,
+  number: formatIndex(index + 1),
+  icon: moduleIcons[id as keyof typeof moduleIcons],
+}));
+const platformPairs = Array.from({ length: Math.ceil(modules.length / 2) }, (_, index) =>
+  modules.slice(index * 2, index * 2 + 2),
+);
 
 export function PlatformSection() {
   return (
     <section id="plataforma" className={cn(frame, section)}>
-      <SectionLabel number="01">A PLATAFORMA</SectionLabel>
+      <SectionLabel number={formatIndex(presentation.sections.capabilities)}>
+        {copy.label}
+      </SectionLabel>
       <Reveal>
         <div className={cn('relative isolate overflow-hidden', padding)}>
           <div className="relative z-10">
             <SectionHeading
-              eyebrow="Mais do que processar"
-              title="Uma marca própria merece"
-              muted="uma operação à altura."
-              description="Sua marca, suas regras e seu jeito de operar. Da configuração ao pagamento, oito frentes conectadas para conduzir o negócio com mais contexto."
+              eyebrow={copy.heading.eyebrow}
+              title={copy.heading.primary}
+              muted={copy.heading.secondary}
+              description={copy.heading.description}
               align="center"
             />
           </div>
@@ -118,15 +60,15 @@ export function PlatformSection() {
             aspect="16/9"
             model="halftone"
             cellSize={4}
-            className="pointer-events-none opacity-50 absolute -bottom-1/4 left-1/2 z-0 h-120 w-auto max-w-full -translate-x-1/2 text-accent"
+            className="pointer-events-none absolute -bottom-1/4 left-1/2 z-0 h-120 w-auto max-w-full -translate-x-1/2 text-accent opacity-50"
             fit="cover"
-            label="Shark"
+            label={t('artwork.shark')}
           />
         </div>
         <div className="platform-stack relative isolate grid gap-0">
           {platformPairs.map((pair, pairIndex) => (
             <div
-              key={pair[0].number}
+              key={pair[0].id}
               className="platform-pair border-t border-border bg-background"
               style={{ zIndex: pairIndex + 1 }}
             >
@@ -137,26 +79,29 @@ export function PlatformSection() {
               >
                 {pair.map((module) => (
                   <Card
-                    key={module.number}
+                    key={module.id}
                     className="platform-card rounded-none bg-background p-6 lg:p-12"
                   >
-                    <CardHeader className="min-w-0 h-fit gap-4 mask-b-from-75%">
-                      <h3 className="flex items-center gap-2 text-md text-accent-2 uppercase tracking-wide font-normal">
+                    <CardHeader className="h-fit min-w-0 gap-4 mask-b-from-75%">
+                      <h3 className="text-md flex items-center gap-2 font-normal tracking-wide text-accent-2 uppercase">
                         <module.icon
                           aria-hidden="true"
                           className="size-5 shrink-0"
                           strokeWidth={1.5}
                         />
                         <span>
-                          {module.number} / {module.eyebrow}
+                          {t('accessibility.itemIndex', {
+                            number: module.number,
+                            label: module.eyebrow,
+                          })}
                         </span>
                       </h3>
-                      <p className="text-2xl/7 font-display pb-6 text-muted-foreground">
+                      <p className="pb-6 font-display text-2xl/7 text-muted-foreground">
                         <span className="font-medium text-foreground">{module.title}</span>{' '}
                         {module.description}
                       </p>
                     </CardHeader>
-                    <CardContent className="p-0! h-fit min-h-0 min-w-0 overflow-hidden rounded-sm border">
+                    <CardContent className="h-fit min-h-0 min-w-0 overflow-hidden rounded-sm border p-0!">
                       {/* Arte reservada por módulo, sem números ou resultados simulados. */}
                       <ArtPlaceholder
                         width={1000}

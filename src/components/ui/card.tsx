@@ -14,6 +14,7 @@ import {
   type ReactNode,
 } from 'react';
 import { cn } from '@/lib/utils';
+import { t } from '@/i18n';
 import { useShape } from '@/lib/shape-context';
 import { SizeProvider, useSize, type SizeVariant } from '@/lib/size-context';
 import { type IconComponent } from '@/lib/icon-context';
@@ -470,7 +471,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             <button
               type="button"
               onClick={onDismiss}
-              aria-label="Dismiss"
+              aria-label={t('accessibility.dismiss')}
               className={cn(
                 'absolute top-2 right-2 z-30 flex h-7 w-7 cursor-pointer items-center justify-center text-muted-foreground transition-colors duration-80 outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus-ring',
                 // Over media the control needs its own ground, or the icon

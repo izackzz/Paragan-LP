@@ -4,60 +4,32 @@ import { SectionLabel, SectionHeading, ArtPlaceholder, ActionLink } from '../pri
 import { FluidGroup } from '../fluid-group';
 import { frame, section, padding, micro } from '../styles';
 import { cn } from '@/lib/utils';
+import { content, formatIndex, t } from '@/i18n';
+import { destinations, presentation } from '@/config/site';
 
-const contexts = [
-  {
-    id: 'operacao',
-    title: 'Operação',
-    heading: 'A visão de quem dirige o negócio.',
-    description:
-      'Acompanhe sellers, decisões de cadastro e prioridades operacionais. Tenha contexto para agir, não apenas uma lista de transações.',
-    items: [
-      'Base de sellers e status',
-      'Carteiras e permissões',
-      'Revisão e histórico de decisões',
-    ],
-  },
-  {
-    id: 'comercial',
-    title: 'Comercial',
-    heading: 'Sua estratégia vira configuração.',
-    description:
-      'Defina condições comerciais e organize as exceções da sua base. O relacionamento com cada seller pode ter regras claras, sem controles paralelos.',
-    items: [
-      'Condições por seller',
-      'Comissão fixa, percentual ou híbrida',
-      'Campanhas e reconhecimento',
-    ],
-  },
-  {
-    id: 'financeiro',
-    title: 'Financeiro',
-    heading: 'Entenda o caminho de cada valor.',
-    description:
-      'Conecte receita, taxas, saldos e reservas. Acompanhe solicitações de saque e a composição financeira da operação com informações no contexto certo.',
-    items: ['Disponível, pendente e reservado', 'Supervisão de saques', 'Visão por competência'],
-  },
-];
+const copy = content('operations');
+const contexts = Object.entries(copy.contexts).map(([id, context]) => ({ ...context, id }));
 
 export function ControlSection() {
   return (
     <section id="controle" className="dark scroll-mt-22 bg-background text-foreground">
       <div className={cn(frame, section)}>
-        <SectionLabel number="02">NO COMANDO</SectionLabel>
+        <SectionLabel number={formatIndex(presentation.sections.operations)}>
+          {copy.label}
+        </SectionLabel>
         <div className={padding}>
           <div className="flex flex-col justify-start">
             <SectionHeading
               align="center"
-              eyebrow="Decisões conectadas"
-              title="O controle não está em um botão."
-              muted="Está em toda a operação."
-              description="Marca, condições comerciais, pessoas e dinheiro. Diferentes perspectivas do mesmo negócio, com você no centro das decisões."
+              eyebrow={copy.heading.eyebrow}
+              title={copy.heading.primary}
+              muted={copy.heading.secondary}
+              description={copy.heading.description}
             />
           </div>
-          <Tabs defaultValue="operacao" className="mt-14">
+          <Tabs defaultValue={contexts[0].id} className="mt-14">
             <TabsList
-              aria-label="Perspectivas da operação"
+              aria-label={t('accessibility.contextTabs')}
               className={cn('mx-auto mb-7 flex w-full max-w-full p-1 md:w-fit')}
             >
               {contexts.map((context) => (
@@ -76,23 +48,27 @@ export function ControlSection() {
                 className="grid overflow-hidden rounded-xl border border-border md:grid-cols-2"
               >
                 <div className="px-6 py-8 xl:px-8 xl:py-11">
-                  <p className={cn(micro, 'text-brand')}>GATEWAY ADMIN / {context.title}</p>
+                  <p className={cn(micro, 'text-brand')}>
+                    {t('operations.contextLabel', { context: context.title })}
+                  </p>
                   <h3 className="my-5 text-3xl leading-tight tracking-tighter">
                     {context.heading}
                   </h3>
                   <p className="text-sm leading-7 text-muted-foreground">{context.description}</p>
                   <FluidGroup axis="y" className="my-7">
-                    {context.items.map((item, index) => (
+                    {Object.entries(context.items).map(([id, item], index) => (
                       <p
-                        key={item}
+                        key={id}
                         className="flex items-center gap-3.5 border-b border-border px-2 py-3.5 text-xs"
                       >
-                        <span className={cn(micro, 'text-brand')}>0{index + 1}</span>
+                        <span className={cn(micro, 'text-brand')}>{formatIndex(index + 1)}</span>
                         {item}
                       </p>
                     ))}
                   </FluidGroup>
-                  <ActionLink href="#contato" className='w-full'>Explorar minha operação</ActionLink>
+                  <ActionLink href={destinations.contact} className="w-full">
+                    {t('actions.explore')}
+                  </ActionLink>
                 </div>
                 <div className="flex min-w-0 items-center border-t border-border bg-card p-6 md:border-t-0 md:border-l md:py-9 [&_figure]:w-full">
                   {/* PRINT CONTROLE (1000×850): capturar uma tela real para cada aba: Operação =
@@ -100,12 +76,7 @@ export function ControlSection() {
               Financeiro = visão consolidada com saldos/reserva. Tema escuro, recorte frontal,
               um detalhe em destaque sem falsear capacidades. Todo dado de demo identificado.
               A imagem muda por aba; não animar valores financeiros nem simular sucesso. */}
-                  <ArtPlaceholder
-                    width={1000}
-                    height={850}
-                    label={`Visão ${context.title.toLowerCase()} do gateway`}
-                    dark
-                  />
+                  <ArtPlaceholder width={1000} height={850} label={context.illustration} dark />
                 </div>
               </TabPanel>
             ))}
