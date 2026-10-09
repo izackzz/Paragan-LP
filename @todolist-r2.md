@@ -145,12 +145,12 @@
 
 ### 8.10 — Bloco 07: Confiança operacional
 
-- [ ] `scale-section.tsx` + catálogo `reliability`: ID `estrutura`, H2 “Confiança operacional”, identificador e descrição; reutilizar seção existente sem nova linguagem visual.
-- [ ] `scale-section.tsx`: quatro pilares em 2×2 desktop e empilhados mobile: Separação entre operações / Integridade financeira / Diagnóstico e recuperação / Sustentação.
-- [ ] `scale-section.tsx` + catálogo: cada pilar com H3, descrição, informação específica e referência; reaproveitar isolamento, consistência e visibilidade existentes.
-- [ ] `scale-section.tsx` + catálogo: biblioteca em duas colunas com Documentação / Sandbox / Demonstrações / Relatórios publicáveis / Informações operacionais; tipo, nome, descrição, versão/data quando existente e acesso.
-- [ ] `src/config/site.ts` + `scale-section.tsx`: links e estados de evidências configurados; recursos pendentes não apresentados como publicados nem acessos falsos.
-- [ ] `scale-section.tsx` + catálogo: bloco compacto de empresa, time/responsáveis, manutenção e canal de avaliação técnica; dados desconhecidos como placeholders explícitos.
+- [x] `scale-section.tsx` + catálogo `reliability`: ID `estrutura`, H2 “Confiança operacional”, identificador e descrição; reutilizar seção existente sem nova linguagem visual.
+- [x] `scale-section.tsx`: quatro pilares em 2×2 desktop e empilhados mobile: Separação entre operações / Integridade financeira / Diagnóstico e recuperação / Sustentação.
+- [x] `scale-section.tsx` + catálogo: cada pilar com H3, descrição, informação específica e referência; reaproveitar isolamento, consistência e visibilidade existentes.
+- [x] `scale-section.tsx` + catálogo: biblioteca em duas colunas com Documentação / Sandbox / Demonstrações / Relatórios publicáveis / Informações operacionais; tipo, nome, descrição, versão/data quando existente e acesso.
+- [x] `src/config/site.ts` + `scale-section.tsx`: links e estados de evidências configurados; recursos pendentes não apresentados como publicados nem acessos falsos.
+- [x] `scale-section.tsx` + catálogo: bloco compacto de empresa, time/responsáveis, manutenção e canal de avaliação técnica; dados desconhecidos como placeholders explícitos.
 - [ ] `scale-section.tsx` + `site-footer.tsx`: referências institucionais somente com nome, vínculo/status, escopo e link verificável; não transformar badges atuais em certificações ou parcerias presumidas.
 
 ### 8.11 — Bloco 08: Contratação, implantação e migração
