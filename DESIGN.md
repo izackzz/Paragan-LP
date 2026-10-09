@@ -22,26 +22,26 @@ A linguagem é **editorial, técnica e modular**, com interações fluidas: uma 
 
 ## 2. Fontes de verdade
 
-| Assunto | Arquivo |
-| --- | --- |
-| Tokens, temas, frame, stripes, bordas brilhantes | `src/app/globals.css` |
-| Fontes locais, idioma, tema inicial, provider global | `src/app/layout.tsx` |
-| Composição da homepage | `src/app/page.tsx` |
-| Classes editoriais compartilhadas | `src/components/landing/styles.ts` |
-| Marca, CTA, índice, heading, imagem de demonstração | `src/components/landing/primitives.tsx` |
-| Header e footer | `src/components/landing/site-header.tsx`, `site-footer.tsx` |
-| Scroll e política de reduced motion | `src/components/landing/experience-provider.tsx` |
-| Entrada editorial | `src/components/landing/reveal.tsx` |
-| Grupos fluidos de conteúdo | `src/components/landing/fluid-group.tsx` |
-| Medição e resolução de proximidade | `src/hooks/use-fluid-hover.ts` |
-| Overlay fluido compartilhado | `src/components/fluid-hover-highlight.tsx` |
-| Tempos de spring | `src/lib/springs.ts` |
-| Primitivos composicionais | `src/components/ui/` |
-| Densidade, geometria, superfícies | `src/lib/size-context.tsx`, `shape-context.tsx`, `surface-context.tsx`, `surface-classes.ts` |
-| Conteúdo e tradução | `src/i18n/index.ts`, `src/i18n/messages/pt-BR.ts` |
-| Links, numeração e configuração de apresentação | `src/config/site.ts` |
-| Arte da marca e ícones próprios | `src/components/assets/` |
-| Renderização ASCII | `src/components/ascii/` |
+| Assunto                                              | Arquivo                                                                                      |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Tokens, temas, frame, stripes, bordas brilhantes     | `src/app/globals.css`                                                                        |
+| Fontes locais, idioma, tema inicial, provider global | `src/app/layout.tsx`                                                                         |
+| Composição da homepage                               | `src/app/page.tsx`                                                                           |
+| Classes editoriais compartilhadas                    | `src/components/landing/styles.ts`                                                           |
+| Marca, CTA, índice, heading, imagem de demonstração  | `src/components/landing/primitives.tsx`                                                      |
+| Header e footer                                      | `src/components/landing/site-header.tsx`, `site-footer.tsx`                                  |
+| Scroll e política de reduced motion                  | `src/components/landing/experience-provider.tsx`                                             |
+| Entrada editorial                                    | `src/components/landing/reveal.tsx`                                                          |
+| Grupos fluidos de conteúdo                           | `src/components/landing/fluid-group.tsx`                                                     |
+| Medição e resolução de proximidade                   | `src/hooks/use-fluid-hover.ts`                                                               |
+| Overlay fluido compartilhado                         | `src/components/fluid-hover-highlight.tsx`                                                   |
+| Tempos de spring                                     | `src/lib/springs.ts`                                                                         |
+| Primitivos composicionais                            | `src/components/ui/`                                                                         |
+| Densidade, geometria, superfícies                    | `src/lib/size-context.tsx`, `shape-context.tsx`, `surface-context.tsx`, `surface-classes.ts` |
+| Conteúdo e tradução                                  | `src/i18n/index.ts`, `src/i18n/messages/pt-BR.ts`                                            |
+| Links, numeração e configuração de apresentação      | `src/config/site.ts`                                                                         |
+| Arte da marca e ícones próprios                      | `src/components/assets/`                                                                     |
+| Renderização ASCII                                   | `src/components/ascii/`                                                                      |
 
 Em caso de diferença entre este registro e uma alteração posterior, conferir esses arquivos e atualizar o guia. Não copiar tokens para um segundo stylesheet.
 
@@ -55,19 +55,19 @@ Aplicar transparência no uso (`bg-card/40`, `bg-background/90`, `border-border/
 
 ### 3.2 Paleta principal atual
 
-| Token | Claro | Escuro | Papel |
-| --- | --- | --- | --- |
-| `background` | `oklch(0.985 0.004 305)` | `oklch(0.095 0.046 305)` | Canvas |
-| `foreground` | `oklch(0.22 0.028 305)` | `oklch(0.97 0.006 305)` | Informação principal |
-| `foreground-2` | `oklch(0.34 0.024 305)` | `oklch(0.84 0.012 305)` | Texto secundário forte |
-| `foreground-3` | `oklch(0.44 0.02 305)` | `oklch(0.68 0.016 305)` | Descrições e continuação de títulos |
-| `foreground-4` | `oklch(0.49 0.018 305)` | `oklch(0.56 0.016 305)` | Informação terciária |
-| `card` | `oklch(1 0 0)` | `oklch(0.175 0.038 305)` | Mídia e painéis |
-| `border` | `oklch(0.85 0.012 305)` | `oklch(0.34 0.028 305)` | Estrutura e separadores |
-| `input` | `oklch(0.62 0.018 305)` | `oklch(0.44 0.024 305)` | Token disponível; campos atuais usam `border-accent` |
-| `accent-1` / `brand` | `oklch(0.6299 0.2432 31)` | Igual | Marca, índices, foco |
-| `accent-2` | `oklch(0.7652 0.1752 62.57)` | Igual | Ênfase âmbar, rótulos |
-| `success` | `oklch(0.46 0.13 148)` | `oklch(0.74 0.17 148)` | Feedback positivo |
+| Token                | Claro                        | Escuro                   | Papel                                                |
+| -------------------- | ---------------------------- | ------------------------ | ---------------------------------------------------- |
+| `background`         | `oklch(0.985 0.004 305)`     | `oklch(0.095 0.046 305)` | Canvas                                               |
+| `foreground`         | `oklch(0.22 0.028 305)`      | `oklch(0.97 0.006 305)`  | Informação principal                                 |
+| `foreground-2`       | `oklch(0.34 0.024 305)`      | `oklch(0.84 0.012 305)`  | Texto secundário forte                               |
+| `foreground-3`       | `oklch(0.44 0.02 305)`       | `oklch(0.68 0.016 305)`  | Descrições e continuação de títulos                  |
+| `foreground-4`       | `oklch(0.49 0.018 305)`      | `oklch(0.56 0.016 305)`  | Informação terciária                                 |
+| `card`               | `oklch(1 0 0)`               | `oklch(0.175 0.038 305)` | Mídia e painéis                                      |
+| `border`             | `oklch(0.85 0.012 305)`      | `oklch(0.34 0.028 305)`  | Estrutura e separadores                              |
+| `input`              | `oklch(0.62 0.018 305)`      | `oklch(0.44 0.024 305)`  | Token disponível; campos atuais usam `border-accent` |
+| `accent-1` / `brand` | `oklch(0.6299 0.2432 31)`    | Igual                    | Marca, índices, foco                                 |
+| `accent-2`           | `oklch(0.7652 0.1752 62.57)` | Igual                    | Ênfase âmbar, rótulos                                |
+| `success`            | `oklch(0.46 0.13 148)`       | `oklch(0.74 0.17 148)`   | Feedback positivo                                    |
 
 `primary` e `destructive` usam atualmente a mesma fórmula: `color-mix(in oklab, var(--accent-1) 92%, black)`. Erro não pode ser comunicado apenas por essa cor: ela também representa a marca.
 
@@ -85,26 +85,26 @@ Aplicar transparência no uso (`bg-card/40`, `bg-background/90`, `border-border/
 
 ### 3.4 Estados cromáticos
 
-| Token | Claro | Escuro | Uso |
-| --- | --- | --- | --- |
-| `hover` | `oklch(0.22 0.028 305 / 0.06)` | `oklch(1 0 0 / 0.06)` | Preview transitório |
-| `active` | `oklch(0.22 0.028 305 / 0.1)` | `oklch(1 0 0 / 0.1)` | Ênfase de estado |
-| `selected` | `oklch(0.88 0.016 305)` | `oklch(0.4 0.02 305)` | Token de seleção disponível |
+| Token      | Claro                          | Escuro                | Uso                         |
+| ---------- | ------------------------------ | --------------------- | --------------------------- |
+| `hover`    | `oklch(0.22 0.028 305 / 0.06)` | `oklch(1 0 0 / 0.06)` | Preview transitório         |
+| `active`   | `oklch(0.22 0.028 305 / 0.1)`  | `oklch(1 0 0 / 0.1)`  | Ênfase de estado            |
+| `selected` | `oklch(0.88 0.016 305)`        | `oklch(0.4 0.02 305)` | Token de seleção disponível |
 
 Não assumir que todo componente selecionado usa `bg-selected`: `Card` utiliza `bg-active`; tabs utilizam um indicador de superfície; interesses do formulário utilizam variante primária e borda própria.
 
 ### 3.5 Escala de superfícies
 
-| Nível | Claro | Escuro |
-| --- | --- | --- |
-| 1 | `oklch(0.97 0.006 305)` | `oklch(0.135 0.042 305)` |
-| 2 | `card` | `card` |
-| 3 | `base-3-700` | `base-3-700` |
-| 4 | `surface-active` | `surface-active` |
-| 5 | `oklch(0.88 0.014 305)` | `oklch(0.3 0.027 305)` |
-| 6 | `oklch(0.85 0.016 305)` | `oklch(0.35 0.024 305)` |
-| 7 | `oklch(0.82 0.018 305)` | `oklch(0.4 0.02 305)` |
-| 8 | `oklch(0.79 0.02 305)` | `oklch(0.45 0.018 305)` |
+| Nível | Claro                   | Escuro                   |
+| ----- | ----------------------- | ------------------------ |
+| 1     | `oklch(0.97 0.006 305)` | `oklch(0.135 0.042 305)` |
+| 2     | `card`                  | `card`                   |
+| 3     | `base-3-700`            | `base-3-700`             |
+| 4     | `surface-active`        | `surface-active`         |
+| 5     | `oklch(0.88 0.014 305)` | `oklch(0.3 0.027 305)`   |
+| 6     | `oklch(0.85 0.016 305)` | `oklch(0.35 0.024 305)`  |
+| 7     | `oklch(0.82 0.018 305)` | `oklch(0.4 0.02 305)`    |
+| 8     | `oklch(0.79 0.02 305)`  | `oklch(0.45 0.018 305)`  |
 
 **Diretriz:** usar principalmente canvas, card e níveis baixos. Reservar níveis altos para diferenças funcionais de camada; não empilhar oito fundos numa seção. A escala escurece no claro e clareia no escuro: não interpretar o número como uma luminosidade universal.
 
@@ -128,11 +128,11 @@ Os tokens `chart-*` e `sidebar-*` existem, mas não definem a linguagem editoria
 
 ### 5.1 Famílias e pesos reais
 
-| Família | Token / classe | Pesos carregados | Aplicação |
-| --- | --- | --- | --- |
-| Neue Galano | `--font-galano` / `font-sans` | 400, 500, 600 | Corpo, labels, navegação |
-| Neue Faktum | `--font-faktum` / `font-display` | 400, 500 | Headings e identidade editorial |
-| Neue Rational Mix | `--font-rational-mix` / `font-mono` | Regular | Índices e informação técnica |
+| Família           | Token / classe                      | Pesos carregados | Aplicação                       |
+| ----------------- | ----------------------------------- | ---------------- | ------------------------------- |
+| Neue Galano       | `--font-galano` / `font-sans`       | 400, 500, 600    | Corpo, labels, navegação        |
+| Neue Faktum       | `--font-faktum` / `font-display`    | 400, 500         | Headings e identidade editorial |
+| Neue Rational Mix | `--font-rational-mix` / `font-mono` | Regular          | Índices e informação técnica    |
 
 Fontes WOFF2 locais em `public/fonts/`, carregadas por `next/font/local`. O documento usa `tabular-nums` e antialiasing. Recursos `ss01` e `ss02` são habilitados globalmente; headings/display também usam `ss03`.
 
@@ -142,20 +142,20 @@ Não pedir peso 700/800 à Faktum sem carregar o arquivo correspondente. Não su
 
 Valores em px abaixo pressupõem raiz de 16px; a implementação usa rem e utilitários.
 
-| Papel | Classes atuais | Resultado de referência |
-| --- | --- | --- |
-| Hero H1 | `text-3xl font-medium tracking-tight text-balance lg:text-5xl/12` | 30px mobile; 48px / 48px em `lg` |
-| Heading de seção | `text-3xl leading-tight font-medium tracking-tight md:text-4xl` | 30px → 36px |
-| Argumento de módulo plataforma | `font-display text-2xl/7` | 24px / 28px |
-| Título de painel | `text-3xl leading-tight tracking-tighter` | 30px |
-| Título de solução/formulário | `text-base` ou `text-lg font-medium` | 16–18px |
-| Título de card | `text-sm leading-snug font-medium tracking-tight` | 14px |
-| Descrição editorial | `text-sm leading-relaxed md:text-base` | 14px → 16px |
-| Descrição hero | `text-base leading-7 md:text-lg` | 16px → 18px |
-| Corpo de card / FAQ | `text-sm leading-relaxed` ou `leading-7` | 14px |
-| Micro editorial | `font-display text-xs leading-relaxed font-normal tracking-wider uppercase` | 12px |
-| Metadado compacto | `text-caption` | 11px; não usar para corpo longo |
-| Texto de controle da biblioteca | `text-control` | 13px |
+| Papel                           | Classes atuais                                                              | Resultado de referência          |
+| ------------------------------- | --------------------------------------------------------------------------- | -------------------------------- |
+| Hero H1                         | `text-3xl font-medium tracking-tight text-balance lg:text-5xl/12`           | 30px mobile; 48px / 48px em `lg` |
+| Heading de seção                | `text-3xl leading-tight font-medium tracking-tight md:text-4xl`             | 30px → 36px                      |
+| Argumento de módulo plataforma  | `font-display text-2xl/7`                                                   | 24px / 28px                      |
+| Título de painel                | `text-3xl leading-tight tracking-tighter`                                   | 30px                             |
+| Título de solução/formulário    | `text-base` ou `text-lg font-medium`                                        | 16–18px                          |
+| Título de card                  | `text-sm leading-snug font-medium tracking-tight`                           | 14px                             |
+| Descrição editorial             | `text-sm leading-relaxed md:text-base`                                      | 14px → 16px                      |
+| Descrição hero                  | `text-base leading-7 md:text-lg`                                            | 16px → 18px                      |
+| Corpo de card / FAQ             | `text-sm leading-relaxed` ou `leading-7`                                    | 14px                             |
+| Micro editorial                 | `font-display text-xs leading-relaxed font-normal tracking-wider uppercase` | 12px                             |
+| Metadado compacto               | `text-caption`                                                              | 11px; não usar para corpo longo  |
+| Texto de controle da biblioteca | `text-control`                                                              | 13px                             |
 
 ### 5.3 Hierarquia de conteúdo
 
@@ -174,11 +174,11 @@ Hero: título em duas linhas e descrição limitada a `max-w-2xl`. `SectionHeadi
 
 `landing-frame` é a unidade de alinhamento de header, seções e footer:
 
-| Viewport | Largura do frame | Margem externa por lado |
-| --- | --- | --- |
-| Base | `calc(100% - 1.5rem)` | 12px |
-| ≥ 48rem (`md`) | `calc(100% - 2.5rem)` | 20px |
-| ≥ 80rem (`xl`) | `calc(100% - 5rem)` | 40px |
+| Viewport       | Largura do frame      | Margem externa por lado |
+| -------------- | --------------------- | ----------------------- |
+| Base           | `calc(100% - 1.5rem)` | 12px                    |
+| ≥ 48rem (`md`) | `calc(100% - 2.5rem)` | 20px                    |
+| ≥ 80rem (`xl`) | `calc(100% - 5rem)`   | 40px                    |
 
 Largura máxima **75rem / 1200px**, centralizada, com bordas laterais de 1px. Acima do limite, as margens crescem simetricamente.
 
@@ -188,37 +188,42 @@ As faixas `.landing-side-stripes` são fixas, sem eventos de ponteiro, `z-60`, e
 
 `padding` em `landing/styles.ts`:
 
-| Faixa | Horizontal | Superior | Inferior |
-| --- | --- | --- | --- |
-| Base | 20px (`px-5`) | 48px | 48px |
-| `md` | 28px (`px-7`) | 64px | 64px |
-| `xl` | 40px (`px-10`) | 88px (`pt-22`) | 72px (`pb-18`) |
+| Faixa | Horizontal     | Superior       | Inferior       |
+| ----- | -------------- | -------------- | -------------- |
+| Base  | 20px (`px-5`)  | 48px           | 48px           |
+| `md`  | 28px (`px-7`)  | 64px           | 64px           |
+| `xl`  | 40px (`px-10`) | 88px (`pt-22`) | 72px (`pb-18`) |
 
 Existem módulos que usam `p-6 md:p-8` (24 → 32px), mídia `md:p-10` (40px) e plataforma `p-6 lg:p-12` (24 → 48px). Essas variações pertencem ao tipo de bloco, não autorizam espaçamento aleatório.
 
 ### 6.3 Escala operacional de espaços
 
-| Espaço | Uso típico |
-| --- | --- |
-| 4–8px | Ícone/label, opções compactas, CTAs irmãos |
-| 12–16px | Grupos internos, passos, relações próximas |
-| 20px | Campos de formulário; separação heading/descrição |
-| 24px | Padding base de painéis; eyebrow/título |
-| 28–32px | Conteúdo desktop intermediário |
-| 40–48px | Mídia e módulos de demonstração |
+| Espaço  | Uso típico                                           |
+| ------- | ---------------------------------------------------- |
+| 4–8px   | Ícone/label, opções compactas, CTAs irmãos           |
+| 12–16px | Grupos internos, passos, relações próximas           |
+| 20px    | Campos de formulário; separação heading/descrição    |
+| 24px    | Padding base de painéis; eyebrow/título              |
+| 28–32px | Conteúdo desktop intermediário                       |
+| 40–48px | Mídia e módulos de demonstração                      |
 | 56–64px | Heading até um conjunto principal; respiro editorial |
-| 72–88px | Intervalo de seção em desktop amplo |
+| 72–88px | Intervalo de seção em desktop amplo                  |
 
 ### 6.4 Grades e proporções
 
 - Cards conectados: `gap-0`, linha compartilhada, borda externa da seção.
-- Três benefícios: uma coluna no mobile, três em `md`.
+- Três benefícios: uma coluna no mobile, duas em `md`, três em `xl`.
 - Conteúdo + mídia: grade de três colunas em `md`, texto 1/3 e mídia 2/3.
 - Soluções: mídia 2/3, texto 1/3, alternância de lado em desktop.
-- FAQ: duas colunas em `md`.
-- Contato: duas colunas em `lg`.
-- Plataforma: pares em duas colunas apenas em `lg`; uma coluna abaixo disso.
-- Implantação: 1 coluna → 2 em `md` → 4 em `xl`.
+- FAQ: grid de 12 colunas em `md`, com proporção 4:8.
+- Contato: grid de 12 colunas em `lg`, com proporção 5:7.
+- Cenários e módulos de três itens: 1 coluna → 2 em `md` → 3 em `xl`.
+- Jornadas e faixas de quatro itens: 1 coluna → 2 em `md` → 4 em `xl`.
+- Operação e contato: conteúdo 5/12 e demonstração/formulário 7/12 em `lg`.
+- Financeiro: demonstração 7/12 e composição 5/12 em `lg`.
+- Adquirência e FAQ: introdução 4/12 e matriz/perguntas 8/12.
+- Implantação: entrega e composição comercial em duas colunas; etapas verticais em duas abas.
+- Composições e matriz usam listas semânticas `dl`, com campos lado a lado a partir de `md` e empilhados no mobile.
 
 Não fixar altura de cartões editoriais para compensar textos diferentes. A plataforma usa linhas `auto auto`; os módulos se dimensionam pelo conteúdo e preservam a mídia horizontal abaixo do header.
 
@@ -226,17 +231,17 @@ Não fixar altura de cartões editoriais para compensar textos diferentes. A pla
 
 A landing é **arejada no macro e precisa no micro**. Não confundir texto de 14px com falta de espaço.
 
-| Contexto | Densidade / regra |
-| --- | --- |
-| Hero | Poucos elementos, grande respiro, dois CTAs no máximo |
-| Heading de seção | Um argumento, uma continuação e uma descrição opcional |
-| Card editorial | 20–32px de padding, título 14px, descrição 14px |
-| Módulo plataforma | 24–48px, argumento 24px, mídia larga |
-| Lista de benefícios | Linhas separadas, padding vertical 14–20px |
-| Navegação | Links 14px; alvo principal ≥ 44px |
-| FAQ | Trigger ≥ 64px; resposta 14px / 28px |
-| Formulário | Gap 20px entre campos; 8px label/campo; campo 44px |
-| Footer | Links 14px em alvos ≥ 44px; metadados 12px |
+| Contexto            | Densidade / regra                                      |
+| ------------------- | ------------------------------------------------------ |
+| Hero                | Poucos elementos, grande respiro, dois CTAs no máximo  |
+| Heading de seção    | Um argumento, uma continuação e uma descrição opcional |
+| Card editorial      | 20–32px de padding, título 14px, descrição 14px        |
+| Módulo plataforma   | 24–48px, argumento 24px, mídia larga                   |
+| Lista de benefícios | Linhas separadas, padding vertical 14–20px             |
+| Navegação           | Links 14px; alvo principal ≥ 44px                      |
+| FAQ                 | Trigger ≥ 64px; resposta 14px / 28px                   |
+| Formulário          | Gap 20px entre campos; 8px label/campo; campo 44px     |
+| Footer              | Links 14px em alvos ≥ 44px; metadados 12px             |
 
 **Atual na biblioteca:** `SizeProvider` oferece `default` e `compact`. Default: controle 36px, texto 13px, ícone 16px, gap 8px. Compact: controle 28px, texto 12px, ícone 14px, gap 4px. Essa é a escala dos primitivos, não a altura desejada para todos os alvos públicos da landing; o formulário e a navegação ampliam controles explicitamente.
 
@@ -253,26 +258,26 @@ A landing é **arejada no macro e precisa no micro**. Não confundir texto de 14
 - Em grades alternadas, ajustar `border-l`, `border-r` e `order` em conjunto.
 - Não usar `divide-*` sem verificar as bordas que os componentes já desenham.
 
-`CardGroup` suprime alguns divisores junto ao item hovered/selected. A plataforma usa regras próprias em `.platform-pair` para dividir os módulos por viewport. `.bento-group` tem regras disponíveis para sete tiles, mas não é a composição da plataforma atual: não tratá-la como grade obrigatória da homepage.
+`CardGroup` suprime alguns divisores junto ao item hovered/selected. `.bento-group` tem regras disponíveis para sete tiles, mas não é a composição da homepage atual: não tratá-la como grade obrigatória. O antigo stack `.platform-pair` foi retirado após distribuir os módulos entre as seções correspondentes.
 
 ### 8.2 Raios reais
 
 Base `--radius: 0.625rem` (10px):
 
-| Token / classe | Raio |
-| --- | --- |
-| `rounded-sm` | 6px |
-| `rounded-md` | 8px |
-| `rounded-input` | 8px fixos |
-| `rounded-lg` | 10px |
-| `rounded-xl` | 14px |
-| `rounded-2xl` | 18px |
-| `rounded-3xl` | 22px |
-| `rounded-4xl` | 26px |
-| `rounded-pill` | 20px fixos |
-| `rounded-pill-focus` | 22px fixos |
-| `rounded-none` | 0 |
-| `rounded-full` | Cápsula/círculo conforme dimensões |
+| Token / classe       | Raio                               |
+| -------------------- | ---------------------------------- |
+| `rounded-sm`         | 6px                                |
+| `rounded-md`         | 8px                                |
+| `rounded-input`      | 8px fixos                          |
+| `rounded-lg`         | 10px                               |
+| `rounded-xl`         | 14px                               |
+| `rounded-2xl`        | 18px                               |
+| `rounded-3xl`        | 22px                               |
+| `rounded-4xl`        | 26px                               |
+| `rounded-pill`       | 20px fixos                         |
+| `rounded-pill-focus` | 22px fixos                         |
+| `rounded-none`       | 0                                  |
+| `rounded-full`       | Cápsula/círculo conforme dimensões |
 
 `rounded-xs` é utilizado em pequenas mídias e links focados; não é redefinido pelo mapa de raios do projeto. `rounded-pill` não é sinônimo de `rounded-full`.
 
@@ -301,19 +306,19 @@ No escuro, a escala é reconstruída com contornos inset, highlights de topo e d
 
 ## 9. Estados: contrato visual e funcional
 
-| Estado | Aparência / comportamento esperado |
-| --- | --- |
-| Repouso | Hierarquia legível, controle identificável sem depender de hover |
-| Hover | Preview discreto; overlay fluido ou mudança de superfície/cor |
-| Focus-visible | Ring de marca, alvo claro, nunca só mudança de texto |
-| Pressed | Feedback durante ativação; distinto de hover quando o componente precisar |
-| Selected | Estado persistente ligado à seleção real; não confundir com proximidade |
-| Open | Trigger mantém identificação de aberto; conteúdo associado e acessível |
-| Disabled | 50% de opacidade nos primitivos aplicáveis; impedir ativação e tab indevido |
-| Loading | Preservar dimensões, bloquear duplicidade, mostrar feedback e anunciar estado |
-| Invalid / error | Cor destrutiva + mensagem textual associada ao controle |
-| Success | Texto explícito; verde sem substituir a informação |
-| Read-only | Permitir seleção/cópia; não tratar como disabled |
+| Estado          | Aparência / comportamento esperado                                            |
+| --------------- | ----------------------------------------------------------------------------- |
+| Repouso         | Hierarquia legível, controle identificável sem depender de hover              |
+| Hover           | Preview discreto; overlay fluido ou mudança de superfície/cor                 |
+| Focus-visible   | Ring de marca, alvo claro, nunca só mudança de texto                          |
+| Pressed         | Feedback durante ativação; distinto de hover quando o componente precisar     |
+| Selected        | Estado persistente ligado à seleção real; não confundir com proximidade       |
+| Open            | Trigger mantém identificação de aberto; conteúdo associado e acessível        |
+| Disabled        | 50% de opacidade nos primitivos aplicáveis; impedir ativação e tab indevido   |
+| Loading         | Preservar dimensões, bloquear duplicidade, mostrar feedback e anunciar estado |
+| Invalid / error | Cor destrutiva + mensagem textual associada ao controle                       |
+| Success         | Texto explícito; verde sem substituir a informação                            |
+| Read-only       | Permitir seleção/cópia; não tratar como disabled                              |
 
 **Atual:** o `Button` tem prop `active`, porém suas variantes CVA não acrescentam estilos para `true`/`false`. Passar `active` sozinho não cria aparência pressed/selected. O formulário comunica seleção também por `variant`, classes e `aria-pressed`.
 
@@ -339,10 +344,10 @@ Um único preenchimento acompanha a escolha provável do usuário dentro de um g
 
 ### 10.3 Eixos e hit-testing
 
-| Eixo | Aplicação |
-| --- | --- |
-| `x` | Faixa horizontal de itens |
-| `y` | Menu/lista vertical |
+| Eixo | Aplicação                                                  |
+| ---- | ---------------------------------------------------------- |
+| `x`  | Faixa horizontal de itens                                  |
+| `y`  | Menu/lista vertical                                        |
 | `xy` | Grade com linhas e colunas; distancia euclidiana ao centro |
 
 O item que contém o ponteiro vence; fora dos itens, o centro mais próximo determina o preview. O hook considera scroll, bordas e escala de ancestrais transformados. Um preview pode continuar sobre o card próximo quando o cursor passa por um gap.
@@ -373,11 +378,11 @@ Touch não precisa reproduzir proximidade: conteúdo e ações devem estar dispo
 
 ### 11.1 Tokens de spring
 
-| Tier | Entrada | Bounce | Saída | Uso |
-| --- | --- | --- | --- | --- |
-| `spring.fast` | 80ms | 0 | 60ms | Highlight e resposta curta |
-| `spring.moderate` | 160ms | 0 | 120ms | Seleção, foco, painel curto |
-| `spring.slow` | 240ms | 0.12 | 160ms | Movimento mais amplo quando apropriado |
+| Tier              | Entrada | Bounce | Saída | Uso                                    |
+| ----------------- | ------- | ------ | ----- | -------------------------------------- |
+| `spring.fast`     | 80ms    | 0      | 60ms  | Highlight e resposta curta             |
+| `spring.moderate` | 160ms   | 0      | 120ms | Seleção, foco, painel curto            |
+| `spring.slow`     | 240ms   | 0.12   | 160ms | Movimento mais amplo quando apropriado |
 
 `FluidHoverHighlight` usa `fast` e fade de opacidade de 80ms. Reduced motion elimina deslocamento; mantém esse fade curto. CSS global também desativa animações e transições CSS sob a preferência reduzida.
 
@@ -417,7 +422,7 @@ Logo decorativo dentro de link nomeado: `aria-hidden`; link com nome acessível.
 
 Faixa de contexto: índice de marca + label + assinatura opcional em telas maiores. Micro uppercase, stripes, altura mínima 56px, padding vertical 16px, fundo `background/90`, blur discreto, borda inferior.
 
-`sticky top-20 z-20` fica abaixo do header de 80px. A numeração atual considera 10 seções após o hero. **Para outra página**, o índice e o total precisam corresponder à narrativa local; a implementação atual lê `presentation.sectionCount` globalmente e não possui prop de total por página. Não exibir “01 de 10” em uma página de três seções sem adaptar esse contrato.
+`sticky top-20 z-20` fica abaixo do header de 80px. A numeração considera os dez blocos incluindo o hero, que não recebeu faixa nova; as faixas vão de 02 (cenários) a 10 (contato). **Para outra página**, o índice e o total precisam corresponder à narrativa local; a implementação lê `presentation.sectionCount` globalmente e não possui prop de total por página. Não exibir “01 de 10” em uma página de três seções sem adaptar esse contrato.
 
 ### 12.3 SectionHeading
 
@@ -427,21 +432,21 @@ Alinhamento centrado para panorama/demonstração; esquerdo para conteúdo later
 
 ### 12.4 Button e ActionLink
 
-| Variante atual | Função visual |
-| --- | --- |
-| `primary` | Faktum + `shiny-01`; ação de marca |
-| `secondary` | `surface-1`, hover `surface-2`, contorno de muted |
-| `cta` | `shiny-02`; CTA principal do hero/formulário |
-| `cta-2` | Faktum + `shiny-secondary`; alternativa texturizada |
-| `ghost` | Transparente, hover `surface-1` |
+| Variante atual | Função visual                                       |
+| -------------- | --------------------------------------------------- |
+| `primary`      | Faktum + `shiny-01`; ação de marca                  |
+| `secondary`    | `surface-1`, hover `surface-2`, contorno de muted   |
+| `cta`          | `shiny-02`; CTA principal do hero/formulário        |
+| `cta-2`        | Faktum + `shiny-secondary`; alternativa texturizada |
+| `ghost`        | Transparente, hover `surface-1`                     |
 
-| Tamanho | Padding / texto / ícone |
-| --- | --- |
-| `xs` | 12×8px; 12px; ícone 12px |
-| `sm` | 16×12px; 14px; ícone 14px |
-| `md` | 20×12px; 16px; ícone 16px |
-| `lg` | 32×16px; 18px; ícone 20px |
-| `icon-sm` / `icon` / `icon-lg` | 32 / 36 / 40px quadrados |
+| Tamanho                        | Padding / texto / ícone   |
+| ------------------------------ | ------------------------- |
+| `xs`                           | 12×8px; 12px; ícone 12px  |
+| `sm`                           | 16×12px; 14px; ícone 14px |
+| `md`                           | 20×12px; 16px; ícone 16px |
+| `lg`                           | 32×16px; 18px; ícone 20px |
+| `icon-sm` / `icon` / `icon-lg` | 32 / 36 / 40px quadrados  |
 
 `ActionLink` compõe `Button asChild` com `Link`, variante primária ou secundária, seta diagonal e overrides de marketing: altura mínima 44px, raio 8px, padding 20×12px e texto 16px. Navegação usa link; ação de interface usa button. Não inserir um botão dentro de outro link/botão.
 
@@ -470,7 +475,7 @@ Há três camadas: indicador persistente de seleção, preview de hover e ring d
 
 Abas simples: label 14px, selecionado semibold, ícone ativo com stroke 2 em vez de 1.5. Abas ricas: eyebrow, título display 16px, descrição 12px, ícone de 20px. A ativação por foco está habilitada no primitivo.
 
-Hero: tabs ricas quadradas, altura mínima 112px, coluna no mobile e linha em `sm`. Controle: tabs compactas de contexto com alvo mínimo de 48px. Não converter tabs em links para páginas; tabs mudam contexto dentro da mesma área.
+Hero: tabs ricas quadradas, altura mínima 112px, coluna no mobile e linha em `sm`. Implantação: tabs compactas Ativação/Migração com alvo mínimo de 48px. O controle não usa mais tabs de perspectivas. Não converter tabs em links para páginas; tabs mudam contexto dentro da mesma área.
 
 ### 12.7 Accordion / FAQ
 
@@ -487,31 +492,30 @@ Não trocar por uma lista de divs com `onClick`. Preservar semântica de expans�
 - `Textarea`: mesma superfície, padding 14×10px, resize vertical, base mínima 80px; mensagem do contato mínima 128px.
 - `SelectTrigger`: base 36px, contato 44px; conteúdo em portal com superfície popover, borda, raio 8px, scroll vertical e feedback de opção focada.
 - `aria-invalid`: borda destrutiva e ring destrutivo a 20%; mensagem associada ainda precisa ser fornecida pelo formulário.
-- Interesses: grupo com borda, padding 4px, gap 4px, uma coluna → duas em `sm`; botões com `aria-pressed`, alvo ≥ 44px e texto que pode quebrar.
+- Cenário: select de escolha única entre lançamento, migração e incorporação; pode receber a seleção de um CTA anterior e permite alteração manual.
 
-**Atual:** o contato gera um briefing local com `FormData`, apresenta textarea read-only e permite copiar. Não envia lead a um backend. Há sucesso/falha de cópia via `role="status"`; não há fluxo de envio remoto ou estados de network implementados.
+**Atual:** o contato recebe cenário e origem permitidos pelos CTAs, com seleção única de cenário e escolha de e-mail ou WhatsApp. Apenas o canal escolhido é obrigatório; mensagem e qualificação complementar são opcionais. Gera um briefing local com `FormData`, apresenta textarea read-only e permite copiar, com estado pendente e sucesso/falha acessíveis. Não envia lead a um backend nem confirma recebimento; oferece acesso ao WhatsApp comercial sem incluir dados pessoais na URL. Erros são ligados aos campos e não descartam os valores.
 
 **Diretriz para formulários futuros:** loading perceptível, erro perto do campo, retry sem perda de dados, status acessível, validação coerente e confirmação apenas após sucesso real. Não reutilizar a mensagem “pronto para copiar” como prova de entrega comercial.
 
 ## 13. Organização da homepage
 
-Header global → hero → dez seções indexadas → footer:
+Header global → hero → nove seções indexadas → footer; dez blocos no total:
 
-| Ordem | Componente / ID | Padrão |
-| --- | --- | --- |
-| Hero | `HeroSection` / `inicio` | Heading + CTAs + frame com três previews + quatro atributos |
-| 01 | `PlatformSection` / `plataforma` | Heading central, ASCII discreto, quatro pares de módulos |
-| 02 | `ControlSection` / `controle` | Banda dark, tabs de contexto, texto e mídia |
-| 03 | `CheckoutSection` / `checkout` | Heading/CTA, mídia em painel, três passos |
-| 04 | `FinanceSection` / `financeiro` | Texto 1/3, mídia 2/3 e benefícios |
-| 05 | `IntegrationsSection` / `integracoes` | Texto/mídia 1:2, segunda linha alternada |
-| 06 | `ScaleSection` / `escala` | Argumento lateral, mídia e benefícios |
-| 07 | `SolutionsSection` / `solucoes` | Linhas com mídia 2/3 alternada e argumento 1/3 |
-| 08 | `LaunchSection` / `implantacao` | Heading e quatro etapas numeradas |
-| 09 | `FaqSection` / `perguntas` | Introdução lateral e accordion |
-| 10 | `ContactSection` / `contato` | Banda dark, argumento lateral e formulário |
+| Ordem | Componente / ID                       | Padrão                                                                                |
+| ----- | ------------------------------------- | ------------------------------------------------------------------------------------- |
+| 01    | `HeroSection` / `inicio`              | Primeira dobra preservada, três previews, dados demonstrativos e quatro capacidades   |
+| 02    | `SolutionsSection` / `solucoes`       | Três cenários de contratação e quatro papéis da operação                              |
+| 03    | `ControlSection` / `operacao`         | Banda dark, identidade/condições/governança, demonstração 5:7 e recursos expansíveis  |
+| 04    | `FinanceSection` / `financeiro`       | Demonstração 7:5, composição fictícia e três módulos financeiros                      |
+| 05    | `CheckoutSection` / `checkout`        | Prévia desktop/mobile, jornada de quatro etapas, recorrência e split                  |
+| 06    | `IntegrationsSection` / `integracoes` | Processamento 4:8, matriz provisória, API e webhooks                                  |
+| 07    | `ScaleSection` / `estrutura`          | Quatro pilares, biblioteca de evidências, responsáveis e referências condicionais     |
+| 08    | `LaunchSection` / `implantacao`       | Escopo/composição comercial, abas Ativação/Migração com cinco etapas e acompanhamento |
+| 09    | `FaqSection` / `perguntas`            | Introdução 4:8, oito perguntas no accordion e contato                                 |
+| 10    | `ContactSection` / `contato`          | Banda dark, contexto 5:7, canal preferido, cenário, mensagem opcional e resumo local  |
 
-A sequência conta uma história: promessa → capacidades → operação → venda → financeiro → integração → escala → público → implantação → dúvidas → conversa. **Uma página dedicada mantém a gramática, não precisa copiar as onze seções.**
+A sequência organiza promessa → cenário → operação → financeiro → experiência de venda → integração → confiança → contratação → dúvidas → contato. `SectionContent`, `ContentModule` e `StructuredRecords` compartilham a composição editorial; `ActionLink` isola a composição client do botão e link. Textos provisórios não equivalem a nova copy comercial aprovada. **Uma página dedicada mantém a gramática, não precisa copiar todos os blocos.**
 
 ## 14. Navegação, sticky e camadas
 
@@ -523,25 +527,25 @@ Menu desktop: introdução e links em duas colunas com fluid hover. Menu mobile:
 
 ### 14.2 Offsets e z-index
 
-| Elemento | Referência atual |
-| --- | --- |
-| Skip link focado | `z-100` |
-| Stripes laterais | `z-60`, sem pointer events |
-| Header / overlays de navegação | `z-50` |
-| SectionLabel | `z-20`, `top-20` / 80px |
-| Texto sobre arte | `z-10` |
-| Arte de fundo / highlight | `z-0` ou camada abaixo do conteúdo |
-| Overlay clicável de Card | `z-20`, ações `z-30` no contexto do card |
-| Âncoras editoriais | `scroll-mt-22` / 88px |
-| Texto lateral sticky | `top-47` / 188px |
+| Elemento                       | Referência atual                         |
+| ------------------------------ | ---------------------------------------- |
+| Skip link focado               | `z-100`                                  |
+| Stripes laterais               | `z-60`, sem pointer events               |
+| Header / overlays de navegação | `z-50`                                   |
+| SectionLabel                   | `z-20`, `top-20` / 80px                  |
+| Texto sobre arte               | `z-10`                                   |
+| Arte de fundo / highlight      | `z-0` ou camada abaixo do conteúdo       |
+| Overlay clicável de Card       | `z-20`, ações `z-30` no contexto do card |
+| Âncoras editoriais             | `scroll-mt-22` / 88px                    |
+| Texto lateral sticky           | `top-47` / 188px                         |
 
-Stack de plataforma sticky: habilitado somente em largura ≥ 64rem, altura ≥ 56rem e sem reduced motion; offset 11.75rem / 188px. Fora disso, os pares fluem normalmente.
+O antigo stack de pares sticky foi removido. Permanecem header, etiquetas e introduções laterais sticky nos contextos existentes.
 
 **Diretriz:** manter z-index no contexto local, sem adicionar `z-[9999]`. Sticky deve preservar leitura em telas baixas, zoom e conteúdo longo; não copiar um offset sem levar header e etiqueta em conta.
 
 ### 14.3 Footer
 
-Sempre dark. Faixa editorial striped; bloco de marca/CTA/ASCII e bloco de badges/redes; três grupos de links a partir de `md`; wordmark amplo em halftone com fallback SVG; faixa legal e retorno ao topo.
+Sempre dark. Faixa editorial striped; área Institucional / Plataforma / Desenvolvedores / Empresa e atendimento em uma coluna, duas em `md` e quatro em `xl`; wordmark amplo em halftone com fallback SVG; copyright e retorno ao topo. Redes configuradas ficam em Empresa e atendimento. Badges sem vínculo verificável não são exibidos; políticas e suporte separado aguardam recursos reais.
 
 Usar o mesmo footer nas páginas dedicadas. Não multiplicar menus com organização diferente por rota. Links sociais aceitam HTTPS válido; fallback atual leva a contato. Perfis configurados não equivalem a verificação editorial de titularidade.
 
@@ -553,16 +557,16 @@ Usar o mesmo footer nas páginas dedicadas. Não multiplicar menus com organiza�
 
 **Importante:** as cores e a fonte Poppins dos placeholders são parâmetros temporários do serviço externo, não tokens ou tipografia da Paragan.
 
-| Área | Proporção / resolução de referência |
-| --- | --- |
-| Hero | 1600×860 |
-| Módulo plataforma | 1000×500 |
-| Controle | 1000×850 |
-| Checkout | 1440×760 |
-| Financeiro | 1200×800 |
-| Integrações | 1200×720 e 1200×600 |
-| Escala | 1200×700 |
-| Soluções | 1200×640 |
+| Área              | Proporção / resolução de referência |
+| ----------------- | ----------------------------------- |
+| Hero              | 1600×860                            |
+| Módulo plataforma | 1000×500                            |
+| Controle          | 1000×850                            |
+| Checkout          | 1440×760                            |
+| Financeiro        | 1200×800                            |
+| Integrações       | 1200×720 e 1200×600                 |
+| Escala            | 1200×700                            |
+| Soluções          | 1200×640                            |
 
 Para trocar a arte: manter proporção e reserva de espaço, atualizar `sizes` quando a largura real mudar, usar captura frontal legível, dados fictícios explicitamente identificados e marca de demonstração consistente. Não mostrar PII, PAN, tokens, credenciais ou valores simulados como resultados reais.
 
@@ -576,7 +580,7 @@ Há ícones próprios e Hugeicons; a biblioteca também possui abstração `icon
 
 ### 15.3 ASCII / halftone
 
-`RenderAscii` e `MotionRenderAscii` são a camada expressiva da marca. A plataforma usa shark/halftone; footer usa clover e wordmark/halftone. Renderizadores possuem tratamento de visibilidade e preferência de movimento; manter essa infraestrutura em vez de iniciar loops independentes na página.
+`RenderAscii` e `MotionRenderAscii` são a camada expressiva da marca. O footer mantém wordmark/halftone; os assets clover e shark continuam disponíveis, sem a antiga seção independente de plataforma. Renderizadores possuem tratamento de visibilidade e preferência de movimento; manter essa infraestrutura em vez de iniciar loops independentes na página.
 
 Arte de fundo: sem eventos de ponteiro, contraste reduzido, conteúdo acima, sem alterar fluxo. Arte meramente decorativa deve ser escondida da árvore acessível; quando informativa, fornecer label. Wordmark animado tem fallback SVG visível enquanto a renderização não está pronta.
 
@@ -628,20 +632,20 @@ Antes de implementar código Next.js, ler os guias relevantes em `node_modules/n
 
 ### 18.2 Responsabilidade das pastas
 
-| Local | Responsabilidade |
-| --- | --- |
-| `src/app/<rota>/page.tsx` | Composição da página e metadata específica |
-| `src/app/layout.tsx` | Fontes, CSS global, tema inicial e experiência global |
-| `src/components/ui/` | Primitivos sem copy de negócio |
-| `src/components/landing/` | Shell e linguagem editorial compartilhada |
-| `src/components/landing/sections/` | Seções já existentes da homepage |
+| Local                                  | Responsabilidade                                                 |
+| -------------------------------------- | ---------------------------------------------------------------- |
+| `src/app/<rota>/page.tsx`              | Composição da página e metadata específica                       |
+| `src/app/layout.tsx`                   | Fontes, CSS global, tema inicial e experiência global            |
+| `src/components/ui/`                   | Primitivos sem copy de negócio                                   |
+| `src/components/landing/`              | Shell e linguagem editorial compartilhada                        |
+| `src/components/landing/sections/`     | Seções já existentes da homepage                                 |
 | `src/components/landing/pages/<tema>/` | Convenção proposta para seções exclusivas de uma página dedicada |
-| `src/components/assets/` | Marca e ícones reutilizáveis |
-| `src/hooks/` | Interações reutilizáveis, sem copy |
-| `src/lib/` | Helpers, tokens comportamentais e contextos |
-| `src/i18n/messages/pt-BR.ts` | Copy, labels, metadados e textos acessíveis |
-| `src/config/site.ts` | Destinos, índices, configuração e dados não textuais |
-| `public/` | Arquivos de mídia e fontes |
+| `src/components/assets/`               | Marca e ícones reutilizáveis                                     |
+| `src/hooks/`                           | Interações reutilizáveis, sem copy                               |
+| `src/lib/`                             | Helpers, tokens comportamentais e contextos                      |
+| `src/i18n/messages/pt-BR.ts`           | Copy, labels, metadados e textos acessíveis                      |
+| `src/config/site.ts`                   | Destinos, índices, configuração e dados não textuais             |
+| `public/`                              | Arquivos de mídia e fontes                                       |
 
 `landing/pages/<tema>/` é uma **diretriz de extensão**, não uma pasta já criada. Só extrair uma abstração compartilhada quando duas composições reais precisarem dela; não criar um framework de páginas para resolver uma rota isolada.
 
@@ -664,7 +668,7 @@ Toda página pública integrada deve manter:
 7. Conversão coerente: CTA ao contato ou fluxo específico efetivamente implementado.
 8. `SiteFooter` compartilhado.
 
-**Atenção aos anchors atuais:** `destinations.home = '#inicio'` e `contact = '#contato'` são relativos à rota atual; vários itens de header estão em `'#'`. Em páginas dedicadas, configurar destinos reais e usar `/#inicio`, `/#contato` ou âncoras locais existentes conforme a intenção. Não reutilizar os defaults de `Brand`/`ActionLink` sem confirmar que o destino existe naquela página.
+**Atenção aos anchors atuais:** `destinations.home = '#inicio'` e `contact = '#contato'` são relativos à rota atual; o header aponta a blocos existentes. Recursos externos ainda não publicados levam à área de avaliação correspondente. Em páginas dedicadas, configurar destinos reais e usar `/#inicio`, `/#contato` ou âncoras locais existentes conforme a intenção. Não reutilizar os defaults de `Brand`/`ActionLink` sem confirmar que o destino existe naquela página.
 
 Se marcar rota ativa, usar `aria-current="page"`; estado de hover ou menu aberto não significa rota ativa. Slugs e destinos vivem em config, nunca em traduções.
 
@@ -678,14 +682,14 @@ Criar namespace por página e subgrupos claros: hero, benefícios, demonstraçã
 
 Os exemplos abaixo são padrões de composição, **não rotas já implementadas**:
 
-| Página | Sequência recomendada |
-| --- | --- |
-| Produto: gateway / checkout / financeiro | Hero específico → demonstração → capacidades em grid → fluxo operacional → integração → FAQ → CTA |
-| Solução por público | Hero contextual → problema/resultado → mídia e argumentos alternados 2:1 → implantação → FAQ → CTA |
-| Integrações / API | Hero técnico → arquitetura em 1:2 → capacidades/eventos → exemplos técnicos legíveis → recursos reais → CTA |
-| Empresa / sobre | Hero editorial → posicionamento → princípios em grid → marca/arte → contato |
-| Contato dedicado | Hero curto → bloco de conversa/formulário → informação de próximos passos → footer |
-| Legal / privacidade | Header comum → título/metadata → texto em largura de leitura limitada → navegação de conteúdo opcional → footer |
+| Página                                   | Sequência recomendada                                                                                           |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Produto: gateway / checkout / financeiro | Hero específico → demonstração → capacidades em grid → fluxo operacional → integração → FAQ → CTA               |
+| Solução por público                      | Hero contextual → problema/resultado → mídia e argumentos alternados 2:1 → implantação → FAQ → CTA              |
+| Integrações / API                        | Hero técnico → arquitetura em 1:2 → capacidades/eventos → exemplos técnicos legíveis → recursos reais → CTA     |
+| Empresa / sobre                          | Hero editorial → posicionamento → princípios em grid → marca/arte → contato                                     |
+| Contato dedicado                         | Hero curto → bloco de conversa/formulário → informação de próximos passos → footer                              |
+| Legal / privacidade                      | Header comum → título/metadata → texto em largura de leitura limitada → navegação de conteúdo opcional → footer |
 
 Para página legal, manter leitura em `max-w-2xl` e títulos sem exagero; não colocar cada parágrafo dentro de um card nem aplicar reveal a cada item. Para exemplos de API, usar mono e contraste legível, sem secrets reais e sem transformar o conteúdo em dashboard.
 
@@ -732,10 +736,10 @@ Este checklist é critério de revisão, não registro de testes executados para
 
 Para não confundir documentação com implementação:
 
-- Vários links do header ainda usam `'#'`; não são páginas dedicadas prontas.
-- CTAs do hero são `Button` sem destino/handler no componente atual.
+- Links do header usam âncoras reais da homepage; páginas e referências externas não publicadas não são apresentadas como prontas.
+- CTAs do hero levam ao contato e à prévia; não há demonstração externa funcional declarada.
 - Demonstrações de produto ainda usam imagens de placeholder externas.
-- Formulário prepara briefing e cópia local; não executa envio remoto.
+- Formulário prepara briefing e cópia local, preserva cenário/origem e oferece encaminhamento manual; não executa envio remoto nem confirma recebimento.
 - Prop `active` de Button não define aparência por si só.
 - Prop `loading` de Button preserva espaço, mas ainda precisa de indicador visível/anúncio para um fluxo assíncrono completo.
 - Densidade/shape/surface da biblioteca não significam providers globais ativos no layout da landing.

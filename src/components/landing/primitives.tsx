@@ -2,16 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { AppLogo } from '@/components/assets/brand/logo';
 import { Frame } from '@/components/ui/frame';
 import { micro } from './styles';
-import { ArrowUpRight } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { t } from '@/i18n';
 import { destinations, presentation } from '@/config/site';
-import type { ContactOrigin, ContactScenario } from '@/config/site';
-import { ContactIntentLink } from './contact-intent-link';
+export { ActionLink } from './action-link';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
   return (
@@ -43,46 +39,10 @@ export function Brand({ className }: { className?: string }) {
   );
 }
 
-export function ActionLink({
-  children,
-  href = destinations.contact,
-  secondary = false,
-  className,
-  scenario,
-  origin,
-}: {
-  children: ReactNode;
-  href?: string;
-  secondary?: boolean;
-  className?: string;
-  scenario?: ContactScenario;
-  origin?: ContactOrigin;
-}) {
-  return (
-    <Button
-      asChild
-      variant={secondary ? 'secondary' : 'primary'}
-      size="lg"
-      className={cn(
-        'min-h-11 rounded-md px-5 py-3 text-base font-medium motion-reduce:transition-none',
-        className,
-      )}
-    >
-      {scenario || origin ? <ContactIntentLink scenario={scenario} origin={origin}>
-        {children}
-        <HugeiconsIcon icon={ArrowUpRight} size={15} aria-hidden="true" />
-      </ContactIntentLink> : <Link href={href}>
-        {children}
-        <HugeiconsIcon icon={ArrowUpRight} size={15} />
-      </Link>}
-    </Button>
-  );
-}
-
 export function SectionLabel({ number, children }: { number: string; children: ReactNode }) {
   return (
     <>
-      <span className='border-b border-border h-20 dots' />
+      <span className="dots h-20 border-b border-border" />
 
       <div
         className={cn(

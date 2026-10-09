@@ -110,15 +110,14 @@ function validate(group, prefix = '') {
 validate(messages);
 assert.throws(() => translator('missing.message'));
 assert.equal(translator('brand.copyright', { year: '2026' }), '© 2026 Paragan');
-const brief = translator('inquiry.brief.template', {
+const brief = translator('structure.contact.brief', {
   name: 'Teste {name}',
   company: 'Teste',
-  role: messages.inquiry.roles.founder,
-  email: 'teste@example.invalid',
-  phone: '0',
-  website: messages.inquiry.brief.missingWebsite,
-  interests: messages.inquiry.interests.launch,
-  source: messages.inquiry.sources.referral,
+  channel: messages.structure.contact.email,
+  contact: 'teste@example.invalid',
+  scenario: messages.structure.scenarios.items.launch.label,
+  origin: 'inicio',
+  extra: messages.structure.contact.none,
   message: '<script>test</script>',
 });
 assert.ok(brief.includes('Teste {name}'));
@@ -133,7 +132,7 @@ for (const [id, group] of Object.entries(messages.footer.groups)) {
   assert.deepEqual(Object.keys(group.items), Object.keys(destinations.footer.groups[id]));
 }
 assert.deepEqual(Object.keys(messages.footer.social), Object.keys(destinations.social));
-for (const destination of Object.values(destinations.social))
+for (const destination of Object.values(destinations.social).filter(Boolean))
   assert.equal(new URL(destination).protocol, 'https:');
 
 assert.deepEqual(failures, [], `Hardcoded copy/destinations:\n${failures.join('\n')}`);
