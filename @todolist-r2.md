@@ -75,32 +75,32 @@
 
 ### 8.3 — Cabeçalho
 
-- [ ] `site-header.tsx`: manter marca, navegação e utilidades/CTA em três zonas; tema e comportamento sticky preservados.
-- [ ] `site-header.tsx` + catálogo `navigation`: Plataforma / Soluções / Desenvolvedores / Empresa / Contratação; contratação como acesso direto a `#implantacao`, sem inventar pacotes.
-- [ ] `site-header.tsx` + catálogo `navigation.platform`: grade de duas colunas com visão geral, operação/sellers, condições comerciais, financeiro, checkout e multiadquirência/integrações; nome, descrição e destino por item.
-- [ ] `site-header.tsx` + catálogo `navigation.solutions`: três cenários em sequência; destinos próprios nos cards de lançamento, migração e incorporação.
-- [ ] `site-header.tsx` + catálogo `navigation.developers`: grade de duas colunas com documentação, API, webhooks e catálogo de integrações.
-- [ ] `site-header.tsx` + catálogo `navigation.company`: lista Sobre / Estrutura e confiança / Parceiros / Contato; conteúdos editoriais somente como acesso secundário configurado.
+- [x] `site-header.tsx`: manter marca, navegação e utilidades/CTA em três zonas; tema e comportamento sticky preservados.
+- [x] `site-header.tsx` + catálogo `navigation`: Plataforma / Soluções / Desenvolvedores / Empresa / Contratação; contratação como acesso direto a `#implantacao`, sem inventar pacotes.
+- [x] `site-header.tsx` + catálogo `navigation.platform`: grade de duas colunas com visão geral, operação/sellers, condições comerciais, financeiro, checkout e multiadquirência/integrações; nome, descrição e destino por item.
+- [x] `site-header.tsx` + catálogo `navigation.solutions`: três cenários em sequência; destinos próprios nos cards de lançamento, migração e incorporação.
+- [x] `site-header.tsx` + catálogo `navigation.developers`: grade de duas colunas com documentação, API, webhooks e catálogo de integrações.
+- [x] `site-header.tsx` + catálogo `navigation.company`: lista Sobre / Estrutura e confiança / Parceiros / Contato; conteúdos editoriais somente como acesso secundário configurado.
 - [ ] `src/config/site.ts` + `site-header.tsx`: trocar `#` por âncoras existentes; recurso externo não publicado leva ao bloco de avaliação correspondente, sem simular documentação pronta.
-- [ ] `site-header.tsx`: mobile com marca, toggle, navegação vertical e CTA final; fechar ao navegar, Escape devolve foco e alvos mínimos de 44px.
+- [x] `site-header.tsx`: mobile com marca, toggle, navegação vertical e CTA final; fechar ao navegar, Escape devolve foco e alvos mínimos de 44px.
 
 ### 8.4 — Bloco 01: Hero e prévia do produto
 
-- [ ] `hero-section.tsx`: preservar badge, H1, descrição, espaçamento, alinhamento, CTAs e aparência da primeira dobra.
-- [ ] `hero-section.tsx`: conectar CTA principal à avaliação comercial e secundário à prévia existente; não prometer demonstração externa inexistente.
-- [ ] `hero-section.tsx` + catálogo `introduction`: manter resumo complementar antes das tabs; legenda de introdução e descrição curta sem duplicar apresentação.
-- [ ] `hero-section.tsx`: preservar três tabs Seu gateway / Seus sellers / Seu checkout, respectivos kickers, descrições e painéis.
-- [ ] `hero-section.tsx`: cada painel com prévia, legenda e identificação visível de ambiente demonstrativo também no mobile.
-- [ ] `hero-section.tsx`: manter faixa White-label / Multi-tenancy / Multiadquirência / API e webhooks em 4 colunas desktop e 2 nas larguras menores.
+- [x] `hero-section.tsx`: preservar badge, H1, descrição, espaçamento, alinhamento, CTAs e aparência da primeira dobra.
+- [x] `hero-section.tsx`: conectar CTA principal à avaliação comercial e secundário à prévia existente; não prometer demonstração externa inexistente.
+- [x] `hero-section.tsx` + catálogo `introduction`: manter resumo complementar antes das tabs; legenda de introdução e descrição curta sem duplicar apresentação.
+- [x] `hero-section.tsx`: preservar três tabs Seu gateway / Seus sellers / Seu checkout, respectivos kickers, descrições e painéis.
+- [x] `hero-section.tsx`: cada painel com prévia, legenda e identificação visível de ambiente demonstrativo também no mobile.
+- [x] `hero-section.tsx`: manter faixa White-label / Multi-tenancy / Multiadquirência / API e webhooks em 4 colunas desktop e 2 nas larguras menores.
 
 ### 8.5 — Bloco 02: Cenários de contratação
 
-- [ ] `solutions-section.tsx` + catálogo `audience`: H2 “Cenários de contratação”, identificador e introdução; mover seção imediatamente após hero.
-- [ ] `solutions-section.tsx`: substituir linhas alternadas por três cards conectados Lançamento / Migração / Incorporação a uma plataforma; 1 → 2 → 3 colunas.
-- [ ] `solutions-section.tsx` + catálogo `audience.items`: cada card com identificador, H3, situação inicial, lista de escopo, requisito inicial e CTA contextual.
-- [ ] `solutions-section.tsx`: separar lançamento de migração hoje reunidos em `operators`; retirar produtos digitais como cenário independente e aproveitar texto pertinente no checkout.
-- [ ] `solutions-section.tsx`: IDs próprios nos três cenários e pré-seleção correspondente no contato via CTA.
-- [ ] `solutions-section.tsx`: faixa Paragan → Empresa contratante/operador → Sellers → Compradores; papel e relação por unidade, mesma ordem no mobile.
+- [x] `solutions-section.tsx` + catálogo `audience`: H2 “Cenários de contratação”, identificador e introdução; mover seção imediatamente após hero.
+- [x] `solutions-section.tsx`: substituir linhas alternadas por três cards conectados Lançamento / Migração / Incorporação a uma plataforma; 1 → 2 → 3 colunas.
+- [x] `solutions-section.tsx` + catálogo `audience.items`: cada card com identificador, H3, situação inicial, lista de escopo, requisito inicial e CTA contextual.
+- [x] `solutions-section.tsx`: separar lançamento de migração hoje reunidos em `operators`; retirar produtos digitais como cenário independente e aproveitar texto pertinente no checkout.
+- [x] `solutions-section.tsx`: IDs próprios nos três cenários e pré-seleção correspondente no contato via CTA.
+- [x] `solutions-section.tsx`: faixa Paragan → Empresa contratante/operador → Sellers → Compradores; papel e relação por unidade, mesma ordem no mobile.
 
 ### 8.6 — Bloco 03: Controle da operação e modelo comercial
 
