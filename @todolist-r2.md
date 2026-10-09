@@ -69,9 +69,9 @@
 ### 8.2 — Continuidade comercial
 
 - [x] `src/config/site.ts`: definir cenários estáveis `launch / migration / platforms` e origens dos CTAs; nenhuma informação pessoal na URL.
-- [ ] `src/components/landing/contact-intent-link.tsx`: compor link ao contato com cenário/origem em parâmetros permitidos; preservar navegação nativa por hash, teclado e histórico.
-- [ ] `contact-intent-link.tsx` + `contact-section.tsx`: sincronizar seleção ao carregar e ao acionar CTA na mesma página; validar parâmetros e manter cenário durante edição e tentativa novamente.
-- [ ] `contact-intent-link.tsx` + `launch-section.tsx`: preservar intenção comercial nos CTAs de implantação; CTA sem cenário não apagar escolha anterior.
+- [x] `src/components/landing/contact-intent-link.tsx`: compor link ao contato com cenário/origem em parâmetros permitidos; manter âncora com fallback nativo, teclado, foco e histórico sem recarregar a página.
+- [x] `contact-intent-link.tsx` + `contact-section.tsx`: sincronizar seleção ao carregar e ao acionar CTA na mesma página; validar parâmetros e manter cenário durante edição e tentativa novamente.
+- [x] `contact-intent-link.tsx` + `launch-section.tsx`: preservar intenção comercial nos CTAs de implantação; CTA sem cenário não apagar escolha anterior.
 
 ### 8.3 — Cabeçalho
 
@@ -176,18 +176,18 @@
 
 ### 8.13 — Bloco 10: Contato e qualificação
 
-- [ ] `contact-section.tsx`: contexto 5/12 + formulário 7/12, preservando banda dark e componentes de campos existentes.
-- [ ] `contact-section.tsx` + catálogo `inquiry`: H2 “Contato e qualificação”, identificador, objetivo, pontos Aderência da operação / Escopo e integrações / Próximos passos e informação de retorno sem prazo inventado.
-- [ ] `contact-section.tsx`: identificação Nome / Empresa ou projeto em dois campos desktop; labels visíveis e autocomplete preservado.
-- [ ] `contact-section.tsx`: seleção E-mail / WhatsApp e apenas campo correspondente obrigatório; validar formato e preservar valores ao alternar canal.
-- [ ] `contact-section.tsx`: cenário único Lançamento / Migração / Incorporação a uma plataforma; substituir interesses múltiplos e permitir alterar opção recebida do CTA.
-- [ ] `contact-section.tsx`: mensagem opcional e contexto de origem quando presente; retirar cargo, site e origem da aquisição como barreiras obrigatórias do primeiro contato.
-- [ ] `contact-section.tsx`: qualificação complementar opcional/expansível com origem da migração, sellers, volume, integrações, papel e momento de implantação; campos pertinentes ao cenário.
-- [ ] `contact-section.tsx` + catálogo: informação de privacidade aplicável, CTA e erros associados aos campos por `aria-describedby`/`aria-invalid`; não criar política ou link legal fictício.
-- [ ] `contact-section.tsx`: investigar canal real disponível para envio; sem integração confirmada, manter resumo/encaminhamento explicitamente provisório, sem mensagem de recebimento ou criação de backend neste escopo.
-- [ ] `contact-section.tsx`: estruturar estados idle/loading/error/success; envio pendente com indicador e bloqueio de duplicidade, erro preserva campos, sucesso somente após confirmação real.
-- [ ] `contact-section.tsx` + catálogo: estado pós-envio real com confirmação, próximo passo, canal e prazo somente se definido; alternativa disponível e status acessível.
-- [ ] `contact-section.tsx`: mobile contexto → identificação → canal → cenário → mensagem → envio → confirmação; qualificação complementar fora do fluxo obrigatório.
+- [x] `contact-section.tsx`: contexto 5/12 + formulário 7/12, preservando banda dark e componentes de campos existentes.
+- [x] `contact-section.tsx` + catálogo `inquiry`: H2 “Contato e qualificação”, identificador, objetivo, pontos Aderência da operação / Escopo e integrações / Próximos passos e informação de retorno sem prazo inventado.
+- [x] `contact-section.tsx`: identificação Nome / Empresa ou projeto em dois campos desktop; labels visíveis e autocomplete preservado.
+- [x] `contact-section.tsx`: seleção E-mail / WhatsApp e apenas campo correspondente obrigatório; validar formato e preservar valores ao alternar canal.
+- [x] `contact-section.tsx`: cenário único Lançamento / Migração / Incorporação a uma plataforma; substituir interesses múltiplos e permitir alterar opção recebida do CTA.
+- [x] `contact-section.tsx`: mensagem opcional e contexto de origem quando presente; retirar cargo, site e origem da aquisição como barreiras obrigatórias do primeiro contato.
+- [x] `contact-section.tsx`: qualificação complementar opcional/expansível com origem da migração, sellers, volume, integrações, papel e momento de implantação; campos pertinentes ao cenário.
+- [x] `contact-section.tsx` + catálogo: informação de privacidade aplicável, CTA e erros associados aos campos por `aria-describedby`/`aria-invalid`; não criar política ou link legal fictício.
+- [x] `contact-section.tsx`: investigar canal real disponível para envio; sem integração confirmada, manter resumo/encaminhamento explicitamente provisório, sem mensagem de recebimento ou criação de backend neste escopo.
+- [x] `contact-section.tsx`: resumo local com validação, pronto, cópia pendente/erro/sucesso e valores preservados; nenhum estado de envio remoto simulado.
+- [ ] `contact-section.tsx` + catálogo: integrar envio real quando houver canal definido; confirmação de recebimento, próximo passo, canal e prazo somente após sucesso real.
+- [x] `contact-section.tsx`: mobile contexto → identificação → canal → cenário → mensagem → preparação → resumo local; qualificação complementar fora do fluxo obrigatório.
 
 ### 8.14 — Rodapé
 

@@ -362,7 +362,7 @@ const messages = {
       extra: { platform: 'Plataforma de origem', sellers: 'Base de sellers', volume: 'Volume atual', integrations: 'Integrações necessárias', role: 'Papel no projeto', timing: 'Momento pretendido para implantação' },
       privacy: 'Este formulário prepara um resumo local. Nenhum dado é enviado automaticamente ou salvo pela página. Não inclua credenciais nem dados sensíveis.',
       submit: 'Preparar contato', invalid: 'Revise este campo antes de continuar.', phoneError: 'Informe um WhatsApp válido com DDD e, se necessário, código do país.',
-      ready: 'Resumo preparado. Ainda não foi enviado à Paragan.', next: 'Copie o resumo e compartilhe pelo canal comercial disponível para iniciar a avaliação.', channelSummary: 'Canal de retorno preferido', copy: 'Copiar resumo', copied: 'Resumo copiado. Nenhum dado foi enviado.', copyError: 'Não foi possível copiar. Selecione o resumo para copiar manualmente.',
+      ready: 'Resumo preparado. Ainda não foi enviado à Paragan.', next: 'Copie o resumo e compartilhe pelo canal comercial disponível para iniciar a avaliação.', channelSummary: 'Canal de retorno preferido', copy: 'Copiar resumo', copying: 'Copiando resumo…', copied: 'Resumo copiado. Nenhum dado foi enviado.', copyError: 'Não foi possível copiar. Selecione o resumo para copiar manualmente.',
       whatsappAction: 'Abrir conversa no WhatsApp', noEmail: 'O endereço comercial de e-mail será confirmado pela equipe; use o canal disponível para iniciar o contato.',
       brief: 'Nome: {name}\nEmpresa ou projeto: {company}\nCanal preferido: {channel}\nContato: {contact}\nCenário: {scenario}\nOrigem: {origin}\n\nContexto:\n{message}\n\nInformações complementares:\n{extra}',
       none: 'Não informado', summary: 'Resumo do contato',
