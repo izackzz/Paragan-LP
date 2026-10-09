@@ -10,6 +10,8 @@ import { ArrowUpRight } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { t } from '@/i18n';
 import { destinations, presentation } from '@/config/site';
+import type { ContactOrigin, ContactScenario } from '@/config/site';
+import { ContactIntentLink } from './contact-intent-link';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
   return (
@@ -46,11 +48,15 @@ export function ActionLink({
   href = destinations.contact,
   secondary = false,
   className,
+  scenario,
+  origin,
 }: {
   children: ReactNode;
   href?: string;
   secondary?: boolean;
   className?: string;
+  scenario?: ContactScenario;
+  origin?: ContactOrigin;
 }) {
   return (
     <Button
@@ -62,10 +68,13 @@ export function ActionLink({
         className,
       )}
     >
-      <Link href={href}>
+      {scenario || origin ? <ContactIntentLink scenario={scenario} origin={origin}>
+        {children}
+        <HugeiconsIcon icon={ArrowUpRight} size={15} aria-hidden="true" />
+      </ContactIntentLink> : <Link href={href}>
         {children}
         <HugeiconsIcon icon={ArrowUpRight} size={15} />
-      </Link>
+      </Link>}
     </Button>
   );
 }

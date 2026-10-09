@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { SiteHeader } from '@/components/landing/site-header';
 import { SiteFooter } from '@/components/landing/site-footer';
 import { HeroSection } from '@/components/landing/sections/hero-section';
-import { PlatformSection } from '@/components/landing/sections/platform-section';
 import { ControlSection } from '@/components/landing/sections/control-section';
 import { CheckoutSection } from '@/components/landing/sections/checkout-section';
 import { FinanceSection } from '@/components/landing/sections/finance-section';
@@ -29,13 +28,12 @@ export default function Home() {
       <SiteHeader />
       <main id="conteudo" tabIndex={-1}>
         <HeroSection />
-        <PlatformSection />
+        <SolutionsSection />
         <ControlSection />
-        <CheckoutSection />
         <FinanceSection />
+        <CheckoutSection />
         <IntegrationsSection />
         <ScaleSection />
-        <SolutionsSection />
         <LaunchSection />
         <FaqSection />
         <ContactSection />
