@@ -46,7 +46,13 @@ export function ControlSection() {
         </div>
         <div className="min-w-0 border-t border-border bg-card p-6 md:p-8 lg:col-span-7 lg:border-t-0">
           <p className={`${micro} mb-6 text-accent-2`}>{copy.task}</p>
-          <ArtPlaceholder width={1000} height={850} label={contexts.commercial.illustration} dark />
+          <ArtPlaceholder
+            width={1000}
+            height={850}
+            label={contexts.commercial.illustration}
+            alt={copy.alt}
+            dark
+          />
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{copy.caption}</p>
           <p className={`${micro} mt-3 text-muted-foreground`}>{t('structure.demo')}</p>
         </div>

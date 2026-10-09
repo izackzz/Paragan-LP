@@ -121,6 +121,7 @@ export function ArtPlaceholder({
   width,
   height,
   label,
+  alt,
   dark = true,
   priority = false,
   frame = false,
@@ -131,6 +132,7 @@ export function ArtPlaceholder({
   width: number;
   height: number;
   label: string;
+  alt?: string;
   dark?: boolean;
   priority?: boolean;
   frame?: boolean;
@@ -146,7 +148,7 @@ export function ArtPlaceholder({
       }
       width={width}
       height={height}
-      alt={src ? label : t('accessibility.placeholder', { label })}
+      alt={src ? (alt ?? label) : t('accessibility.placeholder', { label })}
       unoptimized={!src}
       preload={priority}
       sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"

@@ -4,13 +4,13 @@ const messages = {
     home: 'Paragan — início',
     signature: 'PARAGAN / WHITE LABEL',
     copyright: '© {year} Paragan',
-    promise: 'Um modelo de excelência.',
-    supportingPromise: 'Uma operação com a sua marca.',
+    promise: 'Plataforma white-label para operar pagamentos.',
+    supportingPromise: 'Gateway, sellers e vendas sob sua marca.',
   },
   metadata: {
-    title: 'Paragan — O modelo de excelência para fintechs com marca própria.',
+    title: 'Paragan — Plataforma white-label para operações de pagamentos',
     description:
-      'Infraestrutura white label para fintechs eficientes: gateway, checkout, sellers e gestão financeira sob a marca da sua operação.',
+      'Lance, migre ou incorpore uma operação de pagamentos com uma plataforma pronta: gestão de sellers, condições comerciais, financeiro e checkout sob sua marca.',
     brandTitle: 'Brand — Paragan',
     brandDescription: 'Trevo Paragan em animação ASCII.',
   },
@@ -37,10 +37,10 @@ const messages = {
     globe: 'Globo inclinado a 23,5 graus com linhas de latitude e longitude; arraste para girar',
   },
   actions: {
-    contact: 'ENTRAR EM CONTATO',
-    consult: 'FALAR COM UM ESPECIALISTA',
-    demo: 'VER EM AÇÃO',
-    explore: 'Explorar minha operação',
+    contact: 'Avaliar minha operação',
+    consult: 'Avaliar minha operação',
+    demo: 'Solicitar demonstração',
+    explore: 'Avaliar minhas configurações',
     checkout: 'Conhecer o checkout',
     controls: 'Conhecer os controles',
     integration: 'Avaliar integração',
@@ -51,15 +51,15 @@ const messages = {
   navigation: {
     platform: {
       title: 'Plataforma',
-      intro: 'Uma operação completa, com a sua marca.',
+      intro: 'Conheça o produto e as decisões que você pode administrar.',
       items: {
         gateway: {
           title: 'Visão geral da plataforma',
-          description: 'Identidade e condições comerciais da sua operação.',
+          description: 'Gateway, gestão de sellers e experiência de venda.',
         },
         sellers: {
           title: 'Gestão da operação e sellers',
-          description: 'Sua base, seus papéis e suas permissões.',
+          description: 'Cadastros, carteiras e permissões da equipe.',
         },
         conditions: {
           title: 'Condições comerciais',
@@ -75,61 +75,67 @@ const messages = {
         },
         acquiring: {
           title: 'Multiadquirência e integrações',
-          description: 'Processadores e regras de roteamento.',
+          description: 'Métodos, rotas elegíveis e conexão com sistemas.',
         },
       },
     },
     solutions: {
       title: 'Soluções',
-      intro: 'Infraestrutura para o seu modelo de negócio.',
+      intro: 'Escolha o ponto de partida da sua contratação.',
       items: {
         launch: {
           title: 'Lançamento de uma operação',
-          description: 'Transforme pagamentos em um negócio próprio.',
+          description: 'Comece com uma base de produto pronta para configurar.',
         },
         migration: {
           title: 'Migração de uma operação existente',
-          description: 'Evolua além dos limites da plataforma atual.',
+          description: 'Avalie dados, contratos e requisitos de transição.',
         },
         platforms: {
           title: 'Incorporação de pagamentos a uma plataforma',
-          description: 'Conecte participantes, produtos e pagamentos.',
+          description: 'Adicione pagamentos aos processos da sua plataforma.',
         },
       },
     },
     developers: {
       title: 'Desenvolvedores',
-      intro: 'Conecte seu ecossistema à Paragan.',
+      intro: 'Identifique os recursos técnicos necessários à sua integração.',
       items: {
         documentation: {
           title: 'Documentação',
-          description: 'Conceitos e guias de implementação.',
+          description: 'Solicite guias para avaliar a implementação.',
         },
-        api: { title: 'Referência da API', description: 'Recursos e contratos de integração.' },
-        webhooks: { title: 'Webhooks', description: 'Eventos que acompanham sua operação.' },
+        api: {
+          title: 'Referência da API',
+          description: 'Recursos, contratos e permissões de acesso.',
+        },
+        webhooks: { title: 'Webhooks', description: 'Eventos e acompanhamento das entregas.' },
         integrations: {
           title: 'Catálogo de integrações',
-          description: 'Conexões com os seus sistemas.',
+          description: 'Avalie provedores, métodos e requisitos de habilitação.',
         },
       },
     },
     company: {
       title: 'Empresa',
-      intro: 'Conheça quem está nos bastidores.',
+      intro: 'Conheça a Paragan e avalie como a operação é sustentada.',
       items: {
-        about: { title: 'Sobre a Paragan', description: 'Um modelo de excelência para fintechs.' },
+        about: {
+          title: 'Sobre a Paragan',
+          description: 'Produto e equipe responsáveis pela plataforma.',
+        },
         structure: {
           title: 'Estrutura e confiança operacional',
           description: 'Isolamento, registros e sustentação da operação.',
         },
-        partners: { title: 'Parceiros', description: 'Construa novas possibilidades conosco.' },
-        contact: { title: 'Contato', description: 'Vamos entender seu próximo passo.' },
+        partners: { title: 'Parceiros', description: 'Vínculos e escopos sujeitos a confirmação.' },
+        contact: { title: 'Contato', description: 'Avalie aderência, integrações e implantação.' },
       },
     },
   },
   footer: {
-    eyebrow: 'Paragan / Próximas conexões',
-    tagline: 'Sua marca. Seu próximo capítulo.',
+    eyebrow: 'Paragan / Plataforma white-label',
+    tagline: 'Produto, configuração e implantação para sua operação.',
     groups: {
       platform: {
         title: 'Plataforma',
@@ -153,10 +159,10 @@ const messages = {
       company: {
         title: 'Empresa e atendimento',
         items: {
-          about: 'Nosso modelo de excelência',
+          about: 'Sobre a Paragan',
           onboarding: 'Contratação e implantação',
           questions: 'Perguntas frequentes',
-          contact: 'Fale com a equipe',
+          contact: 'Contato',
         },
       },
     },
@@ -168,19 +174,22 @@ const messages = {
     },
   },
   introduction: {
-    eyebrow: 'White label para plataformas de vendas digitais',
-    heading: { primary: 'Sua plataforma. Sua marca', secondary: 'Você no controle da operação' },
+    eyebrow: 'Plataforma de pagamentos white-label',
+    heading: {
+      primary: 'Sua operação de pagamentos.',
+      secondary: 'Uma plataforma pronta, com sua marca.',
+    },
     description:
-      'Entendemos seu negócio para construir tudo, migração ou construção, com escala planejada e produtos que evoluem junto ao mercado',
+      'Para empresas que querem lançar, migrar ou incorporar pagamentos: receba uma base pronta de gateway, gestão de sellers e vendas. Configure a operação e defina a implantação com a Paragan.',
     supporting: {
       primary:
-        'Gateway, checkout, split, produtos, membros, e muito mais... Personalize com sua marca e concentre seu time no que realmente gera crescimento:',
-      emphasis: 'produto, clientes e escala.',
+        'Você administra sellers, condições comerciais e informações financeiras. Sua base organiza ofertas e acompanha vendas em um checkout conectado à operação.',
+      emphasis: 'Recursos e integrações definidos no escopo contratado.',
     },
-    previewLabel: 'PRÉVIA DO PRODUTO',
+    previewLabel: 'O QUE COMPÕE A PLATAFORMA',
     attributes: {
-      branding: 'White label',
-      tenancy: 'Multi-tenant',
+      branding: 'White-label',
+      tenancy: 'Operações separadas por tenant',
       acquiring: 'Multiadquirência',
       connectivity: 'API + Webhooks',
     },
@@ -188,142 +197,167 @@ const messages = {
       gateway: {
         label: 'Seu gateway',
         eyebrow: 'OPERAÇÃO',
-        description: 'Visão consolidada do negócio.',
-        image: 'Painel do gateway',
-        caption: 'Condições comerciais, sellers e financeiro. A operação vista de cima.',
+        description: 'Administração de sellers e condições.',
+        image: 'Painel do operador · captura a produzir',
+        alt: 'Painel do operador com base de sellers, status de cadastro e visão financeira da operação demonstrativa.',
+        caption:
+          'A perspectiva do operador reúne a base de sellers, os cadastros em revisão e as informações financeiras disponíveis.',
       },
       seller: {
         label: 'Seus sellers',
         eyebrow: 'GESTÃO DE BASE',
-        description: 'Vendas, produtos e recebimentos.',
-        image: 'Experiência do seller',
-        caption: 'Vendas, produtos e recebimentos. O dia a dia da sua base, conectado.',
+        description: 'Ofertas, vendas e recebimentos da base.',
+        image: 'Área do seller · captura a produzir',
+        alt: 'Área de um seller com lista de vendas, estados dos pedidos e saldos demonstrativos.',
+        caption:
+          'Na área do seller, sua base acompanha as próprias vendas, o estado dos pedidos e os recebimentos.',
       },
       checkout: {
         label: 'Seu checkout',
         eyebrow: 'PAGAMENTO',
-        description: 'Oferta e jornada com a sua marca.',
-        image: 'Checkout white label',
-        caption: 'Do produto à confirmação. Uma jornada de compra com a sua identidade.',
+        description: 'Pagamento da oferta pelo comprador.',
+        image: 'Checkout de uma oferta · captura a produzir',
+        alt: 'Checkout de uma oferta demonstrativa com identificação do produto, resumo da compra e métodos de pagamento habilitados.',
+        caption:
+          'O comprador encontra a oferta, o resumo da compra e os meios habilitados no checkout da sua operação.',
       },
     },
   },
   structure: {
-    demo: 'Ambiente demonstrativo · dados fictícios',
-    pending: 'Informações em preparação. Consulte a equipe para avaliar sua operação.',
-    details: 'Avaliar detalhes',
-    technical: 'Avaliação técnica',
-    preview: 'Prévia da plataforma',
+    demo: 'Espaço reservado à captura · exemplo fictício',
+    pending: 'Solicite à equipe o material correspondente ao fluxo que você quer avaliar.',
+    details: 'Consultar requisitos',
+    technical: 'Solicitar avaliação técnica',
+    preview: 'Solicitar demonstração',
     scenarios: {
-      label: 'Soluções',
-      title: 'Cenários de contratação',
+      label: 'Seu ponto de partida',
+      title: 'Três caminhos para contratar a mesma base',
       description:
-        'Cada operação tem seu ponto de partida. Identifique o cenário que corresponde ao seu projeto.',
+        'O produto é o mesmo; os requisitos de entrada mudam. Identifique se sua empresa quer começar uma operação, avaliar uma migração ou conectar pagamentos a uma plataforma existente.',
       items: {
         launch: {
           label: 'Lançamento',
-          title: 'Lançamento de uma operação',
+          title: 'Coloque sua operação em funcionamento',
           description:
-            'Para fundadores e operadores que querem lançar uma operação de pagamentos sob sua marca.',
+            'Comece com gateway, gestão de sellers e checkout existentes. A avaliação define as configurações, os parceiros e os fluxos necessários para iniciar sua operação.',
           scope: [
-            'Identidade e configuração da operação',
-            'Base de sellers e condições comerciais',
-            'Métodos e parceiros habilitados',
+            'Marca, domínios e acessos previstos',
+            'Cadastro de sellers e condições comerciais',
+            'Métodos e integrações a habilitar',
           ],
-          requirement: 'Requisito inicial: definir o modelo e os fluxos previstos.',
-          cta: 'Avaliar lançamento',
+          requirement:
+            'Para começar: informe quem sua operação atenderá e quais fluxos de pagamento precisa oferecer.',
+          cta: 'Avaliar meu lançamento',
         },
         migration: {
           label: 'Migração',
-          title: 'Migração de uma operação existente',
+          title: 'Avalie a troca de infraestrutura',
           description:
-            'Para quem quer deixar para trás uma plataforma limitada e evoluir a operação existente.',
+            'Sua empresa já opera pagamentos. Analise o que pode ser transferido, quais integrações precisam continuar e como validar a transição para a Paragan.',
           scope: [
-            'Diagnóstico da plataforma de origem',
-            'Escopo de dados e integrações',
-            'Validação da transição',
+            'Dados e restrições da plataforma de origem',
+            'Contratos, integrações e elegibilidade dos tokens',
+            'Ensaio e critérios de transição',
           ],
-          requirement: 'Requisito inicial: mapear a operação atual e as dependências.',
-          cta: 'Avaliar migração',
+          requirement:
+            'Para começar: identifique a plataforma atual. A portabilidade de dados e tokens depende da origem e dos parceiros.',
+          cta: 'Avaliar minha migração',
         },
         platforms: {
           label: 'Incorporação',
-          title: 'Incorporação a uma plataforma',
+          title: 'Adicione pagamentos à sua plataforma',
           description:
-            'Conecte sellers, condições comerciais e integrações ao ecossistema que você já construiu.',
+            'Sua empresa já conecta produtos, serviços ou participantes. Avalie como incorporar pagamentos e gestão de sellers aos processos que já existem.',
           scope: [
-            'Fluxos de pagamento da plataforma',
-            'API e webhooks',
-            'Experiência dos sellers e compradores',
+            'Fluxos de cobrança e acompanhamento',
+            'Conexões por API e webhooks',
+            'Papéis dos sellers e experiência de compra',
           ],
-          requirement: 'Requisito inicial: identificar os sistemas e fluxos a conectar.',
-          cta: 'Avaliar incorporação',
+          requirement:
+            'Para começar: indique os sistemas envolvidos e os processos que precisam trocar informações com os pagamentos.',
+          cta: 'Avaliar minha incorporação',
         },
       },
       roles: [
         {
           title: 'Paragan',
-          description: 'Base de produto e sustentação da plataforma para a empresa contratante.',
+          description:
+            'Fornece a plataforma e define com sua empresa a implantação e a sustentação contratadas.',
         },
         {
-          title: 'Empresa contratante / operador',
-          description: 'Conduz a operação, configura condições e administra sua base de sellers.',
+          title: 'Sua empresa / operador',
+          description:
+            'Contrata a Paragan, administra sellers e define as condições e responsabilidades da operação.',
         },
         {
           title: 'Sellers',
-          description: 'Organizam ofertas e acompanham vendas e recebimentos dos compradores.',
+          description:
+            'São os clientes da sua operação: organizam ofertas e acompanham vendas e recebimentos.',
         },
         {
           title: 'Compradores',
-          description: 'Acessam a oferta, realizam o pagamento e acompanham a compra.',
+          description:
+            'Pagam aos sellers pelo checkout e consultam a confirmação e o acesso à compra, quando aplicável.',
         },
       ],
     },
     operation: {
-      label: 'Operação',
-      title: 'Controle da operação e modelo comercial',
+      label: 'Decisões dentro da operação',
+      title: 'Defina condições e distribua responsabilidades na sua base',
       description:
-        'Sua marca, suas regras e seu jeito de operar. Diferentes perspectivas do mesmo negócio, com você no centro das decisões.',
-      identity: 'Identidade da operação',
-      identityItems: ['Painel', 'Checkout', 'Domínio', 'Comunicação'],
-      terms: 'Condições comerciais',
-      termsItems: [
-        'Condições por seller',
-        'Taxas e comissões',
-        'Configurações padrão e exceções suportadas',
+        'Configure as superfícies da sua marca, as condições dos sellers e os acessos da equipe. Cada decisão tem um recurso correspondente no produto, com permissões e limites definidos para quem executa a tarefa.',
+      identity: 'Sua identidade nas superfícies configuradas',
+      identityItems: [
+        'Painéis com identidade e tema da operação',
+        'Checkout com apresentação configurada',
+        'Domínios próprios mediante configuração de DNS e TLS',
+        'E-mails transacionais com remetente verificado',
       ],
-      governance: 'Governança da base e da equipe',
+      terms: 'Condições comerciais por seller',
+      termsItems: [
+        'Taxas conforme seller e meio de pagamento',
+        'Comissões fixas, percentuais ou híbridas',
+        'Padrões da operação e exceções configuradas',
+      ],
+      governance: 'Cada tarefa com acesso delimitado',
       governanceItems: [
-        'Gestão de sellers',
-        'Papéis e permissões',
-        'Carteiras e responsabilidades',
-        'Histórico de decisões',
+        'Cadastro, revisão e status de sellers',
+        'Permissões para consultar e executar ações',
+        'Carteiras atribuídas à equipe',
+        'Histórico das decisões de cadastro',
       ],
       task: 'Configuração das condições de um seller',
-      caption: 'Condições comerciais e decisões operacionais no contexto da sua base.',
-      complementary: 'Recursos complementares de relacionamento',
+      alt: 'Configuração comercial de um seller demonstrativo com condição aplicada, taxas, comissões e identificação do cadastro.',
+      caption:
+        'Na configuração comercial do seller, você consulta a condição aplicada e os parâmetros usados pela operação.',
+      complementary: 'Campanhas e reconhecimento da sua base',
       engagement: [
         {
-          title: 'Campanhas',
-          description: 'Conecte o relacionamento com a base à sua estratégia comercial.',
+          title: 'Campanhas por período',
+          description:
+            'Organize campanhas de ranking com período e premiação definidos para os sellers da sua operação.',
         },
         {
-          title: 'Rankings',
-          description: 'Organize o acompanhamento da base no contexto das campanhas.',
+          title: 'Posição e participação dos sellers',
+          description:
+            'Acompanhe a classificação na campanha e ofereça ao seller uma visão da própria posição, conforme a audiência configurada.',
         },
         {
-          title: 'Premiações',
-          description: 'Estruture reconhecimento para seus sellers conforme os recursos previstos.',
+          title: 'Premiações e níveis de reconhecimento',
+          description:
+            'Configure prêmios e acompanhe a jornada por faturamento acumulado. Campanhas e níveis são mecanismos distintos, habilitados pela operação.',
         },
       ],
     },
     finance: {
-      label: 'Financeiro',
-      title: 'Gestão financeira',
+      label: 'Valores ao longo da operação',
+      title: 'Diferencie receita, taxas e disponibilidade dos valores',
       description:
-        'Volume não é resultado. Enxergue taxas, receitas, reservas e recebimentos na mesma operação.',
+        'Consulte o que compõe os valores da operação e acompanhe os estados de saldo. Condições comerciais, custos registrados e reservas ajudam a interpretar os lançamentos; não são uma apuração de lucro líquido contábil.',
       example: 'Exemplo demonstrativo · composição de uma cobrança',
-      caption: 'Receita, taxas, saldos e reservas no mesmo contexto.',
+      alt: 'Composição ilustrativa de uma cobrança de R$ 100,00 com R$ 3,00 em taxas, R$ 2,00 de receita da operação, R$ 90,00 pendentes e R$ 5,00 reservados para o seller.',
+      caption:
+        'O exemplo separa a cobrança de R$ 100,00 em taxas, receita da operação e valores do seller, incluindo a parcela reservada.',
       composition: 'Composição do exemplo',
       fields: [
         { label: 'Valor da cobrança', value: 'R$ 100,00' },
@@ -332,212 +366,296 @@ const messages = {
         { label: 'Destinado ao seller', value: 'R$ 95,00, incluindo a reserva abaixo' },
         { label: 'Reserva do seller', value: 'R$ 5,00, parte dos R$ 95,00' },
         { label: 'Saldo pendente do seller', value: 'R$ 90,00' },
-        { label: 'Disponibilidade', value: 'Previsão conforme o processamento e a liquidação' },
+        {
+          label: 'Disponibilidade',
+          value:
+            'Saldo pendente até cumprir as condições de liberação; a reserva segue regra própria',
+        },
       ],
-      note: 'Exemplo fictício: taxas de R$ 3,00 + receita de R$ 2,00 + saldo pendente de R$ 90,00 + reserva de R$ 5,00 = cobrança de R$ 100,00. Não representa condições comerciais contratadas.',
+      note: 'Exemplo ilustrativo, não uma condição comercial: R$ 3,00 em taxas + R$ 2,00 de receita da operação + R$ 90,00 pendentes + R$ 5,00 reservados = R$ 100,00 cobrados. A reserva faz parte dos R$ 95,00 destinados ao seller.',
       dependency:
-        'A disponibilidade depende dos métodos, parceiros e condições de liquidação habilitados.',
+        'Previsão de disponibilidade não equivale a transferência concluída. Liberação e movimentação dependem das regras da operação e do processamento e liquidação dos parceiros habilitados.',
       modules: ['Receita e custos', 'Disponibilidade', 'Movimentações'],
       items: [
-        ['Custos de adquirência', 'Condições comerciais e comissões', 'Visão por competência'],
-        ['Disponível', 'Pendente', 'Reservado'],
-        ['Extratos', 'Estornos', 'Solicitações de saque'],
+        [
+          'Receita e taxas registradas',
+          'Custos de adquirência disponíveis',
+          'Comissões e condições aplicadas',
+        ],
+        [
+          'Disponível: liberado no saldo operacional',
+          'Pendente: aguardando condições de liberação',
+          'Reservado: retido conforme regra da operação',
+        ],
+        [
+          'Extrato de lançamentos e estornos',
+          'Fila de solicitações de saque',
+          'Aprovação ou recusa conforme permissão',
+        ],
       ],
-      cta: 'Avaliar gestão financeira',
+      cta: 'Solicitar demonstração financeira',
     },
     checkout: {
-      label: 'Experiência de venda',
-      title: 'Experiência dos sellers e compradores',
+      label: 'Da oferta ao acesso',
+      title: 'Ofereça à sua base uma jornada de venda conectada',
       description:
-        'Produtos, ofertas, cupons e order bumps conectados a um checkout com a sua identidade. Mais recursos para vender. Mais contexto para acompanhar.',
-      desktop: 'Compra demonstrativa · desktop',
-      mobile: 'Mesma compra · mobile',
+        'Seus sellers organizam produtos e ofertas, compartilham o checkout e acompanham pedidos. Você disponibiliza essa experiência à base, enquanto o comprador encontra a oferta, realiza o pagamento e consulta a confirmação.',
+      desktop: 'Checkout desktop · captura a produzir',
+      mobile: 'Mesmo checkout mobile · captura a produzir',
+      desktopAlt:
+        'Checkout desktop da oferta demonstrativa com produto, resumo da compra, cupom e método habilitado.',
+      mobileAlt:
+        'A mesma oferta demonstrativa em checkout mobile, com os mesmos itens e total da visualização desktop.',
       caption:
-        'Da oferta à confirmação e ao acesso: duas visualizações do mesmo cenário de compra.',
+        'A mesma oferta é apresentada no desktop e no celular, com itens e totais equivalentes e os métodos habilitados para a compra.',
       steps: [
         {
-          title: 'Oferta',
+          title: 'O seller organiza a oferta',
           description:
-            'Crie produtos e ofertas avulsas ou recorrentes. Compartilhe links por oferta e organize seu catálogo.',
-          items: ['Produtos e ofertas', 'Links por oferta'],
+            'Sua base cadastra produtos e define ofertas avulsas ou recorrentes. Cada oferta pode ser compartilhada pelo link correspondente, conforme os recursos habilitados.',
+          items: [
+            'Catálogo por seller',
+            'Preço e modalidade da oferta',
+            'Link para compartilhar a compra',
+          ],
         },
         {
-          title: 'Checkout',
+          title: 'O comprador confere e paga',
           description:
-            'Ajuste aparência, cupons e produtos adicionais para apresentar sua oferta com clareza.',
-          items: ['Personalização', 'Cupons e adicionais', 'Métodos habilitados'],
+            'O checkout apresenta produto, preço e resumo da compra. Aparência, cupons e ofertas adicionais são configurados dentro das opções disponíveis, sem pressupor um construtor livre de páginas.',
+          items: [
+            'Apresentação configurada por produto',
+            'Cupons e ofertas adicionais',
+            'Meios de pagamento habilitados',
+          ],
         },
         {
-          title: 'Confirmação',
-          description: 'Acompanhe pedidos e confirmação do pagamento.',
-          items: ['Pedido', 'Status de pagamento'],
+          title: 'A venda mantém seu estado',
+          description:
+            'Seller e operador acompanham o pedido e o estado do pagamento nos acessos autorizados. A confirmação da compra depende do processamento, não apenas do retorno do navegador.',
+          items: ['Pedido e estado do pagamento', 'Resumo e recibo da compra'],
         },
         {
-          title: 'Entrega e acesso',
-          description: 'Na entrega digital, conecte a compra ao acesso autorizado.',
-          items: ['Acesso ao conteúdo adquirido', 'Escopo de entrega definido na contratação'],
+          title: 'Conteúdo adquirido com acesso autorizado',
+          description:
+            'Na entrega digital do checkout próprio, o pagamento confirmado pode liberar os arquivos ou links previstos na oferta. Acesso a conteúdo não equivale a uma plataforma completa de cursos.',
+          items: [
+            'Entregáveis associados à oferta',
+            'Acesso autorizado por compra',
+            'Disponibilidade definida no escopo contratado',
+          ],
         },
       ],
       recurrence: {
-        title: 'Recorrência',
-        description: 'Organize produtos e ofertas recorrentes.',
+        title: 'Cobranças recorrentes com métodos elegíveis',
+        description:
+          'Ofereça à base ofertas recorrentes e acompanhamento de assinaturas, ciclos e tentativas de cobrança. A utilização depende do método e do provedor habilitados para esse fluxo.',
         items: [
-          'Disponibilidade conforme método e provedor elegíveis',
-          'Habilitação confirmada no desenho da operação',
+          'Elegibilidade verificada por método e provedor',
+          'Condições de renovação definidas para a operação',
         ],
       },
       split: {
-        title: 'Split',
-        description: 'Organize a distribuição dos valores no contexto da operação.',
+        title: 'Distribuição entre participantes da operação',
+        description:
+          'Configure alocações por valores ou percentuais entre os participantes previstos. O registro da distribuição e a liquidação externa são etapas distintas; a execução depende do parceiro habilitado.',
         items: [
-          'Participantes e configurações avaliados no escopo',
-          'Disponibilidade conforme parceiro e habilitação',
+          'Participantes e regras previstos na contratação',
+          'Valores ou percentuais conforme configuração',
+          'Liquidação conforme capacidade do parceiro',
         ],
       },
     },
     integrations: {
-      label: 'Integrações',
-      title: 'Adquirência e integrações',
+      label: 'Compatibilidade antes da contratação',
+      title: 'Verifique métodos, provedores e conexões com seus sistemas',
       description:
-        'API, webhooks e processamento em uma infraestrutura que conversa com os seus sistemas.',
-      processing: 'Processamento financeiro',
+        'A experiência de pagamento depende das conexões habilitadas. Avalie os meios necessários, os parceiros envolvidos e os recursos da API e dos webhooks antes de definir a implantação.',
+      processing: 'Regras para rotas elegíveis',
       controls: [
-        'Processadores e prioridades',
-        'Regras de pagamento',
-        'Métodos e parceiros habilitados',
+        'Processadores e ordem de prioridade',
+        'Regras por método e parâmetros da transação',
+        'Seleção entre configurações elegíveis',
       ],
       contracts:
-        'Contratos e credenciais são avaliados com os parceiros envolvidos. Não compartilhe credenciais neste formulário.',
-      activation: 'A disponibilidade de cada capacidade depende da habilitação da operação.',
-      catalog: 'Catálogo de capacidades',
+        'O uso de contratos e credenciais próprios é avaliado por provedor. Ter uma conexão desenvolvida não substitui contratação, homologação ou habilitação comercial.',
+      activation:
+        'Métodos e recursos são confirmados para sua operação; não há disponibilidade universal entre provedores nem garantia de aprovação de pagamentos.',
+      catalog: 'Conexões a avaliar para sua operação',
       catalogNote:
-        'Matriz em preparação: os provedores e as capacidades habilitáveis serão confirmados na avaliação técnica.',
+        'Os cards reservam espaço para apresentar cada conexão. Provedores, recursos e disponibilidade só serão listados após confirmação; os espaços abaixo não representam integrações ativas.',
+      groups: {
+        acquiring: 'Adquirentes e processamento',
+        tools: 'Marketing, utilidades e plugins',
+      },
+      groupCta: { acquiring: 'Avaliar adquirência', tools: 'Avaliar ferramenta ou plugin' },
+      slots: {
+        acquiring: {
+          title: 'Conexão de adquirência',
+          description:
+            'Espaço reservado para apresentar um provedor, seus métodos e requisitos de habilitação.',
+          logo: 'Logo do adquirente',
+          illustration: 'Ilustração da conexão de adquirência',
+          alt: 'Espaço reservado à apresentação visual de uma conexão de adquirência.',
+        },
+        tools: {
+          title: 'Ferramenta ou plugin externo',
+          description:
+            'Espaço reservado para apresentar uma ferramenta de marketing ou utilidade, sua função e requisitos de uso.',
+          logo: 'Logo da ferramenta ou plugin',
+          illustration: 'Ilustração da ferramenta ou plugin',
+          alt: 'Espaço reservado à apresentação visual de uma ferramenta externa ou plugin.',
+        },
+      },
       fields: [
-        { label: 'Provedor', value: 'A confirmar na avaliação' },
-        { label: 'Métodos suportados', value: 'Conforme provedor e habilitação' },
-        { label: 'Recursos disponíveis', value: 'Conforme escopo da integração' },
-        { label: 'Estágio da integração', value: 'Não publicado neste catálogo' },
+        { label: 'Provedor', value: 'Nome ainda não apresentado' },
+        { label: 'Métodos ou função', value: 'Informações desta conexão a apresentar' },
+        { label: 'Recursos', value: 'Escopo desta conexão a apresentar' },
+        { label: 'Estágio', value: 'Disponibilidade não anunciada' },
         {
           label: 'Requisitos de habilitação',
-          value: 'Contratos, credenciais e validação com o parceiro',
+          value: 'Requisitos específicos a confirmar',
         },
       ],
       api: {
-        title: 'API',
-        description: 'Contratos documentados e permissões por escopo para conectar seus sistemas.',
+        title: 'API para os processos da sua plataforma',
+        description:
+          'Integre recursos de pagamentos, sellers e consultas financeiras por contratos documentados. As permissões de acesso delimitam quais operações cada conexão pode consultar ou executar.',
         items: [
           'Pagamentos e pedidos',
           'Sellers e condições',
           'Consultas financeiras conforme escopo',
         ],
-        preview: 'Prévia de referência da API · conteúdo em preparação',
+        preview: 'Referência da API · captura a produzir',
+        caption:
+          'O material solicitado deve mostrar o contrato da operação consultada, seus campos e as permissões necessárias.',
+        alt: 'Espaço reservado a um trecho de documentação da API com contrato, campos e resposta de exemplo.',
         link: 'Solicitar referência completa',
       },
       webhooks: {
-        title: 'Webhooks',
+        title: 'Eventos com acompanhamento de entrega',
         description:
-          'Consulte o histórico de entrega dos eventos para acompanhar o que acontece em cada conexão.',
+          'Conecte eventos da operação aos seus sistemas e consulte o histórico de entrega. Na avaliação técnica, verifique os eventos disponíveis, as permissões e os procedimentos documentados para investigar uma conexão.',
         items: [
           'Eventos de pagamentos e pedidos',
           'Eventos financeiros conforme escopo',
           'Histórico de entrega',
         ],
-        preview: 'Prévia demonstrativa de histórico de entrega',
-        link: 'Avaliar eventos e entregas',
+        preview: 'Histórico de webhooks · captura a produzir',
+        caption:
+          'O histórico relaciona o evento à tentativa de entrega e ao estado registrado para a conexão consultada.',
+        alt: 'Histórico demonstrativo de entregas de webhook com evento, destino mascarado e estado das tentativas.',
+        link: 'Solicitar referência de webhooks',
       },
-      documentation: 'Documentação · solicitar acesso',
+      documentation: 'Solicitar documentação',
       cta: 'Avaliar integração específica',
     },
     trust: {
-      label: 'Estrutura',
-      title: 'Confiança operacional',
+      label: 'Mecanismos que você pode examinar',
+      title: 'Avalie a sustentação além da interface',
       description:
-        'Pessoas, dados e responsabilidades no contexto certo, mesmo quando a sua base cresce.',
+        'Uma operação exige separação de dados, registros consistentes e acompanhamento de falhas. Conheça os mecanismos documentados da plataforma e solicite os materiais necessários para avaliar o seu escopo.',
       pillars: [
         {
           title: 'Separação entre operações',
-          description: 'Isolamento por tenant e permissões para cada papel.',
-          detail: 'Modelo de isolamento e acesso avaliado na documentação técnica.',
+          description:
+            'Dados e acessos são delimitados por operação e papel. Isso permite administrar sua base sem conceder à equipe acesso irrestrito a outras operações.',
+          detail:
+            'O modelo documentado usa separação por schema e permissões por escopo; não equivale a infraestrutura física exclusiva por cliente.',
         },
         {
           title: 'Integridade financeira',
-          description: 'Estados e tratamento de repetições para acompanhar cada pagamento.',
-          detail: 'Consistência e rastreabilidade dos registros no contexto da operação.',
+          description:
+            'Estados financeiros e tratamento de repetições ajudam a acompanhar operações críticas sem interpretar toda tentativa como uma nova transação.',
+          detail:
+            'Na avaliação técnica, examine idempotência, registros e tratamento de resultados ambíguos nos fluxos previstos para sua operação.',
         },
         {
           title: 'Diagnóstico e recuperação',
-          description: 'Métricas, filas e registros para entender o que acontece.',
-          detail: 'Procedimentos de acompanhamento e continuidade definidos no escopo.',
+          description:
+            'Métricas, filas e registros permitem investigar falhas e acompanhar tarefas assíncronas. Os procedimentos de recuperação precisam considerar o fluxo e os parceiros envolvidos.',
+          detail:
+            'Solicite o detalhamento dos recursos de diagnóstico e das responsabilidades de continuidade, sem presumir prazo de recuperação ou disponibilidade garantida.',
         },
         {
           title: 'Sustentação',
-          description: 'Manutenção, atendimento e responsabilidades da operação.',
-          detail: 'Condições e responsáveis confirmados na contratação.',
+          description:
+            'Implantação, manutenção e atendimento têm responsabilidades distintas. Sua contratação deve indicar quem configura, quem acompanha e como as demandas da operação serão tratadas.',
+          detail:
+            'Cobertura, canais e condições de suporte são definidos no acordo; não há atendimento dedicado ou SLA presumido.',
         },
       ],
-      library: 'Biblioteca de evidências',
+      library: 'Materiais para sua avaliação técnica',
       resources: {
         documentation: {
           type: 'Documentação',
           title: 'Guias e referências técnicas',
-          description: 'Solicite os recursos disponíveis para avaliação.',
+          description:
+            'Solicite os contratos e guias correspondentes aos recursos que pretende integrar. Confirme a versão do material com a equipe.',
         },
         sandbox: {
-          type: 'Sandbox',
+          type: 'Ambiente de avaliação',
           title: 'Ambiente de avaliação',
-          description: 'Disponibilidade e acesso a confirmar com a equipe.',
+          description:
+            'Consulte a possibilidade de avaliar seus fluxos em ambiente assistido. Este site não disponibiliza um sandbox público de acesso imediato.',
         },
         demonstrations: {
-          type: 'Demonstrações',
-          title: 'Prévias do produto',
-          description: 'Conheça as perspectivas de operação, seller e checkout.',
+          type: 'Demonstração assistida',
+          title: 'Tarefas do operador e da base',
+          description:
+            'Solicite uma apresentação dos controles comerciais, da área do seller e do checkout aplicáveis à sua avaliação.',
         },
         reports: {
           type: 'Relatórios técnicos',
-          title: 'Materiais publicáveis',
-          description: 'Publicação e versão a confirmar; nenhum relatório publicado aqui.',
+          title: 'Contexto e metodologia de testes',
+          description:
+            'Pergunte quais relatórios estão disponíveis para consulta. Resultados de teste devem identificar ambiente, metodologia e limites da medição.',
         },
         operations: {
           type: 'Informações operacionais',
           title: 'Condições de sustentação',
-          description: 'Avalie responsabilidades e condições para a sua operação.',
+          description:
+            'Consulte as condições de manutenção, acompanhamento e atendimento propostas para a operação que sua empresa pretende contratar.',
         },
       },
-      responsible: 'Responsáveis pela operação',
+      responsible: 'Produto e sustentação pela Paragan',
       company: 'Paragan',
-      team: 'Equipe Paragan · identificação dos responsáveis a confirmar na avaliação.',
-      role: 'Manutenção do produto e avaliação técnica do escopo.',
+      team: 'Equipe Paragan: desenvolvimento e manutenção da plataforma.',
+      role: 'Na avaliação, identifique os responsáveis pela implantação e pelo atendimento previstos na contratação.',
       references: 'Referências institucionais',
       referencesNote:
-        'Referências verificáveis serão apresentadas quando disponíveis. Não há declaração de certificação ou parceria neste bloco.',
+        'Vínculo comercial, fornecedor de infraestrutura e certificação têm escopos diferentes. Solicite a identificação e a comprovação das referências relevantes à sua contratação.',
     },
     onboarding: {
-      label: 'Implantação',
-      title: 'Contratação, implantação e migração',
+      label: 'Da contratação à ativação',
+      title: 'Comece com produto pronto e escopo definido',
       description:
-        'Cada operação tem seu ponto de partida. A implantação conecta o que sua empresa quer construir ao que precisa funcionar.',
+        'A implantação configura a base existente para o seu cenário. Antes de ativar, defina os módulos contratados, as integrações, os critérios de validação e as responsabilidades da Paragan, da sua equipe e dos parceiros.',
       delivery: [
         {
-          title: 'Base de produto',
-          description: 'Uma estrutura conectada para conduzir a operação.',
+          title: 'Uma base de produto existente',
+          description:
+            'Você contrata o uso de uma plataforma com recursos existentes. A proposta identifica os módulos disponibilizados, em vez de tratar toda a entrega como desenvolvimento sob medida.',
           items: [
             'Gateway e gestão de sellers',
-            'Financeiro',
+            'Consulta financeira e acompanhamento de valores',
             'Checkout, API e webhooks conforme escopo',
           ],
         },
         {
-          title: 'Configurações incluídas',
-          description: 'Identidade, acessos e fluxos previstos na contratação.',
+          title: 'Configurações previstas na sua contratação',
+          description:
+            'A implantação aplica a identidade, os acessos e as condições da sua operação. As configurações incluídas e as tarefas da sua equipe ficam descritas na proposta.',
           items: [
-            'Marca e superfícies configuradas',
+            'Marca e domínios das superfícies contratadas',
             'Condições comerciais',
             'Papéis e permissões',
           ],
         },
         {
-          title: 'Opcionais e dependências externas',
-          description: 'Recursos e parceiros avaliados para cada operação.',
+          title: 'Demandas adicionais e dependências externas',
+          description:
+            'Integrações específicas, customizações e migração são avaliadas separadamente. Contratos e habilitações de parceiros podem exigir participação da sua empresa e custos próprios.',
           items: [
             'Integrações específicas',
             'Migração de dados e tokens quando elegíveis',
@@ -549,17 +667,25 @@ const messages = {
       fields: [
         {
           label: 'Item de contratação',
-          value: 'Produto, implantação e opcionais conforme proposta',
+          value: 'Uso da plataforma, implantação e demandas adicionais identificadas na proposta',
         },
-        { label: 'O que abrange', value: 'Recursos, configurações e serviços definidos no escopo' },
-        { label: 'Composição do custo', value: 'A definir na proposta comercial' },
+        {
+          label: 'O que abrange',
+          value: 'Módulos, configurações, serviços e responsabilidades descritos no escopo',
+        },
+        {
+          label: 'Composição do custo',
+          value:
+            'Proposta por escopo, com custos da plataforma, serviços e terceiros discriminados',
+        },
         {
           label: 'Responsável pela cobrança',
-          value: 'Conforme item e contrato com Paragan ou parceiro',
+          value: 'Paragan ou parceiro, conforme o item e o contrato correspondente',
         },
         {
           label: 'Informação complementar',
-          value: 'Custos externos e dependências identificados na avaliação',
+          value:
+            'Valores, periodicidade e eventual implantação ou customização são definidos na proposta; não há pacotes públicos nesta página',
         },
       ],
       pathsLabel: 'Caminhos de implantação',
@@ -571,184 +697,270 @@ const messages = {
         activation: [
           {
             title: 'Configuração',
-            delivery: 'Identidade, acessos e condições da operação.',
+            delivery:
+              'Aplicação da identidade, dos acessos e das condições comerciais previstas no escopo.',
             owner: 'Paragan e operador',
-            completion: 'Configurações do escopo revisadas.',
+            completion: 'Sua equipe revisou as configurações e os papéis previstos.',
           },
           {
             title: 'Habilitações',
-            delivery: 'Métodos e integrações elegíveis.',
+            delivery:
+              'Verificação dos contratos, credenciais e requisitos dos métodos e integrações escolhidos.',
             owner: 'Operador, Paragan e parceiros',
-            completion: 'Requisitos de habilitação atendidos.',
+            completion: 'Os parceiros confirmaram os requisitos e as capacidades habilitadas.',
           },
           {
             title: 'Validação',
-            delivery: 'Validação dos fluxos previstos.',
+            delivery: 'Exercício dos fluxos de cadastro, pagamento e acompanhamento acordados.',
             owner: 'Paragan e operador',
-            completion: 'Critérios de aceite do escopo atendidos.',
+            completion: 'Os critérios de aceite definidos para esses fluxos foram atendidos.',
           },
           {
             title: 'Ativação',
-            delivery: 'Entrada da operação nos fluxos habilitados.',
+            delivery:
+              'Entrada em operação dos fluxos autorizados, conforme a configuração validada.',
             owner: 'Operador e Paragan',
-            completion: 'Ativação acordada e executada.',
+            completion: 'O início foi autorizado pelos responsáveis e executado conforme o acordo.',
           },
           {
             title: 'Acompanhamento',
-            delivery: 'Acompanhamento inicial da operação.',
+            delivery:
+              'Revisão dos primeiros fluxos e encaminhamento de demandas pelos canais acordados.',
             owner: 'Paragan e operador',
-            completion: 'Rotina de acompanhamento alinhada.',
+            completion: 'Responsáveis e rotina de acompanhamento foram alinhados.',
           },
         ],
         migration: [
           {
             title: 'Diagnóstico de origem',
-            delivery: 'Inventário de dados, fluxos e dependências.',
+            delivery: 'Levantamento dos dados, dos contratos e dos fluxos da plataforma atual.',
             owner: 'Operador e Paragan',
-            completion: 'Origem e restrições identificadas.',
+            completion: 'A origem e as restrições de portabilidade foram identificadas.',
           },
           {
             title: 'Definição do escopo de migração',
-            delivery: 'Dados e integrações elegíveis para transição.',
+            delivery:
+              'Definição do que pode ser transferido e do que exige reconfiguração ou participação de parceiros.',
             owner: 'Operador, Paragan e parceiros',
-            completion: 'Escopo e responsabilidades acordados.',
+            completion: 'Dados, limites e responsabilidades da transição foram acordados.',
           },
           {
             title: 'Ensaio',
-            delivery: 'Validação do caminho de migração previsto.',
+            delivery:
+              'Execução do ensaio previsto, com dados autorizados e validação dos fluxos elegíveis.',
             owner: 'Paragan e operador',
-            completion: 'Critérios do ensaio atendidos.',
+            completion: 'Os resultados do ensaio atenderam aos critérios definidos no escopo.',
           },
           {
             title: 'Transição',
-            delivery: 'Execução da transição acordada.',
+            delivery:
+              'Execução da transição conforme a sequência e os critérios acordados entre as equipes.',
             owner: 'Operador, Paragan e parceiros',
-            completion: 'Critérios de transição confirmados.',
+            completion: 'Os responsáveis confirmaram os critérios para a entrada na nova operação.',
           },
           {
             title: 'Acompanhamento',
-            delivery: 'Acompanhamento após a transição.',
+            delivery:
+              'Revisão dos fluxos após a transição e tratamento das demandas identificadas.',
             owner: 'Paragan e operador',
-            completion: 'Rotina posterior alinhada.',
+            completion: 'Os canais e as responsabilidades posteriores foram alinhados.',
           },
         ],
       },
       after: [
-        { title: 'Treinamento', description: 'Orientação da equipe conforme o escopo contratado.' },
+        {
+          title: 'Orientação para sua equipe',
+          description:
+            'Alinhe a orientação sobre configurações, papéis e rotinas incluídas na implantação. Formato e abrangência são definidos na contratação.',
+        },
         {
           title: 'Manutenção e atualizações',
-          description: 'Condições de evolução e manutenção definidas na contratação.',
+          description:
+            'Defina as condições de manutenção da plataforma, atualização dos recursos e tratamento de customizações. A cobertura segue o acordo contratado.',
         },
         {
           title: 'Suporte',
-          description: 'Canais, responsabilidades e condições acordados para a operação.',
+          description:
+            'Identifique os canais de atendimento e quem responde por produto, operação e integrações. Atendimento a compradores e sellers não é automaticamente transferido à Paragan.',
         },
       ],
-      cta: 'Avaliar implantação',
+      cta: 'Avaliar minha operação',
     },
     faq: {
-      label: 'Perguntas',
-      title: 'Perguntas frequentes',
-      description: 'O que vale entender para desenhar sua operação com a Paragan.',
+      label: 'Dúvidas antes de contratar',
+      title: 'Esclareça o que ainda pesa na decisão',
+      description:
+        'Licença, parceiros e responsabilidades precisam estar claros na contratação. Confira as condições que devem ser avaliadas para o seu cenário.',
       items: [
         {
-          question: 'Como funcionam o licenciamento e a customização?',
+          question: 'O que contrato e o que posso personalizar?',
           answer:
-            'Identidade visual, temas, domínios configurados, condições comerciais, gestão de sellers e permissões da equipe são avaliados no escopo contratado.',
+            'Você contrata o uso de uma plataforma white-label pronta, com os módulos e configurações descritos na proposta. A personalização contempla superfícies da marca e parâmetros operacionais previstos no produto.',
           condition:
-            'As condições de licenciamento e os limites de customização são definidos na proposta.',
+            'Condições da licença e customizações adicionais são definidas no contrato. Administrar a operação não significa receber a propriedade do código nem determina a custódia dos valores.',
         },
         {
-          question: 'Quem cuida dos contratos e das credenciais dos parceiros?',
+          question: 'Posso usar meus contratos e credenciais de parceiros?',
           answer:
-            'A disponibilidade dos métodos depende dos processadores e das configurações habilitados.',
+            'Essa possibilidade é avaliada para cada provedor e fluxo. A existência de uma integração no produto não confirma que seu contrato, seus métodos ou suas credenciais estejam habilitados para utilizá-la.',
           condition:
-            'Responsabilidades, contratos e habilitações são confirmados com os parceiros na avaliação da operação.',
+            'A avaliação identifica quem contrata o parceiro, fornece as credenciais e atende aos requisitos de habilitação. Não envie credenciais pelo formulário comercial.',
         },
         {
           question: 'É possível migrar dados e tokens?',
-          answer: 'Migração de dados, contratos e tokens exige análise específica.',
+          answer:
+            'A migração começa pela análise da plataforma de origem. São avaliados os dados exportáveis, os contratos existentes e a elegibilidade dos tokens antes de definir o escopo de transição.',
           condition:
-            'Elegibilidade, restrições da origem e participação dos parceiros são avaliadas antes de definir a transição.',
+            'Portabilidade de tokens depende dos provedores e das condições de origem. Não há migração universal ou automática anunciada nesta oferta.',
         },
         {
           question: 'Como funcionam as atualizações e a manutenção?',
-          answer: 'As condições de manutenção e evolução do produto são definidas na contratação.',
-          condition: 'Detalhamento a confirmar com a equipe para o seu escopo.',
+          answer:
+            'A contratação define a cobertura de manutenção da plataforma e as condições de atualização dos recursos disponibilizados à sua operação.',
+          condition:
+            'Customizações e integrações específicas podem exigir regras próprias de manutenção. Confirme esses limites e responsabilidades na proposta.',
         },
         {
-          question: 'Quais são as responsabilidades e as condições de suporte?',
-          answer: 'Recursos, parceiros e responsabilidades são definidos antes da configuração.',
+          question: 'Quem atende minha operação, meus sellers e os compradores?',
+          answer:
+            'Sua empresa administra a base e a experiência oferecida aos sellers e compradores. O atendimento da Paragan à empresa contratante segue os canais e a cobertura definidos no acordo.',
           condition:
-            'Canais e condições de atendimento são acordados na contratação; não há SLA universal declarado aqui.',
+            'Confirme a divisão de responsabilidades com parceiros, os horários e eventuais níveis de serviço. Este site não promete suporte dedicado ou prazo universal de atendimento.',
         },
         {
           question: 'Como funcionam a exportação de dados e o encerramento?',
-          answer: 'Condições de exportação e encerramento devem ser avaliadas no contrato.',
+          answer:
+            'Exportação e encerramento precisam ter condições explícitas no contrato: dados abrangidos, formatos, procedimentos e responsabilidades de cada parte.',
           condition:
-            'Formatos, escopo, responsabilidades e procedimentos a confirmar na avaliação comercial.',
+            'Recursos de exportação do produto não substituem as condições comerciais de saída, nem garantem portabilidade de contratos ou tokens de terceiros.',
         },
         {
           question: 'Como os custos são compostos?',
           answer:
-            'A primeira conversa serve para entender seu modelo, recursos prioritários e integrações. A partir disso, são definidos escopo e composição comercial.',
-          condition: 'Investimento e custos de parceiros dependem dos requisitos da operação.',
+            'A proposta discrimina o uso da plataforma, os serviços de implantação ou customização acordados e os custos externos identificados. Cada item deve indicar sua abrangência e o responsável pela cobrança.',
+          condition:
+            'Valores e periodicidade dependem do escopo. Taxas de processamento e serviços dos parceiros não devem ser confundidos com o preço da plataforma.',
         },
         {
-          question: 'Qual é o escopo da entrega digital?',
+          question: 'A entrega digital inclui uma plataforma completa de cursos?',
           answer:
-            'Para produtos digitais, há entrega com acesso autorizado aos conteúdos adquiridos; isso não equivale a uma plataforma de cursos completa.',
-          condition: 'Recursos e configurações da entrega são confirmados no escopo contratado.',
+            'Não. O escopo apresentado é a entrega de arquivos ou links da oferta, com acesso autorizado associado à compra confirmada no checkout próprio.',
+          condition:
+            'Aulas, progresso educacional, certificados e comunidade não estão incluídos nessa descrição. Confirme entregáveis, limites e métodos elegíveis para sua operação.',
         },
       ],
-      cta: 'Avaliar uma dúvida da operação',
+      cta: 'Esclarecer minha dúvida',
     },
     contact: {
-      label: 'Contato',
-      title: 'Contato e qualificação',
+      label: 'Avaliação da sua operação',
+      title: 'Defina o próximo passo para sua contratação',
       description:
-        'Conte o que você quer construir, o que já existe e o que precisa evoluir. O ponto de partida é o seu negócio.',
-      points: ['Aderência da operação', 'Escopo e integrações', 'Próximos passos'],
+        'Informe seu cenário e os fluxos que precisa oferecer. A conversa com a equipe serve para avaliar a aderência do produto, identificar dependências e definir o caminho até uma proposta de contratação.',
+      points: [
+        'Aderência: recursos do produto para seu modelo de operação',
+        'Escopo: configurações, integrações e responsabilidades',
+        'Próximos passos: avaliação técnica e composição da proposta',
+      ],
       returnNote:
-        'Escolha o canal pelo qual prefere conversar com a equipe. O prazo de retorno será alinhado no contato.',
+        'Indique o canal pelo qual prefere receber retorno. Para iniciar a conversa agora, prepare o resumo e compartilhe-o pelo WhatsApp comercial; isso não agenda uma reunião.',
       channel: 'Canal preferido',
       email: 'E-mail',
       whatsapp: 'WhatsApp',
       scenario: 'Cenário',
       selectScenario: 'Selecione seu cenário',
-      message: 'Contexto adicional (opcional)',
-      origin: 'Seção de origem',
-      qualification: 'Qualificação complementar (opcional)',
+      message: 'O que você precisa avaliar? (opcional)',
+      messageHint:
+        'Descreva o fluxo ou a dúvida principal. Você pode deixar os detalhes para a conversa.',
+      origin: 'Interesse iniciado em',
+      subject: 'Assunto solicitado',
+      qualification: 'Acrescentar informações da operação (opcional)',
       extra: {
         platform: 'Plataforma de origem',
         sellers: 'Base de sellers',
-        volume: 'Volume atual',
+        volume: 'Volume atual ou estimado',
         integrations: 'Integrações necessárias',
         role: 'Papel no projeto',
         timing: 'Momento pretendido para implantação',
       },
       privacy:
-        'Este formulário prepara um resumo local. Nenhum dado é enviado automaticamente ou salvo pela página. Não inclua credenciais nem dados sensíveis.',
-      submit: 'Preparar contato',
-      invalid: 'Revise este campo antes de continuar.',
-      phoneError: 'Informe um WhatsApp válido com DDD e, se necessário, código do país.',
-      ready: 'Resumo preparado. Ainda não foi enviado à Paragan.',
-      next: 'Copie o resumo e compartilhe pelo canal comercial disponível para iniciar a avaliação.',
+        'Os campos são usados apenas para montar seu resumo nesta página; não há envio automático à Paragan. Ao compartilhar pelo WhatsApp, você envia os dados escolhidos por esse canal. Não inclua documentos, credenciais ou dados de compradores.',
+      submit: 'Preparar resumo',
+      invalid: 'Confira o preenchimento deste campo.',
+      errors: {
+        name: 'Informe seu nome para identificar o contato.',
+        company: 'Informe o nome da empresa ou do projeto.',
+        email: 'Informe um e-mail válido, como nome@empresa.com.br.',
+        scenario: 'Escolha lançamento, migração ou incorporação.',
+        length: 'Reduza o texto para respeitar o limite do campo.',
+      },
+      phoneError: 'Informe o número com DDD, como +55 (11) 99999-9999.',
+      ready: 'Seu resumo está pronto para compartilhar. Ainda não recebemos uma solicitação.',
+      next: 'Copie o texto e cole na conversa comercial pelo WhatsApp. A equipe poderá avaliar o cenário informado e alinhar a continuidade; abrir a conversa não envia o resumo automaticamente.',
       channelSummary: 'Canal de retorno preferido',
       copy: 'Copiar resumo',
       copying: 'Copiando resumo…',
-      copied: 'Resumo copiado. Nenhum dado foi enviado.',
-      copyError: 'Não foi possível copiar. Selecione o resumo para copiar manualmente.',
-      whatsappAction: 'Abrir conversa no WhatsApp',
+      copied:
+        'Resumo copiado. Agora você pode colá-lo na conversa; nenhum dado foi enviado pela página.',
+      copyError:
+        'Não foi possível copiar automaticamente. Selecione o texto do resumo e copie para continuar.',
+      whatsappAction: 'Continuar pelo WhatsApp',
       noEmail:
-        'O endereço comercial de e-mail será confirmado pela equipe; use o canal disponível para iniciar o contato.',
+        'Sua preferência por retorno via e-mail está no resumo. Compartilhe-o pelo WhatsApp comercial para iniciar o contato.',
       brief:
-        'Nome: {name}\nEmpresa ou projeto: {company}\nCanal preferido: {channel}\nContato: {contact}\nCenário: {scenario}\nOrigem: {origin}\n\nContexto:\n{message}\n\nInformações complementares:\n{extra}',
+        'Avaliação da operação com a Paragan\n\nNome: {name}\nEmpresa ou projeto: {company}\nCanal preferido: {channel}\nContato: {contact}\nCenário: {scenario}\nInteresse iniciado em: {origin}\nAssunto solicitado: {subject}\n\nO que preciso avaliar:\n{message}\n\nInformações complementares:\n{extra}',
+      extraHelp: {
+        platform: 'Nome da plataforma atual; não envie acessos ou credenciais.',
+        sellers: 'Quantidade atual ou estimada. Ex.: 50 sellers ativos.',
+        volume:
+          'Indique período, moeda e se é volume atual ou projetado. Ex.: R$ 100 mil/mês, estimados.',
+        integrations: 'Sistemas, métodos ou parceiros que precisam participar do fluxo.',
+        role: 'Seu papel na decisão ou na implantação. Ex.: fundador ou responsável técnico.',
+        timing: 'Quando pretende iniciar e quais dependências já conhece.',
+      },
+      extraExamples: {
+        platform: 'Ex.: plataforma utilizada hoje',
+        sellers: 'Ex.: 50 sellers ativos',
+        volume: 'Ex.: R$ 100 mil/mês, estimados',
+        integrations: 'Ex.: CRM e sistema de pedidos',
+        role: 'Ex.: responsável pela operação',
+        timing: 'Ex.: após validar a integração atual',
+      },
+      origins: {
+        inicio: 'Visão geral',
+        solucoes: 'Cenários de contratação',
+        operacao: 'Gestão da operação',
+        financeiro: 'Gestão financeira',
+        checkout: 'Experiência de venda',
+        integracoes: 'Integrações',
+        estrutura: 'Confiança operacional',
+        implantacao: 'Contratação e implantação',
+        perguntas: 'Perguntas frequentes',
+      },
+      subjects: {
+        demonstration: 'Demonstração assistida do produto',
+        finance: 'Demonstração financeira',
+        checkout: 'Demonstração do checkout',
+        recurrence: 'Recorrência',
+        split: 'Split',
+        acquiring: 'Conexões de adquirência',
+        tools: 'Ferramentas externas e plugins',
+        api: 'Referência da API',
+        webhooks: 'Referência de webhooks',
+        documentation: 'Documentação técnica',
+        integration: 'Integração específica',
+        isolation: 'Separação entre operações',
+        integrity: 'Integridade financeira',
+        recovery: 'Diagnóstico e recuperação',
+        support: 'Sustentação e atendimento',
+        sandbox: 'Ambiente de avaliação',
+        reports: 'Relatórios técnicos',
+        faq: 'Dúvida sobre a contratação',
+      },
       none: 'Não informado',
       summary: 'Resumo do contato',
     },
     footer: {
-      company: 'Paragan · identificação jurídica a confirmar na avaliação comercial.',
+      company: 'Paragan · plataforma white-label para empresas operadoras de pagamentos.',
       contact: 'Contato comercial',
       social: 'Redes sociais',
     },
@@ -759,21 +971,21 @@ const messages = {
         eyebrow: 'Identidade',
         title: 'Sua marca, em cada contato.',
         description:
-          'Painel, checkout, domínio e comunicação com a sua identidade. Uma experiência que seus sellers reconhecem como sua.',
+          'Aplique sua identidade aos painéis e ao checkout previstos no escopo. Domínios próprios exigem configuração de DNS e TLS; e-mails transacionais dependem de remetente verificado.',
         illustration: 'Sua identidade, em cada ponto de contato',
       },
       engagement: {
         eyebrow: 'Relacionamento',
         title: 'Uma base para cultivar.',
         description:
-          'Estruture campanhas, rankings e premiações para seus sellers. Conecte o relacionamento com a base à sua estratégia comercial.',
+          'Disponibilize mecanismos de campanha e reconhecimento à sua base. A habilitação é decisão da operação; esses recursos não representam retenção ou vendas adicionais comprovadas.',
         illustration: 'Crescimento com reconhecimento',
       },
       acquiring: {
         eyebrow: 'Adquirência',
         title: 'Rotas com direção.',
         description:
-          'Organize processadores, prioridades e regras de pagamento. Conduza cada operação conforme os métodos e parceiros habilitados.',
+          'Configure prioridades e regras para selecionar rotas elegíveis conforme método e parâmetros da transação. O uso de cada conexão depende dos recursos do provedor e da habilitação da operação.',
         illustration: 'Uma política. Rotas elegíveis.',
       },
     },
@@ -784,7 +996,7 @@ const messages = {
         title: 'Operação',
         heading: 'A visão de quem dirige o negócio.',
         description:
-          'Acompanhe sellers, decisões de cadastro e prioridades operacionais. Tenha contexto para agir, não apenas uma lista de transações.',
+          'Administre cadastros e revisões, atribua carteiras à equipe e delimite as ações de cada papel. O histórico de decisões permite acompanhar o tratamento dado à base.',
         illustration: 'Visão operação do gateway',
         items: {
           sellers: 'Base de sellers e status',
@@ -796,8 +1008,8 @@ const messages = {
         title: 'Comercial',
         heading: 'Sua estratégia vira configuração.',
         description:
-          'Defina condições comerciais e organize as exceções da sua base. O relacionamento com cada seller pode ter regras claras, sem controles paralelos.',
-        illustration: 'Visão comercial do gateway',
+          'Defina taxas e comissões e organize condições específicas para sellers. A configuração da operação não substitui os custos, contratos ou limites de processamento dos parceiros.',
+        illustration: 'Configuração comercial do seller · captura a produzir',
         items: {
           terms: 'Condições por seller',
           commissions: 'Comissão fixa, percentual ou híbrida',
@@ -808,8 +1020,8 @@ const messages = {
         title: 'Financeiro',
         heading: 'Entenda o caminho de cada valor.',
         description:
-          'Conecte receita, taxas, saldos e reservas. Acompanhe solicitações de saque e a composição financeira da operação com informações no contexto certo.',
-        illustration: 'Visão financeiro do gateway',
+          'Consulte os lançamentos que compõem a cobrança e diferencie as parcelas de receita, taxas e saldo do seller. O exemplo é ilustrativo e não representa uma liquidação bancária executada.',
+        illustration: 'Composição financeira ilustrativa · captura a produzir',
         items: {
           balances: 'Disponível, pendente e reservado',
           withdrawals: 'Supervisão de saques',
@@ -823,40 +1035,40 @@ const messages = {
       costs: {
         title: 'Entenda seus custos.',
         description:
-          'Consulte a visão financeira por competência e acompanhe custos de adquirência, condições comerciais e comissões. Entenda o que compõe a sua operação.',
+          'Consulte receitas, taxas, comissões e custos registrados. A visão por competência relaciona os valores ao período da operação; custos ausentes não devem ser tratados como zero nem como lucro.',
       },
       receipts: {
         title: 'Planeje seus recebimentos.',
         description:
-          'Diferencie saldos disponíveis, pendentes e reservados. Consulte as datas previstas de liberação para organizar os próximos passos com mais contexto.',
+          'Diferencie valores liberados, em espera e reservados. Consulte as previsões de liberação quando disponíveis, considerando as regras da operação e a liquidação do parceiro.',
       },
       movements: {
         title: 'Acompanhe cada movimentação.',
         description:
-          'Consulte o extrato de pagamentos, taxas e estornos. Supervisione solicitações de saque com fluxo de aprovação e acompanhe o caminho de cada valor.',
+          'Consulte o extrato de lançamentos e estornos e supervisione solicitações de saque por fila de aprovação. A execução da saída depende do parceiro habilitado e dos acessos autorizados.',
       },
     },
   },
   onboarding: {
-    note: 'Escopo, investimento e prazo são definidos conforme integrações e requisitos da sua operação.',
+    note: 'Escopo, investimento e prazo são definidos após avaliar módulos, integrações, habilitações e requisitos de migração. A proposta identifica as dependências e os responsáveis; não há prazo único para todos os cenários.',
   },
   inquiry: {
     form: {
       eyebrow: 'Primeiro, seu contexto',
-      title: 'Vamos entender sua operação.',
+      title: 'Prepare as informações para a conversa.',
       description:
         'Da primeira ideia à operação em crescimento: conte seu momento e o que você quer construir.',
       optional: '(opcional)',
       submit: 'PREPARAR CONVERSA',
     },
     fields: {
-      name: { label: 'Seu nome', placeholder: 'Como podemos chamar você?' },
+      name: { label: 'Nome', placeholder: 'Ex.: Ana Silva' },
       company: {
-        label: 'Nome da empresa ou projeto',
-        placeholder: 'Sua empresa, marca ou ideia em construção',
+        label: 'Empresa ou projeto',
+        placeholder: 'Ex.: nome da sua operação',
       },
       email: { label: 'E-mail profissional', placeholder: 'voce@empresa.com.br' },
-      phone: { label: 'Telefone / WhatsApp', placeholder: '+55 (11) 99999-9999' },
+      phone: { label: 'WhatsApp para retorno', placeholder: '+55 (11) 99999-9999' },
       role: { label: 'Seu cargo ou papel no projeto', placeholder: 'Selecione seu cargo ou papel' },
       website: { label: 'Site da empresa ou projeto', placeholder: 'https://suaempresa.com.br' },
       interests: {
@@ -870,7 +1082,7 @@ const messages = {
       message: {
         label: 'Conte um pouco sobre o que você quer construir',
         placeholder:
-          'Qual é a sua ideia ou operação? Conte quem você quer atender, o que precisa resolver e quando gostaria de começar.',
+          'Ex.: já operamos uma base de sellers e queremos avaliar a migração dos pagamentos e a integração com nosso sistema.',
         hint: 'Ainda está na fase de ideia? Ótimo. Compartilhe seu objetivo e o que precisa funcionar primeiro.',
       },
     },

@@ -212,3 +212,24 @@
 - [x] Homepage em dev: conferir temas claro/escuro, primeira dobra preservada, viewport CSS equivalente a zoom 200%, tela baixa, teclado e reduced motion; foco e sticky não ocultam conteúdo.
 - [x] CTAs e contato: conferir três cenários, troca entre CTAs, carregamento com parâmetros, histórico, seleção manual, origem, canal e mensagem opcional; escolha preservada sem dados pessoais na URL.
 - [x] Formulário: conferir validação por campo e resumo local honesto; loading/erro/confirmação de recebimento apenas se canal real de envio estiver integrado.
+
+## Fase 9 — Copy comercial
+
+### 9.1 — Texto público
+
+- [x] `src/i18n/messages/pt-BR.ts`: aplicar briefing 08 em header, dez blocos, rodapé e metadados; operador como interlocutor, dependências junto às capacidades.
+- [x] `sections/*` + `primitives.tsx`: conectar fontes renderizadas, legendas e alt específicos; placeholders sem alegação de captura real.
+
+### 9.2 — Integrações e contato
+
+- [x] `integration-cards.tsx` + `site.ts`: dois grupos com slots de adquirentes e ferramentas/plugins; logo e ilustração independentes, sem nomes ou disponibilidade inventados.
+- [x] `contact-intent-link.tsx` + `action-link.tsx` + `sections/*`: CTAs de solicitação levam ao contato com cenário, origem e assunto validados; histórico preservado, sem PII na URL.
+- [x] `contact-section.tsx` + `check-i18n.mjs`: erros por campo, ajuda opcional e resumo com assunto; preparação/cópia sem confirmação de envio remoto.
+
+### 9.3 — Entregáveis e verificação
+
+- [ ] `docs/copy/09-copy-e-ctas.md`: copy por componente e destinos funcionais na ordem da homepage.
+- [ ] `docs/copy/10-producao-de-assets.md`: fichas H01–I02, O02/O03 opcionais e slots de integrações; cena, campos, legenda, alt e condição de uso.
+- [ ] `docs/copy/11-confirmacoes-internas.md`: pendências comerciais/técnicas separadas e estados remotos condicionados ao envio real.
+- [ ] Arquivos alterados: Prettier, ESLint direcionado, typecheck, i18n e whitespace; sem build ou release.
+- [ ] Homepage em dev: conferir cards, CTAs/assuntos, histórico, validação e resumo em desktop/mobile; sem overflow ou erros de hidratação.

@@ -59,7 +59,7 @@ export function FaqSection() {
             ))}
           </AccordionGroup>
           <div className="p-6 md:p-8">
-            <ActionLink origin="perguntas" secondary>
+            <ActionLink origin="perguntas" subject="faq" secondary>
               {copy.cta}
             </ActionLink>
           </div>

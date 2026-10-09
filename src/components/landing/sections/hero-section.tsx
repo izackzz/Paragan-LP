@@ -8,9 +8,7 @@ import { Frame } from '@/components/ui/frame';
 import { Button } from '@/components/ui/button';
 import { IconAffiliates, IconGateways, IconSwatchBook } from '@/components/assets/custom-icons';
 import { content, t } from '@/i18n';
-import Link from 'next/link';
 import { ContactIntentLink } from '../contact-intent-link';
-import { destinations } from '@/config/site';
 
 const copy = content('introduction');
 const previewIcons = { gateway: IconGateways, seller: IconAffiliates, checkout: IconSwatchBook };
@@ -45,7 +43,9 @@ export function HeroSection() {
             <ContactIntentLink origin="inicio">{t('actions.consult')}</ContactIntentLink>
           </Button>
           <Button asChild size="lg" className="w-full sm:w-fit" variant="secondary">
-            <Link href={destinations.productPreview}>{t('actions.demo')}</Link>
+            <ContactIntentLink origin="inicio" subject="demonstration">
+              {t('actions.demo')}
+            </ContactIntentLink>
           </Button>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -92,6 +92,7 @@ export function HeroSection() {
                   width={1600}
                   height={860}
                   label={preview.image}
+                  alt={preview.alt}
                   priority={preview.value === 'gateway'}
                   className="p-1.5"
                 />

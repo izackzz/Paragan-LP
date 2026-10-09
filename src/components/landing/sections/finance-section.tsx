@@ -22,7 +22,7 @@ export function FinanceSection() {
         <div className="grid border-t border-border lg:grid-cols-12">
           <div className="min-w-0 bg-card p-6 md:p-8 lg:col-span-7 lg:border-r lg:border-border">
             <p className={`${micro} mb-6 text-accent-2`}>{copy.example}</p>
-            <ArtPlaceholder width={1200} height={800} label={context.illustration} />
+            <ArtPlaceholder width={1200} height={800} label={context.illustration} alt={copy.alt} />
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               {context.description}
             </p>
@@ -52,7 +52,7 @@ export function FinanceSection() {
           ))}
         </div>
         <div className="border-t border-border p-6 md:p-8">
-          <ActionLink origin="financeiro" secondary>
+          <ActionLink origin="financeiro" subject="finance" secondary>
             {copy.cta}
           </ActionLink>
         </div>

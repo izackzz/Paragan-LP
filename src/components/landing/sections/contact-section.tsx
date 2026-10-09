@@ -62,9 +62,17 @@ export function ContactSection() {
         (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) &&
         !element.validity.valid
       )
-        invalid[element.name] = copy.invalid;
+        invalid[element.name] = element.validity.tooLong
+          ? copy.errors.length
+          : element.name === 'name'
+            ? copy.errors.name
+            : element.name === 'company'
+              ? copy.errors.company
+              : element.name === 'contact' && channel === 'email'
+                ? copy.errors.email
+                : copy.invalid;
     }
-    if (!intent.scenario) invalid.scenario = copy.invalid;
+    if (!intent.scenario) invalid.scenario = copy.errors.scenario;
     if (
       channel === 'whatsapp' &&
       (!/^[+\d\s().-]+$/.test(contacts.whatsapp) ||
@@ -95,7 +103,8 @@ export function ContactSection() {
         channel: channel === 'email' ? copy.email : copy.whatsapp,
         contact,
         scenario: scenarios[intent.scenario!].label,
-        origin: intent.origin ?? copy.none,
+        origin: intent.origin ? copy.origins[intent.origin] : copy.none,
+        subject: intent.subject ? copy.subjects[intent.subject] : copy.none,
         message: String(data.get('message') || copy.none),
         extra,
       }),
@@ -275,13 +284,26 @@ export function ContactSection() {
                   maxLength={2000}
                   placeholder={fields.message.placeholder}
                   aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? 'error-message' : undefined}
+                  aria-describedby={
+                    errors.message ? 'contact-message-help error-message' : 'contact-message-help'
+                  }
                 />
                 {error('message')}
+                <p
+                  id="contact-message-help"
+                  className="text-xs leading-relaxed text-muted-foreground"
+                >
+                  {copy.messageHint}
+                </p>
               </div>
               {intent.origin && (
                 <p className="text-xs text-muted-foreground">
-                  {copy.origin}: {intent.origin}
+                  {copy.origin}: {copy.origins[intent.origin]}
+                </p>
+              )}
+              {intent.subject && (
+                <p className="text-xs text-muted-foreground">
+                  {copy.subject}: {copy.subjects[intent.subject]}
                 </p>
               )}
               <details className="border-t border-border pt-5">
@@ -295,9 +317,17 @@ export function ContactSection() {
                         <Input
                           id={`contact-${name}`}
                           name={name}
+                          placeholder={copy.extraExamples[name as keyof typeof copy.extraExamples]}
+                          aria-describedby={`contact-${name}-help`}
                           maxLength={240}
                           className="h-11"
                         />
+                        <p
+                          id={`contact-${name}-help`}
+                          className="text-xs leading-relaxed text-muted-foreground"
+                        >
+                          {copy.extraHelp[name as keyof typeof copy.extraHelp]}
+                        </p>
                       </div>
                     ))}
                 </div>

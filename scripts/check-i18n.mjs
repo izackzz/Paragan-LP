@@ -117,6 +117,7 @@ const brief = translator('structure.contact.brief', {
   contact: 'teste@example.invalid',
   scenario: messages.structure.scenarios.items.launch.label,
   origin: 'inicio',
+  subject: messages.structure.contact.none,
   extra: messages.structure.contact.none,
   message: '<script>test</script>',
 });
