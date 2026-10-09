@@ -168,11 +168,11 @@
 
 ### 8.12 — Bloco 09: Perguntas frequentes
 
-- [ ] `faq-section.tsx`: introdução 4/12 + accordion 8/12; identificador, H2 “Perguntas frequentes” e descrição.
-- [ ] `faq-section.tsx` + catálogo `questions`: oito perguntas sobre licenciamento/customização, contratos/credenciais, migração de dados/tokens, atualizações/manutenção, suporte/responsabilidades, exportação/encerramento, custos e entrega digital.
-- [ ] `faq-section.tsx` + catálogo: reaproveitar respostas compatíveis; lacunas com texto provisório sem inventar cláusulas contratuais, SLA ou direitos de exportação.
-- [ ] `faq-section.tsx` + `ui/accordion.tsx`: perguntas com H3 semântico e trigger acessível; resposta principal, condição e link somente quando disponível.
-- [ ] `faq-section.tsx`: manter accordion e interações existentes; acesso final ao contato para avaliação da operação.
+- [x] `faq-section.tsx`: introdução 4/12 + accordion 8/12; identificador, H2 “Perguntas frequentes” e descrição.
+- [x] `faq-section.tsx` + catálogo `questions`: oito perguntas sobre licenciamento/customização, contratos/credenciais, migração de dados/tokens, atualizações/manutenção, suporte/responsabilidades, exportação/encerramento, custos e entrega digital.
+- [x] `faq-section.tsx` + catálogo: reaproveitar respostas compatíveis; lacunas com texto provisório sem inventar cláusulas contratuais, SLA ou direitos de exportação.
+- [x] `faq-section.tsx` + `ui/accordion.tsx`: perguntas com H3 semântico e trigger acessível; resposta principal, condição e link somente quando disponível.
+- [x] `faq-section.tsx`: manter accordion e interações existentes; acesso final ao contato para avaliação da operação.
 
 ### 8.13 — Bloco 10: Contato e qualificação
 
