@@ -1,43 +1,34 @@
-import { SectionLabel, SectionHeading, ArtPlaceholder, ActionLink } from '../primitives';
+import { SectionContent, ContentModule, StructuredRecords } from '../section-content';
+import { ArtPlaceholder, ActionLink } from '../primitives';
+import { micro } from '../styles';
 import { Reveal } from '../reveal';
-import { frame, section, micro } from '../styles';
-import { cn } from '@/lib/utils';
-import { content, formatIndex, t } from '@/i18n';
+import { content, t } from '@/i18n';
 import { presentation } from '@/config/site';
 
-const copy = content('ledger');
+const copy = content('structure').finance;
+const ledger = content('ledger');
+const context = content('operations').contexts.finance;
 
 export function FinanceSection() {
-  return (
-    <section id="financeiro" className={cn(frame, section)}>
-      <SectionLabel number={formatIndex(presentation.sections.ledger)}>{copy.label}</SectionLabel>
-      <Reveal className="grid md:grid-cols-3">
-        <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
-          <div className="sticky top-47 flex flex-col justify-start gap-5">
-            <SectionHeading title={copy.heading.primary} muted={copy.heading.secondary} />
-            <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
-            <ActionLink secondary>{t('actions.controls')}</ActionLink>
-          </div>
+  return <SectionContent id="financeiro" number={presentation.sections.ledger} title={copy.title} description={copy.description}>
+    <Reveal>
+      <div className="grid border-t border-border lg:grid-cols-12">
+        <div className="min-w-0 bg-card p-6 md:p-8 lg:col-span-7 lg:border-r lg:border-border">
+          <p className={`${micro} mb-6 text-accent-2`}>{copy.example}</p>
+          <ArtPlaceholder width={1200} height={800} label={context.illustration} />
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{context.description}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{copy.caption}</p>
+          <p className={`${micro} mt-3 text-muted-foreground`}>{t('structure.demo')}</p>
         </div>
-        <div className="flex flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">
-          <p className={cn(micro, 'mb-6 text-muted-foreground')}>{copy.illustrationLabel}</p>
-          <ArtPlaceholder
-            width={1200}
-            height={800}
-            label={copy.illustration}
-            className={cn('rounded-none border-0')}
-          />
+        <div className="min-w-0 lg:col-span-5 lg:[&>div>div]:border-t-0">
+          <StructuredRecords records={[{ title: copy.composition, fields: copy.fields }]} />
+          <div className="grid gap-3 px-6 pb-6 text-sm leading-relaxed text-muted-foreground md:px-8 md:pb-8"><p>{copy.note}</p><p>{copy.dependency}</p></div>
         </div>
-        {Object.entries(copy.items).map(([id, { title, description }]) => (
-          <div
-            key={id}
-            className="flex flex-col gap-3 border-t border-border p-6 last:border-r-0 md:border-r md:p-8"
-          >
-            <h3 className="text-sm font-medium">{title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
-          </div>
-        ))}
-      </Reveal>
-    </section>
-  );
+      </div>
+      <div className="grid md:grid-cols-2 xl:grid-cols-3">
+        {Object.values(ledger.items).map((item, index) => <div key={item.title} className="border-t border-border md:odd:border-r xl:border-r xl:last:border-r-0"><ContentModule title={copy.modules[index]} description={item.description} items={copy.items[index]} /></div>)}
+      </div>
+      <div className="border-t border-border p-6 md:p-8"><ActionLink origin="financeiro" secondary>{copy.cta}</ActionLink></div>
+    </Reveal>
+  </SectionContent>;
 }
