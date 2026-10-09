@@ -96,7 +96,36 @@ export const contactOrigins = [
   'perguntas',
 ] as const;
 export type ContactOrigin = (typeof contactOrigins)[number];
+export const contactSubjects = [
+  'demonstration',
+  'finance',
+  'checkout',
+  'recurrence',
+  'split',
+  'acquiring',
+  'tools',
+  'api',
+  'webhooks',
+  'documentation',
+  'integration',
+  'isolation',
+  'integrity',
+  'recovery',
+  'support',
+  'sandbox',
+  'reports',
+  'faq',
+] as const;
+export type ContactSubject = (typeof contactSubjects)[number];
 export const integrationCatalog = { published: false };
+// Editorial slots, not available integrations. Logo and artwork are independent.
+export const integrationSlots: Record<
+  'acquiring' | 'tools',
+  { id: string; logoSrc?: string; illustrationSrc?: string }[]
+> = {
+  acquiring: [{ id: 'acquiring-01' }, { id: 'acquiring-02' }, { id: 'acquiring-03' }],
+  tools: [{ id: 'tools-01' }, { id: 'tools-02' }, { id: 'tools-03' }],
+};
 export const evidenceResources = [
   'documentation',
   'sandbox',

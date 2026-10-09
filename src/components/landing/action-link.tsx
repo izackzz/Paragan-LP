@@ -6,7 +6,12 @@ import { Button } from '@/components/ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpRight } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
-import { destinations, type ContactOrigin, type ContactScenario } from '@/config/site';
+import {
+  destinations,
+  type ContactOrigin,
+  type ContactScenario,
+  type ContactSubject,
+} from '@/config/site';
 import { ContactIntentLink } from './contact-intent-link';
 
 export function ActionLink({
@@ -16,6 +21,7 @@ export function ActionLink({
   className,
   scenario,
   origin,
+  subject,
 }: {
   children: ReactNode;
   href?: string;
@@ -23,6 +29,7 @@ export function ActionLink({
   className?: string;
   scenario?: ContactScenario;
   origin?: ContactOrigin;
+  subject?: ContactSubject;
 }) {
   const contents = (
     <>
@@ -40,8 +47,8 @@ export function ActionLink({
         className,
       )}
     >
-      {scenario || origin ? (
-        <ContactIntentLink scenario={scenario} origin={origin}>
+      {scenario || origin || subject ? (
+        <ContactIntentLink scenario={scenario} origin={origin} subject={subject}>
           {contents}
         </ContactIntentLink>
       ) : (

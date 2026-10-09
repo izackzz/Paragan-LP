@@ -2,7 +2,7 @@ import { SectionContent, ContentModule } from '../section-content';
 import { ArtPlaceholder, ActionLink } from '../primitives';
 import { micro } from '../styles';
 import { content, formatIndex, t } from '@/i18n';
-import { presentation, destinations } from '@/config/site';
+import { presentation } from '@/config/site';
 
 const copy = content('structure').checkout;
 
@@ -16,7 +16,7 @@ export function CheckoutSection() {
       description={copy.description}
     >
       <div className="px-6 pb-8 md:px-8">
-        <ActionLink href={destinations.checkoutDemo} secondary>
+        <ActionLink origin="checkout" subject="checkout" secondary>
           {t('actions.demo')}
         </ActionLink>
       </div>
@@ -26,10 +26,10 @@ export function CheckoutSection() {
       >
         <div className="grid items-start gap-6 lg:grid-cols-12">
           <div className="min-w-0 lg:col-span-8">
-            <ArtPlaceholder width={1440} height={760} label={copy.desktop} />
+            <ArtPlaceholder width={1440} height={760} label={copy.desktop} alt={copy.desktopAlt} />
           </div>
           <div className="mx-auto w-full max-w-xs lg:col-span-4">
-            <ArtPlaceholder width={390} height={760} label={copy.mobile} />
+            <ArtPlaceholder width={390} height={760} label={copy.mobile} alt={copy.mobileAlt} />
           </div>
         </div>
         <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{copy.caption}</p>
@@ -50,7 +50,12 @@ export function CheckoutSection() {
         {[copy.recurrence, copy.split].map((item) => (
           <div key={item.title} className="border-t border-border md:first:border-r">
             <ContentModule {...item}>
-              <ActionLink className="mt-5" origin="checkout" secondary>
+              <ActionLink
+                className="mt-5"
+                origin="checkout"
+                subject={item === copy.recurrence ? 'recurrence' : 'split'}
+                secondary
+              >
                 {t('structure.details')}
               </ActionLink>
             </ContentModule>
