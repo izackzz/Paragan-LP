@@ -8,6 +8,8 @@ import { Frame } from '@/components/ui/frame';
 import { Button } from '@/components/ui/button';
 import { IconAffiliates, IconGateways, IconSwatchBook } from '@/components/assets/custom-icons';
 import { content, t } from '@/i18n';
+import Link from 'next/link';
+import { ContactIntentLink } from '../contact-intent-link';
 
 const copy = content('introduction');
 const previewIcons = { gateway: IconGateways, seller: IconAffiliates, checkout: IconSwatchBook };
@@ -38,19 +40,20 @@ export function HeroSection() {
           {copy.description}
         </p>
         <div className="flex w-full flex-col gap-2 sm:flex-row lg:justify-center">
-          <Button size="lg" className="w-full sm:w-fit" variant="cta">
-            {t('actions.consult')}
+          <Button asChild size="lg" className="w-full sm:w-fit" variant="cta">
+            <ContactIntentLink origin="inicio">{t('actions.consult')}</ContactIntentLink>
           </Button>
-          <Button size="lg" className="w-full sm:w-fit" variant="secondary">
-            {t('actions.demo')}
+          <Button asChild size="lg" className="w-full sm:w-fit" variant="secondary">
+            <Link href="#previa-produto">{t('actions.demo')}</Link>
           </Button>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <span className="mb-2 block font-mono text-caption">{copy.previewLabel}</span>
           {copy.supporting.primary}{' '}
           <span className="text-accent-2">{copy.supporting.emphasis}</span>
         </p>
       </div>
-      <Frame className="mx-5 md:mx-7 xl:mx-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+      <div id="previa-produto" className="scroll-mt-22"><Frame className="mx-5 md:mx-7 xl:mx-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
@@ -92,12 +95,12 @@ export function HeroSection() {
               />
               <p className="flex justify-between gap-4 border-t bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
-                <span className={cn(micro, 'hidden shrink-0 md:block')}>{copy.previewLabel}</span>
+                <span className={cn(micro, 'shrink-0')}>{t('structure.demo')}</span>
               </p>
             </TabPanel>
           ))}
         </Tabs>
-      </Frame>
+      </Frame></div>
       <div className="text-display mx-0 grid min-h-32 items-center py-6 text-lg">
         <FluidGroup className="grid grid-cols-2 lg:grid-cols-4 [&_span]:block [&_span]:border-border [&_span]:px-2 [&_span]:py-4 [&_span]:text-center [&_span]:text-sm [&_span]:font-medium">
           <span>{copy.attributes.branding}</span>
