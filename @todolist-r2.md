@@ -110,19 +110,19 @@
 - [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.policies` e contexto Comercial; H3 “Condições comerciais”, condições por seller, taxas/comissões, padrão e exceções suportadas.
 - [x] `control-section.tsx` + catálogo: reaproveitar `capabilities.items.people` e contexto Operação; H3 “Governança da base e da equipe”, sellers, papéis/permissões, carteiras/responsabilidades e histórico de decisões.
 - [x] `control-section.tsx`: demonstração de configuração/decisão com tarefa identificada, mídia e legenda; no máximo dois recortes complementares, sem nova seção de perspectivas redundante.
-- [ ] `control-section.tsx`: mover contexto Financeiro para `finance-section.tsx`; não manter aba financeira neste bloco.
+- [x] `control-section.tsx`: mover contexto Financeiro para `finance-section.tsx`; não manter aba financeira neste bloco.
 - [x] `control-section.tsx` + catálogo: expansível complementar com campanhas, rankings, premiações e outros recursos confirmados; nome e descrição por item.
 - [x] `control-section.tsx`: CTA final para avaliar configuração da operação com origem preservada no contato.
 
 ### 8.7 — Bloco 04: Gestão financeira
 
-- [ ] `finance-section.tsx` + catálogo `ledger`: H2 “Gestão financeira”, identificador e descrição; reaproveitar módulo financeiro e contexto Financeiro da operação.
-- [ ] `finance-section.tsx`: demonstração 7/12 + composição 5/12; exemplo identificado, painel/fluxo, legenda e dados explicitamente demonstrativos.
-- [ ] `finance-section.tsx` + catálogo: composição com valor da cobrança, taxas, receita, participantes, reservas, saldo e disponibilidade prevista; valores apenas fictícios e consistentes ou placeholders.
-- [ ] `finance-section.tsx`: composição em tabela semântica desktop e registros empilhados mobile, mantendo nomes e campos.
-- [ ] `finance-section.tsx` + catálogo: observação sobre movimentação e dependência de processamento/liquidação abaixo da composição; sem prometer prazo universal.
-- [ ] `finance-section.tsx`: três módulos Receita e custos / Disponibilidade / Movimentações; reaproveitar `ledger.items`, incluir listas e estados correspondentes.
-- [ ] `finance-section.tsx`: CTA financeiro contextual; mobile demonstração → composição → módulos → CTA.
+- [x] `finance-section.tsx` + catálogo `ledger`: H2 “Gestão financeira”, identificador e descrição; reaproveitar módulo financeiro e contexto Financeiro da operação.
+- [x] `finance-section.tsx`: demonstração 7/12 + composição 5/12; exemplo identificado, painel/fluxo, legenda e dados explicitamente demonstrativos.
+- [x] `finance-section.tsx` + catálogo: composição com valor da cobrança, taxas, receita, participantes, reservas, saldo e disponibilidade prevista; valores apenas fictícios e consistentes ou placeholders.
+- [x] `finance-section.tsx`: composição em lista estruturada semântica desktop e registros empilhados mobile, mantendo nomes e campos.
+- [x] `finance-section.tsx` + catálogo: observação sobre movimentação e dependência de processamento/liquidação abaixo da composição; sem prometer prazo universal.
+- [x] `finance-section.tsx`: três módulos Receita e custos / Disponibilidade / Movimentações; reaproveitar `ledger.items`, incluir listas e estados correspondentes.
+- [x] `finance-section.tsx`: CTA financeiro contextual; mobile demonstração → composição → módulos → CTA.
 
 ### 8.8 — Bloco 05: Experiência dos sellers e compradores
 
