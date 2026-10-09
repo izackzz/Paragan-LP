@@ -135,13 +135,13 @@
 
 ### 8.9 — Bloco 06: Adquirência e integrações
 
-- [ ] `integrations-section.tsx` + catálogo `connectivity`: H2 “Adquirência e integrações”, identificador e descrição; absorver `capabilities.items.acquiring` e `integrations`.
-- [ ] `integrations-section.tsx`: processamento em 4/12 introdução + 8/12 matriz; H3, descrição, controles, contratos/credenciais e habilitação da operação.
-- [ ] `src/config/site.ts` + catálogo: registros de provedor com métodos, recursos, estágio, requisitos e detalhes; sem afirmar integração ativa sem informação confirmada.
-- [ ] `integrations-section.tsx`: matriz desktop e registros completos empilhados mobile; separar processamento de movimentação/parceiros financeiros quando houver registros.
-- [ ] `integrations-section.tsx`: blocos API e Webhooks em duas colunas; H3, descrição e listas de operações/grupos de eventos.
-- [ ] `integrations-section.tsx`: prévia de documentação/exemplo API e histórico de entrega de webhooks; exemplos identificados, sem tokens ou credenciais reais.
-- [ ] `integrations-section.tsx`: ações distintas Documentação / Avaliar integração específica; recurso não publicado identificado e direcionado à avaliação técnica.
+- [x] `integrations-section.tsx` + catálogo `connectivity`: H2 “Adquirência e integrações”, identificador e descrição; absorver `capabilities.items.acquiring` e `integrations`.
+- [x] `integrations-section.tsx`: processamento em 4/12 introdução + 8/12 matriz; H3, descrição, controles, contratos/credenciais e habilitação da operação.
+- [x] `src/config/site.ts` + catálogo: registros de provedor com métodos, recursos, estágio, requisitos e detalhes; sem afirmar integração ativa sem informação confirmada.
+- [x] `integrations-section.tsx`: matriz desktop e registros completos empilhados mobile; separar processamento de movimentação/parceiros financeiros quando houver registros.
+- [x] `integrations-section.tsx`: blocos API e Webhooks em duas colunas; H3, descrição e listas de operações/grupos de eventos.
+- [x] `integrations-section.tsx`: prévia de documentação/exemplo API e histórico de entrega de webhooks; exemplos identificados, sem tokens ou credenciais reais.
+- [x] `integrations-section.tsx`: ações distintas Documentação / Avaliar integração específica; recurso não publicado identificado e direcionado à avaliação técnica.
 
 ### 8.10 — Bloco 07: Confiança operacional
 
