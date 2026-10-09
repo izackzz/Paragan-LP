@@ -509,7 +509,7 @@ Header global → hero → nove seções indexadas → footer; dez blocos no tot
 | 03    | `ControlSection` / `operacao`         | Banda dark, identidade/condições/governança, demonstração 5:7 e recursos expansíveis  |
 | 04    | `FinanceSection` / `financeiro`       | Demonstração 7:5, composição fictícia e três módulos financeiros                      |
 | 05    | `CheckoutSection` / `checkout`        | Prévia desktop/mobile, jornada de quatro etapas, recorrência e split                  |
-| 06    | `IntegrationsSection` / `integracoes` | Processamento 4:8, matriz provisória, API e webhooks                                  |
+| 06    | `IntegrationsSection` / `integracoes` | Processamento 4:8, slots de adquirentes e ferramentas/plugins, API e webhooks         |
 | 07    | `ScaleSection` / `estrutura`          | Quatro pilares, biblioteca de evidências, responsáveis e referências condicionais     |
 | 08    | `LaunchSection` / `implantacao`       | Escopo/composição comercial, abas Ativação/Migração com cinco etapas e acompanhamento |
 | 09    | `FaqSection` / `perguntas`            | Introdução 4:8, oito perguntas no accordion e contato                                 |
