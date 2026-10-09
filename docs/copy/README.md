@@ -18,6 +18,7 @@ A Paragan deve ser percebida pela combinação de profundidade operacional, expe
 4. [Briefs editoriais](04-briefs-editoriais.md): sequência argumentativa da home e detalhamento das páginas comerciais.
 5. [Conversão e oferta](05-conversao-e-oferta.md): CTAs, qualificação, demonstração, contratação e objeções.
 6. [Evidências e critérios de publicação](06-evidencias-e-publicacao.md): fontes, divergências, provas necessárias e decisões comerciais abertas.
+7. [Roteiro de ilustrações e motion](07-roteiro-de-ilustracoes-e-motion.md): os 22 espaços da home, telas de origem, composição, formatos e sequências de animação.
 
 ## Como usar
 
