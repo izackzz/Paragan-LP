@@ -187,11 +187,12 @@ const messages = {
         caption: 'Vendas, produtos e recebimentos. O dia a dia da sua base, conectado.',
       },
       checkout: {
-        label: 'Seu checkout',
-        eyebrow: 'PAGAMENTO',
-        description: 'Oferta e jornada com a sua marca.',
-        image: 'Checkout white label',
-        caption: 'Do produto à confirmação. Uma jornada de compra com a sua identidade.',
+        label: 'O que seu time vê',
+        eyebrow: 'GESTÃO DE CARTEIRA',
+        description: 'Sellers, cadastros e responsabilidades.',
+        image: 'Painel da equipe · staff',
+        caption:
+          'Gerentes de conta acompanham os sellers da carteira atribuída, com acessos definidos pelas permissões de cada papel.',
       },
     },
   },
