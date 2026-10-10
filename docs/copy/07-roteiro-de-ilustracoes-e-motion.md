@@ -1,55 +1,70 @@
 # Roteiro de ilustrações e motion — os 22 espaços da home
 
-Referência: 08/10/2026. Direção de produção visual, não implementação. Base: seções atuais de `src/components/landing/sections/` e telas de `Paragan-GatewayFront`. Nenhuma captura ou animação foi produzida nesta etapa.
+Referência: 09/10/2026. Direção de produção visual, não implementação. Base: ordem de `src/app/page.tsx`, copy de `src/i18n/messages/pt-BR.ts`, índices de `src/config/site.ts` e placeholders de `src/components/landing/sections/`. As telas de `Paragan-GatewayFront` abaixo são referências a conferir no ambiente de captura, não comprovação de disponibilidade comercial. Nenhuma captura ou animação foi produzida nesta etapa.
 
 ## 1. Ideia central
 
-**Primeiro mostrar o produto; depois explicar seus mecanismos; por fim mostrar como ele se encaixa no negócio.**
+**Mostrar a base pronta, identificar o cenário de contratação e explicar configurações, fluxos e sustentação.**
 
-- Hero: três dashboards reais, vetorizados e percorridos por câmera. O visitante reconhece produto, densidade e identidade antes de ler detalhes.
+- Hero: preservar integralmente a primeira dobra aprovada, com as abas gateway, seller e checkout. As fichas 01–03 orientam somente os assets para seus espaços existentes; não autorizam alterar texto, CTAs, tabs, layout ou comportamento.
 - Plataforma: oito peças curtas, cada uma explicando um mecanismo. Recortes da UI para configuração e finanças; conexões animadas para delegação, roteamento e eventos.
+- Cenários: lançamento, migração e incorporação usam os três blocos alternados existentes. Mostrar a mesma base com requisitos de entrada distintos, não três produtos diferentes.
 - Controle: três demonstrações de decisões concretas do gateway-admin, não outra apresentação genérica do dashboard.
-- Checkout: uma jornada real, com desktop e mobile, do resumo ao recibo.
 - Financeiro: decomposição legível, sem confundir volume, receita e saldo.
-- Integrações e escala: diagramas explicativos, com direção, estados e fronteiras explícitos.
-- Soluções: síntese dos modelos de negócio, reutilizando o vocabulário visual anterior sem repetir as mesmas artes.
+- Checkout: uma jornada real, com desktop e mobile, do resumo ao recibo; sellers organizam ofertas, compradores pagam, operador administra a experiência oferecida à base.
+- Integrações e confiança operacional: diagramas explicativos, com direção, estados, condições de habilitação e fronteiras explícitos.
+
+Ordem atual: hero → plataforma → cenários → controle → financeiro → checkout → integrações → confiança operacional → implantação → FAQ → contato → rodapé. Não criar novos cards, colunas, blocos ou espaços para acomodar as artes. A nova estratégia apresenta produto existente, autonomia nas configurações disponíveis e implantação/sustentação contratadas; a ilustração não deve sugerir desenvolvimento integral sob medida.
 
 Não usar fotos de banco de imagens, moedas voando, gráficos sempre ascendentes, órbitas sem significado, robôs de IA ou logos de parceiros como decoração.
 
 ## 2. Inventário e correspondência com a página
 
-São **22 artes**, contando conteúdos de abas, não somente os quadros visíveis ao mesmo tempo. Os tamanhos abaixo são os canvases já reservados pelo código; preservar suas proporções.
+São **22 artes**, contando conteúdos de abas, não somente os quadros visíveis ao mesmo tempo. Os tamanhos abaixo são os canvases já reservados pelo código; preservar suas proporções. Os IDs de produção são estáveis e não correspondem à numeração das seções: a tabela segue a ordem atual de leitura, sem renomear os assets existentes.
 
-| ID | Seção / local atual | Canvas | Direção escolhida |
-| --- | --- | --- | --- |
-| 01 | Hero / `gateway` | 1600 × 860 | Dashboard gateway-admin em SVG + câmera |
-| 02 | Hero / `seller` | 1600 × 860 | Dashboard seller em SVG + câmera |
-| 03 | Hero / `checkout` → futura aba staff | 1600 × 860 | Dashboard staff em SVG + câmera |
-| 04 | Plataforma / Identidade | 1000 × 500 | Recortes de UI + propagação de marca |
-| 05 | Plataforma / Regras comerciais | 1000 × 500 | Composição estática de configurações reais |
-| 06 | Plataforma / Pessoas | 1000 × 500 | Diagrama animado de papéis e carteiras |
-| 07 | Plataforma / Relacionamento | 1000 × 500 | Composição estática de ranking e jornada |
-| 08 | Plataforma / Adquirência | 1000 × 500 | Fluxo animado de elegibilidade e seleção |
-| 09 | Plataforma / Gestão financeira | 1000 × 500 | Recorte estático de saldo e extrato |
-| 10 | Plataforma / Checkout | 1000 × 500 | Recortes estáticos de oferta e resumo |
-| 11 | Plataforma / Integrações | 1000 × 500 | Microfluxo animado de evento e entrega |
-| 12 | Controle / Operação | 1000 × 850 | Print real + foco em cadastro e histórico |
-| 13 | Controle / Comercial | 1000 × 850 | Print real + foco em exceção por seller |
-| 14 | Controle / Financeiro | 1000 × 850 | Print real + foco em solicitação de saque |
-| 15 | Experiência de venda / Catalyst | 1440 × 760 | UI desktop/mobile + sequência de compra |
-| 16 | Gestão financeira / Visão financeira | 1200 × 800 | UI por competência + decomposição guiada |
-| 17 | Integrações / Seu ecossistema | 1200 × 720 | Mapa animado de conexões de negócio |
-| 18 | Integrações / API e entrega de eventos | 1200 × 600 | Sequência técnica animada com retentativa |
-| 19 | Escala / Arquitetura da operação | 1200 × 700 | Fronteiras de tenant + idempotência + filas |
-| 20 | Soluções / Sua fintech | 1200 × 640 | Composição estática da operação de marca |
-| 21 | Soluções / Muitos negócios | 1200 × 640 | Rede animada de sellers e integrações |
-| 22 | Soluções / Oferta ao recebimento | 1200 × 640 | Jornada animada de produto digital |
+| ID  | Seção / local atual                                           | Canvas     | Direção escolhida                                      |
+| --- | ------------------------------------------------------------- | ---------- | ------------------------------------------------------ |
+| 01  | Hero / `gateway`                                              | 1600 × 860 | Dashboard gateway-admin; poster e câmera opcional      |
+| 02  | Hero / `seller`                                               | 1600 × 860 | Dashboard seller; poster e câmera opcional             |
+| 03  | Hero / `checkout`                                             | 1600 × 860 | Checkout real da oferta demonstrativa                  |
+| 04  | Plataforma / Identidade                                       | 1000 × 500 | Recortes de UI + propagação de marca                   |
+| 05  | Plataforma / Regras comerciais                                | 1000 × 500 | Composição estática de configurações reais             |
+| 06  | Plataforma / Pessoas                                          | 1000 × 500 | Diagrama animado de papéis e carteiras                 |
+| 07  | Plataforma / Relacionamento                                   | 1000 × 500 | Composição estática de ranking e jornada               |
+| 08  | Plataforma / Adquirência                                      | 1000 × 500 | Fluxo animado de elegibilidade e seleção               |
+| 09  | Plataforma / Gestão financeira                                | 1000 × 500 | Recorte estático de saldo e extrato                    |
+| 10  | Plataforma / Checkout                                         | 1000 × 500 | Recortes estáticos de oferta e resumo                  |
+| 11  | Plataforma / Integrações                                      | 1000 × 500 | Microfluxo animado de evento e entrega                 |
+| 20  | Cenários / `operators` — Lance sua operação                   | 1200 × 640 | Composição estática da base pronta sob uma marca       |
+| 21  | Cenários / `platforms` — Migre uma operação existente         | 1200 × 640 | Diagrama de origem, avaliação e transição condicionada |
+| 22  | Cenários / `creators` — Incorpore pagamentos à sua plataforma | 1200 × 640 | Sistemas existentes conectados à base de pagamentos    |
+| 12  | Controle / Operação                                           | 1000 × 850 | Print real + foco em cadastro e histórico              |
+| 13  | Controle / Comercial                                          | 1000 × 850 | Print real + foco em exceção por seller                |
+| 14  | Controle / Financeiro                                         | 1000 × 850 | Print real + foco em solicitação de saque              |
+| 16  | Gestão financeira / Visão financeira                          | 1200 × 800 | UI por competência + decomposição guiada               |
+| 15  | Experiência de venda / Checkout da operação                   | 1440 × 760 | UI desktop/mobile + sequência de compra                |
+| 17  | Integrações / Seu ecossistema                                 | 1200 × 720 | Mapa animado de conexões de negócio                    |
+| 18  | Integrações / API e entrega de eventos                        | 1200 × 600 | Sequência técnica animada com retentativa              |
+| 19  | Confiança operacional / Arquitetura da operação               | 1200 × 700 | Fronteiras de tenant + idempotência + filas            |
 
-### Ajuste editorial da hero
+### Correspondência técnica e limite da hero
 
-A página hoje oferece “Seu gateway”, “Seus sellers” e “Seu checkout”. A direção solicitada substitui **apenas o conteúdo da terceira aba por staff**. Rótulos futuros: “Seu gateway”, “Seus sellers”, “Sua equipe”. A terceira descrição passa a tratar carteira, cadastros e responsabilidades. A ordem pode continuar gateway → seller → equipe; os três painéis representam a mesma operação.
+A primeira dobra permanece exatamente como está: “Seu gateway”, “Seus sellers” e “Seu checkout”. A antiga proposta de substituir a terceira aba por staff está cancelada. Não trocar rótulos, descrições, ordem ou conteúdo representado; staff aparece apenas quando necessário nas peças de equipe e controle.
 
-O checkout continua com duas peças próprias, 10 e 15. Não adicionar uma quarta arte à hero nem retirar um espaço de outra seção. Essa troca está documentada, mas não foi aplicada ao componente.
+| IDs   | Componente / seção                          | Fonte atual do label / chave do slot                                                                            |
+| ----- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 01–03 | `hero-section.tsx` / `#inicio`              | `introduction.previews.{gateway,seller,checkout}.image`                                                         |
+| 04–11 | `platform-section.tsx` / `#plataforma`      | `capabilities.items.{identity,policies,people,engagement,acquiring,finance,checkout,integrations}.illustration` |
+| 20–22 | `solutions-section.tsx` / `#solucoes`       | `audience.items.{operators,platforms,creators}.image`                                                           |
+| 12–14 | `control-section.tsx` / `#controle`         | `operations.contexts.{management,commercial,finance}.illustration`                                              |
+| 16    | `finance-section.tsx` / `#financeiro`       | `ledger.illustration`                                                                                           |
+| 15    | `checkout-section.tsx` / `#checkout`        | `sales.illustration`                                                                                            |
+| 17–18 | `integrations-section.tsx` / `#integracoes` | `connectivity.illustration` / `connectivity.eventsIllustration`                                                 |
+| 19    | `scale-section.tsx` / `#escala`             | `reliability.illustration`                                                                                      |
+
+As chaves `operators`, `platforms` e `creators` são identificadores técnicos legados: representam, nessa ordem, lançamento, migração e incorporação. Não produzir artes a partir dos nomes antigos das chaves. Não existem cards de provedores, slots de logos de adquirentes/plugins ou biblioteca de evidências na estrutura atual; não reinserir esses blocos para cumprir este roteiro.
+
+Na substituição futura, usar o espaço do `ArtPlaceholder` existente, mantendo canvas, moldura, padding, bordas, ordem responsiva e legendas externas. `src` atende assets estáticos; motion exige um renderizador compatível no mesmo quadro e só deve ser integrado em etapa autorizada. Os alts abaixo são entregáveis de produção, não textos já conectados ao componente. Não usar o texto genérico “Espaço reservado” como alt do asset final.
 
 ## 3. Regras de produção para todas as peças
 
@@ -85,22 +100,22 @@ O checkout continua com duas peças próprias, 10 e 15. Não adicionar uma quart
 
 ### 3.4 Motion, leitura e comportamento
 
-- Hero: passeio de 14–18 s; câmera entre 1× e 1,65×, movimentos suaves e pausas de leitura. Percurso curvo significa pan contínuo, **não girar o dashboard ou rodar a câmera em 360°**.
+- Hero: poster estático é a entrega inicial; câmera/motion só em etapa autorizada, sem mudar a primeira dobra. Para gateway/seller, passeio de 14–18 s, câmera entre 1× e 1,65× e pausas de leitura. Checkout mantém o estado da oferta. Percurso curvo significa pan contínuo, **não girar a interface ou rodar a câmera em 360°**.
 - Diagramas: cenas de 6–10 s; transições locais de 200–400 ms; segurar o resultado por pelo menos 2 s. Linhas aparecem antes do pulso que percorre a conexão.
 - Apenas uma trilha de ação por vez. Nada piscando simultaneamente em todos os cards.
 - Reproduzir uma vez quando a peça entrar em viewport. Reiniciar somente por “Rever animação”; não criar 22 loops concorrentes. Hero anima apenas a aba ativa, sem alternar abas automaticamente.
 - Pausar ao sair da viewport ou ocultar a página. Nas abas, cancelar a sequência anterior e iniciar a nova em enquadramento completo. Oferecer pausar/rever acessíveis para peças prolongadas.
 - `prefers-reduced-motion`: poster completo, sem pan, zoom, pulsos ou autoplay. Nenhuma informação depende de assistir à sequência.
-- Mobile: priorizar um recorte legível, não reduzir uma tela de 1600 px até virar miniatura. Não exigir hover ou scroll horizontal. Hero mostra KPI + gráfico; diagramas usam composição vertical ou poster resumido.
+- Mobile: priorizar um recorte legível, não reduzir uma tela de 1600 px até virar miniatura. Não exigir hover ou scroll horizontal. Hero gateway/seller prioriza KPI + gráfico; hero checkout prioriza oferta + resumo. Diagramas usam composição vertical ou poster resumido dentro do quadro existente.
 - Reservar aspect ratio antes de carregar; poster da primeira aba da hero tem prioridade. Demais arquivos carregam sob demanda. Metas iniciais, a medir: SVG diagramático até 150 KB gzip; Lottie até 250 KB gzip; poster até 250 KB; dashboard vetorial até 500 KB gzip. Se exceder, simplificar ou usar híbrido; não sacrificar leitura.
 
 ## 4. Roteiro das 22 peças
 
-Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-GatewayFront`; o arquivo de posição é relativo a `Paragan-LP/src/components/landing/sections/`.
+Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-GatewayFront`; o arquivo de posição é relativo a `Paragan-LP/src/components/landing/sections/`. As fichas mantêm a ordem dos IDs para referência; a ordem de exibição é a da tabela acima. Antes de capturar, confirmar caminhos, campos e estados reais; referência de tela não autoriza preencher lacunas da UI por desenho.
 
 ### 01 — Hero: quem dirige o gateway
 
-**Posição:** `hero-section.tsx`, aba `gateway`. **Formato:** dashboard real vetorizado, SVG + animação de câmera, 1600 × 860.
+**Posição:** `hero-section.tsx`, aba `gateway`. **Formato:** dashboard real vetorizado, SVG + poster estático, 1600 × 860; animação de câmera somente após autorização.
 
 **Propósito:** demonstrar a visão consolidada e os pontos que exigem ação do dono da operação.
 
@@ -114,7 +129,7 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 ### 02 — Hero: quem vende na plataforma
 
-**Posição:** `hero-section.tsx`, aba `seller`. **Formato:** SVG vetorizado + câmera, 1600 × 860.
+**Posição:** `hero-section.tsx`, aba `seller`. **Formato:** SVG vetorizado + poster estático, 1600 × 860; animação de câmera somente após autorização.
 
 **Propósito:** mostrar que o seller recebe uma experiência própria, conectada à mesma marca.
 
@@ -124,17 +139,17 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 **Poster/mobile:** vendas, saldo e parte legível do gráfico. **Alt:** “Dashboard demonstrativo do seller com vendas, saldo e recursos da operação.”
 
-### 03 — Hero: quem cuida da carteira
+### 03 — Hero: onde o comprador paga
 
-**Posição:** terceira aba de `hero-section.tsx`, hoje `checkout`; futura `staff`. **Formato:** SVG vetorizado + câmera, 1600 × 860.
+**Posição:** `hero-section.tsx`, aba `checkout`, preservada. **Formato:** captura real ou SVG híbrido estático, 1600 × 860; eventual foco de câmera depende de autorização posterior.
 
-**Propósito:** provar delegação com contexto; staff não enxerga automaticamente toda a base do gateway.
+**Propósito:** mostrar a experiência de compra oferecida aos sellers sob a marca da operação, sem substituir essa perspectiva por um painel de equipe.
 
-**Capturar/desenhar:** `app/(app)/staff/page.tsx`, `components/staff/dashboard-content.tsx`. Mostrar visão geral da carteira, “Aplicações por status”, “Alertas”, “Carteira por status” e “Atividade recente”. Usar um perfil cuja carteira tenha dados coerentes com os demais painéis.
+**Capturar/desenhar:** checkout público `app/(checkout)/[publicId]/page.tsx`, mesma oferta “Kit Horizonte” das peças 10 e 15. Mostrar identidade Aurora, produto, preço, resumo e métodos efetivamente habilitados. Usar estado anterior ao cupom/adicional: oferta de R$ 200,00 e total de R$ 200,00, se confirmado pela cotação real. Não mostrar dados de comprador, cartão ou QR pagável.
 
-**Storyboard — 16 s:** 0–3 s plano geral; 3–6 s aproximar indicadores da carteira; 6–9 s percorrer aplicações por status; 9–12 s foco em um alerta; 12–14 s deslocar à atividade recente; 14–16 s retornar. Um contorno editorial pode conectar alerta e atividade referente ao mesmo cadastro; não inserir esse conector como se fosse um recurso nativo.
+**Composição:** interface frontal completa com oferta e resumo legíveis. Manter preço e estado fixos. Não executar compra, aplicar cupom ou exibir confirmação nessa peça; a sequência detalhada pertence à peça 15. Se motion for autorizado, somente foco local na oferta e no resumo, sem trocar abas automaticamente.
 
-**Poster/mobile:** carteira, aplicações e um alerta. **Alt:** “Dashboard demonstrativo da equipe com carteira atribuída, cadastros e atividade recente.”
+**Poster/mobile:** produto, oferta e resumo do mesmo checkout em recorte legível. **Alt:** “Checkout demonstrativo sob a marca da operação com oferta, resumo e métodos de pagamento habilitados.”
 
 ### 04 — Plataforma: identidade que chega às superfícies
 
@@ -234,7 +249,7 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 ### 12 — Controle / Operação: consultar antes de decidir
 
-**Posição:** `control-section.tsx`, aba `operacao`. **Formato:** print escuro em camadas + foco local, 1000 × 850.
+**Posição:** `control-section.tsx`, aba `management` / Operação. **Formato:** print escuro em camadas + foco local, 1000 × 850.
 
 **Propósito:** demonstrar contexto operacional e rastreabilidade da revisão de cadastro.
 
@@ -246,7 +261,7 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 ### 13 — Controle / Comercial: uma condição para esse relacionamento
 
-**Posição:** aba `comercial`. **Formato:** print escuro + aproximação, 1000 × 850.
+**Posição:** `control-section.tsx`, aba `commercial` / Comercial. **Formato:** print escuro + aproximação, 1000 × 850.
 
 **Propósito:** provar configuração por seller, além da visão geral do módulo 05.
 
@@ -258,7 +273,7 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 ### 14 — Controle / Financeiro: solicitar não é liquidar
 
-**Posição:** aba `financeiro`. **Formato:** print escuro + destaque de fila, 1000 × 850.
+**Posição:** `control-section.tsx`, aba `finance` / Financeiro. **Formato:** print escuro + destaque de fila, 1000 × 850.
 
 **Propósito:** mostrar supervisão de saques, distinta da análise de custos da peça 16.
 
@@ -270,7 +285,7 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 ### 15 — Experiência de venda: da composição ao recibo
 
-**Posição:** `checkout-section.tsx`. **Formato:** capturas reais Catalyst desktop/mobile, SVG híbrido + sequência de estados, 1440 × 760.
+**Posição:** `checkout-section.tsx`, único quadro “Checkout da operação · desktop e mobile”. **Formato:** capturas reais desktop/mobile, SVG híbrido + sequência de estados, 1440 × 760. Desktop e mobile pertencem à mesma arte, não a dois novos blocos.
 
 **Propósito:** demonstrar clareza da compra e continuidade após a confirmação financeira.
 
@@ -318,7 +333,7 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 **Poster/mobile:** histórico de duas tentativas e fluxo simplificado, sem payload minúsculo. **Alt:** “Fluxo ilustrativo de webhook com falha inicial, retentativa e histórico de entrega.”
 
-### 19 — Escala: crescer sem perder fronteiras
+### 19 — Confiança operacional: examinar as fronteiras
 
 **Posição:** `scale-section.tsx`. **Formato:** diagrama SVG animado, 1200 × 700.
 
@@ -330,63 +345,64 @@ Nas fontes abaixo, caminhos `app/` e `components/` são relativos a `Paragan-Gat
 
 **Poster/mobile:** contextos isolados e um fluxo de repetição simplificado. **Alt:** “Arquitetura ilustrativa com isolamento de contextos, controle de repetição e registros operacionais.”
 
-### 20 — Soluções: a operação tem a sua marca
+### 20 — Cenários: lançar com uma base pronta
 
-**Posição:** `solutions-section.tsx`, “Sua fintech, do seu jeito”. **Formato:** composição estática premium de recortes reais, 1200 × 640.
+**Posição:** `solutions-section.tsx`, primeiro bloco, `operators` / “Lance sua operação.”. **Formato:** composição estática de recortes reais, 1200 × 640, no quadro largo existente.
 
-**Propósito:** ajudar fundador e operador a visualizar o conjunto que está avaliando, sem vender licença bancária.
+**Propósito:** mostrar o conjunto existente que a empresa contrata e configura, não uma plataforma a construir do zero nem uma licença bancária.
 
 **Capturar/desenhar:** painel gateway-admin como peça principal; pequeno recorte seller ao lado; cabeçalho do checkout abaixo. Usar as fontes de 01, 02 e 15 com enquadramentos diferentes. Três labels editoriais: “Sua gestão”, “Sua base”, “Sua experiência de compra”. Marca Aurora consistente; condição comercial do módulo 05 como detalhe, se houver espaço.
 
-**Composição:** um painel dominante, dois apoios. Nada de diagrama de infraestrutura nesta peça; o produto é o argumento. Sem autoplay para dar respiro após três seções técnicas.
+**Composição:** um painel dominante, dois apoios. Labels editoriais secundários “Marca e acessos”, “Condições dos sellers” e “Métodos a habilitar”, sem status “Pronto para operar”. A peça aparece logo após os oito mecanismos da plataforma: sintetizar a base disponível sem repetir um card inteiro ou sugerir ativação instantânea. Sem autoplay.
 
 **Poster/mobile:** gateway e dois cabeçalhos, mantendo os labels. **Alt:** “Painéis e checkout demonstrativos reunidos sob uma mesma identidade de marca.”
 
 **Evitar:** cartão bancário, licença BACEN, conta digital ou bandeiras sugerindo serviços universais não confirmados.
 
-### 21 — Soluções: muitos sellers, contextos próprios
+### 21 — Cenários: avaliar antes de migrar
 
-**Posição:** “Uma plataforma. Muitos negócios”. **Formato:** rede SVG animada, 1200 × 640.
+**Posição:** `solutions-section.tsx`, segundo bloco, `platforms` / “Migre uma operação existente.”. **Formato:** diagrama SVG, poster estático e sequência opcional, 1200 × 640. Preservar a alternância imagem/texto do template.
 
-**Propósito:** explicar uma plataforma com base diversificada, relações comerciais e conexões autorizadas.
+**Propósito:** explicar a avaliação de origem e os critérios de transição, sem prometer importar toda a base ou portar tokens automaticamente.
 
-**Desenhar:** “Sua plataforma” no centro superior; três cards de sellers abaixo com nomes fictícios, miniaturas originais e tipos de negócio; um chip “Condição específica” em um deles. À lateral, “Seu backoffice”, ligado à plataforma por API. Pode incluir minirrecortes reais de `app/(app)/gateway-admin/sellers/page.tsx` e `seller/integrations/page.tsx`, sem apresentar marketplace público de sellers.
+**Desenhar:** três grupos “Operação de origem” → “Avaliação e ensaio” → “Base Paragan”. Na origem, “Dados”, “Contratos” e “Integrações”; no grupo central, “Portabilidade a verificar”, “Escopo acordado” e “Critérios de aceite”; no destino, pequeno recorte real de sellers ou configurações da marca Aurora. Usar `app/(app)/gateway-admin/sellers/page.tsx` apenas como referência de destino, não como evidência de um importador. Tokens ficam em uma nota “Elegibilidade depende dos provedores”, sem valores nem representação de cópia de credenciais.
 
-**Storyboard — 8 s:** 0–2 s plataforma e dois sellers; 2–4 s terceiro entra e seu vínculo aparece; 4–6 s destacar condição própria de um seller, sem replicá-la aos outros; 6–8 s revelar conexão com backoffice e manter mapa completo. Conectores de vínculo não transportam pulsos monetários: isso não é uma demo de split.
+**Storyboard opcional — 8 s:** 0–2 s origem e destino separados; 2–4 s revelar o grupo de avaliação; 4–6 s destacar “Ensaio / critérios de aceite”; 6–8 s revelar conexão tracejada ao destino com label “Transição conforme escopo”. Não animar registros atravessando como importação concluída, zerar a plataforma anterior ou mostrar um selo universal de sucesso. Todas as etapas permanecem legíveis no poster.
 
-**Poster/mobile:** plataforma sobre três cards e backoffice lateral convertido em apoio inferior. **Alt:** “Rede ilustrativa de sellers com contextos comerciais próprios conectados a uma plataforma.”
+**Poster/mobile:** três grupos verticais dentro do mesmo canvas, com dependência de portabilidade visível. **Alt:** “Fluxo ilustrativo de migração com análise da origem, avaliação de portabilidade, ensaio e transição conforme escopo.”
 
-### 22 — Soluções: oferta, pagamento e acesso autorizado
+### 22 — Cenários: incorporar pagamentos aos processos existentes
 
-**Posição:** “Da oferta ao recebimento”. **Formato:** fluxo SVG animado com componentes reais, 1200 × 640.
+**Posição:** `solutions-section.tsx`, terceiro bloco, `creators` / “Incorpore pagamentos à sua plataforma.”. **Formato:** diagrama SVG com recorte real de apoio, poster estático e sequência opcional, 1200 × 640.
 
-**Propósito:** mostrar continuidade da venda digital sem confundir confirmação com dinheiro disponível para saque.
+**Propósito:** mostrar como uma empresa conecta a base de pagamentos à plataforma que já possui, mantendo claros os sistemas próprios, o produto Paragan e o papel dos sellers.
 
-**Capturar/desenhar:** quatro etapas: “Produto / oferta” → “Checkout / pedido” → “Pagamento confirmado” → “Recibo / acesso autorizado”. Fontes: `app/(app)/seller/products/[id]/page.tsx`, `seller/orders/purchases/[id]/page.tsx`, `app/(checkout)/[publicId]/page.tsx` e `[publicId]/thanks/page.tsx`. Recibo/acesso deve limitar-se aos arquivos ou links efetivamente disponíveis; não desenhar player de aulas, progresso ou certificado. Sob a etapa financeira, apoio separado “Saldo conforme regras de liberação”.
+**Desenhar:** à esquerda “Sua plataforma existente”, com “Pedidos / serviços” e “Seu backoffice”; à direita “Base de pagamentos”, com “Sellers”, “Pagamentos” e “Consulta de estados”. Dois conectores distintos: “Comandos / consultas por API” e “Eventos por webhook”. Um recorte real de `app/(app)/gateway-admin/sellers/page.tsx` pode apoiar a base; referências técnicas em `seller/integrations/page.tsx` e `seller/webhooks/[id]/page.tsx`, sem exibir segredos. Não desenhar marketplace público, CRM nativo ou plugin pronto não confirmado. A interface do sistema externo, se ilustrada, precisa ser identificada como conceitual.
 
-**Storyboard — 9 s:** 0–2 s oferta e checkout; 2–4 s pedido em espera; 4–6 s marcador “Confirmação financeira recebida” habilita a próxima conexão; 6–7 s recibo e link autorizado aparecem; 7–9 s apoio financeiro mostra pendente/disponível conforme cenário, sem simular depósito imediato. Acessos e links são desenhos inertes, nunca URLs reais de compra.
+**Storyboard opcional — 8 s:** 0–2 s apresentar os dois contextos; 2–4 s revelar a conexão API; 4–6 s mostrar uma consulta de estado e seu retorno, sem endpoint inventado; 6–8 s destacar o conector de eventos e manter a composição completa. A comunicação não representa aprovação ou liquidação. Não simular instalação em um clique nem integração de qualquer sistema sem avaliação.
 
-**Poster/mobile:** quatro passos verticais; label de saldo em bloco separado. **Alt:** “Jornada ilustrativa de oferta digital até confirmação do pagamento, recibo e acesso autorizado.”
+**Poster/mobile:** dois contextos empilhados, API e eventos com sentidos e labels distintos. **Alt:** “Diagrama ilustrativo de uma plataforma existente conectada à base de pagamentos e sellers por API e webhooks.”
 
 ## 5. Continuidade entre as peças
 
 - Aurora é a mesma operação nas 22 artes; seller Horizonte e produto Kit Horizonte reaparecem quando ajudam a entender a continuidade.
-- 01/02/03 apresentam papéis; 06 explica a delimitação; 12 mostra uma decisão dentro dela.
+- 01/02/03 apresentam operador, seller e experiência do comprador; 06 explica a delimitação da equipe; 12 mostra uma decisão dentro dela. A peça 03 é checkout, nunca staff.
 - 05 apresenta configuração; 13 mostra seu detalhe. Não repetir a mesma captura nos dois tamanhos.
 - 09 diferencia saldos; 14 mostra governança de saída; 16 explica receita/custo. Não misturar extrato seller com resultado do gateway como se fossem um único caixa.
-- 10 apresenta composição da compra; 15 demonstra a interface; 22 sintetiza a jornada digital. Mesmo produto, mesma oferta e totais coerentes nos estados equivalentes.
+- 03 apresenta o checkout; 10 explica a composição da oferta; 15 demonstra a jornada de compra. Mesmo produto, mesma oferta e totais coerentes nos estados equivalentes. A entrega digital fica na peça 15, não no cenário de incorporação.
 - 08 explica seleção de rota; 17 explica ecossistema; 18 explica entrega de eventos; 19 explica fronteiras e repetição. Cada diagrama responde a uma pergunta diferente.
-- 20 e 21 não acrescentam promessas: recombinam os mecanismos já demonstrados para públicos distintos.
+- 20/21/22 aparecem antes do controle e representam lançamento, migração e incorporação. A base é a mesma; requisitos, dependências e conexão com o negócio mudam. Não acrescentar módulos ou promessas para diferenciar os cenários.
+- 17 detalha o ecossistema técnico; 22 explica o encaixe no negócio. Evitar repetir o mesmo mapa: 22 tem dois contextos, 17 distingue sistemas externos e processadores.
 
 ## 6. Conferência antes da produção final
 
-1. Capturar as telas de gateway, seller e staff com uma identidade única e dados demonstrativos legíveis.
+1. Conferir os 22 slots, chaves e canvases da tabela contra os componentes atuais; preservar primeira dobra, templates e ordem responsiva. Capturar gateway, seller e checkout sob a mesma identidade; staff apenas como apoio onde previsto.
 2. Confirmar a disponibilidade dos componentes escolhidos no ambiente de captura; se um recurso estiver parcial, usar o estado comprovado, não completar a UI por ilustração.
 3. Validar a cotação do exemplo de checkout e a consistência entre pedido, recibo e financeiro.
 4. Separar no arquivo-fonte UI real, labels editoriais e conectores conceituais; nenhum acréscimo deve parecer funcionalidade nativa.
 5. Aprovar posters primeiro; se a mensagem não funcionar estática, o motion ainda não tem base.
-6. Produzir hero e diagramas com camadas nomeadas, estados inicial/final e pausas descritas neste roteiro.
+6. Entregar fontes, posters e alts por ID; produzir motion com camadas e pausas apenas onde aprovado. A direção de câmera da hero não autoriza modificar sua implementação atual.
 7. Conferir recortes mobile, reduced motion, controles de pausa/replay, contraste e ausência de dados sensíveis.
 8. Confirmar nomes de eventos, parceiros/métodos habilitados e estados antes de publicar; validar alegações com a base editorial, não com o desenho.
 
-**Fora deste roteiro:** header, footer, lançamento, FAQ e contato não possuem `ArtPlaceholder` na home atual. O shark ASCII da plataforma é um elemento de marca existente, não um 23º espaço de prova de produto. Não adicionar imagens a essas áreas apenas para preencher a página.
+**Fora deste roteiro:** header, footer, implantação (`launch-section.tsx`), FAQ e contato não possuem `ArtPlaceholder` na home atual. O cenário “Lance sua operação” possui o slot 20 em `solutions-section.tsx`; não confundir com a seção de implantação. O shark ASCII da plataforma é um elemento de marca existente, não um 23º espaço de prova de produto. Não adicionar imagens, logos de provedores, selos de certificação ou novos blocos a essas áreas apenas para preencher a página.
