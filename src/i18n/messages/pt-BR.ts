@@ -187,9 +187,9 @@ const messages = {
         caption: 'Vendas, produtos e recebimentos. O dia a dia da sua base, conectado.',
       },
       checkout: {
-        label: 'O que seu time vê',
+        label: 'Seu time',
         eyebrow: 'GESTÃO DE CARTEIRA',
-        description: 'Sellers, cadastros e responsabilidades.',
+        description: 'Seus gerentes, devs, e demais membros.',
         image: 'Painel da equipe · staff',
         caption:
           'Gerentes de conta acompanham os sellers da carteira atribuída, com acessos definidos pelas permissões de cada papel.',
