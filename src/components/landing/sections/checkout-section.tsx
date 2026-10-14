@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import checkoutScreenshot from '../../../../public/assets/screenshots/checkout.png';
+import screenshotMotion from '../screenshot-motion.module.css';
 import { SectionLabel, ActionLink } from '../primitives';
 import { frame, section, padding, micro, cardTitle, cardDescription } from '../styles';
 import { cn } from '@/lib/utils';
@@ -37,13 +39,17 @@ export function CheckoutSection() {
             <span className={micro}>{copy.journeyLabel}</span>
             <span className={cn(micro, 'hidden sm:block')}>{copy.devicesLabel}</span>
           </div>
-          <div className="relative z-10 aspect-[1440/760] overflow-hidden">
+          <div
+            className="relative z-10 overflow-hidden"
+            style={{ aspectRatio: `${checkoutScreenshot.width} / ${checkoutScreenshot.height}` }}
+          >
             <Image
-              src="/assets/screenshots/checkout.png"
+              src={checkoutScreenshot}
               alt={copy.illustration}
               fill
-              sizes="100vw"
-              className="object-cover object-top"
+              sizes="150vw"
+              quality={100}
+              className={cn('object-cover object-top', screenshotMotion.image)}
             />
           </div>
         </div>
