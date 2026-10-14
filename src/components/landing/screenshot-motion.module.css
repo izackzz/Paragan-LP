@@ -1,30 +1,105 @@
 .image {
   transform-origin: top left;
-  animation: screenshot-tour 40s ease-in-out infinite;
+  animation: screenshot-tour 17.5s ease-in-out infinite;
 }
 
+/* Each stop lasts 3s; each transition lasts 500ms. Intermediate
+   positions bend the camera path inward without exposing empty space. */
 @keyframes screenshot-tour {
   0%,
-  5%,
-  95%,
+  17.142857%,
   100% {
     transform: translate(0, 0) scale(1);
   }
   20%,
-  25% {
-    transform: translate(0, 0) scale(1.5);
+  37.142857% {
+    transform: translate(0, 0) scale(2);
+    animation-timing-function: ease-in;
+  }
+  38.571429% {
+    transform: translate(-50%, -8%) scale(2);
+    animation-timing-function: ease-out;
   }
   40%,
-  45% {
-    transform: translate(-50%, 0) scale(1.5);
+  57.142857% {
+    transform: translate(-100%, 0) scale(2);
+    animation-timing-function: ease-in;
+  }
+  58.571429% {
+    transform: translate(-92%, -50%) scale(2);
+    animation-timing-function: ease-out;
   }
   60%,
-  65% {
-    transform: translate(-50%, -50%) scale(1.5);
+  77.142857% {
+    transform: translate(-100%, -100%) scale(2);
+    animation-timing-function: ease-in;
+  }
+  78.571429% {
+    transform: translate(-50%, -92%) scale(2);
+    animation-timing-function: ease-out;
   }
   80%,
-  85% {
-    transform: translate(0, -50%) scale(1.5);
+  97.142857% {
+    transform: translate(0, -100%) scale(2);
+  }
+}
+
+@media (width < 640px) {
+  .viewport {
+    aspect-ratio: 3 / 4 !important;
+    container-type: inline-size;
+  }
+
+  .image {
+    /* Keep the screenshot's intrinsic ratio: full height, uncropped image
+       width, with the viewport acting as the camera's clipping mask. */
+    width: auto !important;
+    max-width: none;
+    animation-name: screenshot-tour-mobile;
+    animation-duration: 21s;
+  }
+}
+
+@keyframes screenshot-tour-mobile {
+  0%,
+  14.285714%,
+  100% {
+    transform: translate(calc(100cqw - 100%), 0) scale(1);
+  }
+  16.666667%,
+  30.952381% {
+    transform: translate(0, 0) scale(2);
+    animation-timing-function: ease-in;
+  }
+  32.142857% {
+    transform: translate(calc(50cqw - 100%), -8%) scale(2);
+    animation-timing-function: ease-out;
+  }
+  33.333333%,
+  47.619048% {
+    transform: translate(calc(100cqw - 200%), 0) scale(2);
+    animation-timing-function: ease-in;
+  }
+  48.809524% {
+    transform: translate(calc(100cqw - 192%), -50%) scale(2);
+    animation-timing-function: ease-out;
+  }
+  50%,
+  64.285714% {
+    transform: translate(calc(100cqw - 200%), -100%) scale(2);
+    animation-timing-function: ease-in;
+  }
+  65.47619% {
+    transform: translate(calc(50cqw - 100%), -92%) scale(2);
+    animation-timing-function: ease-out;
+  }
+  66.666667%,
+  80.952381% {
+    transform: translate(0, -100%) scale(2);
+  }
+  83.333333%,
+  97.619048% {
+    transform: translate(0, 0) scale(1);
   }
 }
 
