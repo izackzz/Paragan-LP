@@ -87,7 +87,7 @@ export function HeroSection() {
           {previews.map((preview) => (
             <TabPanel key={preview.value} value={preview.value}>
               <div
-                className="relative overflow-hidden"
+                className={cn('relative overflow-hidden', screenshotMotion.viewport)}
                 style={{ aspectRatio: `${preview.src.width} / ${preview.src.height}` }}
               >
                 <Image

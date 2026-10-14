@@ -40,7 +40,7 @@ export function CheckoutSection() {
             <span className={cn(micro, 'hidden sm:block')}>{copy.devicesLabel}</span>
           </div>
           <div
-            className="relative z-10 overflow-hidden"
+            className={cn('relative z-10 overflow-hidden', screenshotMotion.viewport)}
             style={{ aspectRatio: `${checkoutScreenshot.width} / ${checkoutScreenshot.height}` }}
           >
             <Image
