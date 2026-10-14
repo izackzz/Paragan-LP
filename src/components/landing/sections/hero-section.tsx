@@ -1,6 +1,6 @@
 'use client';
+import Image from 'next/image';
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
-import { ArtPlaceholder } from '../primitives';
 import { FluidGroup } from '../fluid-group';
 import { frame, micro, eyebrow } from '../styles';
 import { cn } from '@/lib/utils';
@@ -11,10 +11,16 @@ import { content, t } from '@/i18n';
 
 const copy = content('introduction');
 const previewIcons = { gateway: IconGateways, seller: IconAffiliates, checkout: IconSwatchBook };
+const previewImages = {
+  gateway: '/assets/screenshots/page-admin.png',
+  seller: '/assets/screenshots/page-seller.png',
+  checkout: '/assets/screenshots/page-staff.png',
+};
 const previews = Object.entries(copy.previews).map(([value, preview]) => ({
   ...preview,
   value,
   icon: previewIcons[value as keyof typeof previewIcons],
+  src: previewImages[value as keyof typeof previewImages],
 }));
 
 export function HeroSection() {
@@ -76,20 +82,16 @@ export function HeroSection() {
           </TabsList>
           {previews.map((preview) => (
             <TabPanel key={preview.value} value={preview.value}>
-              {/* DIREÇÃO DE ARTE — HERO (1600×860): produzir três prints reais separados.
-              Gateway: overview com composição financeira, sellers e fila operacional.
-              Seller: dashboard com vendas, saldo e acesso aos produtos.
-              Checkout: oferta, resumo e formulário lado a lado. Usar a mesma marca
-              demonstrativa nos três, dados explicitamente fictícios, sem PII nem logos
-              de terceiros. Captura frontal nítida, margens 40px, nada em perspectiva.
-              Futuro motion: só transição de contexto, sem números subindo artificialmente. */}
-              <ArtPlaceholder
-                width={1600}
-                height={860}
-                label={preview.image}
-                priority={preview.value === 'gateway'}
-                className="p-1.5"
-              />
+              <div className="relative aspect-[1600/860] overflow-hidden">
+                <Image
+                  src={preview.src}
+                  alt={preview.image}
+                  fill
+                  sizes="100vw"
+                  preload={preview.value === 'gateway'}
+                  className="object-cover object-top"
+                />
+              </div>
               <p className="flex justify-between gap-4 border-t bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
                 <span className={cn(micro, 'hidden shrink-0 md:block')}>{copy.previewLabel}</span>
