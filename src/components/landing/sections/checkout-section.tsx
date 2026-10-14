@@ -1,4 +1,5 @@
-import { SectionLabel, ArtPlaceholder, ActionLink } from '../primitives';
+import Image from 'next/image';
+import { SectionLabel, ActionLink } from '../primitives';
 import { frame, section, padding, micro, cardTitle, cardDescription } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex, t } from '@/i18n';
@@ -36,12 +37,14 @@ export function CheckoutSection() {
             <span className={micro}>{copy.journeyLabel}</span>
             <span className={cn(micro, 'hidden sm:block')}>{copy.devicesLabel}</span>
           </div>
-          {/* PRINT CHECKOUT (1440×760): screenshot Catalyst desktop em primeiro plano,
-              recorte mobile à direita integrado na própria arte, produto fictício, oferta,
-              cupom, bump, métodos aptos e total claramente visíveis. Fundo carvão com
-              acentos Paragan; sem PAN, contatos ou logos de processadores. Não usar stock. */}
-          <div className="relative z-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
-            <ArtPlaceholder width={1440} height={760} className="p-1.5" label={copy.illustration} />
+          <div className="relative z-10 aspect-[1440/760] overflow-hidden">
+            <Image
+              src="/assets/screenshots/checkout.png"
+              alt={copy.illustration}
+              fill
+              sizes="100vw"
+              className="object-cover object-top"
+            />
           </div>
         </div>
       </div>
