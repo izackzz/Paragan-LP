@@ -1,0 +1,35 @@
+.image {
+  transform-origin: top left;
+  animation: screenshot-tour 40s ease-in-out infinite;
+}
+
+@keyframes screenshot-tour {
+  0%,
+  5%,
+  95%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  20%,
+  25% {
+    transform: translate(0, 0) scale(1.5);
+  }
+  40%,
+  45% {
+    transform: translate(-50%, 0) scale(1.5);
+  }
+  60%,
+  65% {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  80%,
+  85% {
+    transform: translate(0, -50%) scale(1.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    animation: none;
+  }
+}

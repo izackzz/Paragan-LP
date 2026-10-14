@@ -1,5 +1,9 @@
 'use client';
 import Image from 'next/image';
+import adminScreenshot from '../../../../public/assets/screenshots/page-admin.png';
+import sellerScreenshot from '../../../../public/assets/screenshots/page-seller.png';
+import staffScreenshot from '../../../../public/assets/screenshots/page-staff.png';
+import screenshotMotion from '../screenshot-motion.module.css';
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
 import { FluidGroup } from '../fluid-group';
 import { frame, micro, eyebrow } from '../styles';
@@ -12,9 +16,9 @@ import { content, t } from '@/i18n';
 const copy = content('introduction');
 const previewIcons = { gateway: IconGateways, seller: IconAffiliates, checkout: IconSwatchBook };
 const previewImages = {
-  gateway: '/assets/screenshots/page-admin.png',
-  seller: '/assets/screenshots/page-seller.png',
-  checkout: '/assets/screenshots/page-staff.png',
+  gateway: adminScreenshot,
+  seller: sellerScreenshot,
+  checkout: staffScreenshot,
 };
 const previews = Object.entries(copy.previews).map(([value, preview]) => ({
   ...preview,
@@ -82,14 +86,18 @@ export function HeroSection() {
           </TabsList>
           {previews.map((preview) => (
             <TabPanel key={preview.value} value={preview.value}>
-              <div className="relative aspect-[1600/860] overflow-hidden">
+              <div
+                className="relative overflow-hidden"
+                style={{ aspectRatio: `${preview.src.width} / ${preview.src.height}` }}
+              >
                 <Image
                   src={preview.src}
                   alt={preview.image}
                   fill
-                  sizes="100vw"
+                  sizes="150vw"
+                  quality={100}
                   preload={preview.value === 'gateway'}
-                  className="object-cover object-top"
+                  className={cn('object-cover object-top', screenshotMotion.image)}
                 />
               </div>
               <p className="flex justify-between gap-4 border-t bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">

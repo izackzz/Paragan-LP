@@ -3,6 +3,7 @@ import { presentation } from './src/config/site';
 
 const nextConfig: NextConfig = {
   images: {
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'https',
