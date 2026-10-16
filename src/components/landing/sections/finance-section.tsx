@@ -4,6 +4,7 @@ import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex, t } from '@/i18n';
 import { presentation } from '@/config/site';
+import { illustrationAssets } from '@/config/illustrations';
 
 const copy = content('ledger');
 
@@ -22,8 +23,9 @@ export function FinanceSection() {
         <div className="flex flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">
           <p className={cn(micro, 'mb-6 text-muted-foreground')}>{copy.illustrationLabel}</p>
           <ArtPlaceholder
-            width={1200}
-            height={800}
+            src={illustrationAssets.financialComposition.src}
+            width={illustrationAssets.financialComposition.width}
+            height={illustrationAssets.financialComposition.height}
             label={copy.illustration}
             className={cn('rounded-none border-0')}
           />

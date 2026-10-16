@@ -6,9 +6,14 @@ import { frame, section, padding, micro } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex, t } from '@/i18n';
 import { destinations, presentation } from '@/config/site';
+import { illustrationSlots } from '@/config/illustrations';
 
 const copy = content('operations');
-const contexts = Object.entries(copy.contexts).map(([id, context]) => ({ ...context, id }));
+const contexts = Object.entries(copy.contexts).map(([id, context]) => ({
+  ...context,
+  id,
+  artwork: illustrationSlots.operations[id as keyof typeof illustrationSlots.operations],
+}));
 
 export function ControlSection() {
   return (
@@ -76,7 +81,13 @@ export function ControlSection() {
               Financeiro = visão consolidada com saldos/reserva. Tema escuro, recorte frontal,
               um detalhe em destaque sem falsear capacidades. Todo dado de demo identificado.
               A imagem muda por aba; não animar valores financeiros nem simular sucesso. */}
-                  <ArtPlaceholder width={1000} height={850} label={context.illustration} dark />
+                  <ArtPlaceholder
+                    src={context.artwork.src}
+                    width={context.artwork.width}
+                    height={context.artwork.height}
+                    label={context.illustration}
+                    dark
+                  />
                 </div>
               </TabPanel>
             ))}

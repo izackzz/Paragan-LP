@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import checkoutScreenshot from '../../../../public/assets/screenshots/checkout.png';
+import { illustrationAssets } from '@/config/illustrations';
 import screenshotMotion from '../screenshot-motion.module.css';
 import { SectionLabel, ActionLink } from '../primitives';
 import { frame, section, padding, micro, cardTitle, cardDescription } from '../styles';
@@ -9,6 +9,7 @@ import { destinations, presentation } from '@/config/site';
 
 const copy = content('sales');
 const checkoutSteps = Object.entries(copy.steps);
+const artwork = illustrationAssets.checkoutJourney;
 
 export function CheckoutSection() {
   return (
@@ -41,10 +42,10 @@ export function CheckoutSection() {
           </div>
           <div
             className={cn('relative z-10 overflow-hidden', screenshotMotion.viewport)}
-            style={{ aspectRatio: `${checkoutScreenshot.width} / ${checkoutScreenshot.height}` }}
+            style={{ aspectRatio: `${artwork.width} / ${artwork.height}` }}
           >
             <Image
-              src={checkoutScreenshot}
+              src={artwork.src}
               alt={copy.illustration}
               fill
               sizes="150vw"

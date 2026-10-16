@@ -16,6 +16,7 @@ import {
 import { RenderAscii } from '@/components/ascii/render-ascii';
 import { content, formatIndex, t } from '@/i18n';
 import { presentation } from '@/config/site';
+import { illustrationSlots } from '@/config/illustrations';
 
 const copy = content('capabilities');
 const moduleIcons = {
@@ -33,6 +34,7 @@ const modules = Object.entries(copy.items).map(([id, item], index) => ({
   id,
   number: formatIndex(index + 1),
   icon: moduleIcons[id as keyof typeof moduleIcons],
+  artwork: illustrationSlots.capabilities[id as keyof typeof illustrationSlots.capabilities],
 }));
 const platformPairs = Array.from({ length: Math.ceil(modules.length / 2) }, (_, index) =>
   modules.slice(index * 2, index * 2 + 2),
@@ -102,10 +104,10 @@ export function PlatformSection() {
                       </p>
                     </CardHeader>
                     <CardContent className="h-fit min-h-0 min-w-0 overflow-hidden rounded-sm border p-0!">
-                      {/* Arte reservada por módulo, sem números ou resultados simulados. */}
                       <ArtPlaceholder
-                        width={1000}
-                        height={500}
+                        src={module.artwork.src}
+                        width={module.artwork.width}
+                        height={module.artwork.height}
                         label={module.illustration}
                         className="h-fit w-full [&_img]:h-fit [&_img]:w-full [&_img]:rounded-none"
                       />
