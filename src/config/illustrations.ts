@@ -30,7 +30,7 @@ export const illustrationAssets = {
   acquiring: asset('08', 1000, 500, '/assets/illustrations/08 - Adquirência.png'),
   finance: asset('09', 1000, 500, '/assets/illustrations/09 - Saldos e extrato.png'),
   checkout: asset('10', 1000, 500, '/assets/illustrations/10 - Oferta e resumo.png'),
-  integrations: asset('11', 1000, 500),
+  integrations: asset('11', 1000, 500, '/assets/illustrations/11 - Evento e entrega.png'),
   controlManagement: asset('12', 1000, 850),
   controlCommercial: asset('13', 1000, 850),
   controlWithdrawals: asset('14', 1000, 850),
