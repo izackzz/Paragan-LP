@@ -1,8 +1,6 @@
 'use client';
 import Image from 'next/image';
-import adminScreenshot from '../../../../public/assets/screenshots/page-admin.png';
-import sellerScreenshot from '../../../../public/assets/screenshots/page-seller.png';
-import staffScreenshot from '../../../../public/assets/screenshots/page-staff.png';
+import { illustrationSlots } from '@/config/illustrations';
 import screenshotMotion from '../screenshot-motion.module.css';
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
 import { FluidGroup } from '../fluid-group';
@@ -15,16 +13,11 @@ import { content, t } from '@/i18n';
 
 const copy = content('introduction');
 const previewIcons = { gateway: IconGateways, seller: IconAffiliates, checkout: IconSwatchBook };
-const previewImages = {
-  gateway: adminScreenshot,
-  seller: sellerScreenshot,
-  checkout: staffScreenshot,
-};
 const previews = Object.entries(copy.previews).map(([value, preview]) => ({
   ...preview,
   value,
   icon: previewIcons[value as keyof typeof previewIcons],
-  src: previewImages[value as keyof typeof previewImages],
+  artwork: illustrationSlots.hero[value as keyof typeof illustrationSlots.hero],
 }));
 
 export function HeroSection() {
@@ -88,10 +81,10 @@ export function HeroSection() {
             <TabPanel key={preview.value} value={preview.value}>
               <div
                 className={cn('relative overflow-hidden', screenshotMotion.viewport)}
-                style={{ aspectRatio: `${preview.src.width} / ${preview.src.height}` }}
+                style={{ aspectRatio: `${preview.artwork.width} / ${preview.artwork.height}` }}
               >
                 <Image
-                  src={preview.src}
+                  src={preview.artwork.src}
                   alt={preview.image}
                   fill
                   sizes="150vw"

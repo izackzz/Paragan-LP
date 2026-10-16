@@ -4,9 +4,14 @@ import { frame, section, padding } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex } from '@/i18n';
 import { presentation } from '@/config/site';
+import { illustrationSlots } from '@/config/illustrations';
 
 const copy = content('audience');
-const solutions = Object.entries(copy.items);
+const solutions = Object.entries(copy.items).map(([id, solution]) => ({
+  ...solution,
+  id,
+  artwork: illustrationSlots.audience[id as keyof typeof illustrationSlots.audience],
+}));
 
 export function SolutionsSection() {
   return (
@@ -20,8 +25,8 @@ export function SolutionsSection() {
         />
       </div>
       <Reveal>
-        {solutions.map(([id, solution], index) => (
-          <div key={id} className="grid border-t border-border md:grid-cols-3">
+        {solutions.map((solution, index) => (
+          <div key={solution.id} className="grid border-t border-border md:grid-cols-3">
             <div
               className={cn(
                 'flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10',
@@ -29,8 +34,9 @@ export function SolutionsSection() {
               )}
             >
               <ArtPlaceholder
-                width={1200}
-                height={640}
+                src={solution.artwork.src}
+                width={solution.artwork.width}
+                height={solution.artwork.height}
                 label={solution.image}
                 className={cn('rounded-none border-0')}
               />

@@ -4,6 +4,7 @@ import { frame, section } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex } from '@/i18n';
 import { presentation } from '@/config/site';
+import { illustrationAssets } from '@/config/illustrations';
 
 const copy = content('reliability');
 
@@ -22,8 +23,9 @@ export function ScaleSection() {
         </div>
         <div className="bg-card p-6 md:col-span-2 md:p-10">
           <ArtPlaceholder
-            width={1200}
-            height={700}
+            src={illustrationAssets.architecture.src}
+            width={illustrationAssets.architecture.width}
+            height={illustrationAssets.architecture.height}
             label={copy.illustration}
             className={cn('rounded-none border-0')}
           />

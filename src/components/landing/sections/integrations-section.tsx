@@ -4,6 +4,7 @@ import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex, t } from '@/i18n';
 import { presentation } from '@/config/site';
+import { illustrationAssets } from '@/config/illustrations';
 
 const copy = content('connectivity');
 
@@ -26,16 +27,18 @@ export function IntegrationsSection() {
         <div className="flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">
           <p className={cn(micro, 'mb-6 text-muted-foreground')}>{copy.illustrationLabel}</p>
           <ArtPlaceholder
-            width={1200}
-            height={720}
+            src={illustrationAssets.ecosystem.src}
+            width={illustrationAssets.ecosystem.width}
+            height={illustrationAssets.ecosystem.height}
             label={copy.illustration}
             className={cn('rounded-none border-0')}
           />
         </div>
         <div className="border-t border-border bg-card p-6 md:col-span-2 md:p-10">
           <ArtPlaceholder
-            width={1200}
-            height={600}
+            src={illustrationAssets.apiRetry.src}
+            width={illustrationAssets.apiRetry.width}
+            height={illustrationAssets.apiRetry.height}
             label={copy.eventsIllustration}
             className={cn('rounded-none border-0')}
           />
