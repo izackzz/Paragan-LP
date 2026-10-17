@@ -1,203 +1,242 @@
 # Roteiro visual - 22 ilustrações e motions
 
-## Padrão de desenho
+## Ordem e formato de exibição
 
-- UI frontal, sem perspectiva 3D; reconstruir componentes a partir de telas reais, sem inventar controles.
-- Marca única: **Aurora**. Sellers: Estúdio Horizonte, Ateliê Norte e Cursos Prisma. Produto: Kit Horizonte.
-- Cards, tipografia, ícones e badges seguem o produto; conectores com origem, destino, seta e label. Status sempre com texto.
-- Números fixos e coerentes; incluir “Demonstração · dados fictícios”. Diagramas de processamento recebem “Fluxo ilustrativo”. Não exibir dados pessoais, credenciais ou QR pagável.
-- Manter os quadros existentes e as abas da hero. Mobile recebe composição legível, não uma miniatura do desktop.
-- Entregar fonte editável, asset, poster e alt por peça. Diagramas em SVG; telas em captura ou SVG em camadas. Motion reproduz uma vez, com resultado legível e poster para movimento reduzido.
+- Seguir `src/app/page.tsx`: hero → plataforma → cenários de contratação → controle → financeiro → checkout → integrações → arquitetura.
+- Contar abas da esquerda para a direita e cards da esquerda para a direita, de cima para baixo. As três abas de hero e controle contam como três peças, embora apenas uma apareça por vez.
+- IDs e dimensões sincronizados com `src/config/illustrations.ts`. Dimensões são do asset, não do card inteiro nem da coluna que o contém.
+- 01–11 registram os PNGs existentes, observados diretamente; não exigem redesenho para cumprir o briefing antigo. Preservar arquivos, proporções, marcas, valores e composição atuais.
+- 12–22 descrevem as próximas peças na ordem da página. A 19 já usa uma captura provisória; o checkbox registra a produção da composição final.
+- Manter PNG nesta etapa. SVG/motion são entregas futuras; um PNG estático não comprova produção de animação.
+- `ArtPlaceholder` usa largura total e altura proporcional. No mobile, o PNG apenas diminui: seus elementos internos não se reorganizam. Não prever empilhamento interno sem um asset ou componente responsivo específico.
+- Hero e checkout usam viewport horizontal no desktop e recorte 3:4 abaixo de 640 px. A câmera atual percorre a captura em loop de 25 s no desktop e 30 s no mobile, desativada com movimento reduzido.
+- Nas peças novas, usar UI frontal, texto legível e dados demonstrativos; distinguir disponibilidade, registro e liquidação. Não inventar telas, integrações habilitadas ou resultados garantidos. Motion futuro é opcional e não deve ser necessário para compreender a composição estática.
 
 ## Índice
 
-Peças em ordem numérica, de 01 a 22. Checkboxes registram produção, não redação deste roteiro.
+Checkboxes registram produção da peça, não redação do roteiro.
 
-| ID | Peça | Canvas | Tipo |
+| ID | Peça | Canvas | Local na página |
 | --- | --- | --- | --- |
-| [x] [01](#01--gateway) | Gateway | 1600 × 860 | UI + câmera opcional |
-| [x] [02](#02--seller) | Seller | 1600 × 860 | UI + câmera opcional |
-| [x] [03](#03---staff) | Staff | 1600 × 860 | UI dashboard |
-| [x] [04](#04--identidade) | Identidade | 1000 × 500 | UI + conexões animadas |
-| [x] [05](#05--regras-comerciais) | Regras comerciais | 1000 × 500 | Componentes estáticos |
-| [x] [06](#06--pessoas) | Pessoas | 1000 × 500 | Diagrama animado |
-| [x] [07](#07--relacionamento) | Relacionamento | 1000 × 500 | Componentes estáticos |
-| [x] [08](#08--adquirência) | Adquirência | 1000 × 500 | Workflow animado |
-| [x] [09](#09--saldos-e-extrato) | Saldos e extrato | 1000 × 500 | UI estática |
-| [x] [10](#10--oferta-e-resumo) | Oferta e resumo | 1000 × 500 | Componentes estáticos |
-| [x] [11](#11--evento-e-entrega) | Evento e entrega | 1000 × 500 | Workflow animado |
-| [ ] [12](#12--controle-operacional) | Controle operacional | 1000 × 850 | UI escura + foco |
-| [ ] [13](#13--controle-comercial) | Controle comercial | 1000 × 850 | UI escura + foco |
-| [ ] [14](#14--controle-de-saques) | Controle de saques | 1000 × 850 | UI escura + foco |
-| [ ] [15](#15--jornada-do-checkout) | Jornada do checkout | 1440 × 760 | Desktop/mobile animado |
-| [ ] [16](#16--composição-financeira) | Composição financeira | 1200 × 800 | UI + destaques |
-| [ ] [17](#17--ecossistema) | Ecossistema | 1200 × 720 | Diagrama animado |
-| [ ] [18](#18--api-e-retentativa) | API e retentativa | 1200 × 600 | Workflow animado |
-| [ ] [19](#19--arquitetura-e-isolamento) | Arquitetura e isolamento | 1200 × 700 | Diagrama animado |
-| [ ] [20](#20--lançamento) | Lançamento | 1200 × 640 | Composição estática |
-| [ ] [21](#21--migração) | Migração | 1200 × 640 | Diagrama + motion opcional |
-| [ ] [22](#22--incorporação) | Incorporação | 1200 × 640 | Diagrama + motion opcional |
+| [x] [01](#01---gateway) | Gateway | 4096 × 2379 | Hero · Seu gateway |
+| [x] [02](#02---seller) | Seller | 4096 × 2379 | Hero · Seus sellers |
+| [x] [03](#03---staff) | Staff | 4096 × 2379 | Hero · Seu time |
+| [x] [04](#04---identidade) | Identidade | 1000 × 500 | Plataforma · Identidade |
+| [x] [05](#05---regras-comerciais) | Regras comerciais | 1000 × 500 | Plataforma · Regras comerciais |
+| [x] [06](#06---pessoas) | Pessoas | 1000 × 500 | Plataforma · Pessoas |
+| [x] [07](#07---relacionamento) | Relacionamento | 1000 × 500 | Plataforma · Relacionamento |
+| [x] [08](#08---adquirência) | Adquirência | 1000 × 500 | Plataforma · Adquirência |
+| [x] [09](#09---saldos-e-supervisão-de-saques) | Saldos e supervisão de saques | 1000 × 500 | Plataforma · Gestão financeira |
+| [x] [10](#10---ofertas-e-adicionais) | Ofertas e adicionais | 1000 × 500 | Plataforma · Checkout |
+| [x] [11](#11---integrações-e-eventos) | Integrações e eventos | 1000 × 500 | Plataforma · Integrações |
+| [ ] [12](#12---lançamento) | Lançamento | 1200 × 640 | Seu ponto de partida · Lance sua operação |
+| [ ] [13](#13---migração) | Migração | 1200 × 640 | Seu ponto de partida · Migre uma operação existente |
+| [ ] [14](#14---definição-do-projeto) | Definição do projeto | 1200 × 640 | Seu ponto de partida · Ainda definindo o modelo? |
+| [ ] [15](#15---controle-operacional) | Controle operacional | 1000 × 850 | No comando · Operação |
+| [ ] [16](#16---controle-comercial) | Controle comercial | 1000 × 850 | No comando · Comercial |
+| [ ] [17](#17---controle-financeiro) | Controle financeiro | 1000 × 850 | No comando · Financeiro |
+| [ ] [18](#18---composição-financeira) | Composição financeira | 1200 × 800 | Gestão financeira |
+| [ ] [19](#19---checkout-da-operação) | Checkout da operação | 4096 × 2379 | Experiência de venda |
+| [ ] [20](#20---ecossistema) | Ecossistema | 1200 × 720 | Conexões que fazem sentido · quadro superior |
+| [ ] [21](#21---api-e-entrega-de-eventos) | API e entrega de eventos | 1200 × 600 | Conexões que fazem sentido · quadro inferior |
+| [ ] [22](#22---arquitetura-e-isolamento) | Arquitetura e isolamento | 1200 × 700 | Confiança operacional |
 
 ## 01 - Gateway
 
-**Tamanho:** 1600 × 860 px · **Proporção:** 80:43 (largura:altura).
+**Arquivo:** `public/assets/screenshots/page-admin.png` · **Tamanho:** 4096 × 2379 px · **Proporção:** 4096:2379 (≈ 1,722:1).
+**Local/copy:** hero, aba “Seu gateway” · `introduction.previews.gateway`.
 
-- [x] Desenhar dashboard Aurora com sidebar, cabeçalho, período, KPIs, gráfico de volume e alerta de KYC; preservar componentes reais do gateway-admin.
-- [x] Produzir poster com três KPIs e gráfico legíveis; mobile recorta esse conjunto.
-- [x] Se autorizado, animar câmera por 16 s: geral → KPIs → ponto do gráfico → alerta → geral; zoom máximo 1,65×, sem alterar valores.
+- [x] Captura escura com marca Paragan, sidebar administrativa e boas-vindas “PGN Master”.
+- [x] Grade de seis indicadores: sellers ativos, volume em 30 dias, aprovação, saques pendentes, assinaturas e payment links; gráfico de volume abaixo.
 
 ## 02 - Seller
 
-**Tamanho:** 1600 × 860 px · **Proporção:** 80:43 (largura:altura).
+**Arquivo:** `public/assets/screenshots/page-seller.png` · **Tamanho:** 4096 × 2379 px · **Proporção:** 4096:2379 (≈ 1,722:1).
+**Local/copy:** hero, aba “Seus sellers” · `introduction.previews.seller`.
 
-- [x] Desenhar painel do Estúdio Horizonte com vendas, saldo, retenções, gráfico e atalhos reais “Cobrar cliente” e “Solicitar saque”.
-- [x] Produzir poster com vendas, saldo e gráfico; diferenciar visualmente volume vendido de saldo disponível.
-- [x] Se autorizado, animar câmera por 16 s: geral → vendas → saldo → gráfico → atalhos → geral; dados permanecem fixos.
+- [x] Captura escura Paragan com boas-vindas “Lojista”, filtro de período e ação “Realizar saque”.
+- [x] Cards de volume, transações, aprovação, saldo disponível, retido, saques, disputas e patente “Marechal”; gráfico de volume e atividade recente abaixo.
 
 ## 03 - Staff
 
-**Tamanho:** 1600 × 860 px · **Proporção:** 80:43 (largura:altura).
+**Arquivo:** `public/assets/screenshots/page-staff.png` · **Tamanho:** 4096 × 2379 px · **Proporção:** 4096:2379 (≈ 1,722:1).
+**Local/copy:** hero, aba “Seu time” · `introduction.previews.checkout` (chave legada; a aba exibe staff, não checkout).
 
-- [x] Visão dashboard dos gerentes de conta e restante do time
+- [x] Captura escura Paragan com boas-vindas “JK Gerente” e visão geral da carteira.
+- [x] Quatro atalhos para carteira, KYC, performance e segurança; indicadores de sellers, aplicações, aprovações e GMV; lista “Saúde da carteira” e bloco “Tudo em dia”.
 
 ## 04 - Identidade
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/04 - identidade.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, primeiro card · `capabilities.items.identity` · “Sua marca, em cada contato.”
 
-- [x] Compor editor de marca à esquerda, com logo Aurora e tokens de cor; à direita, recortes do cabeçalho seller e do checkout.
-- [x] Animar em 7 s: revelar conectores do editor às duas superfícies → destacar o mesmo logo e acento → segurar composição final; mobile empilha editor e superfícies.
+- [x] Três sidebars escuras sobrepostas, com marcas e cores distintas; Paragan em primeiro plano com acento vermelho, outra interface azul e outra amarela/turquesa.
+- [x] Paleta vertical à esquerda, menus de dashboard, pedidos, clientes e financeiro; fundo claro ovalado. Sem editor de marca ou checkout separado.
 
 ## 05 - Regras comerciais
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/05 - Regras comerciais.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, segundo card · `capabilities.items.policies` · “Seu modelo vira regra.”
 
-- [x] Compor dois recortes reais: “Padrão da operação” atrás à esquerda e “Condição específica” à frente à direita.
-- [x] Mostrar seller, modelo “Híbrida” e componentes fixo/percentual; manter formulários distintos, sem inventar editor unificado. Versão estática, cards empilhados no mobile.
+- [x] Card “Regras comerciais globais” atrás e condição de seller à frente, conectados ao ícone financeiro; fundo vermelho texturizado.
+- [x] Linhas de taxa percentual, tarifa fixa, Pix, parcelamento sem juros e reserva rolante; valores distintos entre padrão global e seller. Sem seletor de modelo híbrido.
 
 ## 06 - Pessoas
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/06 - Pessoas.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, terceiro card · `capabilities.items.people` · “Cada pessoa, no seu papel.”
 
-- [x] Desenhar árvore: Gateway Aurora no topo → Equipe A / Equipe B → sellers; A ligada a Horizonte e Prisma, B ligada a Norte.
-- [x] Adicionar à Equipe A chips de permissões reais, como “Consultar carteira” e “Revisar cadastro”.
-- [x] Animar em 8 s: revelar equipes → traçar atribuições → destacar A e seus dois sellers; Norte permanece sem destaque. Conectores representam carteira, não dinheiro.
+- [x] Ícone de acesso à esquerda ligado a quatro membros com badges CTO, AM, AM e CONTADOR; cada membro se conecta a uma linha de três ícones de atribuições ou carteira.
+- [x] Cards escuros, conectores claros e fundo vermelho texturizado. Sem árvore Gateway Aurora/Equipe A/Equipe B ou chips escritos de permissão.
 
 ## 07 - Relacionamento
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/07 - Relacionamento.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, quarto card · `capabilities.items.engagement` · “Uma base para cultivar.”
 
-- [x] Compor dois cards reais lado a lado: “Ranking por campanha”, com período e pódio; “Jornada acumulada”, com nível atual e próximo marco.
-- [x] Usar badges do produto e anonimato da tela; manter posições e valores estáticos, sem cashback decorativo. Mobile empilha os cards.
+- [x] Pódio com três cards ilustrados: Isaac Store em segundo, Abraham Store em primeiro ao centro e Jacob Club em terceiro.
+- [x] Bordas e troféus diferenciam as posições; cada card exibe perfil e faturamento no período. Ícone de coroa e fundo vermelho; sem card separado de jornada acumulada.
 
 ## 08 - Adquirência
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/08 - Adquirência.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, quinto card · `capabilities.items.acquiring` · “Rotas com direção.”
 
-- [x] Desenhar “Pagamento · cartão” → “Regras da operação” → três rotas; incluir chips de método e parcelas.
-- [x] Diferenciar A “Elegível / prioritária”, B “Elegível / alternativa” e C “Não elegível”, sem logos de parceiros.
-- [x] Animar em 8 s: pulso entra nas regras → marcar C como incompatível → marcar A “Selecionada” e percorrer apenas esse caminho; não mostrar aprovação financeira.
+- [x] Logos de provedores empilhados à esquerda, globo ao centro e painel “Seu negócio, suas regras” à direita.
+- [x] Seis linhas de roteamento com condições de Pix, categorias, percentuais em badges verdes e nomes de adquirentes; fundo vermelho texturizado. Sem fluxo de três rotas A/B/C ou pagamento animado.
 
-## 09 - Saldos e extrato
+## 09 - Saldos e supervisão de saques
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/09 - Saldos e extrato.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, sexto card · `capabilities.items.finance` · “Cada valor, no contexto.”
 
-- [x] Compor três cards reais no topo: disponível, pendente e reservado; abaixo, três linhas de extrato com data, tipo, valor e estado da mesma conta/período.
-- [x] Manter valores estáticos; mobile empilha os saldos e mostra um lançamento legível.
+- [x] Três indicadores superiores: “VOLUME 7D”, “SALDO DISPONÍVEL” verde e “TOTAL RETIDO” âmbar.
+- [x] Lista inferior com três sellers e ações “RECUSAR”/“LIBERAR”; cards escuros sobre fundo claro ovalado. A imagem representa supervisão de saques, não linhas de extrato com data e estado.
 
-## 10 - Oferta e resumo
+## 10 - Ofertas e adicionais
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/10 - Oferta e resumo.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, sétimo card · `capabilities.items.checkout` · “Da oferta ao pagamento.”
 
-- [x] Compor miniatura do Kit Horizonte à esquerda, card de oferta ao centro e resumo do checkout à direita, ligados por conectores estáticos.
-- [x] Mostrar oferta de R$ 200,00 + adicional de R$ 40,00 = R$ 240,00, sem cupom; confirmar cotação real. Mobile empilha oferta e resumo.
+- [x] Card esquerdo com quatro ofertas “Produto Incrível”: Start, Plus, Pro e Ultra; preços, periodicidades e seleção por radio.
+- [x] Card direito sobreposto com três order bumps, miniaturas, textos e controles de quantidade; ícone de sacola e fundo claro ovalado. Sem resumo de total ou Kit Horizonte.
 
-## 11 - Evento e entrega
+## 11 - Integrações e eventos
 
-**Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
+**Arquivo:** `public/assets/illustrations/11 - Evento e entrega.png` · **Tamanho:** 1000 × 500 px · **Proporção:** 2:1.
+**Local/copy:** `#plataforma`, oitavo card · `capabilities.items.integrations` · “Conecte a operação.”
 
-- [x] Desenhar três nós: “Evento de pagamento confirmado” → “Webhook” → “Seu sistema”; abaixo, linha real do histórico de entrega.
-- [x] Animar em 6 s: traçar conexão → enviar pulso → retornar “Recebido · HTTP 200” → registrar “Entregue · tentativa 1”. HTTP 200 confirma entrega, não pagamento.
+- [x] À esquerda, badges WEBHOOK, API, AI MCP, PUSHCUT, N8N e PWA em cards escuros escalonados.
+- [x] À direita, seis categorias com contadores: pagamentos e transações, saques e liquidações, disputas, assinaturas, clientes, conta e cadastro; fundo vermelho ovalado. Sem fluxo HTTP 200 ou histórico de tentativa.
 
-## 12 - Controle operacional
+## 12 - Lançamento
 
-**Tamanho:** 1000 × 850 px · **Proporção:** 20:17 (largura:altura).
+**Tamanho:** 1200 × 640 px · **Proporção:** 15:8.
+**Local/copy:** `#solucoes`, primeiro cenário · `audience.items.operators` · “Lance sua operação.”
+**Desktop:** imagem à esquerda em 2/3 da linha; texto à direita em 1/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [ ] Compor UI escura: tabela real de sellers ao fundo e detalhe de cadastro em análise à frente, com status, notas e histórico; documentos sem conteúdo pessoal.
-- [ ] Animar em 8 s: destacar seller → revelar detalhe → aproximar histórico; não executar aprovação. Mobile prioriza detalhe e histórico.
+- [ ] Compor painel de gateway dominante, recorte de gestão de sellers e recorte de checkout; rotular “Sua operação”, “Sua base” e “Sua experiência de venda”.
+- [ ] Mostrar a base existente recebendo identidade e configuração da operação; destacar público e fluxos a definir, sem sugerir ativação instantânea ou todos os módulos habilitados.
+- [ ] Manter composição horizontal com poucos elementos grandes; alt “Lançamento de uma operação white-label”.
 
-## 13 - Controle comercial
+## 13 - Migração
 
-**Tamanho:** 1000 × 850 px · **Proporção:** 20:17 (largura:altura).
+**Tamanho:** 1200 × 640 px · **Proporção:** 15:8.
+**Local/copy:** `#solucoes`, segundo cenário · `audience.items.platforms` · “Migre uma operação existente.”
+**Desktop:** texto à esquerda em 1/3; imagem à direita em 2/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [ ] Desenhar formulário real escuro de comissão por seller, com escopo, Estúdio Horizonte, modelo híbrido e campos fixo/percentual.
-- [ ] Animar em 8 s: formulário completo → escopo “Por seller” → campos da comissão → geral; valores fixos, sem simular salvamento.
+- [ ] Compor “Operação atual” → “Avaliação de continuidade” → “Base Paragan”; agrupar dados, integrações e contratos na origem.
+- [ ] Destacar dados e conexões a preservar; seta final tracejada “Conforme escopo” e nota “Portabilidade depende da origem, dos contratos e dos parceiros”.
+- [ ] Não representar cópia automática de tokens ou migração garantida; alt “Migração de uma operação de pagamentos”.
 
-## 14 - Controle de saques
+## 14 - Definição do projeto
 
-**Tamanho:** 1000 × 850 px · **Proporção:** 20:17 (largura:altura).
+**Tamanho:** 1200 × 640 px · **Proporção:** 15:8.
+**Local/copy:** `#solucoes`, terceiro cenário · `audience.items.creators` · “Ainda definindo o modelo?”
+**Desktop:** imagem à esquerda em 2/3 da linha; texto à direita em 1/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [ ] Desenhar fila real escura de saques, destacando uma solicitação pendente com seller, valor e estado; incluir detalhe apenas se existir na UI, sem dados bancários.
-- [ ] Animar em 8 s: fila → solicitação → valor/status → ações de revisão; não clicar nem transformar pendente em transferido.
+- [ ] Compor três cartões de entrada “Ideia”, “Público” e “Tese de receita” ligados a um quadro central “Avaliação do projeto”.
+- [ ] À direita, apresentar “Aderência à plataforma”, “Fluxos prioritários” e “Próximos passos”; usar diagrama conceitual, não inventar uma tela de planejamento do produto.
+- [ ] Não desenhar plataforma existente integrada por API: este cenário é definição do modelo, não incorporação de pagamentos; alt “Planejamento de uma operação de pagamentos”.
 
-## 15 - Jornada do checkout
+## 15 - Controle operacional
 
-**Tamanho:** 1440 × 760 px · **Proporção:** 36:19 (largura:altura).
+**Tamanho:** 1000 × 850 px · **Proporção:** 20:17.
+**Local/copy:** `#controle`, primeira aba “Operação” · `operations.contexts.management` · “A visão de quem dirige o negócio.”
+**Desktop:** texto e imagem em metades; arte à direita, centralizada verticalmente e com padding. **Mobile:** texto acima da imagem, preservando 20:17.
 
-- [ ] Compor checkout desktop em cerca de 70% do quadro e recorte mobile ao lado, sem moldura pesada; mesma marca, produto e pedido nas duas telas.
-- [ ] Preparar estados reais: Kit Horizonte R$ 200,00 → cupom de R$ 20,00, total R$ 180,00 → adicional de R$ 40,00, total R$ 220,00; confirmar cotação.
-- [ ] Animar em 12 s: oferta/resumo → cupom → adicional → “Aguardando confirmação” → transição “Após confirmação do pagamento” → recibo dos mesmos itens e total; sem dados de cartão ou QR pagável.
-- [ ] Produzir poster do resumo com cupom e adicional; mobile usa o checkout mobile como protagonista.
+- [ ] Compor UI escura com lista de sellers, estado de cadastro e responsável pela carteira; destacar um seller em análise.
+- [ ] Sobrepor detalhe com revisão, histórico de decisões e indicação de papel/permissão; sem documentos pessoais ou aprovação simulada.
+- [ ] Priorizar seller, responsável e estado em blocos legíveis; alt “Visão operação do gateway”.
 
-## 16 - Composição financeira
+## 16 - Controle comercial
 
-**Tamanho:** 1200 × 800 px · **Proporção:** 3:2 (largura:altura).
+**Tamanho:** 1000 × 850 px · **Proporção:** 20:17.
+**Local/copy:** `#controle`, segunda aba “Comercial” · `operations.contexts.commercial` · “Sua estratégia vira configuração.”
+**Desktop:** arte à direita em metade do painel. **Mobile:** texto acima da imagem, preservando 20:17.
 
-- [ ] Desenhar visão real por competência com seletor de período, filtro de escopo, receitas, custos e um bloco expandido de adquirência ou estrutura comercial.
-- [ ] Animar em 10 s: geral → receita → custos correspondentes → detalhe expandido → geral; destacar linhas sem mudar números. Custos ausentes continuam “-”, não zero.
+- [ ] Compor formulário escuro de condições por seller com taxa/comissão fixa, percentual ou híbrida; evidenciar seller e escopo da configuração.
+- [ ] Adicionar recorte secundário de campanha/reconhecimento sem confundir premiação com comissão; usar componentes existentes, sem criar editor unificado.
+- [ ] Não apresentar a configuração como substituta dos custos e contratos dos parceiros; alt “Visão comercial do gateway”.
 
-## 17 - Ecossistema
+## 17 - Controle financeiro
 
-**Tamanho:** 1200 × 720 px · **Proporção:** 5:3 (largura:altura).
+**Tamanho:** 1000 × 850 px · **Proporção:** 20:17.
+**Local/copy:** `#controle`, terceira aba “Financeiro” · `operations.contexts.finance` · “Entenda o caminho de cada valor.”
+**Desktop:** arte à direita em metade do painel. **Mobile:** texto acima da imagem, preservando 20:17.
 
-- [ ] Desenhar “Sua operação” ao centro; site/produto e backoffice à esquerda; processadores habilitados à direita; atendimento/gestão abaixo.
-- [ ] Rotular conexões: site → operação “API”; operação ↔ processador “Solicitação / resultado”; operação → gestão “Eventos”. Backoffice mantém conexão API estática.
-- [ ] Animar em 9 s: comando do site → solicitação ao processador → retorno → evento à gestão; terminar no mapa completo, sem logos ou aplicativos nativos inventados.
+- [ ] Compor UI escura com disponível, pendente e reservado; diferenciar escopo da operação e dos sellers.
+- [ ] Incluir recorte de receitas/taxas por competência e uma solicitação de saque pendente; saque é detalhe, não a composição inteira.
+- [ ] Manter estados e valores fixos, sem transformar registro interno em liquidação concluída; alt “Visão financeiro do gateway”.
 
-## 18 - API e retentativa
+## 18 - Composição financeira
 
-**Tamanho:** 1200 × 600 px · **Proporção:** 2:1 (largura:altura).
+**Tamanho:** 1200 × 800 px · **Proporção:** 3:2.
+**Local/copy:** `#financeiro` · `ledger` · “Cada valor, no estado certo.”
+**Desktop:** texto à esquerda em 1/3; imagem à direita em 2/3, abaixo do label “01 / Visão financeira”. **Mobile:** texto, label e imagem em sequência, preservando 3:2.
 
-- [ ] Desenhar duas faixas: acima, “Seu sistema → API → resposta com ID” para consulta; abaixo, “Evento → fila de entrega → endpoint → histórico”.
-- [ ] Incluir histórico real compatível com “Tentativa 1 · HTTP 500” e “Tentativa 2 · HTTP 200”, sem payloads minúsculos ou segredos.
-- [ ] Animar em 10 s: consulta/retorno → evento na fila → falha 500 → registro e pausa “Intervalo ilustrativo” → retentativa 200 → duas tentativas visíveis; nunca reenviar cobrança.
+- [ ] Compor visão por competência com período, receitas, taxas, comissões e custos registrados; destacar um bloco de custo expandido.
+- [ ] Reservar faixa para disponível, pendente e reservado e um recorte de lançamento/estorno; não reduzir a peça apenas a receitas e despesas.
+- [ ] Custos ausentes permanecem “-”; não exibir resultado como lucro líquido contábil; alt “Receitas, custos e saldos”.
 
-## 19 - Arquitetura e isolamento
+## 19 - Checkout da operação
 
-**Tamanho:** 1200 × 700 px · **Proporção:** 12:7 (largura:altura).
+**Arquivo atual:** `public/assets/screenshots/checkout.png` · **Tamanho:** 4096 × 2379 px · **Proporção desktop:** 4096:2379 (≈ 1,722:1).
+**Local/copy:** `#checkout` · `sales` · “Seus sellers têm uma oferta. Ofereça a jornada de venda.”
+**Desktop:** quadro de largura total abaixo da abertura da seção; cabeçalho “UMA JORNADA, DO INÍCIO AO FIM” / “DESKTOP + MOBILE”. **Mobile:** viewport 3:4 com recorte de câmera; não são duas telas lado a lado atualmente.
 
-- [ ] Desenhar contêiner “Infraestrutura compartilhada” com dois contextos separados: Gateway Aurora e Gateway Boreal; cada um contém seus usuários e dados, sem conexões entre tenants.
-- [ ] Dentro de Aurora, desenhar “Solicitação → controle de repetição → pagamento existente → evento → fila de entrega”; adicionar “Registros e métricas” na borda.
-- [ ] Animar em 10 s: revelar contextos → criar um registro de pagamento → duplicata retorna ao mesmo registro com label “Mesma operação” → evento segue à fila → execução chega aos registros; não desenhar segundo pagamento nem datacenters exclusivos.
+A captura provisória mostra “Catalyst Checkout”, planos à esquerda, order bump, cupom e resumo; à direita, formulário do comprador, métodos Pix/cartão/boleto, endereço e ação de pagamento.
 
-## 20 - Lançamento
+- [ ] Produzir composição final preservando a estrutura de oferta/resumo à esquerda e preenchimento/pagamento à direita; manter o canvas atual e elementos grandes o suficiente para o recorte mobile.
+- [ ] Mostrar personalização, cupom e adicionais sem inventar cálculo: itens e total devem ser coerentes; campos pessoais e financeiros sem dados reais.
+- [ ] Se representar acompanhamento, separar explicitamente pedido, pagamento e entrega após confirmação; não simular aprovação nem sugerir plataforma completa de cursos; alt “Checkout da operação · desktop e mobile”.
 
-**Tamanho:** 1200 × 640 px · **Proporção:** 15:8 (largura:altura).
+## 20 - Ecossistema
 
-- [ ] Compor dashboard gateway dominante, pequeno painel seller lateral e cabeçalho de checkout abaixo; todos com identidade Aurora.
-- [ ] Rotular os três recortes “Sua gestão”, “Sua base” e “Sua experiência de compra”; manter cena estática. Mobile reduz os apoios a cabeçalhos legíveis.
+**Tamanho:** 1200 × 720 px · **Proporção:** 5:3.
+**Local/copy:** `#integracoes`, quadro superior · `connectivity` · “Conecte seus sistemas. Verifique as condições.”
+**Desktop:** texto à esquerda em 1/3; diagrama à direita em 2/3, abaixo de “01 / Seu ecossistema”. **Mobile:** texto antes da imagem, preservando 5:3.
 
-## 21 - Migração
+- [ ] Compor “Sua operação” ao centro, sistemas de origem à esquerda e provedores à direita; rotular conexões API, métodos e eventos.
+- [ ] Diferenciar conexão técnica de habilitação comercial com labels “Avaliar contrato”, “Validar credenciais” e “Confirmar métodos” em pontos de verificação, não como novos controles do produto.
+- [ ] Não sugerir disponibilidade universal ou aprovação garantida; alt “Conexões da operação”.
 
-**Tamanho:** 1200 × 640 px · **Proporção:** 15:8 (largura:altura).
+## 21 - API e entrega de eventos
 
-- [ ] Desenhar três grupos: “Operação de origem” com dados, contratos e integrações → “Avaliação e ensaio” com portabilidade, escopo e critérios de aceite → “Base Paragan” com recorte real de sellers.
-- [ ] Ligar avaliação ao destino por seta tracejada “Transição conforme escopo”; incluir “Portabilidade depende dos provedores”, sem credenciais ou registros sendo copiados.
-- [ ] Se animado, revelar em 8 s: origem/destino → avaliação → critérios de aceite → conexão tracejada. Mobile empilha os três grupos.
+**Tamanho:** 1200 × 600 px · **Proporção:** 2:1.
+**Local/copy:** `#integracoes`, quadro inferior · `connectivity.events` · “API e eventos com escopo definido.”
+**Desktop:** diagrama à esquerda em 2/3; texto à direita em 1/3. **Mobile:** diagrama antes do texto, preservando 2:1.
 
-## 22 - Incorporação
+- [ ] Compor faixa “Seu sistema → API → resposta com ID”, com indicação de permissão/escopo; abaixo, “Evento → fila de entrega → endpoint → histórico”.
+- [ ] Mostrar duas tentativas de entrega, HTTP 500 e HTTP 200, com registro visível; retentativa é de webhook, não de cobrança.
+- [ ] Diferenciar confirmação de entrega e confirmação de pagamento; sem payloads ou segredos; alt “API e entrega de eventos”.
 
-**Tamanho:** 1200 × 640 px · **Proporção:** 15:8 (largura:altura).
+## 22 - Arquitetura e isolamento
 
-- [ ] Desenhar dois contêineres: “Sua plataforma existente”, com pedidos/serviços e backoffice; “Base de pagamentos”, com sellers, pagamentos e consulta de estados.
-- [ ] Conectar plataforma → base por “Comandos / consultas por API”, retorno de consulta em sentido inverso e base → plataforma por “Eventos por webhook”; distinguir visualmente os caminhos.
-- [ ] Se animado, revelar em 8 s: contextos → conexão API → consulta e retorno → evento; terminar com mapa completo. Mobile empilha os contêineres.
+**Tamanho:** 1200 × 700 px · **Proporção:** 12:7.
+**Local/copy:** `#escala` · `reliability` · “Além da interface, avalie a sustentação.”
+**Desktop:** texto à esquerda em 1/3; diagrama à direita em 2/3. **Mobile:** texto antes da imagem, preservando 12:7.
+
+- [ ] Compor infraestrutura compartilhada com dois contextos de operação separados; usuários, permissões e dados dentro de cada contexto, sem setas cruzando tenants.
+- [ ] Em um contexto, representar solicitação → controle de repetição → mesmo registro de pagamento → evento → fila; ligar execução a registros e métricas.
+- [ ] Não desenhar segundo pagamento para a repetição, infraestrutura física exclusiva ou garantias de SLA/suporte; alt “Arquitetura da operação”.
