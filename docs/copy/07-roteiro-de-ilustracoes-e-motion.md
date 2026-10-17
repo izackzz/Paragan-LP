@@ -135,9 +135,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#solucoes`, primeiro cenário · `audience.items.operators` · “Lance sua operação.”
 **Desktop:** imagem à esquerda em 2/3 da linha; texto à direita em 1/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [ ] Compor painel de gateway dominante, recorte de gestão de sellers e recorte de checkout; rotular “Sua operação”, “Sua base” e “Sua experiência de venda”.
-- [ ] Mostrar a base existente recebendo identidade e configuração da operação; destacar público e fluxos a definir, sem sugerir ativação instantânea ou todos os módulos habilitados.
-- [ ] Manter composição horizontal com poucos elementos grandes; alt “Lançamento de uma operação white-label”.
+- [X] Compor painel de gateway dominante, recorte de gestão de sellers e recorte de checkout; rotular “Sua operação”, “Sua base” e “Sua experiência de venda”.
+- [X] Mostrar a base existente recebendo identidade e configuração da operação; destacar público e fluxos a definir, sem sugerir ativação instantânea ou todos os módulos habilitados.
+- [X] Manter composição horizontal com poucos elementos grandes; alt “Lançamento de uma operação white-label”.
 
 ## 13 - Migração
 
