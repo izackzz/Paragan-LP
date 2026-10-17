@@ -135,9 +135,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#solucoes`, primeiro cenário · `audience.items.operators` · “Lance sua operação.”
 **Desktop:** imagem à esquerda em 2/3 da linha; texto à direita em 1/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [X] Compor painel de gateway dominante, recorte de gestão de sellers e recorte de checkout; rotular “Sua operação”, “Sua base” e “Sua experiência de venda”.
-- [X] Mostrar a base existente recebendo identidade e configuração da operação; destacar público e fluxos a definir, sem sugerir ativação instantânea ou todos os módulos habilitados.
-- [X] Manter composição horizontal com poucos elementos grandes; alt “Lançamento de uma operação white-label”.
+- [x] Compor painel de gateway dominante, recorte de gestão de sellers e recorte de checkout; rotular “Sua operação”, “Sua base” e “Sua experiência de venda”.
+- [x] Mostrar a base existente recebendo identidade e configuração da operação; destacar público e fluxos a definir, sem sugerir ativação instantânea ou todos os módulos habilitados.
+- [x] Manter composição horizontal com poucos elementos grandes; alt “Lançamento de uma operação white-label”.
 
 ## 13 - Migração
 
@@ -145,9 +145,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#solucoes`, segundo cenário · `audience.items.platforms` · “Migre uma operação existente.”
 **Desktop:** texto à esquerda em 1/3; imagem à direita em 2/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [ ] Compor “Operação atual” → “Avaliação de continuidade” → “Base Paragan”; agrupar dados, integrações e contratos na origem.
-- [ ] Destacar dados e conexões a preservar; seta final tracejada “Conforme escopo” e nota “Portabilidade depende da origem, dos contratos e dos parceiros”.
-- [ ] Não representar cópia automática de tokens ou migração garantida; alt “Migração de uma operação de pagamentos”.
+- [x] Compor “Operação atual” → “Avaliação de continuidade” → “Base Paragan”; agrupar dados, integrações e contratos na origem.
+- [x] Destacar dados e conexões a preservar; seta final tracejada “Conforme escopo” e nota “Portabilidade depende da origem, dos contratos e dos parceiros”.
+- [x] Não representar cópia automática de tokens ou migração garantida; alt “Migração de uma operação de pagamentos”.
 
 ## 14 - Definição do projeto
 
@@ -155,9 +155,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#solucoes`, terceiro cenário · `audience.items.creators` · “Ainda definindo o modelo?”
 **Desktop:** imagem à esquerda em 2/3 da linha; texto à direita em 1/3. **Mobile:** imagem acima do texto, preservando 15:8.
 
-- [ ] Compor três cartões de entrada “Ideia”, “Público” e “Tese de receita” ligados a um quadro central “Avaliação do projeto”.
-- [ ] À direita, apresentar “Aderência à plataforma”, “Fluxos prioritários” e “Próximos passos”; usar diagrama conceitual, não inventar uma tela de planejamento do produto.
-- [ ] Não desenhar plataforma existente integrada por API: este cenário é definição do modelo, não incorporação de pagamentos; alt “Planejamento de uma operação de pagamentos”.
+- [x] Compor três cartões de entrada “Ideia”, “Público” e “Tese de receita” ligados a um quadro central “Avaliação do projeto”.
+- [x] À direita, apresentar “Aderência à plataforma”, “Fluxos prioritários” e “Próximos passos”; usar diagrama conceitual, não inventar uma tela de planejamento do produto.
+- [x] Não desenhar plataforma existente integrada por API: este cenário é definição do modelo, não incorporação de pagamentos; alt “Planejamento de uma operação de pagamentos”.
 
 ## 15 - Controle operacional
 
