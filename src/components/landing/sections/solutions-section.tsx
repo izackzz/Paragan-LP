@@ -38,7 +38,7 @@ export function SolutionsSection() {
                 width={solution.artwork.width}
                 height={solution.artwork.height}
                 label={solution.image}
-                className={cn('rounded-none border-0')}
+                className={cn('rounded-md border bg-background/90')}
               />
             </div>
             <div
