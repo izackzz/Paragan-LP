@@ -433,11 +433,11 @@ const messages = {
         cta: 'Avaliar minha migração',
       },
       creators: {
-        title: 'Incorpore pagamentos à sua plataforma.',
+        title: 'Ainda definindo o modelo?',
         description:
-          'Conecte pagamentos e gestão de sellers aos processos que já existem. Indique os sistemas envolvidos, os papéis da base e os fluxos necessários por API e webhooks.',
-        image: 'Pagamentos conectados a uma plataforma',
-        cta: 'Avaliar minha incorporação',
+          'Traga sua ideia, público e tese de receita. Avaliamos juntos a aderência à plataforma, os fluxos prioritários e o caminho para estruturar a operação.',
+        image: 'Planejamento de uma operação de pagamentos',
+        cta: 'Avaliar meu projeto',
       },
     },
   },
