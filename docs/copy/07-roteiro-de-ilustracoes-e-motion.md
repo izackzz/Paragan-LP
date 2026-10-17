@@ -165,9 +165,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#controle`, primeira aba “Operação” · `operations.contexts.management` · “A visão de quem dirige o negócio.”
 **Desktop:** texto e imagem em metades; arte à direita, centralizada verticalmente e com padding. **Mobile:** texto acima da imagem, preservando 20:17.
 
-- [ ] Compor UI escura com lista de sellers, estado de cadastro e responsável pela carteira; destacar um seller em análise.
-- [ ] Sobrepor detalhe com revisão, histórico de decisões e indicação de papel/permissão; sem documentos pessoais ou aprovação simulada.
-- [ ] Priorizar seller, responsável e estado em blocos legíveis; alt “Visão operação do gateway”.
+- [x] Compor UI escura com lista de sellers, estado de cadastro e responsável pela carteira; destacar um seller em análise.
+- [x] Sobrepor detalhe com revisão, histórico de decisões e indicação de papel/permissão; sem documentos pessoais ou aprovação simulada.
+- [x] Priorizar seller, responsável e estado em blocos legíveis; alt “Visão operação do gateway”.
 
 ## 16 - Controle comercial
 
@@ -175,9 +175,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#controle`, segunda aba “Comercial” · `operations.contexts.commercial` · “Sua estratégia vira configuração.”
 **Desktop:** arte à direita em metade do painel. **Mobile:** texto acima da imagem, preservando 20:17.
 
-- [ ] Compor formulário escuro de condições por seller com taxa/comissão fixa, percentual ou híbrida; evidenciar seller e escopo da configuração.
-- [ ] Adicionar recorte secundário de campanha/reconhecimento sem confundir premiação com comissão; usar componentes existentes, sem criar editor unificado.
-- [ ] Não apresentar a configuração como substituta dos custos e contratos dos parceiros; alt “Visão comercial do gateway”.
+- [x] Compor formulário escuro de condições por seller com taxa/comissão fixa, percentual ou híbrida; evidenciar seller e escopo da configuração.
+- [x] Adicionar recorte secundário de campanha/reconhecimento sem confundir premiação com comissão; usar componentes existentes, sem criar editor unificado.
+- [x] Não apresentar a configuração como substituta dos custos e contratos dos parceiros; alt “Visão comercial do gateway”.
 
 ## 17 - Controle financeiro
 
