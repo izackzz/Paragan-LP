@@ -15,28 +15,28 @@ Peças em ordem numérica, de 01 a 22. Checkboxes registram produção, não red
 
 | ID | Peça | Canvas | Tipo |
 | --- | --- | --- | --- |
-| [01](#01--gateway) | Gateway | 1600 × 860 | UI + câmera opcional |
-| [02](#02--seller) | Seller | 1600 × 860 | UI + câmera opcional |
-| [03](#03---staff) | Staff | 1600 × 860 | UI dashboard |
-| [04](#04--identidade) | Identidade | 1000 × 500 | UI + conexões animadas |
-| [05](#05--regras-comerciais) | Regras comerciais | 1000 × 500 | Componentes estáticos |
-| [06](#06--pessoas) | Pessoas | 1000 × 500 | Diagrama animado |
-| [07](#07--relacionamento) | Relacionamento | 1000 × 500 | Componentes estáticos |
-| [08](#08--adquirência) | Adquirência | 1000 × 500 | Workflow animado |
-| [09](#09--saldos-e-extrato) | Saldos e extrato | 1000 × 500 | UI estática |
-| [10](#10--oferta-e-resumo) | Oferta e resumo | 1000 × 500 | Componentes estáticos |
-| [11](#11--evento-e-entrega) | Evento e entrega | 1000 × 500 | Workflow animado |
-| [12](#12--controle-operacional) | Controle operacional | 1000 × 850 | UI escura + foco |
-| [13](#13--controle-comercial) | Controle comercial | 1000 × 850 | UI escura + foco |
-| [14](#14--controle-de-saques) | Controle de saques | 1000 × 850 | UI escura + foco |
-| [15](#15--jornada-do-checkout) | Jornada do checkout | 1440 × 760 | Desktop/mobile animado |
-| [16](#16--composição-financeira) | Composição financeira | 1200 × 800 | UI + destaques |
-| [17](#17--ecossistema) | Ecossistema | 1200 × 720 | Diagrama animado |
-| [18](#18--api-e-retentativa) | API e retentativa | 1200 × 600 | Workflow animado |
-| [19](#19--arquitetura-e-isolamento) | Arquitetura e isolamento | 1200 × 700 | Diagrama animado |
-| [20](#20--lançamento) | Lançamento | 1200 × 640 | Composição estática |
-| [21](#21--migração) | Migração | 1200 × 640 | Diagrama + motion opcional |
-| [22](#22--incorporação) | Incorporação | 1200 × 640 | Diagrama + motion opcional |
+| [x] [01](#01--gateway) | Gateway | 1600 × 860 | UI + câmera opcional |
+| [x] [02](#02--seller) | Seller | 1600 × 860 | UI + câmera opcional |
+| [x] [03](#03---staff) | Staff | 1600 × 860 | UI dashboard |
+| [x] [04](#04--identidade) | Identidade | 1000 × 500 | UI + conexões animadas |
+| [x] [05](#05--regras-comerciais) | Regras comerciais | 1000 × 500 | Componentes estáticos |
+| [x] [06](#06--pessoas) | Pessoas | 1000 × 500 | Diagrama animado |
+| [x] [07](#07--relacionamento) | Relacionamento | 1000 × 500 | Componentes estáticos |
+| [x] [08](#08--adquirência) | Adquirência | 1000 × 500 | Workflow animado |
+| [x] [09](#09--saldos-e-extrato) | Saldos e extrato | 1000 × 500 | UI estática |
+| [x] [10](#10--oferta-e-resumo) | Oferta e resumo | 1000 × 500 | Componentes estáticos |
+| [x] [11](#11--evento-e-entrega) | Evento e entrega | 1000 × 500 | Workflow animado |
+| [ ] [12](#12--controle-operacional) | Controle operacional | 1000 × 850 | UI escura + foco |
+| [ ] [13](#13--controle-comercial) | Controle comercial | 1000 × 850 | UI escura + foco |
+| [ ] [14](#14--controle-de-saques) | Controle de saques | 1000 × 850 | UI escura + foco |
+| [ ] [15](#15--jornada-do-checkout) | Jornada do checkout | 1440 × 760 | Desktop/mobile animado |
+| [ ] [16](#16--composição-financeira) | Composição financeira | 1200 × 800 | UI + destaques |
+| [ ] [17](#17--ecossistema) | Ecossistema | 1200 × 720 | Diagrama animado |
+| [ ] [18](#18--api-e-retentativa) | API e retentativa | 1200 × 600 | Workflow animado |
+| [ ] [19](#19--arquitetura-e-isolamento) | Arquitetura e isolamento | 1200 × 700 | Diagrama animado |
+| [ ] [20](#20--lançamento) | Lançamento | 1200 × 640 | Composição estática |
+| [ ] [21](#21--migração) | Migração | 1200 × 640 | Diagrama + motion opcional |
+| [ ] [22](#22--incorporação) | Incorporação | 1200 × 640 | Diagrama + motion opcional |
 
 ## 01 - Gateway
 
@@ -115,8 +115,8 @@ Peças em ordem numérica, de 01 a 22. Checkboxes registram produção, não red
 
 **Tamanho:** 1000 × 500 px · **Proporção:** 2:1 (largura:altura).
 
-- [ ] Desenhar três nós: “Evento de pagamento confirmado” → “Webhook” → “Seu sistema”; abaixo, linha real do histórico de entrega.
-- [ ] Animar em 6 s: traçar conexão → enviar pulso → retornar “Recebido · HTTP 200” → registrar “Entregue · tentativa 1”. HTTP 200 confirma entrega, não pagamento.
+- [x] Desenhar três nós: “Evento de pagamento confirmado” → “Webhook” → “Seu sistema”; abaixo, linha real do histórico de entrega.
+- [x] Animar em 6 s: traçar conexão → enviar pulso → retornar “Recebido · HTTP 200” → registrar “Entregue · tentativa 1”. HTTP 200 confirma entrega, não pagamento.
 
 ## 12 - Controle operacional
 
