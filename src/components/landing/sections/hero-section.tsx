@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { illustrationSlots } from '@/config/illustrations';
-import screenshotMotion from '../screenshot-motion.module.css';
+import { ScreenshotTour } from '../screenshot-tour';
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
 import { FluidGroup } from '../fluid-group';
 import { frame, micro, eyebrow } from '../styles';
@@ -79,20 +79,18 @@ export function HeroSection() {
           </TabsList>
           {previews.map((preview) => (
             <TabPanel key={preview.value} value={preview.value}>
-              <div
-                className={cn('relative overflow-hidden', screenshotMotion.viewport)}
-                style={{ aspectRatio: `${preview.artwork.width} / ${preview.artwork.height}` }}
-              >
+              <ScreenshotTour width={preview.artwork.width} height={preview.artwork.height}>
                 <Image
                   src={preview.artwork.src}
                   alt={preview.image}
-                  fill
-                  sizes="150vw"
+                  width={preview.artwork.width}
+                  height={preview.artwork.height}
+                  sizes="200vw"
                   quality={100}
                   preload={preview.value === 'gateway'}
-                  className={cn('object-cover object-top', screenshotMotion.image)}
+                  className="block h-full w-full"
                 />
-              </div>
+              </ScreenshotTour>
               <p className="flex justify-between gap-4 border-t bg-card p-4 text-xs leading-relaxed text-foreground-3 md:px-6">
                 {preview.caption}
                 <span className={cn(micro, 'hidden shrink-0 md:block')}>{copy.previewLabel}</span>

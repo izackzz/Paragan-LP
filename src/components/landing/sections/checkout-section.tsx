@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { illustrationAssets } from '@/config/illustrations';
-import screenshotMotion from '../screenshot-motion.module.css';
+import { ScreenshotTour } from '../screenshot-tour';
 import { SectionLabel, ActionLink } from '../primitives';
 import { frame, section, padding, micro, cardTitle, cardDescription } from '../styles';
 import { cn } from '@/lib/utils';
@@ -40,19 +40,22 @@ export function CheckoutSection() {
             <span className={micro}>{copy.journeyLabel}</span>
             <span className={cn(micro, 'hidden sm:block')}>{copy.devicesLabel}</span>
           </div>
-          <div
-            className={cn('relative z-10 overflow-hidden', screenshotMotion.viewport)}
-            style={{ aspectRatio: `${artwork.width} / ${artwork.height}` }}
+          <ScreenshotTour
+            width={artwork.width}
+            height={artwork.height}
+            viewportRatio="16 / 9"
+            className="z-10"
           >
             <Image
               src={artwork.src}
               alt={copy.illustration}
-              fill
-              sizes="150vw"
+              width={artwork.width}
+              height={artwork.height}
+              sizes="200vw"
               quality={100}
-              className={cn('object-cover object-top', screenshotMotion.image)}
+              className="block h-full w-full"
             />
-          </div>
+          </ScreenshotTour>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3">
