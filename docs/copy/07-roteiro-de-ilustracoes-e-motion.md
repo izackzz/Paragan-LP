@@ -38,7 +38,7 @@ Checkboxes registram produção da peça, não redação do roteiro.
 | [ ] [18](#18---composição-financeira) | Composição financeira | 1200 × 800 | Gestão financeira |
 | [ ] [19](#19---checkout-da-operação) | Checkout da operação | 4096 × 2379 | Experiência de venda |
 | [ ] [20](#20---ecossistema) | Ecossistema | 1200 × 720 | Conexões que fazem sentido · quadro superior |
-| [ ] [21](#21---api-e-entrega-de-eventos) | API e entrega de eventos | 1200 × 600 | Conexões que fazem sentido · quadro inferior |
+| [ ] [21](#21---automações-dos-sellers) | Automações dos sellers | 1200 × 600 | Conexões que fazem sentido · quadro inferior |
 | [ ] [22](#22---arquitetura-e-isolamento) | Arquitetura e isolamento | 1200 × 700 | Confiança operacional |
 
 ## 01 - Gateway
@@ -214,22 +214,22 @@ A captura provisória mostra “Catalyst Checkout”, planos à esquerda, order 
 ## 20 - Ecossistema
 
 **Tamanho:** 1200 × 720 px · **Proporção:** 5:3.
-**Local/copy:** `#integracoes`, quadro superior · `connectivity` · “Conecte seus sistemas. Verifique as condições.”
+**Local/copy:** `#integracoes`, quadro superior · `connectivity` · “As ferramentas que seus sellers usam. Conectadas à sua plataforma.”
 **Desktop:** texto à esquerda em 1/3; diagrama à direita em 2/3, abaixo de “01 / Seu ecossistema”. **Mobile:** texto antes da imagem, preservando 5:3.
 
-- [ ] Compor “Sua operação” ao centro, sistemas de origem à esquerda e provedores à direita; rotular conexões API, métodos e eventos.
-- [ ] Diferenciar conexão técnica de habilitação comercial com labels “Avaliar contrato”, “Validar credenciais” e “Confirmar métodos” em pontos de verificação, não como novos controles do produto.
-- [ ] Não sugerir disponibilidade universal ou aprovação garantida; alt “Conexões da operação”.
+- [ ] Compor painel de apps do seller ao centro, cercado por ferramentas de marketing, tracking, otimização e checkouts externos; agrupar por categoria.
+- [ ] Priorizar ícones e cards de apps, com conexões ao painel; mostrar ao admin do gateway o ecossistema oferecido à sua base, sem checklist comercial ou diagrama de adquirência.
+- [ ] Usar apenas marcas de integrações existentes e manter labels legíveis; alt “Apps e ferramentas conectados à sua plataforma”.
 
-## 21 - API e entrega de eventos
+## 21 - Automações dos sellers
 
 **Tamanho:** 1200 × 600 px · **Proporção:** 2:1.
-**Local/copy:** `#integracoes`, quadro inferior · `connectivity.events` · “API e eventos com escopo definido.”
+**Local/copy:** `#integracoes`, quadro inferior · `connectivity.events` · “Da venda à próxima ação.”
 **Desktop:** diagrama à esquerda em 2/3; texto à direita em 1/3. **Mobile:** diagrama antes do texto, preservando 2:1.
 
-- [ ] Compor faixa “Seu sistema → API → resposta com ID”, com indicação de permissão/escopo; abaixo, “Evento → fila de entrega → endpoint → histórico”.
-- [ ] Mostrar duas tentativas de entrega, HTTP 500 e HTTP 200, com registro visível; retentativa é de webhook, não de cobrança.
-- [ ] Diferenciar confirmação de entrega e confirmação de pagamento; sem payloads ou segredos; alt “API e entrega de eventos”.
+- [ ] Compor “Venda confirmada” à esquerda → nó “API + Webhooks” ao centro → três destinos à direita: “Tracking”, “Automação de marketing” e “Sistema do seller”.
+- [ ] Usar cards com ícones e labels “Registrar conversão”, “Acionar fluxo” e “Atualizar sistema”; representar conexões externas, não um editor de automações nativo.
+- [ ] Retomar a linguagem visual e os apps da peça 20, mostrando o uso após a venda; sem logs HTTP, falhas ou retentativas como protagonistas; alt “Da venda às automações dos seus sellers”.
 
 ## 22 - Arquitetura e isolamento
 

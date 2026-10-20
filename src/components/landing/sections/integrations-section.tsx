@@ -36,9 +36,9 @@ export function IntegrationsSection() {
         </div>
         <div className="border-t border-border bg-card p-6 md:col-span-2 md:p-10">
           <ArtPlaceholder
-            src={illustrationAssets.apiRetry.src}
-            width={illustrationAssets.apiRetry.width}
-            height={illustrationAssets.apiRetry.height}
+            src={illustrationAssets.sellerAutomations.src}
+            width={illustrationAssets.sellerAutomations.width}
+            height={illustrationAssets.sellerAutomations.height}
             label={copy.eventsIllustration}
             className={cn('rounded-none border-0')}
           />
@@ -46,7 +46,6 @@ export function IntegrationsSection() {
         <div className="flex flex-col justify-end gap-4 border-t border-border p-6 md:border-l md:p-8">
           <h3 className="text-base font-medium">{copy.events.title}</h3>
           <p className="text-sm leading-relaxed text-muted-foreground">{copy.events.description}</p>
-          <p className="text-xs leading-relaxed text-muted-foreground">{copy.events.note}</p>
         </div>
       </Reveal>
     </section>

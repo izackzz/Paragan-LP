@@ -75,7 +75,7 @@ export function ControlSection() {
                     {t('actions.explore')}
                   </ActionLink>
                 </div>
-                <div className="flex min-w-0 items-center border-t border-border bg-card p-6 md:border-t-0 md:border-l md:py-9 [&_figure]:w-full">
+                <div className="flex min-w-0 items-center border-t border-border bg-card p-6 md:border-t-0 md:border-l [&_figure]:h-full [&_figure]:items-center [&_figure]:flex [&_figure]:w-full ">
                   {/* PRINT CONTROLE (1000×850): capturar uma tela real para cada aba: Operação =
               lista de sellers com status e revisão; Comercial = configuração por seller;
               Financeiro = visão consolidada com saldos/reserva. Tema escuro, recorte frontal,
@@ -87,6 +87,7 @@ export function ControlSection() {
                     height={context.artwork.height}
                     label={context.illustration}
                     dark
+                    className='overflow-hidden rounded-md border bg-background/90'
                   />
                 </div>
               </TabPanel>
