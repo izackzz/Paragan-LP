@@ -38,7 +38,7 @@ export const illustrationAssets = {
   controlCommercial: asset('16', 1000, 850, '/assets/illustrations/16 - Controle comercial.png'),
   controlFinance: asset('17', 1000, 850, '/assets/illustrations/17 - Controle financeiro.png'),
   financialComposition: asset('18', 1200, 800, '/assets/illustrations/20 - Ecossistema.png'),
-  checkoutJourney: asset('19', 4096, 2379, '/assets/screenshots/checkout.png'),
+  checkoutJourney: asset('19', 2750, 2450, '/assets/screenshots/checkout.png'),
   ecosystem: asset('20', 1200, 720, '/assets/illustrations/21 - Automacoes dos sellers.png'), 
   sellerAutomations: asset('21', 1200, 600, '/assets/illustrations/18 - Composicao financeira.png'), 
   architecture: asset('22', 1200, 700, '/assets/illustrations/22 - Arquitetura e isolamento.png'), 

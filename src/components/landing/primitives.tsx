@@ -179,6 +179,7 @@ export function ArtPlaceholder({
       height={height}
       alt={src ? label : t('accessibility.placeholder', { label })}
       unoptimized={!src}
+      quality={100}
       preload={priority}
       sizes="(max-width: 768px) 92vw, (max-width: 1280px) 80vw, 1120px"
       className="h-auto w-full rounded-sm"

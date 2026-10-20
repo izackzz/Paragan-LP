@@ -1,100 +1,33 @@
-.image {
-  transform-origin: top left;
-  animation: screenshot-tour 25s ease-in-out infinite;
+.viewport {
+  position: relative;
+  overflow: hidden;
+  container-type: size;
 }
 
-/* Straight camera moves, with a slow micro-zoom at each detail instead
-   of a static hold. All segments ease in and out. */
-@keyframes screenshot-tour {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  8% {
-    transform: translate(0, 0) scale(2);
-  }
-  24% {
-    transform: translate(0, 0) scale(2.04);
-  }
-  28% {
-    transform: translate(-100%, 0) scale(2);
-  }
-  44% {
-    transform: translate(-104%, 0) scale(2.04);
-  }
-  48% {
-    transform: translate(-100%, -100%) scale(2);
-  }
-  64% {
-    transform: translate(-104%, -104%) scale(2.04);
-  }
-  68% {
-    transform: translate(0, -100%) scale(2);
-  }
-  84% {
-    transform: translate(0, -104%) scale(2.04);
-  }
-  92% {
-    transform: translate(-1%, -1%) scale(1.02);
-  }
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: top left;
+  will-change: transform;
 }
 
 @media (width < 640px) {
   .viewport {
     aspect-ratio: 3 / 4 !important;
-    container-type: inline-size;
   }
 
   .image {
-    /* Keep the screenshot's intrinsic ratio: full height, uncropped image
-       width, with the viewport acting as the camera's clipping mask. */
-    width: auto !important;
-    max-width: none;
-    animation-name: screenshot-tour-mobile;
-    animation-duration: 30s;
-  }
-}
-
-@keyframes screenshot-tour-mobile {
-  0%, 100% {
-    transform: translate(calc(100cqw - 100%), 0) scale(1);
-  }
-  6% {
-    transform: translate(0, 0) scale(2);
-  }
-  20% {
-    transform: translate(0, 0) scale(2.04);
-  }
-  24% {
-    transform: translate(calc(100cqw - 200%), 0) scale(2);
-  }
-  38% {
-    transform: translate(calc(100cqw - 204%), 0) scale(2.04);
-  }
-  42% {
-    transform: translate(calc(100cqw - 200%), -100%) scale(2);
-  }
-  56% {
-    transform: translate(calc(100cqw - 204%), -104%) scale(2.04);
-  }
-  60% {
-    transform: translate(0, -100%) scale(2);
-  }
-  74% {
-    transform: translate(0, -104%) scale(2.04);
-  }
-  80% {
-    transform: translate(0, 0) scale(1);
-  }
-  86% {
-    transform: translate(0, 0) scale(1.02);
-  }
-  96% {
-    transform: translate(calc(100cqw - 102%), 0) scale(1.02);
+    /* Fit the full image height; pan across its intrinsic, uncropped width. */
+    width: auto;
+    height: 100%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .image {
-    animation: none;
+    transform: none !important;
+    will-change: auto;
   }
 }
