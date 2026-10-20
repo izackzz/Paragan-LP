@@ -60,11 +60,11 @@ export function ControlSection() {
                     {context.heading}
                   </h3>
                   <p className="text-sm leading-7 text-muted-foreground">{context.description}</p>
-                  <FluidGroup axis="y" className="my-7">
+                  <FluidGroup axis="y" className="my-7 border rounded-md overflow-hidden bg-surface-1">
                     {Object.entries(context.items).map(([id, item], index) => (
                       <p
                         key={id}
-                        className="flex items-center gap-3.5 border-b border-border px-2 py-3.5 text-xs"
+                        className="flex items-center gap-3.5 border-b last:border-b-0 border-border px-5 py-3.5 text-xs"
                       >
                         <span className={cn(micro, 'text-brand')}>{formatIndex(index + 1)}</span>
                         {item}
