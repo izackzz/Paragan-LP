@@ -40,8 +40,8 @@ export const illustrationAssets = {
   financialComposition: asset('18', 1200, 800), /* , '/assets/illustrations/___.png' */
   checkoutJourney: asset('19', 4096, 2379, '/assets/screenshots/checkout.png'),
   ecosystem: asset('20', 1200, 720), /* , '/assets/illustrations/___.png' */
-  apiRetry: asset('21', 1200, 600), /* , '/assets/illustrations/___.png' */
-  architecture: asset('22', 1200, 700), /* , '/assets/illustrations/___.png' */
+  sellerAutomations: asset('21', 1200, 600), /* , '/assets/illustrations/___.png' */
+  architecture: asset('22', 1200, 700, '/assets/illustrations/22 - Arquitetura e isolamento.png'), 
 };
 
 // Chaves correspondem às abas e aos cards da copy atual.

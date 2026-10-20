@@ -43,7 +43,7 @@ const messages = {
     explore: 'Avaliar minha operação',
     checkout: 'Conhecer o checkout',
     controls: 'Conhecer os controles',
-    integration: 'Avaliar integração',
+    integration: 'Conhecer o ecossistema',
     backToTop: 'Voltar ao início ↑',
     plans: 'Planos',
     signIn: 'Entrar',
@@ -373,17 +373,19 @@ const messages = {
   },
   connectivity: {
     label: 'CONEXÕES QUE FAZEM SENTIDO',
-    heading: { primary: 'Conecte seus sistemas.', secondary: 'Verifique as condições.' },
+    heading: {
+      primary: 'As ferramentas que seus sellers usam.',
+      secondary: 'Conectadas à sua plataforma.',
+    },
     description:
-      'Avalie métodos, provedores e conexões antes de definir a implantação. Contratos e credenciais próprios são analisados por parceiro; integração desenvolvida não significa habilitação comercial.',
+      'Reúna integrações nativas de marketing, tracking, otimização, checkout e muito mais... Seus sellers conectam as ferramentas do próprio negócio e mantêm seus fluxos de venda ligados ao seu gateway.',
     illustrationLabel: '01 / Seu ecossistema',
-    illustration: 'Conexões da operação',
-    eventsIllustration: 'API e entrega de eventos',
+    illustration: 'Apps e ferramentas conectados à sua plataforma',
+    eventsIllustration: 'Da venda às automações dos seus sellers',
     events: {
-      title: 'API e eventos com escopo definido.',
+      title: 'Da venda à próxima ação.',
       description:
-        'Conecte pagamentos, sellers e consultas por contratos documentados. Permissões delimitam cada acesso; o histórico de webhooks ajuda a investigar as entregas.',
-      note: 'Solicite as referências técnicas. Métodos, eventos e parceiros são confirmados para sua operação, sem disponibilidade universal ou garantia de aprovação.',
+        'Além dos apps nativos, ofereça aos seus sellers conexões por API e webhooks para alimentar o tracking, acionar automações de marketing e conectar sistemas próprios aos eventos de venda. Mais possibilidades para integrar sua plataforma à rotina de cada negócio.',
     },
   },
   reliability: {
