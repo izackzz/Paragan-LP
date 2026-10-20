@@ -5,6 +5,7 @@ import { ExperienceProvider } from '@/components/landing/experience-provider';
 import { Analytics } from '@vercel/analytics/next';
 import { themeScript } from '@/lib/theme';
 import { locale, t } from '@/i18n';
+import { siteSeo } from '@/config/seo';
 
 const faktum = localFont({
   src: [
@@ -29,9 +30,39 @@ const rationalMix = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteSeo.url),
   title: t('metadata.title'),
   description: t('metadata.description'),
-  icons: { icon: '/brandmark.svg', apple: '/assets/brand/paragan-fav.png' },
+  applicationName: siteSeo.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: siteSeo.name,
+    locale: siteSeo.locale,
+    title: t('metadata.socialTitle'),
+    description: t('metadata.socialDescription'),
+    images: [{ ...siteSeo.image, alt: t('metadata.socialImageAlt') }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: t('metadata.socialTitle'),
+    description: t('metadata.socialDescription'),
+    images: [{ url: siteSeo.image.url, alt: t('metadata.socialImageAlt') }],
+  },
+  icons: {
+    icon: { url: '/favicon-primary.png', type: 'image/png', sizes: '180x180' },
+    apple: '/favicon-primary.png',
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

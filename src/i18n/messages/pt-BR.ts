@@ -8,9 +8,14 @@ const messages = {
     supportingPromise: 'Uma base pronta, com a sua marca.',
   },
   metadata: {
-    title: 'Paragan — Plataforma white-label para operações de pagamentos',
+    title: 'Paragan | Gateway e checkout white-label para vendas digitais',
     description:
-      'Lance, migre ou incorpore pagamentos com uma plataforma pronta: gateway, gestão de sellers, financeiro e checkout sob a marca da sua operação.',
+      'Crie seu ecossistema de vendas digitais com a Paragan: gateway, checkout, gestão de sellers e integrações em uma plataforma white-label com a sua marca.',
+    socialTitle: 'Seu ecossistema de vendas digitais. Sua própria fintech. | Paragan',
+    socialDescription:
+      'Gateway, checkout, gestão de sellers e integrações em uma plataforma white-label. Construa seu ecossistema de vendas digitais com a sua marca.',
+    socialImageAlt:
+      'Paragan: seu ecossistema de vendas digitais e sua própria fintech, com gateway, checkout, gestão e vendas em uma infraestrutura white-label.',
     brandTitle: 'Brand — Paragan',
     brandDescription: 'Trevo Paragan em animação ASCII.',
   },

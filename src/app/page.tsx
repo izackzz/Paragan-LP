@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { SiteHeader } from '@/components/landing/site-header';
 import { SiteFooter } from '@/components/landing/site-footer';
 import { HeroSection } from '@/components/landing/sections/hero-section';
@@ -14,10 +15,51 @@ import { FaqSection } from '@/components/landing/sections/faq-section';
 import { ContactSection } from '@/components/landing/sections/contact-section';
 import { t } from '@/i18n';
 import { destinations } from '@/config/site';
+import { siteSeo } from '@/config/seo';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName: siteSeo.name,
+    locale: siteSeo.locale,
+    title: t('metadata.socialTitle'),
+    description: t('metadata.socialDescription'),
+    images: [{ ...siteSeo.image, alt: t('metadata.socialImageAlt') }],
+  },
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteSeo.url}/#organization`,
+      name: siteSeo.name,
+      url: `${siteSeo.url}/`,
+      logo: `${siteSeo.url}/favicon-primary.png`,
+      description: t('metadata.description'),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteSeo.url}/#website`,
+      url: `${siteSeo.url}/`,
+      name: siteSeo.name,
+      description: t('metadata.description'),
+      inLanguage: 'pt-BR',
+      publisher: { '@id': `${siteSeo.url}/#organization` },
+    },
+  ],
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+      />
       <div aria-hidden="true" className="stripes landing-side-stripes left-0" />
       <div aria-hidden="true" className="stripes landing-side-stripes right-0" />
       <Link

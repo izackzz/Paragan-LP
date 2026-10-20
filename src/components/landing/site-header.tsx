@@ -136,16 +136,13 @@ export function SiteHeader() {
               </details>
             ))}
             <FluidGroup axis="y" className="py-3">
-              {(['plans', 'signIn'] as const).map((action) => (
-                <Link
-                  key={action}
-                  href={destinations.header.actions[action]}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-md px-3 py-3 text-sm"
-                >
-                  {t(`actions.${action}`)}
-                </Link>
-              ))}
+              <Link
+                href={destinations.header.actions.plans}
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-3 text-sm"
+              >
+                {t('actions.plans')}
+              </Link>
             </FluidGroup>
             <Button asChild variant="primary" className={cn('w-full')}>
               <Link href={destinations.header.actions.contact} onClick={() => setOpen(false)}>
