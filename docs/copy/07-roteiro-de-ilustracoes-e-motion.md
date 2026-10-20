@@ -195,9 +195,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#financeiro` · `ledger` · “Cada valor, no estado certo.”
 **Desktop:** texto à esquerda em 1/3; imagem à direita em 2/3, abaixo do label “01 / Visão financeira”. **Mobile:** texto, label e imagem em sequência, preservando 3:2.
 
-- [ ] Compor visão por competência com período, receitas, taxas, comissões e custos registrados; destacar um bloco de custo expandido.
-- [ ] Reservar faixa para disponível, pendente e reservado e um recorte de lançamento/estorno; não reduzir a peça apenas a receitas e despesas.
-- [ ] Custos ausentes permanecem “-”; não exibir resultado como lucro líquido contábil; alt “Receitas, custos e saldos”.
+- [x] Compor visão por competência com período, receitas, taxas, comissões e custos registrados; destacar um bloco de custo expandido.
+- [x] Reservar faixa para disponível, pendente e reservado e um recorte de lançamento/estorno; não reduzir a peça apenas a receitas e despesas.
+- [x] Custos ausentes permanecem “-”; não exibir resultado como lucro líquido contábil; alt “Receitas, custos e saldos”.
 
 ## 19 - Checkout da operação
 
