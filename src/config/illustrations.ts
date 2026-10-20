@@ -32,16 +32,16 @@ export const illustrationAssets = {
   checkout: asset('10', 1000, 500, '/assets/illustrations/10 - Oferta e resumo.png'),
   integrations: asset('11', 1000, 500, '/assets/illustrations/11 - Evento e entrega.png'),
   launch: asset('12', 1200, 640, '/assets/illustrations/12 - Lançamento.png'),
-  migration: asset('13', 1200, 640, '/assets/illustrations/13 - Migração.png'),
+  migration: asset('13', 1200, 640, '/assets/illustrations/13 - Migracao.png'),
   projectPlanning: asset('14', 1200, 640, '/assets/illustrations/14 - Definição do projeto.png'),
   controlManagement: asset('15', 1000, 850, '/assets/illustrations/15 - Controle operacional.png'),
   controlCommercial: asset('16', 1000, 850, '/assets/illustrations/16 - Controle comercial.png'),
   controlFinance: asset('17', 1000, 850, '/assets/illustrations/17 - Controle financeiro.png'),
-  // financialComposition: asset('18', 1200, 800, '/assets/illustrations/unknown.png'),
+  financialComposition: asset('18', 1200, 800), /* , '/assets/illustrations/___.png' */
   checkoutJourney: asset('19', 4096, 2379, '/assets/screenshots/checkout.png'),
-  // ecosystem: asset('20', 1200, 720, '/assets/illustrations/unknown.png'),
-  // apiRetry: asset('21', 1200, 600, '/assets/illustrations/unknown.png'),
-  // architecture: asset('22', 1200, 700, '/assets/illustrations/unknown.png'),
+  ecosystem: asset('20', 1200, 720), /* , '/assets/illustrations/___.png' */
+  apiRetry: asset('21', 1200, 600), /* , '/assets/illustrations/___.png' */
+  architecture: asset('22', 1200, 700), /* , '/assets/illustrations/___.png' */
 };
 
 // Chaves correspondem às abas e aos cards da copy atual.
