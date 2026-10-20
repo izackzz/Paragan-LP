@@ -27,7 +27,7 @@ export function ScaleSection() {
             width={illustrationAssets.architecture.width}
             height={illustrationAssets.architecture.height}
             label={copy.illustration}
-            className={cn('rounded-none border-0')}
+            className={cn('rounded-md border bg-background/90')}
           />
         </div>
         {Object.entries(copy.items).map(([id, { title, description }]) => (

@@ -217,9 +217,9 @@ A captura provisória mostra “Catalyst Checkout”, planos à esquerda, order 
 **Local/copy:** `#integracoes`, quadro superior · `connectivity` · “As ferramentas que seus sellers usam. Conectadas à sua plataforma.”
 **Desktop:** texto à esquerda em 1/3; diagrama à direita em 2/3, abaixo de “01 / Seu ecossistema”. **Mobile:** texto antes da imagem, preservando 5:3.
 
-- [ ] Compor painel de apps do seller ao centro, cercado por ferramentas de marketing, tracking, otimização e checkouts externos; agrupar por categoria.
-- [ ] Priorizar ícones e cards de apps, com conexões ao painel; mostrar ao admin do gateway o ecossistema oferecido à sua base, sem checklist comercial ou diagrama de adquirência.
-- [ ] Usar apenas marcas de integrações existentes e manter labels legíveis; alt “Apps e ferramentas conectados à sua plataforma”.
+- [x] Compor painel de apps do seller ao centro, cercado por ferramentas de marketing, tracking, otimização e checkouts externos; agrupar por categoria.
+- [x] Priorizar ícones e cards de apps, com conexões ao painel; mostrar ao admin do gateway o ecossistema oferecido à sua base, sem checklist comercial ou diagrama de adquirência.
+- [x] Usar apenas marcas de integrações existentes e manter labels legíveis; alt “Apps e ferramentas conectados à sua plataforma”.
 
 ## 21 - Automações dos sellers
 
@@ -227,9 +227,9 @@ A captura provisória mostra “Catalyst Checkout”, planos à esquerda, order 
 **Local/copy:** `#integracoes`, quadro inferior · `connectivity.events` · “Da venda à próxima ação.”
 **Desktop:** diagrama à esquerda em 2/3; texto à direita em 1/3. **Mobile:** diagrama antes do texto, preservando 2:1.
 
-- [ ] Compor “Venda confirmada” à esquerda → nó “API + Webhooks” ao centro → três destinos à direita: “Tracking”, “Automação de marketing” e “Sistema do seller”.
-- [ ] Usar cards com ícones e labels “Registrar conversão”, “Acionar fluxo” e “Atualizar sistema”; representar conexões externas, não um editor de automações nativo.
-- [ ] Retomar a linguagem visual e os apps da peça 20, mostrando o uso após a venda; sem logs HTTP, falhas ou retentativas como protagonistas; alt “Da venda às automações dos seus sellers”.
+- [x] Compor “Venda confirmada” à esquerda → nó “API + Webhooks” ao centro → três destinos à direita: “Tracking”, “Automação de marketing” e “Sistema do seller”.
+- [x] Usar cards com ícones e labels “Registrar conversão”, “Acionar fluxo” e “Atualizar sistema”; representar conexões externas, não um editor de automações nativo.
+- [x] Retomar a linguagem visual e os apps da peça 20, mostrando o uso após a venda; sem logs HTTP, falhas ou retentativas como protagonistas; alt “Da venda às automações dos seus sellers”.
 
 ## 22 - Arquitetura e isolamento
 

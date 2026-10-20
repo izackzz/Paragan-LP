@@ -31,7 +31,7 @@ export function IntegrationsSection() {
             width={illustrationAssets.ecosystem.width}
             height={illustrationAssets.ecosystem.height}
             label={copy.illustration}
-            className={cn('rounded-none border-0')}
+            className={cn('rounded-md border bg-background/90')}
           />
         </div>
         <div className="border-t border-border bg-card p-6 md:col-span-2 md:p-10">
@@ -40,7 +40,7 @@ export function IntegrationsSection() {
             width={illustrationAssets.sellerAutomations.width}
             height={illustrationAssets.sellerAutomations.height}
             label={copy.eventsIllustration}
-            className={cn('rounded-none border-0')}
+            className={cn('rounded-md border bg-background/90')}
           />
         </div>
         <div className="flex flex-col justify-end gap-4 border-t border-border p-6 md:border-l md:p-8">
