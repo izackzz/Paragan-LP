@@ -185,9 +185,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 **Local/copy:** `#controle`, terceira aba “Financeiro” · `operations.contexts.finance` · “Entenda o caminho de cada valor.”
 **Desktop:** arte à direita em metade do painel. **Mobile:** texto acima da imagem, preservando 20:17.
 
-- [ ] Compor UI escura com disponível, pendente e reservado; diferenciar escopo da operação e dos sellers.
-- [ ] Incluir recorte de receitas/taxas por competência e uma solicitação de saque pendente; saque é detalhe, não a composição inteira.
-- [ ] Manter estados e valores fixos, sem transformar registro interno em liquidação concluída; alt “Visão financeiro do gateway”.
+- [x] Compor UI escura com disponível, pendente e reservado; diferenciar escopo da operação e dos sellers.
+- [x] Incluir recorte de receitas/taxas por competência e uma solicitação de saque pendente; saque é detalhe, não a composição inteira.
+- [x] Manter estados e valores fixos, sem transformar registro interno em liquidação concluída; alt “Visão financeiro do gateway”.
 
 ## 18 - Composição financeira
 
@@ -207,9 +207,9 @@ Checkboxes registram produção da peça, não redação do roteiro.
 
 A captura provisória mostra “Catalyst Checkout”, planos à esquerda, order bump, cupom e resumo; à direita, formulário do comprador, métodos Pix/cartão/boleto, endereço e ação de pagamento.
 
-- [ ] Produzir composição final preservando a estrutura de oferta/resumo à esquerda e preenchimento/pagamento à direita; manter o canvas atual e elementos grandes o suficiente para o recorte mobile.
-- [ ] Mostrar personalização, cupom e adicionais sem inventar cálculo: itens e total devem ser coerentes; campos pessoais e financeiros sem dados reais.
-- [ ] Se representar acompanhamento, separar explicitamente pedido, pagamento e entrega após confirmação; não simular aprovação nem sugerir plataforma completa de cursos; alt “Checkout da operação · desktop e mobile”.
+- [x] Produzir composição final preservando a estrutura de oferta/resumo à esquerda e preenchimento/pagamento à direita; manter o canvas atual e elementos grandes o suficiente para o recorte mobile.
+- [x] Mostrar personalização, cupom e adicionais sem inventar cálculo: itens e total devem ser coerentes; campos pessoais e financeiros sem dados reais.
+- [x] Se representar acompanhamento, separar explicitamente pedido, pagamento e entrega após confirmação; não simular aprovação nem sugerir plataforma completa de cursos; alt “Checkout da operação · desktop e mobile”.
 
 ## 20 - Ecossistema
 
@@ -237,6 +237,6 @@ A captura provisória mostra “Catalyst Checkout”, planos à esquerda, order 
 **Local/copy:** `#escala` · `reliability` · “Além da interface, avalie a sustentação.”
 **Desktop:** texto à esquerda em 1/3; diagrama à direita em 2/3. **Mobile:** texto antes da imagem, preservando 12:7.
 
-- [ ] Compor infraestrutura compartilhada com dois contextos de operação separados; usuários, permissões e dados dentro de cada contexto, sem setas cruzando tenants.
-- [ ] Em um contexto, representar solicitação → controle de repetição → mesmo registro de pagamento → evento → fila; ligar execução a registros e métricas.
-- [ ] Não desenhar segundo pagamento para a repetição, infraestrutura física exclusiva ou garantias de SLA/suporte; alt “Arquitetura da operação”.
+- [x] Compor infraestrutura compartilhada com dois contextos de operação separados; usuários, permissões e dados dentro de cada contexto, sem setas cruzando tenants.
+- [x] Em um contexto, representar solicitação → controle de repetição → mesmo registro de pagamento → evento → fila; ligar execução a registros e métricas.
+- [x] Não desenhar segundo pagamento para a repetição, infraestrutura física exclusiva ou garantias de SLA/suporte; alt “Arquitetura da operação”.
