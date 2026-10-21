@@ -81,7 +81,7 @@ export function GrowthChart({
   const ticks = Array.from({ length: 5 }, (_, i) => TOP + (i * (BASE - TOP)) / 4);
 
   return (
-    <div className="min-w-0 p-5 md:p-7" data-seller-style-chart>
+    <div className="min-w-0 p-6 md:p-8" data-seller-style-chart>
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-xs text-muted-foreground">
@@ -239,7 +239,7 @@ export function GrowthChart({
         </div>
       </div>
       <div
-        className="mt-5 flex flex-wrap gap-1 rounded-md border border-accent p-1"
+        className="mt-6 flex flex-wrap gap-2 rounded-md border border-accent p-2"
         role="group"
         aria-label={copy.month}
       >
