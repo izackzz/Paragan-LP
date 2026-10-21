@@ -20,7 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { SectionLabel, ActionLink } from '@/components/landing/primitives';
+import { SectionLabel, ActionLink, ArtPlaceholder } from '@/components/landing/primitives';
+import { illustrationAssets } from '@/config/illustrations';
 import { frame, section, micro } from '@/components/landing/styles';
 import { cn } from '@/lib/utils';
 import { calculateMonth, feePerSale, integer, money, percent, projectYear } from '@/lib/viability';
@@ -34,9 +35,16 @@ import {
 import { calculatorCopy as copy } from '@/i18n/messages/pages/calculadora';
 import { CalculatorField, ScrubberField } from './calculator-field';
 import { GrowthChart } from './growth-chart';
+import { selectionStyle } from './selection-style';
 
 const panel = 'min-w-0 border-b border-border p-5 md:p-7';
 const fieldGrid = 'grid grid-cols-1 gap-4 sm:grid-cols-2';
+
+function ContextDivider() {
+  return (
+    <div aria-hidden="true" className="dots h-12 border-y border-border bg-primary/3 md:h-16" />
+  );
+}
 
 function Metric({
   label,
@@ -56,19 +64,21 @@ function Metric({
   return (
     <Card
       className={cn(
-        'h-full min-w-0 rounded-none border-0 bg-transparent p-5 md:p-6',
-        main && 'stripes bg-primary/5',
+        'relative h-full min-w-0 rounded-none border-0 border-t-2 border-t-primary/30 bg-primary/3 p-5 md:p-6',
+        main ? 'stripes border-t-primary bg-primary/8' : 'dots',
       )}
     >
       <CardHeader className="mb-4 flex-row items-start justify-between gap-3 p-0">
         <CardTitle className="text-sm leading-relaxed font-medium">{label}</CardTitle>
-        <span className={cn('shrink-0 text-muted-foreground', main && 'text-primary')}>{icon}</span>
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary">
+          {icon}
+        </span>
       </CardHeader>
       <CardContent className="p-0">
         <p
           className={cn(
             'font-display text-2xl leading-tight font-medium tracking-tight break-words tabular-nums md:text-3xl',
-            main && 'text-primary',
+            'text-primary',
             negative && 'text-destructive',
           )}
           data-metric={main ? 'incremental' : undefined}
@@ -163,8 +173,13 @@ export function ViabilityCalculator() {
             {copy.simulation}
           </span>
           <p className="text-xs leading-relaxed text-muted-foreground">{copy.update}</p>
-          <Button variant="secondary" size="sm" onClick={reset} className="min-h-11 w-fit">
-            <RotateCcw className="mr-2 size-3.5" aria-hidden="true" />
+          <Button
+            variant="secondary"
+            size="sm"
+            leadingIcon={RotateCcw}
+            onClick={reset}
+            className="min-h-11 w-fit"
+          >
             {copy.reset}
           </Button>
           <a
@@ -175,6 +190,8 @@ export function ViabilityCalculator() {
           </a>
         </div>
       </div>
+
+      <ContextDivider />
 
       <div className="grid min-w-0 lg:grid-cols-12">
         <form
@@ -235,6 +252,8 @@ export function ViabilityCalculator() {
             </p>
           </fieldset>
 
+          <ContextDivider />
+
           <fieldset className={panel}>
             <legend className="sr-only">{copy.stepTwo}</legend>
             <p className={cn(micro, 'mb-4 text-primary')}>{copy.stepTwo}</p>
@@ -258,25 +277,30 @@ export function ViabilityCalculator() {
                 max={1000}
               />
               <div className="space-y-2">
-                <Label htmlFor={`${id}-model`}>{copy.model}</Label>
-                <Select
-                  value={inputs.model}
-                  onValueChange={(value) => set('model', value as PricingModel)}
+                <p id={`${id}-model-label`} className="text-sm font-medium">
+                  {copy.model}
+                </p>
+                <div
+                  className="grid grid-cols-1 gap-1 rounded-md border border-accent p-1 sm:grid-cols-3"
+                  role="group"
+                  aria-labelledby={`${id}-model-label`}
+                  aria-describedby={`${id}-model-hint`}
                 >
-                  <SelectTrigger
-                    id={`${id}-model`}
-                    className="h-12 w-full rounded-md bg-background/40"
-                  >
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(copy.models).map(([value, label]) => (
-                      <SelectItem key={value} value={value}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                  {Object.entries(copy.models).map(([value, label]) => (
+                    <Button
+                      key={value}
+                      type="button"
+                      size="xs"
+                      variant={inputs.model === value ? 'primary' : 'ghost'}
+                      active={inputs.model === value}
+                      aria-pressed={inputs.model === value}
+                      className={cn('h-auto px-3 py-3', selectionStyle(inputs.model === value))}
+                      onClick={() => set('model', value as PricingModel)}
+                    >
+                      {label}
+                    </Button>
+                  ))}
+                </div>
                 <p
                   id={`${id}-model-hint`}
                   className="text-xs leading-relaxed text-muted-foreground"
@@ -291,13 +315,20 @@ export function ViabilityCalculator() {
             </div>
           </fieldset>
 
+          <ContextDivider />
+
           <fieldset className={cn(panel, 'border-b-0')}>
             <legend className="sr-only">{copy.costsTitle}</legend>
             <h2 className="text-lg font-medium tracking-tight">{copy.costsTitle}</h2>
             <p className="mt-2 mb-6 text-xs leading-relaxed text-muted-foreground">
               {copy.costsDescription}
             </p>
-            <div className="mb-6 rounded-md border border-primary/20 bg-primary/5 p-4">
+            <ArtPlaceholder
+              {...illustrationAssets.acquiring}
+              label={copy.acquiringArt}
+              className="mb-6 rounded-md border border-border"
+            />
+            <div className="stripes mb-6 rounded-md border border-primary/40 bg-primary/8 p-4">
               <h3 className="mb-2 text-sm font-medium">{copy.paragan}</h3>
               <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
                 {copy.paraganHint}
@@ -421,6 +452,8 @@ export function ViabilityCalculator() {
             </div>
           )}
 
+          <ContextDivider />
+
           <div className={panel}>
             <h3 className="mb-5 text-sm font-medium">{copy.details}</h3>
             <dl className="space-y-3 text-sm">
@@ -449,7 +482,14 @@ export function ViabilityCalculator() {
                 {copy.breakEvenHint}
               </p>
             </div>
+            <ArtPlaceholder
+              {...illustrationAssets.financialComposition}
+              label={copy.financeArt}
+              className="mt-6 rounded-md border border-border"
+            />
           </div>
+
+          <ContextDivider />
 
           <div className="border-b border-border">
             <div className="p-5 pb-0 md:p-7 md:pb-0">
@@ -479,10 +519,12 @@ export function ViabilityCalculator() {
               ].map(([label, value]) => (
                 <div
                   key={label}
-                  className="min-w-0 border-b border-border p-5 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0"
+                  className="dots min-w-0 border-b border-border bg-primary/5 p-5 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0"
                 >
                   <p className="text-xs leading-relaxed text-muted-foreground">{label}</p>
-                  <p className="mt-2 text-lg font-medium break-words tabular-nums">{value}</p>
+                  <p className="mt-2 text-lg font-medium break-words text-primary tabular-nums">
+                    {value}
+                  </p>
                 </div>
               ))}
             </div>
@@ -570,6 +612,8 @@ export function ViabilityCalculator() {
         </div>
       </div>
 
+      <ContextDivider />
+
       <div className="border-t border-border">
         <div className="p-5 md:p-7">
           <h2 className="text-2xl font-medium tracking-tight">{copy.comparisonTitle}</h2>
@@ -582,12 +626,19 @@ export function ViabilityCalculator() {
             const fees =
               feePerSale(inputs.ticketCents, preset.rateBps, preset.fixedCents) * inputs.ownSales;
             return (
-              <button
+              <Button
                 key={preset.id}
                 type="button"
+                size="lg"
+                variant={platform === preset.id ? 'primary' : 'ghost'}
+                active={platform === preset.id}
                 aria-pressed={platform === preset.id}
                 onClick={() => setPlatform(preset.id)}
-                className="min-w-0 border-b border-border p-5 text-left outline-none last:border-b-0 hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset aria-pressed:bg-muted/40 sm:border-r xl:border-b-0"
+                className={cn(
+                  'h-auto justify-start rounded-none p-5 text-left [&>span]:w-full',
+                  selectionStyle(platform === preset.id),
+                  platform === preset.id && '[&_.text-muted-foreground]:text-primary-foreground/90',
+                )}
               >
                 <span className="flex items-center justify-between gap-2 text-sm font-medium">
                   {preset.name}
@@ -616,10 +667,10 @@ export function ViabilityCalculator() {
                 <span className="mt-1 block text-sm tabular-nums">
                   {money(month.ownVolumeCents - fees)}
                 </span>
-              </button>
+              </Button>
             );
           })}
-          <div className="min-w-0 bg-primary/5 p-5 sm:col-span-2 xl:col-span-1">
+          <div className="stripes min-w-0 border-t-2 border-primary bg-primary/10 p-5 sm:col-span-2 xl:col-span-1">
             <h3 className="text-sm font-medium text-primary">{copy.paraganOption}</h3>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               {copy.comparisonOwnNote}
@@ -633,6 +684,45 @@ export function ViabilityCalculator() {
           </div>
         </div>
       </div>
+
+      <ContextDivider />
+
+      <div className="grid md:grid-cols-2">
+        {copy.contextBlocks.map((block, index) => (
+          <div
+            key={block.asset}
+            className={cn(
+              'min-w-0 border-b border-border md:border-b-0',
+              index === 0 && 'md:border-r',
+            )}
+          >
+            <div
+              className={cn(
+                'p-5 md:p-7',
+                index === 0 ? 'dots bg-primary/3' : 'stripes bg-primary/5',
+              )}
+            >
+              <p className={cn(micro, 'mb-3 text-primary')}>{block.eyebrow}</p>
+              <h2 className="text-xl font-medium tracking-tight">{block.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {block.description}
+              </p>
+            </div>
+            <ArtPlaceholder
+              {...illustrationAssets[block.asset]}
+              label={block.alt}
+              className="rounded-none border-y border-border"
+            />
+            <div className="p-5 md:p-7">
+              <ActionLink secondary href={block.href} className="text-sm">
+                {block.link}
+              </ActionLink>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <ContextDivider />
 
       <div className="grid border-t border-border md:grid-cols-2">
         <div className="p-5 md:border-r md:border-border md:p-7">
