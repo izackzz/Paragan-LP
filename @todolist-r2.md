@@ -74,9 +74,9 @@
 
 ### Worker direto — `/plataforma`
 
-- [ ] `src/app/plataforma/page.tsx` + copy própria: hero dedicado → prévias admin/seller/staff → módulos selecionados de `PlatformSection` → `ControlSection` → `ScaleSection` → links relacionados.
-- [ ] `/plataforma`: detalhar marca/domínio, papéis e carteira em `#gestao-sellers`, rotas e habilitações em `#multiadquirencia`, isolamento/responsabilidades em `#arquitetura`; reutilizar artes 04–08, 15–17 e 22.
-- [ ] `/plataforma`: links contextuais para `/checkout`, `/financeiro`, `/integracoes`, `/contratacao` e `/contato`; não criar página sobre equipe institucional.
+- [x] `src/app/plataforma/page.tsx` + copy própria: hero dedicado → prévias admin/seller/staff → módulos selecionados de `PlatformSection` → `ControlSection` → `ScaleSection` → links relacionados.
+- [x] `/plataforma`: detalhar marca/domínio, papéis e carteira em `#gestao-sellers`, rotas e habilitações em `#multiadquirencia`, isolamento/responsabilidades em `#arquitetura`; reutilizar artes 04–08, 15–17 e 22.
+- [x] `/plataforma`: links contextuais para `/checkout`, `/financeiro`, `/integracoes`, `/contratacao` e `/contato`; não criar página sobre equipe institucional.
 
 ### Worker direto — `/checkout`
 
