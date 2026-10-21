@@ -55,22 +55,22 @@
 
 ### Escopo e destinos
 
-- [ ] `src/config/site.ts`: manter `/` como conversão; criar `/plataforma`, `/checkout`, `/financeiro`, `/integracoes`, `/solucoes`, `/contratacao`, `/contato`.
-- [ ] `navigation` + `site.ts`: Plataforma → `/plataforma`, `/checkout`, `/plataforma#gestao-sellers`, `/financeiro`, `/plataforma#multiadquirencia`, `/checkout#assinaturas`.
-- [ ] `navigation` + `site.ts`: Soluções → `/solucoes#lancamento`, `/solucoes#migracao`, `/solucoes#plataformas`, `/checkout#entrega-digital`.
-- [ ] `navigation` + `site.ts`: substituir Desenvolvedores por Integrações; visão geral → `/integracoes`, API → `#api`, webhooks → `#webhooks`, apps → `#apps`, sempre com pathname.
-- [ ] `navigation` + `site.ts`: remover Conteúdos, Parceiros e Sobre a Paragan; trocar Empresa/Planos por Contratação → `/contratacao`; CTA → `/contato`.
-- [ ] Documentação externa: confirmar URL pública antes de expor link; não rotular resumo institucional como documentação ou referência completa da API.
+- [x] `src/config/site.ts`: manter `/` como conversão; criar `/plataforma`, `/checkout`, `/financeiro`, `/integracoes`, `/solucoes`, `/contratacao`, `/contato`.
+- [x] `navigation` + `site.ts`: Plataforma → `/plataforma`, `/checkout`, `/plataforma#gestao-sellers`, `/financeiro`, `/plataforma#multiadquirencia`, `/checkout#assinaturas`.
+- [x] `navigation` + `site.ts`: Soluções → `/solucoes#lancamento`, `/solucoes#migracao`, `/solucoes#plataformas`, `/checkout#entrega-digital`.
+- [x] `navigation` + `site.ts`: substituir Desenvolvedores por Integrações; visão geral → `/integracoes`, API → `#api`, webhooks → `#webhooks`, apps → `#apps`, sempre com pathname.
+- [x] `navigation` + `site.ts`: remover Conteúdos, Parceiros e Sobre a Paragan; trocar Empresa/Planos por Contratação → `/contratacao`; CTA → `/contato`.
+- [x] Documentação externa: não divulgar nesta rodada; não rotular resumo institucional como documentação ou referência completa da API.
 
 ### Base compartilhada — agente principal, antes dos workers
 
 - [x] `src/components/landing/`: extrair shell institucional com header/footer únicos, skip-link e hero com um `h1`; preservar layout da home.
 - [x] `institutional/*` + `primitives.tsx`: extrair templates da home com copy, IDs, destinos e índice/total por página; manter defaults da home.
-- [ ] `src/i18n/messages/pages/*`: separar copy tipada por página com import direto; conteúdo técnico com funcionamento, dependências e limites, sem simples troca de sinônimos.
-- [ ] `src/config/illustrations.ts`: reutilizar exclusivamente assets existentes e screenshots; nenhuma ilustração nova ou placeholder externo nas páginas.
-- [ ] `hero-section.tsx` + `site.ts`: especialista → `/contato`; ver em ação → `/#previa-produto`, com ID no frame existente; marca → `/#inicio`.
-- [ ] `site-footer.tsx` + `site.ts`: manter o mesmo footer em todas as páginas; atualizar destinos globais e corrigir hashes relativos; remover perfil social genérico sem URL oficial.
-- [ ] `primitives.tsx` + `site-footer.tsx`: início da página atual com âncora local existente; home com pathname explícito; CTA de exploração com destino coerente ao rótulo.
+- [x] `src/i18n/messages/pages/*`: separar copy tipada por página com import direto; conteúdo técnico com funcionamento, dependências e limites, sem simples troca de sinônimos.
+- [x] `src/config/illustrations.ts`: reutilizar exclusivamente assets existentes e screenshots; nenhuma ilustração nova ou placeholder externo nas páginas.
+- [x] `hero-section.tsx` + `site.ts`: especialista → `/contato`; ver em ação → `/#previa-produto`, com ID no frame existente; marca → `/#inicio`.
+- [x] `site-footer.tsx` + `site.ts`: manter o mesmo footer em todas as páginas; atualizar destinos globais e corrigir hashes relativos; remover perfil social genérico sem URL oficial.
+- [x] `primitives.tsx` + `site-footer.tsx`: início da página atual com âncora local existente; home com pathname explícito; CTA de exploração com destino coerente ao rótulo.
 
 ### Worker direto — `/plataforma`
 
@@ -115,9 +115,15 @@
 
 ### Orquestração e aceite
 
-- [ ] Implementação: despachar um worker direto GPT-6.1 Sol por página, paralelizando somente arquivos isolados; escrita restrita ao `Paragan-LP`, leitura de docs/repos irmãos permitida; base compartilhada e commits ficam com o agente principal.
-- [ ] Cada rota: hero/copy próprios, mesmo footer, sequência intencional de seções, assets existentes e ao menos dois destinos relacionados dentro do conteúdo; `/contato` mantém apenas hero/formulário.
-- [ ] CTA de navegação: link real ou âncora existente; nenhum botão inerte; preservar ações funcionais de tabs, tema, menu e formulário.
-- [ ] Home: manter narrativa, ordem e visual; limitar alterações a destinos, IDs e adaptações compartilhadas sem regressão.
-- [ ] `src/app/sitemap.ts` + metadata por rota: incluir somente páginas publicadas, canonical/título/descrição próprios; não listar `/ascii` e `/globe` como institucionais.
-- [ ] Arquivos alterados: typecheck, lint e formatação direcionados; conferir rotas/âncoras, navegação desktop/mobile, temas e reduced motion; sem build ou deploy nesta etapa.
+- [x] Implementação: despachar um worker direto GPT-6.1 Sol por página, paralelizando somente arquivos isolados; escrita restrita ao `Paragan-LP`, leitura de docs/repos irmãos permitida; base compartilhada e commits ficam com o agente principal.
+- [x] Cada rota: hero/copy próprios, mesmo footer, sequência intencional de seções, assets existentes e ao menos dois destinos relacionados dentro do conteúdo; `/contato` mantém apenas hero/formulário.
+- [x] CTA de navegação: link real ou âncora existente; nenhum botão inerte; preservar ações funcionais de tabs, tema, menu e formulário.
+- [x] Home: manter narrativa, ordem e visual; limitar alterações a destinos, IDs e adaptações compartilhadas sem regressão.
+- [x] `src/app/sitemap.ts` + metadata por rota: incluir somente páginas publicadas, canonical/título/descrição próprios; não listar `/ascii` e `/globe` como institucionais.
+- [x] Arquivos alterados: typecheck, lint e formatação direcionados; conferir rotas/âncoras, navegação desktop/mobile, temas e reduced motion; sem build ou deploy nesta etapa.
+
+### Correções da revisão em navegador
+
+- [x] [P1] `accordion.tsx`: observar resize do grupo; fundo expandido acompanha largura e conteúdo sem overflow ao trocar breakpoint.
+- [x] [P1] `action-link.tsx` + `primitives.tsx`: compor Link/Button no cliente; CTA renderiza uma única âncora, sem botão externo inerte.
+- [x] [P1] `layout.tsx`: inicializar tema com `next/script` antes da hidratação; preferência do sistema e persistência manual funcionais.

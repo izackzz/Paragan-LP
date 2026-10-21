@@ -50,7 +50,7 @@ const messages = {
     controls: 'Conhecer os controles',
     integration: 'Conhecer o ecossistema',
     backToTop: 'Voltar ao início ↑',
-    plans: 'Planos',
+    plans: 'Contratação',
     signIn: 'Entrar',
   },
   navigation: {
@@ -98,26 +98,19 @@ const messages = {
       },
     },
     developers: {
-      title: 'Desenvolvedores',
+      title: 'Integrações',
       intro: 'Conecte seu ecossistema à Paragan.',
       items: {
-        documentation: {
-          title: 'Documentação',
-          description: 'Conceitos e guias de implementação.',
+        overview: {
+          title: 'Visão geral',
+          description: 'Apps, eventos e sistemas no mesmo ecossistema.',
         },
-        api: { title: 'Referência da API', description: 'Recursos e contratos de integração.' },
+        api: { title: 'API', description: 'Escopos e cuidados para conectar seus sistemas.' },
         webhooks: { title: 'Webhooks', description: 'Eventos que acompanham sua operação.' },
-        integrations: { title: 'Integrações', description: 'Conexões com os seus sistemas.' },
-      },
-    },
-    company: {
-      title: 'Empresa',
-      intro: 'Conheça quem está nos bastidores.',
-      items: {
-        about: { title: 'Sobre a Paragan', description: 'Um modelo de excelência para fintechs.' },
-        content: { title: 'Conteúdos', description: 'Perspectivas sobre operações de pagamentos.' },
-        partners: { title: 'Parceiros', description: 'Construa novas possibilidades conosco.' },
-        contact: { title: 'Fale com a equipe', description: 'Vamos entender seu próximo passo.' },
+        integrations: {
+          title: 'Apps e automações',
+          description: 'Ferramentas conectadas à rotina dos sellers.',
+        },
       },
     },
   },
@@ -140,7 +133,7 @@ const messages = {
       company: {
         title: 'Paragan',
         items: {
-          about: 'Sobre a plataforma',
+          about: 'Contratação',
           solutions: 'Cenários de contratação',
           contact: 'Fale com a equipe',
         },
@@ -148,7 +141,6 @@ const messages = {
     },
     social: {
       instagram: 'Instagram',
-      twitter: 'X (Twitter)',
       telegram: 'Telegram',
       whatsapp: 'WhatsApp',
     },

@@ -3,7 +3,7 @@ import { Reveal } from '../reveal';
 import { frame, section, padding } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex } from '@/i18n';
-import { presentation } from '@/config/site';
+import { destinations, presentation } from '@/config/site';
 import { illustrationSlots } from '@/config/illustrations';
 
 const copy = content('audience');
@@ -51,7 +51,11 @@ export function SolutionsSection() {
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {solution.description}
               </p>
-              <ActionLink secondary className="mt-3 text-sm">
+              <ActionLink
+                href={destinations.solutions[solution.id as keyof typeof destinations.solutions]}
+                secondary
+                className="mt-3 text-sm"
+              >
                 {solution.cta}
               </ActionLink>
             </div>

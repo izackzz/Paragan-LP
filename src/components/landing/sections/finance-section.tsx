@@ -3,7 +3,7 @@ import { Reveal } from '../reveal';
 import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex, t } from '@/i18n';
-import { presentation } from '@/config/site';
+import { destinations, presentation } from '@/config/site';
 import { illustrationAssets } from '@/config/illustrations';
 
 const copy = content('ledger');
@@ -17,7 +17,9 @@ export function FinanceSection() {
           <div className="sticky top-47 flex flex-col justify-start gap-5">
             <SectionHeading title={copy.heading.primary} muted={copy.heading.secondary} />
             <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
-            <ActionLink secondary>{t('actions.controls')}</ActionLink>
+            <ActionLink href={destinations.finance} secondary>
+              {t('actions.controls')}
+            </ActionLink>
           </div>
         </div>
         <div className="flex flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">

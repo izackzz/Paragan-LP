@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import './globals.css';
 import { ExperienceProvider } from '@/components/landing/experience-provider';
 import { Analytics } from '@vercel/analytics/next';
@@ -73,7 +74,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={`${faktum.variable} ${galano.variable} ${rationalMix.variable} h-full scroll-pt-22 tabular-nums antialiased selection:bg-accent selection:text-foreground`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script
+          id="paragan-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeScript }}
+        />
       </head>
       <body className="min-h-full bg-background text-foreground motion-reduce:**:animate-none motion-reduce:**:transition-none">
         <ExperienceProvider>
