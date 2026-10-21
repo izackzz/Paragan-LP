@@ -50,3 +50,74 @@
 - [x] `globals.css`: tokens claros; preservar paleta escura, superfícies e contraste.
 - [x] `lib/theme.ts` + `layout.tsx` + `theme-toggle.tsx` + `site-header.tsx`: detectar `prefers-color-scheme` antes do paint; botão sol/lua desktop/mobile, persistência e sincronização.
 - [x] Arquivos alterados: Prettier + ESLint + `tsc --noEmit --incremental false`; teste direcionado de preferência, clique e storage indisponível.
+
+## Fase 8 — Páginas complementares e navegação institucional
+
+### Escopo e destinos
+
+- [ ] `src/config/site.ts`: manter `/` como conversão; criar `/plataforma`, `/checkout`, `/financeiro`, `/integracoes`, `/solucoes`, `/contratacao`, `/contato`.
+- [ ] `navigation` + `site.ts`: Plataforma → `/plataforma`, `/checkout`, `/plataforma#gestao-sellers`, `/financeiro`, `/plataforma#multiadquirencia`, `/checkout#assinaturas`.
+- [ ] `navigation` + `site.ts`: Soluções → `/solucoes#lancamento`, `/solucoes#migracao`, `/solucoes#plataformas`, `/checkout#entrega-digital`.
+- [ ] `navigation` + `site.ts`: substituir Desenvolvedores por Integrações; visão geral → `/integracoes`, API → `#api`, webhooks → `#webhooks`, apps → `#apps`, sempre com pathname.
+- [ ] `navigation` + `site.ts`: remover Conteúdos, Parceiros e Sobre a Paragan; trocar Empresa/Planos por Contratação → `/contratacao`; CTA → `/contato`.
+- [ ] Documentação externa: confirmar URL pública antes de expor link; não rotular resumo institucional como documentação ou referência completa da API.
+
+### Base compartilhada — agente principal, antes dos workers
+
+- [x] `src/components/landing/`: extrair shell institucional com header/footer únicos, skip-link e hero com um `h1`; preservar layout da home.
+- [x] `institutional/*` + `primitives.tsx`: extrair templates da home com copy, IDs, destinos e índice/total por página; manter defaults da home.
+- [ ] `src/i18n/messages/pages/*`: separar copy tipada por página com import direto; conteúdo técnico com funcionamento, dependências e limites, sem simples troca de sinônimos.
+- [ ] `src/config/illustrations.ts`: reutilizar exclusivamente assets existentes e screenshots; nenhuma ilustração nova ou placeholder externo nas páginas.
+- [ ] `hero-section.tsx` + `site.ts`: especialista → `/contato`; ver em ação → `/#previa-produto`, com ID no frame existente; marca → `/#inicio`.
+- [ ] `site-footer.tsx` + `site.ts`: manter o mesmo footer em todas as páginas; atualizar destinos globais e corrigir hashes relativos; remover perfil social genérico sem URL oficial.
+- [ ] `primitives.tsx` + `site-footer.tsx`: início da página atual com âncora local existente; home com pathname explícito; CTA de exploração com destino coerente ao rótulo.
+
+### Worker direto — `/plataforma`
+
+- [ ] `src/app/plataforma/page.tsx` + copy própria: hero dedicado → prévias admin/seller/staff → módulos selecionados de `PlatformSection` → `ControlSection` → `ScaleSection` → links relacionados.
+- [ ] `/plataforma`: detalhar marca/domínio, papéis e carteira em `#gestao-sellers`, rotas e habilitações em `#multiadquirencia`, isolamento/responsabilidades em `#arquitetura`; reutilizar artes 04–08, 15–17 e 22.
+- [ ] `/plataforma`: links contextuais para `/checkout`, `/financeiro`, `/integracoes`, `/contratacao` e `/contato`; não criar página sobre equipe institucional.
+
+### Worker direto — `/checkout`
+
+- [ ] `src/app/checkout/page.tsx` + copy própria: hero dedicado → `CheckoutSection` → blocos derivados de `PlatformSection`/`SolutionsSection` para `#assinaturas` e `#entrega-digital` → `IntegrationsSection` selecionada → FAQ específico.
+- [ ] `/checkout`: explicar produto/oferta, cupom/adicional, pedido/pagamento, recorrência condicionada e arquivos/links autorizados; reutilizar screenshot do checkout e artes 10, 11, 20 e 21; não prometer LMS.
+- [ ] `/checkout`: links contextuais para `/financeiro`, `/integracoes`, `/solucoes` e `/contato`.
+
+### Worker direto — `/financeiro`
+
+- [ ] `src/app/financeiro/page.tsx` + copy própria: hero dedicado → `FinanceSection` → recorte comercial/financeiro de `ControlSection` → pares derivados de `PlatformSection` → FAQ específico.
+- [ ] `/financeiro`: explicar taxas/comissões, custos registrados, saldos/reservas, lançamentos/estornos e saques; reutilizar artes 05, 09, 16–18; distinguir registro interno de liquidação e resultado de lucro contábil.
+- [ ] `/financeiro`: links contextuais para `/plataforma#multiadquirencia`, `/checkout`, `/contratacao` e `/contato`.
+
+### Worker direto — `/integracoes`
+
+- [ ] `src/app/integracoes/page.tsx` + copy própria: hero dedicado → `IntegrationsSection` → blocos derivados de `PlatformSection` em `#api`, `#webhooks`, `#apps` → recorte de `ScaleSection` → FAQ específico.
+- [ ] `/integracoes`: explicar escopos/autenticação, eventos/entregas e fronteiras entre apps, processadores e sistemas próprios; reutilizar artes 08, 11, 20–22; não publicar catálogo de parceiros como disponibilidade homologada.
+- [ ] `/integracoes`: links contextuais para `/plataforma#multiadquirencia`, `/checkout`, `/contratacao` e `/contato`; documentação externa somente com destino confirmado.
+
+### Worker direto — `/solucoes`
+
+- [ ] `src/app/solucoes/page.tsx` + copy própria: hero dedicado → `SolutionsSection` expandida com `#lancamento`, `#migracao`, `#plataformas` e definição de projeto → recortes de plataforma/checkout → `LaunchSection` → FAQ específico.
+- [ ] `/solucoes`: listar contexto, fluxos necessários e dependências por cenário usando as grades existentes; reutilizar artes 12–14 e screenshots; sem novas páginas por segmento.
+- [ ] `/solucoes`: lançamento → `/plataforma`; migração → `/contratacao#implantacao`; plataformas → `/integracoes` e `/financeiro`; venda digital → `/checkout#entrega-digital`; avaliação → `/contato`.
+
+### Worker direto — `/contratacao`
+
+- [ ] `src/app/contratacao/page.tsx` + copy própria: hero dedicado → grade derivada de `PlatformSection` para uso/implantação/customizações/terceiros → `LaunchSection` em `#implantacao` → recorte de `ScaleSection` → FAQ específico.
+- [ ] `/contratacao`: explicar escopo, composição de custos, habilitações, aceite, manutenção e responsabilidades; sem tabela fictícia de planos, prazos, SLA ou preços; reutilizar artes 14 e 22 se necessárias.
+- [ ] `/contratacao`: links contextuais para `/solucoes#migracao`, `/integracoes`, `/plataforma` e `/contato`.
+
+### Worker direto — `/contato`
+
+- [ ] `src/app/contato/page.tsx` + copy própria: somente hero dedicado + `ContactSection` existente, além do header/footer compartilhados; links de retorno dentro desses blocos.
+- [ ] `/contato`: manter campos, seleção, preparo/cópia do resumo e aviso de ausência de envio automático; hero com atalho ao formulário e canal comercial existente, sem prometer agendamento.
+
+### Orquestração e aceite
+
+- [ ] Implementação: despachar um worker direto GPT-6.1 Sol por página, paralelizando somente arquivos isolados; escrita restrita ao `Paragan-LP`, leitura de docs/repos irmãos permitida; base compartilhada e commits ficam com o agente principal.
+- [ ] Cada rota: hero/copy próprios, mesmo footer, sequência intencional de seções, assets existentes e ao menos dois destinos relacionados dentro do conteúdo; `/contato` mantém apenas hero/formulário.
+- [ ] CTA de navegação: link real ou âncora existente; nenhum botão inerte; preservar ações funcionais de tabs, tema, menu e formulário.
+- [ ] Home: manter narrativa, ordem e visual; limitar alterações a destinos, IDs e adaptações compartilhadas sem regressão.
+- [ ] `src/app/sitemap.ts` + metadata por rota: incluir somente páginas publicadas, canonical/título/descrição próprios; não listar `/ascii` e `/globe` como institucionais.
+- [ ] Arquivos alterados: typecheck, lint e formatação direcionados; conferir rotas/âncoras, navegação desktop/mobile, temas e reduced motion; sem build ou deploy nesta etapa.
