@@ -110,8 +110,8 @@
 
 ### Worker direto — `/contato`
 
-- [ ] `src/app/contato/page.tsx` + copy própria: somente hero dedicado + `ContactSection` existente, além do header/footer compartilhados; links de retorno dentro desses blocos.
-- [ ] `/contato`: manter campos, seleção, preparo/cópia do resumo e aviso de ausência de envio automático; hero com atalho ao formulário e canal comercial existente, sem prometer agendamento.
+- [x] `src/app/contato/page.tsx` + copy própria: somente hero dedicado + `ContactSection` existente, além do header/footer compartilhados; links de retorno dentro desses blocos.
+- [x] `/contato`: preservar formulário e comportamento existentes, sem WhatsApp adicional nem novos avisos de mock; hero com atalho ao formulário e contratação, sem prometer agendamento.
 
 ### Orquestração e aceite
 

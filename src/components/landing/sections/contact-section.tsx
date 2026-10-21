@@ -22,7 +22,13 @@ const copy = content('inquiry');
 const interests = Object.entries(copy.interests);
 const perspectives = Object.entries(copy.perspectives);
 
-export function ContactSection() {
+export function ContactSection({
+  index = presentation.sections.inquiry,
+  total = presentation.sectionCount,
+}: {
+  index?: number;
+  total?: number;
+} = {}) {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([interests[0][0]]);
   const [brief, setBrief] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
@@ -62,7 +68,7 @@ export function ContactSection() {
   return (
     <section id="contato" className="dark scroll-mt-22 bg-background text-foreground">
       <div className={cn(frame, section)}>
-        <SectionLabel number={formatIndex(presentation.sections.inquiry)}>
+        <SectionLabel number={formatIndex(index)} total={total}>
           {copy.label}
         </SectionLabel>
         <div className="grid lg:grid-cols-2">
