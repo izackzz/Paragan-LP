@@ -104,9 +104,9 @@
 
 ### Worker direto — `/contratacao`
 
-- [ ] `src/app/contratacao/page.tsx` + copy própria: hero dedicado → grade derivada de `PlatformSection` para uso/implantação/customizações/terceiros → `LaunchSection` em `#implantacao` → recorte de `ScaleSection` → FAQ específico.
-- [ ] `/contratacao`: explicar escopo, composição de custos, habilitações, aceite, manutenção e responsabilidades; sem tabela fictícia de planos, prazos, SLA ou preços; reutilizar artes 14 e 22 se necessárias.
-- [ ] `/contratacao`: links contextuais para `/solucoes#migracao`, `/integracoes`, `/plataforma` e `/contato`.
+- [x] `src/app/contratacao/page.tsx` + copy própria: hero dedicado → grade derivada de `PlatformSection` para uso/implantação/customizações/terceiros → `LaunchSection` em `#implantacao` → recorte de `ScaleSection` → FAQ específico.
+- [x] `/contratacao`: explicar escopo, composição de custos, habilitações, aceite, manutenção e responsabilidades; sem tabela fictícia de planos, prazos, SLA ou preços; reutilizar artes 14 e 22 se necessárias.
+- [x] `/contratacao`: links contextuais para `/solucoes#migracao`, `/integracoes`, `/plataforma` e `/contato`.
 
 ### Worker direto — `/contato`
 
