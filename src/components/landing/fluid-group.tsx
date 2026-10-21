@@ -10,11 +10,13 @@ function FluidItem({
   index,
   register,
   as = 'div',
+  className,
 }: {
   children: ReactNode;
   index: number;
   register: ReturnType<typeof useFluidHover>['registerItem'];
   as?: 'div' | 'li';
+  className?: string;
 }) {
   const ref = useRef<HTMLElement | null>(null);
   const Item = as;
@@ -25,7 +27,7 @@ function FluidItem({
         ref.current = node;
       }}
       data-fluid-hover-wrapper="true"
-      className={cn('relative z-10 min-w-0', as === 'li' && 'rounded-md')}
+      className={cn('relative z-10 min-w-0', as === 'li' && 'rounded-md', className)}
     >
       {children}
     </Item>
@@ -35,11 +37,13 @@ function FluidItem({
 export function FluidGroup({
   children,
   className,
+  itemClassName,
   axis = 'xy',
   as = 'div',
 }: {
   children: ReactNode;
   className?: string;
+  itemClassName?: string;
   axis?: 'x' | 'y' | 'xy';
   as?: 'div' | 'ul';
 }) {
@@ -82,6 +86,7 @@ export function FluidGroup({
           index={index}
           register={hover.registerItem}
           as={as === 'ul' ? 'li' : 'div'}
+          className={itemClassName}
         >
           {child}
         </FluidItem>
