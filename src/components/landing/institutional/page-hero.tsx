@@ -1,7 +1,10 @@
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import { illustrationAssets } from '@/config/illustrations';
 import { ActionLink, ArtPlaceholder } from '../primitives';
 import { frame, section, eyebrow } from '../styles';
+import { ScreenshotTour } from '../screenshot-tour';
+import { Frame } from '@/components/ui/frame';
 import type { PageHeading, PageImage, PageLink } from './types';
 
 export type PageHeroProps = PageHeading & {
@@ -57,14 +60,31 @@ export function PageHero({
       </div>
       {image && artwork && (
         <div className="px-5 pb-12 md:px-7 md:pb-16 xl:px-10">
-          <ArtPlaceholder
-            src={artwork.src}
-            width={artwork.width}
-            height={artwork.height}
-            label={image.alt}
-            frame
-            priority
-          />
+          {image.tour ? (
+            <Frame>
+              <ScreenshotTour width={artwork.width} height={artwork.height} viewportRatio="16 / 9">
+                <Image
+                  src={artwork.src!}
+                  width={artwork.width}
+                  height={artwork.height}
+                  alt={image.alt}
+                  sizes="200vw"
+                  quality={100}
+                  preload
+                  className="block h-full w-full"
+                />
+              </ScreenshotTour>
+            </Frame>
+          ) : (
+            <ArtPlaceholder
+              src={artwork.src}
+              width={artwork.width}
+              height={artwork.height}
+              label={image.alt}
+              frame
+              priority
+            />
+          )}
           {image.caption && (
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{image.caption}</p>
           )}
