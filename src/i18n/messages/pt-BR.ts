@@ -95,6 +95,10 @@ const messages = {
           title: 'Produtos digitais',
           description: 'Venda e entrega em uma experiência integrada.',
         },
+        calculator: {
+          title: 'Calculadora de viabilidade',
+          description: 'De vendedor a plataforma: simule custos e resultado.',
+        },
       },
     },
     developers: {
@@ -128,6 +132,7 @@ const messages = {
           integrations: 'Integrações',
           onboarding: 'Implantação',
           questions: 'Perguntas frequentes',
+          calculator: 'Calculadora de viabilidade',
         },
       },
       company: {

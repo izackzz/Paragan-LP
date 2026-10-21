@@ -11,5 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/solucoes',
     '/contratacao',
     '/contato',
+    '/calculadora',
   ].map((pathname) => ({ url: `${siteSeo.url}${pathname}` }));
 }
