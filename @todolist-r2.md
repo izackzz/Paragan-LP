@@ -98,9 +98,9 @@
 
 ### Worker direto — `/solucoes`
 
-- [ ] `src/app/solucoes/page.tsx` + copy própria: hero dedicado → `SolutionsSection` expandida com `#lancamento`, `#migracao`, `#plataformas` e definição de projeto → recortes de plataforma/checkout → `LaunchSection` → FAQ específico.
-- [ ] `/solucoes`: listar contexto, fluxos necessários e dependências por cenário usando as grades existentes; reutilizar artes 12–14 e screenshots; sem novas páginas por segmento.
-- [ ] `/solucoes`: lançamento → `/plataforma`; migração → `/contratacao#implantacao`; plataformas → `/integracoes` e `/financeiro`; venda digital → `/checkout#entrega-digital`; avaliação → `/contato`.
+- [x] `src/app/solucoes/page.tsx` + copy própria: hero dedicado → `SolutionsSection` expandida com `#lancamento`, `#migracao`, `#plataformas` e definição de projeto → recortes de plataforma/checkout → `LaunchSection` → FAQ específico.
+- [x] `/solucoes`: listar contexto, fluxos necessários e dependências por cenário usando as grades existentes; reutilizar artes 12–14 e screenshots; sem novas páginas por segmento.
+- [x] `/solucoes`: lançamento → `/plataforma`; migração → `/contratacao#implantacao`; plataformas → `/integracoes` e `/financeiro`; venda digital → `/checkout#entrega-digital`; avaliação → `/contato`.
 
 ### Worker direto — `/contratacao`
 
