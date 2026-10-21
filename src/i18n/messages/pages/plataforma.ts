@@ -8,14 +8,14 @@ import type {
 
 export const plataformaCopy = {
   metadata: {
-    title: 'Plataforma white label: painéis e operação | Paragan',
+    title: 'Gateway de pagamentos white label: plataforma e operação | Paragan',
     description:
       'Entenda como marca, sellers, equipe e adquirência se conectam na Paragan. Painéis por papel, regras de roteamento e limites de acesso para seu gateway.',
     imageAlt: 'Paragan — plataforma white label, painéis e operação de pagamentos',
   },
   hero: {
     eyebrow: 'Por dentro da plataforma',
-    title: 'Uma operação conectada.',
+    title: 'Gateway de pagamentos white label.',
     muted: 'Cada papel, no seu lugar.',
     description:
       'Você administra o gateway. Seus sellers organizam as vendas. O staff atende a carteira autorizada. E o comprador encontra o checkout da sua marca — sem precisar conhecer a estrutura por trás.',
@@ -78,6 +78,18 @@ export const plataformaCopy = {
       alt: string;
     })[],
   },
+  breadcrumbLabel: 'Você está aqui',
+  homeLabel: 'Início',
+  pageLabel: 'Plataforma',
+  sectionIndexLabel: 'Nesta página',
+  sectionIndex: [
+    { label: 'Painéis', href: '#paineis' },
+    { label: 'Identidade', href: '#identidade' },
+    { label: 'Sellers', href: '#gestao-sellers' },
+    { label: 'Adquirência', href: '#multiadquirencia' },
+    { label: 'Arquitetura', href: '#arquitetura' },
+    { label: 'Continuar', href: '#continuar' },
+  ],
   identity: {
     label: 'Identidade e condições',
     heading: {
