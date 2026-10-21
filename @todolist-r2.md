@@ -86,9 +86,9 @@
 
 ### Worker direto — `/financeiro`
 
-- [ ] `src/app/financeiro/page.tsx` + copy própria: hero dedicado → `FinanceSection` → recorte comercial/financeiro de `ControlSection` → pares derivados de `PlatformSection` → FAQ específico.
-- [ ] `/financeiro`: explicar taxas/comissões, custos registrados, saldos/reservas, lançamentos/estornos e saques; reutilizar artes 05, 09, 16–18; distinguir registro interno de liquidação e resultado de lucro contábil.
-- [ ] `/financeiro`: links contextuais para `/plataforma#multiadquirencia`, `/checkout`, `/contratacao` e `/contato`.
+- [x] `src/app/financeiro/page.tsx` + copy própria: hero dedicado → `FinanceSection` → recorte comercial/financeiro de `ControlSection` → pares derivados de `PlatformSection` → FAQ específico.
+- [x] `/financeiro`: explicar taxas/comissões, custos registrados, saldos/reservas, lançamentos/estornos e saques; reutilizar artes 05, 09, 16–18; distinguir registro interno de liquidação e resultado de lucro contábil.
+- [x] `/financeiro`: links contextuais para `/plataforma#multiadquirencia`, `/checkout`, `/contratacao` e `/contato`.
 
 ### Worker direto — `/integracoes`
 
