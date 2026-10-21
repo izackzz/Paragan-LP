@@ -1,0 +1,700 @@
+{
+  "source": "https://boringui.dev",
+  "downloadedAt": "2026-10-21T15:28:39.027620+00:00",
+  "registryItems": 104,
+  "documentationPages": 66,
+  "files": [
+    {
+      "path": "docs/accordion.md",
+      "sha256": "2387c416727cff88a0ead7c688ca31633b9d16b1bed104c7b55619d30a23cc71"
+    },
+    {
+      "path": "docs/ask-user-questions.md",
+      "sha256": "b69414c0d56617885ebd069502203a7a276dc225c6fbea086afc05637bd80baa"
+    },
+    {
+      "path": "docs/badge.md",
+      "sha256": "2c77cedbd21249bf54b59c3308c9aeb6de2054156ac9d382945ad08d8f1da8b4"
+    },
+    {
+      "path": "docs/banner.md",
+      "sha256": "4091cd865f375d05f18fc00992c721412369266c992c6127bb87ddea639243db"
+    },
+    {
+      "path": "docs/blur-number.md",
+      "sha256": "c73b11b654d9a6169001b3cb298101f03c56d6fb0eefadfecd5309983c7c3a7c"
+    },
+    {
+      "path": "docs/button.md",
+      "sha256": "793708dac13e40c24e7818ace134649cf938850eff8527df44b3884556ae629b"
+    },
+    {
+      "path": "docs/carousel-dots.md",
+      "sha256": "7c3ba2ebc7a57de038fb8001327bf9c9069bf44abe3fcfff1ad4e2f5b40f8269"
+    },
+    {
+      "path": "docs/checkbox-group.md",
+      "sha256": "ab6c04a64e318abba6479ff4d154a192cf97b17fc43ed03635c51367914817d8"
+    },
+    {
+      "path": "docs/code-block.md",
+      "sha256": "8bacfcb3463fa2f6b8d1f443512ba2be0b365571aabdd7a10c14ba3bb2cb869a"
+    },
+    {
+      "path": "docs/color-picker.md",
+      "sha256": "16406df3edf64def02ee648fd39c07b363171f38722d6af7d37d8b2809b711de"
+    },
+    {
+      "path": "docs/combobox.md",
+      "sha256": "2973fa3ca1ce96275537a016e052bd7d295841e77cbd78cba0444e5713f1c025"
+    },
+    {
+      "path": "docs/command-menu.md",
+      "sha256": "5e975d017c24395d8f0bb279ed091959f704753014da2594597723faed7624e1"
+    },
+    {
+      "path": "docs/context-cards.md",
+      "sha256": "814df4a35dd6a01d1f4b04e107a9a8c1ff16ed98b33a390c6bccb8fd24d490f5"
+    },
+    {
+      "path": "docs/dia-text.md",
+      "sha256": "a45e4fbc1b0854d18823e4c80de0803bfbeac39ecffbcc3418bdd0327d8c449f"
+    },
+    {
+      "path": "docs/dialog.md",
+      "sha256": "4eb756199bac1174b4902f0e103ef654fbf2d1113bf5651b913d48cac08a75df"
+    },
+    {
+      "path": "docs/diff-table.md",
+      "sha256": "0b3f78c900117a863639ffa35a716ac21604aaf41e1f0e7d139f412324a6ccc7"
+    },
+    {
+      "path": "docs/dropdown.md",
+      "sha256": "dc5114a86e3b1c2458da68c8ab484e658cb2978eff6630d36987599fe3e408ca"
+    },
+    {
+      "path": "docs/filter-table.md",
+      "sha256": "e9235b9e4b7f104c57d366e462c9a4c718bff42ad68b532a3991d2ca4b0bd9d2"
+    },
+    {
+      "path": "docs/fine-tune-card.md",
+      "sha256": "c9cf85295cf92bb778b7600ad0a541f05d9c28a175e13988e52c0b08f3c960b7"
+    },
+    {
+      "path": "docs/flowchart.md",
+      "sha256": "16bb9952693a9fa7561b937fb69054831c75fcc773863c5df01d28088121dbea"
+    },
+    {
+      "path": "docs/fluid-hover.md",
+      "sha256": "155b0a6a7408fe1758e62e0fae6cce8e0680673fcc5512b5fd4b15e3b82ef17e"
+    },
+    {
+      "path": "docs/gradient-spin.md",
+      "sha256": "8a79fa94fbf2388b18278b2925e32fa50fdfc33bfed4edcdf98c1c6bc3ab16cb"
+    },
+    {
+      "path": "docs/index.md",
+      "sha256": "f639bf718bd384ddd985e1ec1555e4fa703cad0c4b0a1c3f51f56a39137567c2"
+    },
+    {
+      "path": "docs/input-copy.md",
+      "sha256": "3ccf61d98251f95462b85d6dbbf307959650dcf5e116d7317fc24d4789965d44"
+    },
+    {
+      "path": "docs/input-group.md",
+      "sha256": "d2df08b8ef1ef5abb4dc63e20e19614e15ca5ccade1239c8c2f0f700eae608b9"
+    },
+    {
+      "path": "docs/input-message.md",
+      "sha256": "e9643ed5455171dc82ab5c8b13eeacc01c66f25dafe450be805baffe8fe18b81"
+    },
+    {
+      "path": "docs/input-otp.md",
+      "sha256": "2498dde4098374243b80fc6e416ca07e186864d98cbe551fd31842b82b8c6953"
+    },
+    {
+      "path": "docs/insight-cards.md",
+      "sha256": "80b3f85491bb4a269a0e1caee22bbb6d1c91c25fa79ebec7feff45d213f63a4d"
+    },
+    {
+      "path": "docs/interface-cheat-sheet.md",
+      "sha256": "ddf3dd3f41f817067b0ef8b469f40a683289416e324bc7bd93a87244fbec9f9a"
+    },
+    {
+      "path": "docs/loading-state.md",
+      "sha256": "be6ef8382e94981d06449fdd838dbc5c9b4b19f116be7586f03cca5cd940607f"
+    },
+    {
+      "path": "docs/motion.md",
+      "sha256": "ce51df4ab66b8499243c3de71e4a0839a4ba22e79041f1378bc59535159a00af"
+    },
+    {
+      "path": "docs/neat-annotation.md",
+      "sha256": "94b4083d3795d3a8ff6c138c327e2f9f7a80da14b4ee93f71b6b9fbf87d18b59"
+    },
+    {
+      "path": "docs/number-flow.md",
+      "sha256": "c73b63e5e4ec7017c06283b4a492345755878afd5844f0223bf41e661edb421a"
+    },
+    {
+      "path": "docs/progressive-blur.md",
+      "sha256": "bc49b1acdb86ce1815b5ce1fe29cbf55c7d239d3878a6ec652f98e8cf7c218ca"
+    },
+    {
+      "path": "docs/prompt-bar.md",
+      "sha256": "872215953cc55b901c48108d6d87d3cb53c2710d18cb4c6ebce949dafc4229a2"
+    },
+    {
+      "path": "docs/radio-group.md",
+      "sha256": "848b23613ea6c8caa111d98d9f820a1dca4f84bd89ac6f04bad9c5a21927a32d"
+    },
+    {
+      "path": "docs/recommendation-card.md",
+      "sha256": "78199fdaeb6c1efd385d76e90b76ccf82b7195fe4fcdcd0399de2126bf1107eb"
+    },
+    {
+      "path": "docs/records-table.md",
+      "sha256": "cfb85ab857d57155bb59795b681dfe3be12907bb15e72a3dc01f81876deffdc8"
+    },
+    {
+      "path": "docs/scrollbars.md",
+      "sha256": "1ca04f0792dabd08041da97b820b45da6e9f256c17d0e0d4abe8ab02128e539e"
+    },
+    {
+      "path": "docs/search-list.md",
+      "sha256": "a0b777c12513818f1dbbe2d0f50a0cfb2b240ddc7adb4801dcc0232441f2b0a2"
+    },
+    {
+      "path": "docs/select.md",
+      "sha256": "cf143b6ce316af7afac8e2c37114bc73567323a388c46f569ec7c17d18a3bf16"
+    },
+    {
+      "path": "docs/selection-actions.md",
+      "sha256": "8fe724a4693357e9bc118e9230fd0324c12467febabfbb192b05e3f61deb7d79"
+    },
+    {
+      "path": "docs/shader-sweep.md",
+      "sha256": "faca066087cc2bba0232772b29fb3db54ce329a7bdc3b921127da877542c84c9"
+    },
+    {
+      "path": "docs/sidebar-nav.md",
+      "sha256": "5885877b944d546cc94e7ae122137097c75f5423cecb034e760c077af4aa3997"
+    },
+    {
+      "path": "docs/sidebar.md",
+      "sha256": "aca6a740fef96d0ff645d8c81810da724dc51a4217163a70dac0d1f5b51af8c6"
+    },
+    {
+      "path": "docs/simple-player.md",
+      "sha256": "18717b9ffa072f59983f743743084faf7ba01b8df344c6e25643741656553b1b"
+    },
+    {
+      "path": "docs/sizes.md",
+      "sha256": "03ac1454b7e14aa13d04de9fb79ff1a03fb1058538d93ab5d419470320ec5c0a"
+    },
+    {
+      "path": "docs/skill.md",
+      "sha256": "ffa29d498c9b91591f2ff37d6d2ec127a24b6ee028813662142dea25718264c1"
+    },
+    {
+      "path": "docs/slider.md",
+      "sha256": "acc36ce56dd401726e5c7adc39fcac69d4c4fb8f4abfb13982330066dfb32e4c"
+    },
+    {
+      "path": "docs/slot-text.md",
+      "sha256": "6d566f7a273afe25bb6d51ad97361a6ed1b38e720dd3df8dadd6c1522af7b4dc"
+    },
+    {
+      "path": "docs/streaming-text.md",
+      "sha256": "1e65a639e14f51fff2764a46fe75e77558fc9754c1d70c790f48136d5e860dda"
+    },
+    {
+      "path": "docs/surfaces.md",
+      "sha256": "29dd691711e21b715b54924a9504a5b5f5230b0aa9c2bb6543c6408226a3b37d"
+    },
+    {
+      "path": "docs/switch.md",
+      "sha256": "63d951618366685c0a3f90f3d8ac8686810841ae914be2033da3d915d463535c"
+    },
+    {
+      "path": "docs/table.md",
+      "sha256": "1f09a256878ef5b9c02580c4f9becfc97d6bba6404f54895f4e5ce75083ac63c"
+    },
+    {
+      "path": "docs/tabs-subtle.md",
+      "sha256": "2b070c47cd3c0785a5bed05a4f7c1fd40607ddf43dda88fe54bb2efb71afa77d"
+    },
+    {
+      "path": "docs/tabs.md",
+      "sha256": "67f8e746396aa6d0687a9375a6f836d8d564466960a3c805d8ad206dcda110a8"
+    },
+    {
+      "path": "docs/task-rows.md",
+      "sha256": "1f7c5811d16d5bcd3d4a8e2ab35ab6b0eb187d1a858beb8d88bb9f353793ab89"
+    },
+    {
+      "path": "docs/thinking-indicator.md",
+      "sha256": "8ffeafd354463574c6985954f867f73eb44e1095ea773d16fff42d91338063d3"
+    },
+    {
+      "path": "docs/thinking-orb.md",
+      "sha256": "25662ce17c3d0a780a202b85ac94a3b56aaa365b45f02e935cc5da4bc5988685"
+    },
+    {
+      "path": "docs/thinking-state.md",
+      "sha256": "752752995bf5d088137128655215040000f954cd86412411dfc85eeaa3dccdf4"
+    },
+    {
+      "path": "docs/thinking-steps.md",
+      "sha256": "fab13baff64bbe1151a4202e324176ebc3f945353be59c01e493f29d9c12fd4c"
+    },
+    {
+      "path": "docs/toast.md",
+      "sha256": "17e9560cd4f4d18bb748ba9a5c3e1ae97f78f130982db0ecb2acf11791f0df7d"
+    },
+    {
+      "path": "docs/tool-chips.md",
+      "sha256": "86632d1fda0359a8d92e69eb1e81099ff810eb491fe10f6d8bd2adfa4471f63a"
+    },
+    {
+      "path": "docs/tooltip.md",
+      "sha256": "90491a51049bfe482597cabbe3b278ab36af17926687cc334ccd6f6ee4b3cbad"
+    },
+    {
+      "path": "docs/typography.md",
+      "sha256": "dc0f5085cb1a0221009a858e456523a89f54754f16529d228b4ce621450d9e80"
+    },
+    {
+      "path": "docs/wobble.md",
+      "sha256": "9ec421800dc1f1beb1e2d3e95f4208bab7b664c55d9a359d7add00c724c14a94"
+    },
+    {
+      "path": "registry.json",
+      "sha256": "cf9419ede5b142421563623596b23efe25de9aa8607d9d94d85b58507a46fd3a"
+    },
+    {
+      "path": "registry/accordion.json",
+      "sha256": "e7613fed41fdd1671b2d68d8c18714f71afd66312649de86dec7950f7b64f9d2"
+    },
+    {
+      "path": "registry/ask-user-questions.json",
+      "sha256": "f2442a13831b3e3489641786e78aa8476ad1d675621b579a06c94602d18687a3"
+    },
+    {
+      "path": "registry/badge.json",
+      "sha256": "f8c0a5d9fa2b57f0e177e5502ef42efc5bb9a247a649269d3aa9bb3907140a47"
+    },
+    {
+      "path": "registry/banner.json",
+      "sha256": "180c48d9537b816958ec05e2002981d683ef20f7dc1ab565210aaae44e8ec8d3"
+    },
+    {
+      "path": "registry/base/accordion.json",
+      "sha256": "1e1605a7809d77b73c76cb540bcdcf11e3f722ff41d3179138d4f6e75545e443"
+    },
+    {
+      "path": "registry/base/banner.json",
+      "sha256": "622b01dd8505ace818661bf471cbafac35929658e5b8372478923671502c3347"
+    },
+    {
+      "path": "registry/base/button.json",
+      "sha256": "c2ee1a02775bcde9b5861082d07801acdd8f956141e00a9b4cb357dbd8ada6ce"
+    },
+    {
+      "path": "registry/base/checkbox-group.json",
+      "sha256": "70fb83cc233424e828ff07a4d7303d32664f4f9e7597f7d01ac4d3a9cc7c2cbd"
+    },
+    {
+      "path": "registry/base/combobox.json",
+      "sha256": "2db0a3b77550574c3a874d236ad4da52756cce012be4a94a448e42da89460013"
+    },
+    {
+      "path": "registry/base/dialog.json",
+      "sha256": "2cc429fd36ab598f810f56ed81cc42ff2801a018f4e1d282331590af66f19c36"
+    },
+    {
+      "path": "registry/base/dropdown.json",
+      "sha256": "25e7d966d30ef87a7203ab066cb889beb9376044c90973fe644652227df6854c"
+    },
+    {
+      "path": "registry/base/mobile-drawer.json",
+      "sha256": "cd10b5ca35c9a0f953863be8cc6176688aafa7c4ddbe99f8f4092f288653f617"
+    },
+    {
+      "path": "registry/base/radio-group.json",
+      "sha256": "4f4886d122e675273f8b6b25628937b02b493f71cb00fa90fb80b42bc8580370"
+    },
+    {
+      "path": "registry/base/sidebar.json",
+      "sha256": "7a34a6920d6a55041d50241bc633b336e2852653be9a379ff75122085b6b084a"
+    },
+    {
+      "path": "registry/base/slider.json",
+      "sha256": "039412ac139f41c66f70754ba4265f40d79a6863c2f6884ef341bd17aa0a1bf5"
+    },
+    {
+      "path": "registry/base/switch.json",
+      "sha256": "de4fdeb0c9e07189de43545bf3ff43281f3e50f2ddb604fb445233bb8b7951be"
+    },
+    {
+      "path": "registry/base/tabs.json",
+      "sha256": "e80c83c2e1832f606902dfb776f2efc4e4bff506020ee00322098e1548123a54"
+    },
+    {
+      "path": "registry/base/tooltip.json",
+      "sha256": "ef69f85a27206950114943c55c533a82aed6505f4e85342aa894b97a7efd448d"
+    },
+    {
+      "path": "registry/blur-number.json",
+      "sha256": "d37cc8df31bc48c2f7c77cd6458fa46085fcb453bb6931c0b55f4c5d5f8238d6"
+    },
+    {
+      "path": "registry/button.json",
+      "sha256": "7aa5446553b71005a0fc745e237989869e59bd7d7af9dbff3c7f3265c88f405b"
+    },
+    {
+      "path": "registry/card.json",
+      "sha256": "012c4567769cee8e7a547b407be12a689d3c85dcb82a144f6a28518a2a57463c"
+    },
+    {
+      "path": "registry/carousel-dots.json",
+      "sha256": "9a0147fc82094f6f52b0da8f079c8f0d6f01569cb6e5da3fafc3c47a01d15252"
+    },
+    {
+      "path": "registry/chat-message.json",
+      "sha256": "2116714f7593fe686dadfc8e566732529354c8c238c1bb5d1a5874651c8879fe"
+    },
+    {
+      "path": "registry/checkbox-group.json",
+      "sha256": "023facf3b6068f1154a4fcd59c1bf13508b1f8f5598ebc5296eb21861833e904"
+    },
+    {
+      "path": "registry/code-block.json",
+      "sha256": "9061761b7e5e104cfa1bfcd53f7bfb23051f0d7f9a54ac0f9c5678aa65670f36"
+    },
+    {
+      "path": "registry/color-picker.json",
+      "sha256": "f9d1f885ef0b338e6c897105319c46219d6a6faccd238cbc6a6c850bdbc3a823"
+    },
+    {
+      "path": "registry/combobox.json",
+      "sha256": "9d3fb61ced8388998699bc5f5726c0a097adaf860f2b6c5667656bac8840d971"
+    },
+    {
+      "path": "registry/command-menu.json",
+      "sha256": "b6c264479ca7b42ba568d9e18a28dbe24a04e2660356af5d3819e831c959bd5d"
+    },
+    {
+      "path": "registry/context-cards.json",
+      "sha256": "7273181a824fd3ef0d85eac60a3d06fb3e70e6d40bccb29f0b0884f066fe16f9"
+    },
+    {
+      "path": "registry/dia-text.json",
+      "sha256": "a7f450af378890899b22dd6f59891e788eab042b6c1ec60daa809bbdb543a207"
+    },
+    {
+      "path": "registry/dialog-sidebar.json",
+      "sha256": "373ef0d4c154f2954e80e1a3516d0e4aff29b8d7801f0781c57396349dbba06e"
+    },
+    {
+      "path": "registry/dialog.json",
+      "sha256": "d2299ddc2b94e8c9af902259fda6bb1a6785698e26b6a312a8b1d81749faacab"
+    },
+    {
+      "path": "registry/diff-table.json",
+      "sha256": "eb100f648f809dae20b9d1206b666897c8e8f7ec512c1f35496e9e7aae528e73"
+    },
+    {
+      "path": "registry/dropdown.json",
+      "sha256": "b17b911b1ddc3fa05bd857eb0dfee8bf6f653fe5d7c3ff94d68da4a46dc6b80d"
+    },
+    {
+      "path": "registry/elevated.json",
+      "sha256": "28ebe8fcb5a2b67304b00ae4e60b57b4e5d7eaff7d50679f7775c02d185aab2d"
+    },
+    {
+      "path": "registry/file-thumbnail.json",
+      "sha256": "aae3806049b1d95012fc491c39f01e72af2c6dd61d87f5140eb62175c1351257"
+    },
+    {
+      "path": "registry/filter-table.json",
+      "sha256": "d7e1839cf65e76404d3920a3795f8075a8886d8aef26a733360103e418b32ecf"
+    },
+    {
+      "path": "registry/fine-tune-card.json",
+      "sha256": "a4948da7c3e3c14beb0ceb72365342150fbfaaec575712a4caed87ac2f97cdb4"
+    },
+    {
+      "path": "registry/flowchart.json",
+      "sha256": "f7ea85a1dd5118b11eed306cc8dfee9ed1ce8e15bda4cd0de9f3a8f46287f395"
+    },
+    {
+      "path": "registry/font-weight.json",
+      "sha256": "652c208e0e724359a86a28243333b6daf0456c61d912323a0e2982b9783c2013"
+    },
+    {
+      "path": "registry/gradient-spin.json",
+      "sha256": "2455762d8d024c0b8851fbb85143786624f5e00bf1b2864e657412aabbcd9c79"
+    },
+    {
+      "path": "registry/icon-context.json",
+      "sha256": "46073c9652dff5452abbe86a558ddb2815627a5befa79b1b2638a54488490a29"
+    },
+    {
+      "path": "registry/icon-map.json",
+      "sha256": "46cf4e6c2a7a0f7c6314abcabb6c12a15e5998560e3d8238336f7cc4d3e5aaeb"
+    },
+    {
+      "path": "registry/input-copy.json",
+      "sha256": "be7b2c53ac77b97d3594c35be77ba95a8544238c7598e73e16e1896114aa86ab"
+    },
+    {
+      "path": "registry/input-group.json",
+      "sha256": "df091ae5f76981e6066ff575341b1d2988bddeb078635825cec6dcd5f254dec6"
+    },
+    {
+      "path": "registry/input-message.json",
+      "sha256": "9e4e655587a75fa8d0a51db9cdccf06757135e28c1539d1534305cc064101c06"
+    },
+    {
+      "path": "registry/input-otp.json",
+      "sha256": "897e4a6ff7cfbc5e28a9d6498dfdca2638861319872ea08e7f0cb957c7538f97"
+    },
+    {
+      "path": "registry/insight-cards.json",
+      "sha256": "0bf76d46e86c2429a19b8e48d3ea65213f73dc8c93fed04f8eb34b0422526d45"
+    },
+    {
+      "path": "registry/loading-state.json",
+      "sha256": "2d0edf6918349e10a7a8c573286fdc52b2daff6c22f3e127cd0d5f219ae2e061"
+    },
+    {
+      "path": "registry/mobile-drawer.json",
+      "sha256": "405c72a8eb401adee4c48b0ea735c37e278069bad33099b1dc06cd1816c48b9b"
+    },
+    {
+      "path": "registry/neat-annotation.json",
+      "sha256": "feea5b2b9730af267e3447579315c93fbfb9af2da9bd3fb9d4eca7604782e22f"
+    },
+    {
+      "path": "registry/number-flow.json",
+      "sha256": "58b92cdbc7d6a4740def2679c43ea8639c0e68249c261fc087e1b4b25e747f98"
+    },
+    {
+      "path": "registry/popup.json",
+      "sha256": "3956cf41a7e0be7493663c5904afa8b6e30ec919578adb5af755cba20d437dc4"
+    },
+    {
+      "path": "registry/progressive-blur.json",
+      "sha256": "62a25e950b8a758b599b438facb1e49496ee85770e8e32d280076d5cbf13ab9d"
+    },
+    {
+      "path": "registry/prompt-bar.json",
+      "sha256": "9cfcb51aba0e5bff4a894799ddb84e33d53ae2b0e901216389462f695a869f95"
+    },
+    {
+      "path": "registry/queued-stack.json",
+      "sha256": "f03c676adb9e8735fb15dd15dd229f2dbe75e6824ca70bcb938e53f8d5a590eb"
+    },
+    {
+      "path": "registry/radio-group.json",
+      "sha256": "7bc54ce2f86a0dd5e495a256fce5fce62798f5b546952c03845c389ae8523eca"
+    },
+    {
+      "path": "registry/recommendation-card.json",
+      "sha256": "a31ac0fa39432b37d93e58d752f836c86597c578ccad0a8703f0eb7d4707dcd2"
+    },
+    {
+      "path": "registry/records-table.json",
+      "sha256": "e21483f74c99a3e18d5e5136d7df366890370f198afab36d363b5ed7fc790ac9"
+    },
+    {
+      "path": "registry/scroll-area.json",
+      "sha256": "7ec050665a5f5179e90c1f6211f588f04c0ddb8fed45d030a005dffe6be23b3b"
+    },
+    {
+      "path": "registry/search-list.json",
+      "sha256": "c0e4acd042facc4186037bf1bbdfccfe43582d67cc0fbe3efd876b4d4d6941a5"
+    },
+    {
+      "path": "registry/select.json",
+      "sha256": "e717c031447e1c3fca18486710523874f66c16e92272cd2ebbc7f144511472fa"
+    },
+    {
+      "path": "registry/selection-actions.json",
+      "sha256": "451408d46e186f28c521566324d9ae0081a810fd22972b480571fd7dfbb2c546"
+    },
+    {
+      "path": "registry/shader-sweep.json",
+      "sha256": "a0468582a2c3314746e3733f5ed277dbe659f4718f5113ffef2e6744a741aa11"
+    },
+    {
+      "path": "registry/shape-context.json",
+      "sha256": "c39a7db88d0c38b2d31413dd9bdfe973e3885395f37d7e01238959eed3d191fa"
+    },
+    {
+      "path": "registry/sidebar-app.json",
+      "sha256": "9e109a89cde94468e0be2df4039afb270624dc063826608ff81bfecced0a0ea4"
+    },
+    {
+      "path": "registry/sidebar-inset-topbar.json",
+      "sha256": "a396f4c462b6bb07e16afbce1f1e24eb239d6ba82a8e36aa5c2c3748940c7c0b"
+    },
+    {
+      "path": "registry/sidebar-menu-grid.json",
+      "sha256": "96a6d8a25fdb5ee8637f52bcf50580664a82555abc6ebf4655d6851cd3758be1"
+    },
+    {
+      "path": "registry/sidebar-nav.json",
+      "sha256": "aa04af8b97559621c67feff00a0a3cdc43cb4ae3ff4be314b2605d6c6cb2703e"
+    },
+    {
+      "path": "registry/sidebar-search-field.json",
+      "sha256": "738c522105ac9deaa2ca95479a2c143017682adc40d8390946c5511c234f97e9"
+    },
+    {
+      "path": "registry/sidebar-user-footer.json",
+      "sha256": "801da3cbebe14ed71ee18ce399462a53112ee00d6cf5eec4ac131fe60a94547c"
+    },
+    {
+      "path": "registry/sidebar-workspace-header.json",
+      "sha256": "03caf252412f2e82858c4a1f0f7395ef14b8aa573f68cd3875332bce2b23066e"
+    },
+    {
+      "path": "registry/sidebar.json",
+      "sha256": "f283546d08f7b8d0577d1d360da7d3c2171374858a0d92be5904bdb61d6a13d0"
+    },
+    {
+      "path": "registry/simple-player.json",
+      "sha256": "e8bb62b9ea29c2c4120b0d35ef7e22dbef8b18a5ffa1b97670bba5bf3e183ce5"
+    },
+    {
+      "path": "registry/size-context.json",
+      "sha256": "a92f17d03dff8ec1002fce26792c3fc4ceafc773d34a97658f87848c476793c2"
+    },
+    {
+      "path": "registry/slider.json",
+      "sha256": "a043e58e1205f36dd49eda5e427113f1c66ed96ce4dfb214954786a67b1636d7"
+    },
+    {
+      "path": "registry/slot-text.json",
+      "sha256": "3357f98e1109a886c031cd1052bac44c252aa4e54a5d5540f8d7cd7a365f5301"
+    },
+    {
+      "path": "registry/springs.json",
+      "sha256": "cddcd29e90697bf13d4691507862bf13bb64e7f33825c39c16be63893c13e676"
+    },
+    {
+      "path": "registry/streaming-text.json",
+      "sha256": "732d8cda9356af8badf77dab046c43cb7016d59cf588a1a87ad0d83460691da6"
+    },
+    {
+      "path": "registry/surface-classes.json",
+      "sha256": "95b0ff2879414d20c3a356d312cbac1a89835172554139fce4a683f1a1b5dd1b"
+    },
+    {
+      "path": "registry/surface-context.json",
+      "sha256": "e8563d5d9e7965463ecda481caa5a47791b03794962f1c9c85d1eae1e236e6bd"
+    },
+    {
+      "path": "registry/surfaces.json",
+      "sha256": "9a199f065e8d764b0a4c91cf7b6e400a62e864dba7340849c9af5b3d0e0e4ec5"
+    },
+    {
+      "path": "registry/switch.json",
+      "sha256": "35b0c537bc30a6d66a9048d246ddea73b0c8c7746ecd893d89aa8f062f8ff91d"
+    },
+    {
+      "path": "registry/table.json",
+      "sha256": "aa59f0b9329662c9eba17906e030283861cfc430c8611e0adc32ad6e12b54b10"
+    },
+    {
+      "path": "registry/tabs-subtle.json",
+      "sha256": "12f0fa676a3ed0d6a242a97ad38d547ca177e60469b022a1d08777d5af4c89e2"
+    },
+    {
+      "path": "registry/tabs.json",
+      "sha256": "618d07d090df4638d72303cc9c7706189237f907604a43d2049d21104bbd6e6b"
+    },
+    {
+      "path": "registry/task-rows.json",
+      "sha256": "d76c2a0355a3ed83edcbb09f645514591cd26e9141c49dfd528fce1b9cad0dcf"
+    },
+    {
+      "path": "registry/thinking-indicator.json",
+      "sha256": "3c842a0256bfc92fdf2521cc95d4344b6d86b062742a1da4ce1994ba0f0cc38b"
+    },
+    {
+      "path": "registry/thinking-orb.json",
+      "sha256": "ebbc5f97e710caf6bf4c6fd898829fcb7f50c29880e6c7e549c2f16cda7127ca"
+    },
+    {
+      "path": "registry/thinking-state.json",
+      "sha256": "d87fdd8d46f81f321e68acfec487895beacf5115c4ed66fae5a0bd7ed3a6d328"
+    },
+    {
+      "path": "registry/thinking-steps.json",
+      "sha256": "b1827ea92e20d67752f968c9366eb83d93d9330fc595abaef4820ac6b2d0aef9"
+    },
+    {
+      "path": "registry/toast.json",
+      "sha256": "2a7bb41a4c2e50f67ec4a8f4b6e09042ae29d0dcb0cd71993c7fbe72a9d45fea"
+    },
+    {
+      "path": "registry/tokens.json",
+      "sha256": "7815182483cd021e628a8133362262381f3c4331363d7e568350b12fdce4df95"
+    },
+    {
+      "path": "registry/tool-chips.json",
+      "sha256": "82a75a850198a8f348721da3b38f0cd52158736d2b444435dee62039f89c270b"
+    },
+    {
+      "path": "registry/tooltip.json",
+      "sha256": "8744da35988e0c756e3741a9881fe56e75f17d9ddc8c8f0cbef57526cc5abbec"
+    },
+    {
+      "path": "registry/type-scale.json",
+      "sha256": "677079728c3f518390a20ac451f49d8db6a6f14781ab3d999e02819f6803677a"
+    },
+    {
+      "path": "registry/typography.json",
+      "sha256": "38ac2a975ac738e43edf4fa6e3bb56db7755c95ccceb97cb4438e7230af4abea"
+    },
+    {
+      "path": "registry/use-fluid-hover.json",
+      "sha256": "982ff8846d499bde0b375d9ffbb8b90c8daebee7c5748ee3e28ed8cc8ffcf19a"
+    },
+    {
+      "path": "registry/use-keyboard-nav-gate.json",
+      "sha256": "1f37512cbf9704791abdd66dccfd6a71c2411dd6780d7558d85a4bffac51db05"
+    },
+    {
+      "path": "registry/use-merge-split.json",
+      "sha256": "0915b525b86c384f67949d48d8bc2d78751ab641d9007fcd92f4c3c298ecd0a0"
+    },
+    {
+      "path": "registry/use-proximity-hover.json",
+      "sha256": "9a7f395c0e7044e4812db7bf3edd9ea192b6e4ba47f48d1f0698b078f4fca1e1"
+    },
+    {
+      "path": "registry/use-touch-primary.json",
+      "sha256": "a3b5bf19201ca43c558125671771e1a3ff4c5ca5b5747f46c1bb9c5785dc3cfe"
+    },
+    {
+      "path": "registry/utils.json",
+      "sha256": "890a5622dce612707ec0056be94a2846945bb6a02f74d12eb04a65c2d00119c4"
+    },
+    {
+      "path": "registry/wobble.json",
+      "sha256": "cc8be95a07fd03c9e0ff0929193b02a746960158242aad1e6bfb8ffd9f24cc65"
+    },
+    {
+      "path": "schemas/registry-item.json",
+      "sha256": "cdf0fba75a26ebf594018264eff2d55407ec14deb3071d0fce0e2b20848e5d44"
+    },
+    {
+      "path": "schemas/registry.json",
+      "sha256": "e716ebe595bbc189db2627cb75f0484cd765a09eb397a89b1f1c49074220d4bb"
+    }
+  ]
+}

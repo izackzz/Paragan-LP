@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-flow",
+  "title": "NumberFlow",
+  "description": "Accessible animated number transitions with digit wheels, Intl formatting, and reduced-motion support. Powered by @number-flow/react.",
+  "dependencies": ["@number-flow/react"],
+  "files": [
+    {
+      "path": "registry/default/number-flow.tsx",
+      "content": "\"use client\";\n\n/**\n * NumberFlow is provided by @number-flow/react, created by Maxwell Barvian.\n * Source and documentation: https://number-flow.barvian.me/\n * MIT License, Copyright (c) 2024 Maxwell Barvian.\n */\n\nexport {\n  default as NumberFlow,\n  NumberFlowGroup,\n  continuous,\n  styles,\n  useCanAnimate,\n  useIsSupported,\n  usePrefersReducedMotion,\n} from \"@number-flow/react\";\n\nexport type { Format, NumberFlowProps, NumberPartType, Trend, Value } from \"@number-flow/react\";\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

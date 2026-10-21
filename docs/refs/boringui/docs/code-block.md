@@ -1,0 +1,48 @@
+Source: https://boringui.dev/docs/code-block
+
+CodeBlock React component - BoringUI
+HomeHomeUI componentsUI componentsDesign InspirationDesign InspirationChangelogChangelog
+System8Interface Cheat SheetInterface Cheat SheetFluid HoverFluid HoverMotionMotionScrollbarsScrollbarsSizesSizesSurfacesSurfacesTypographyTypographySkillSkill
+
+Components57AccordionAccordionAskUserQuestionsAskUserQuestionsBadgeBadgeBannerBannerBlurNumberBlurNumberButtonButtonCarouselDotsCarouselDotsCheckboxGroupCheckboxGroupCodeBlockCodeBlockColorPickerColorPickerComboboxComboboxCommandMenuCommandMenuContextCardsContextCardsDialogDialogDiaTextDiaTextDiffTableDiffTableDropdownDropdownFilterTableFilterTableFineTuneCardFineTuneCardFlowchartFlowchartGradientSpinGradientSpinInputCopyInputCopyInputGroupInputGroupInputMessageInputMessageInputOTPInputOTPInsightCardsInsightCardsLoadingStateLoadingStateNeatAnnotationNeatAnnotationNumberFlowNumberFlowProgressiveBlurProgressiveBlurPromptBarPromptBarRadioGroupRadioGroupRecommendationCardRecommendationCardRecordsTableRecordsTableSearchListSearchListSelectSelectSelectionActionsSelectionActionsShaderSweepShaderSweepSidebarSidebarSidebarNavSidebarNavSimplePlayerSimplePlayerSliderSliderSlotTextSlotTextStreamingTextStreamingTextSwitchSwitchTableTableTabsTabsTabsSubtleTabsSubtleTaskRowsTaskRowsThinkingIndicatorThinkingIndicatorThinkingOrbThinkingOrbThinkingStateThinkingStateThinkingStepsThinkingStepsToastToastToolChipsToolChipsTooltipTooltipWobbleWobble
+
+# CodeBlock
+
+Agent-written code that streams into a focused line-by-line view.
+
+## Installation
+
+npx shadcn@latest add https://boringui.dev/r/code-block.json
+
+This component is primitive-agnostic — same source under both flavors.
+
+## Preview
+
+PreviewPreviewCodeCode
+
+Inspect
+
+churn.tsTypeScriptCopy
+
+## Source
+
+Adapted from slev12397/beautiful-ui under the MIT License. Commercial icons were replaced and demo analytics were removed; attribution remains bundled with the component foundation.
+
+## API Reference
+
+ | Prop | Type | Default | Description
+
+ | onCopy | (code: string) => void | — | Called after code is copied.
+
+## Make them yours
+.dev
+
+Theme
+
+Radius
+
+Size
+
+Icons
+
+Primitive
