@@ -134,6 +134,30 @@ export const calculatorCopy = {
   contact: 'Avaliar meu cenário com a Paragan',
   contracting: 'Entender a contratação',
   directValue: 'Digite um valor',
+  acquiringArt: 'Adquirência: meios de pagamento, processadores e custos da operação',
+  financeArt: 'Composição financeira: volume, taxas, custos e resultado separados',
+  contextBlocks: [
+    {
+      asset: 'identity',
+      eyebrow: 'Sua operação / identidade',
+      title: 'A venda é sua. A experiência também pode ser.',
+      description:
+        'A simulação começa nas taxas, mas uma plataforma própria também envolve marca, acesso dos sellers e uma jornada de compra consistente com a sua operação.',
+      alt: 'Identidade white label: marca e experiência conectadas à operação',
+      href: '/plataforma#identidade',
+      link: 'Explorar a plataforma',
+    },
+    {
+      asset: 'policies',
+      eyebrow: 'Seu negócio / regras comerciais',
+      title: 'Uma base de sellers. Condições com contexto.',
+      description:
+        'A taxa média ajuda a testar a viabilidade. Na operação, condições por seller, custos dos parceiros e regras comerciais precisam ser avaliados em conjunto.',
+      alt: 'Regras comerciais: condições por seller e organização do modelo de cobrança',
+      href: '/financeiro#condicoes-comerciais',
+      link: 'Entender o financeiro',
+    },
+  ],
   pixMethod: 'Pix',
   cardMethod: 'Cartão',
   inputError: 'Informe um valor entre {min} e {max}. O cálculo mantém o último valor válido.',
