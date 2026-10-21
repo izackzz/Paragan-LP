@@ -1,0 +1,52 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "type-scale",
+  "title": "Type Scale",
+  "description": "Five type roles with paired font sizes and line heights at the default and compact steps.",
+  "files": [
+    {
+      "path": "registry/default/lib/type-scale.ts",
+      "content": "/** BoringUI's five text roles at both density steps, in whole pixels.\n * Shared by size-context, the Typography specimens, and the prose stylesheet. */\ntype TypeScaleVariant = \"default\" | \"compact\";\ninterface TypeScalePair {\n  size: number;\n  leading: number;\n}\ninterface TypeScaleStep {\n  default: number;\n  compact: number;\n}\n\nconst typeStyles = {\n  display: { default: { size: 28, leading: 34 }, compact: { size: 24, leading: 30 } },\n  title: { default: { size: 16, leading: 22 }, compact: { size: 15, leading: 20 } },\n  subtitle: { default: { size: 14, leading: 20 }, compact: { size: 13, leading: 18 } },\n  body: { default: { size: 13, leading: 20 }, compact: { size: 12, leading: 18 } },\n  caption: { default: { size: 12, leading: 16 }, compact: { size: 11, leading: 14 } },\n} as const satisfies Record<string, Record<TypeScaleVariant, TypeScalePair>>;\n\ntype TypeScaleRole = keyof typeof typeStyles;\nconst typeScale = Object.fromEntries(\n  Object.entries(typeStyles).map(([role, step]) => [\n    role,\n    { default: step.default.size, compact: step.compact.size },\n  ]),\n) as Record<TypeScaleRole, TypeScaleStep>;\n\nexport { typeStyles, typeScale };\nexport type { TypeScaleRole, TypeScaleVariant, TypeScalePair, TypeScaleStep };\n",
+      "type": "registry:lib"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "text-display": "var(--fs-display)",
+      "text-display--line-height": "var(--lh-display)",
+      "text-title": "var(--fs-title)",
+      "text-title--line-height": "var(--lh-title)",
+      "text-subtitle": "var(--fs-subtitle)",
+      "text-subtitle--line-height": "var(--lh-subtitle)",
+      "text-body": "var(--fs-body)",
+      "text-body--line-height": "var(--lh-body)",
+      "text-caption": "var(--fs-caption)",
+      "text-caption--line-height": "var(--lh-caption)"
+    },
+    "light": {
+      "fs-display": "28px",
+      "lh-display": "34px",
+      "fs-display-compact": "24px",
+      "lh-display-compact": "30px",
+      "fs-title": "16px",
+      "lh-title": "22px",
+      "fs-title-compact": "15px",
+      "lh-title-compact": "20px",
+      "fs-subtitle": "14px",
+      "lh-subtitle": "20px",
+      "fs-subtitle-compact": "13px",
+      "lh-subtitle-compact": "18px",
+      "fs-body": "13px",
+      "lh-body": "20px",
+      "fs-body-compact": "12px",
+      "lh-body-compact": "18px",
+      "fs-caption": "12px",
+      "lh-caption": "16px",
+      "fs-caption-compact": "11px",
+      "lh-caption-compact": "14px"
+    }
+  },
+  "docs": "Docs: https://boringui.dev/docs/typography.",
+  "categories": ["theme"],
+  "type": "registry:lib"
+}
