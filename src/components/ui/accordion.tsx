@@ -172,6 +172,13 @@ const AccordionGroup = forwardRef<HTMLDivElement, AccordionGroupProps>((props, r
 
   useEffect(() => {
     measureFullItems();
+    const container = containerRef.current;
+    if (!container) return;
+    // Open backgrounds use measured pixel sizes: refresh them when responsive
+    // columns reflow or the expanded content changes the group's dimensions.
+    const observer = new ResizeObserver(measureFullItems);
+    observer.observe(container);
+    return () => observer.disconnect();
   }, [measureFullItems, children]);
 
   const openValuesKey = [...openValues].join(',');

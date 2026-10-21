@@ -30,7 +30,7 @@ export function CheckoutSection() {
               {copy.heading.description}
             </p>
           </div>
-          <ActionLink href={destinations.contact} secondary>
+          <ActionLink href={destinations.checkout} secondary>
             {t('actions.checkout')}
           </ActionLink>
         </div>

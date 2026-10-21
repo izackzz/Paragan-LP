@@ -2,14 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { AppLogo } from '@/components/assets/brand/logo';
 import { Frame } from '@/components/ui/frame';
 import { micro } from './styles';
-import { ArrowUpRight } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { t } from '@/i18n';
 import { destinations, presentation } from '@/config/site';
+
+export { ActionLink } from './action-link';
 
 export function ArrowIcon({ size = 16 }: { size?: number }) {
   return (
@@ -38,35 +37,6 @@ export function Brand({ className }: { className?: string }) {
     >
       <AppLogo aria-hidden="true" className="h-8 w-auto" />
     </Link>
-  );
-}
-
-export function ActionLink({
-  children,
-  href = destinations.contact,
-  secondary = false,
-  className,
-}: {
-  children: ReactNode;
-  href?: string;
-  secondary?: boolean;
-  className?: string;
-}) {
-  return (
-    <Button
-      asChild
-      variant={secondary ? 'secondary' : 'primary'}
-      size="lg"
-      className={cn(
-        'min-h-11 rounded-md px-5 py-3 text-base font-medium motion-reduce:transition-none',
-        className,
-      )}
-    >
-      <Link href={href}>
-        {children}
-        <HugeiconsIcon icon={ArrowUpRight} size={15} />
-      </Link>
-    </Button>
   );
 }
 

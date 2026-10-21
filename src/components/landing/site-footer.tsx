@@ -3,12 +3,7 @@ import { Fragment } from 'react';
 import { AppLogo } from '@/components/assets/brand/logo';
 import { AppWordMark } from '@/components/assets/brand/wordmark';
 import { HugeiconsIcon } from '@hugeicons/react';
-import {
-  InstagramIcon,
-  NewTwitterIcon,
-  TelegramIcon,
-  WhatsappIcon,
-} from '@hugeicons/core-free-icons';
+import { InstagramIcon, TelegramIcon, WhatsappIcon } from '@hugeicons/core-free-icons';
 import { FluidGroup } from './fluid-group';
 import { frame, micro } from './styles';
 import { cn } from '@/lib/utils';
@@ -30,7 +25,6 @@ const groups = Object.entries(destinations.footer.groups).map(([id, links]) => (
 }));
 const socialIcons = {
   instagram: InstagramIcon,
-  twitter: NewTwitterIcon,
   telegram: TelegramIcon,
   whatsapp: WhatsappIcon,
 };
@@ -185,7 +179,7 @@ export function SiteFooter() {
             {t('brand.copyright', { year: String(new Date().getFullYear()) })}
           </p>
           <FluidGroup as="ul" className="m-0 ml-auto list-none p-0">
-            <Link href={destinations.footer.home} className={cn(linkClass, 'text-xs')}>
+            <Link href={destinations.footer.backToTop} className={cn(linkClass, 'text-xs')}>
               {t('actions.backToTop')}
             </Link>
           </FluidGroup>

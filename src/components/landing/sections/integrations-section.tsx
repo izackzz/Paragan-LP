@@ -3,7 +3,7 @@ import { Reveal } from '../reveal';
 import { frame, section, micro } from '../styles';
 import { cn } from '@/lib/utils';
 import { content, formatIndex, t } from '@/i18n';
-import { presentation } from '@/config/site';
+import { destinations, presentation } from '@/config/site';
 import { illustrationAssets } from '@/config/illustrations';
 
 const copy = content('connectivity');
@@ -20,7 +20,9 @@ export function IntegrationsSection() {
             <SectionHeading title={copy.heading.primary} muted={copy.heading.secondary} />
             <div className="flex flex-col items-start gap-6">
               <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
-              <ActionLink secondary>{t('actions.integration')}</ActionLink>
+              <ActionLink href={destinations.integrations} secondary>
+                {t('actions.integration')}
+              </ActionLink>
             </div>
           </div>
         </div>

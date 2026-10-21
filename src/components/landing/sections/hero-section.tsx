@@ -1,5 +1,7 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
+import { destinations } from '@/config/site';
 import { illustrationSlots } from '@/config/illustrations';
 import { ScreenshotTour } from '../screenshot-tour';
 import { Tabs, TabsList, TabItem, TabPanel } from '@/components/ui/tabs';
@@ -41,11 +43,11 @@ export function HeroSection() {
           {copy.description}
         </p>
         <div className="flex w-full flex-col gap-2 sm:flex-row lg:justify-center">
-          <Button size="lg" className="w-full sm:w-fit" variant="cta">
-            {t('actions.consult')}
+          <Button asChild size="lg" className="w-full sm:w-fit" variant="cta">
+            <Link href={destinations.contact}>{t('actions.consult')}</Link>
           </Button>
-          <Button size="lg" className="w-full sm:w-fit" variant="secondary">
-            {t('actions.demo')}
+          <Button asChild size="lg" className="w-full sm:w-fit" variant="secondary">
+            <Link href={destinations.preview}>{t('actions.demo')}</Link>
           </Button>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -53,7 +55,10 @@ export function HeroSection() {
           <span className="text-accent-2">{copy.supporting.emphasis}</span>
         </p>
       </div>
-      <Frame className="mx-5 md:mx-7 xl:mx-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0">
+      <Frame
+        id="previa-produto"
+        className="mx-5 scroll-mt-22 md:mx-7 xl:mx-10 [&_figcaption]:hidden [&_figure]:rounded-none [&_figure]:border-0"
+      >
         <Tabs defaultValue="gateway">
           <TabsList
             radius="none"
