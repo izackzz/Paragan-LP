@@ -80,9 +80,9 @@
 
 ### Worker direto — `/checkout`
 
-- [ ] `src/app/checkout/page.tsx` + copy própria: hero dedicado → `CheckoutSection` → blocos derivados de `PlatformSection`/`SolutionsSection` para `#assinaturas` e `#entrega-digital` → `IntegrationsSection` selecionada → FAQ específico.
-- [ ] `/checkout`: explicar produto/oferta, cupom/adicional, pedido/pagamento, recorrência condicionada e arquivos/links autorizados; reutilizar screenshot do checkout e artes 10, 11, 20 e 21; não prometer LMS.
-- [ ] `/checkout`: links contextuais para `/financeiro`, `/integracoes`, `/solucoes` e `/contato`.
+- [x] `src/app/checkout/page.tsx` + copy própria: hero dedicado → `CheckoutSection` → blocos derivados de `PlatformSection`/`SolutionsSection` para `#assinaturas` e `#entrega-digital` → `IntegrationsSection` selecionada → FAQ específico.
+- [x] `/checkout`: explicar produto/oferta, cupom/adicional, pedido/pagamento, recorrência condicionada e arquivos/links autorizados; reutilizar screenshot do checkout e artes 10, 11, 20 e 21; não prometer LMS.
+- [x] `/checkout`: links contextuais para `/financeiro`, `/integracoes`, `/solucoes` e `/contato`.
 
 ### Worker direto — `/financeiro`
 

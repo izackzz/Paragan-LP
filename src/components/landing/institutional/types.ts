@@ -15,6 +15,7 @@ export type PageImage = {
   asset: keyof typeof illustrationAssets;
   alt: string;
   caption?: string;
+  tour?: boolean;
 };
 
 export type SectionIdentity = {
