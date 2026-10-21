@@ -37,8 +37,8 @@ import { CalculatorField, ScrubberField } from './calculator-field';
 import { GrowthChart } from './growth-chart';
 import { selectionStyle } from './selection-style';
 
-const panel = 'min-w-0 border-b border-border p-5 md:p-7';
-const fieldGrid = 'grid grid-cols-1 gap-4 sm:grid-cols-2';
+const panel = 'min-w-0 border-b border-border p-6 md:p-8';
+const fieldGrid = 'grid grid-cols-1 gap-5 sm:grid-cols-2';
 
 function ContextDivider() {
   return (
@@ -64,8 +64,8 @@ function Metric({
   return (
     <Card
       className={cn(
-        'relative h-full min-w-0 rounded-none border-0 border-t-2 border-t-primary/30 bg-primary/3 p-5 md:p-6',
-        main ? 'stripes border-t-primary bg-primary/8' : 'dots',
+        'relative h-full min-w-0 rounded-md border border-primary/20 bg-primary/3 p-6 md:p-7',
+        main && 'stripes border-primary/40 bg-primary/8',
       )}
     >
       <CardHeader className="mb-4 flex-row items-start justify-between gap-3 p-0">
@@ -167,7 +167,7 @@ export function ViabilityCalculator() {
             {copy.description}
           </p>
         </div>
-        <div className="stripes flex flex-col justify-center gap-4 border-t border-border p-5 md:p-7 lg:col-span-4 lg:border-t-0 lg:border-l xl:p-10">
+        <div className="flex flex-col justify-center gap-5 border-t border-border p-6 md:p-8 lg:col-span-4 lg:border-t-0 lg:border-l xl:p-10">
           <span className="flex items-center gap-2 text-xs font-medium">
             <Scale className="size-4 text-primary" aria-hidden="true" />
             {copy.simulation}
@@ -214,11 +214,11 @@ export function ViabilityCalculator() {
               <Select value={platform} onValueChange={setPlatform}>
                 <SelectTrigger
                   id={`${id}-platform`}
-                  className="h-12 w-full rounded-md bg-background/40"
+                  className="h-12 w-full rounded-md bg-background/40 font-display"
                 >
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="font-display">
                   {benchmarks.map((preset) => (
                     <SelectItem key={preset.id} value={preset.id}>
                       {preset.name}
@@ -281,7 +281,7 @@ export function ViabilityCalculator() {
                   {copy.model}
                 </p>
                 <div
-                  className="grid grid-cols-1 gap-1 rounded-md border border-accent p-1 sm:grid-cols-3"
+                  className="grid grid-cols-1 gap-2 rounded-md border border-accent p-2 sm:grid-cols-3"
                   role="group"
                   aria-labelledby={`${id}-model-label`}
                   aria-describedby={`${id}-model-hint`}
@@ -328,7 +328,7 @@ export function ViabilityCalculator() {
               label={copy.acquiringArt}
               className="mb-6 rounded-md border border-border"
             />
-            <div className="stripes mb-6 rounded-md border border-primary/40 bg-primary/8 p-4">
+            <div className="mb-7 rounded-md border border-primary/30 bg-primary/5 p-5 md:p-6">
               <h3 className="mb-2 text-sm font-medium">{copy.paragan}</h3>
               <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
                 {copy.paraganHint}
@@ -338,7 +338,7 @@ export function ViabilityCalculator() {
                 {field('paraganFixedCents', copy.fixed)}
               </div>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-7">
               <ScrubberField
                 id={`${id}-mix`}
                 label={copy.pixShare}
@@ -379,8 +379,8 @@ export function ViabilityCalculator() {
             <h2 className="max-w-lg text-2xl font-medium tracking-tight text-balance">
               {copy.resultTitle}
             </h2>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-md border border-border p-4">
+            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              <div className="rounded-md border border-border p-5 md:p-6">
                 <p className="text-xs text-muted-foreground">
                   {selected.name} · {copy.feesToday}
                 </p>
@@ -396,7 +396,7 @@ export function ViabilityCalculator() {
                   {copy.shareOfOwnSales}
                 </p>
               </div>
-              <div className="rounded-md border border-primary/25 bg-primary/5 p-4">
+              <div className="rounded-md border border-primary/25 bg-primary/5 p-5 md:p-6">
                 <p className="text-xs text-muted-foreground">{copy.ownCost}</p>
                 <p className="mt-2 text-xl font-medium tabular-nums">
                   {money(month.ownCostsCents)}
@@ -409,8 +409,8 @@ export function ViabilityCalculator() {
             </div>
           </div>
 
-          <div className="grid border-b border-border sm:grid-cols-2">
-            <div className="border-b border-border sm:border-r sm:border-b-0">
+          <div className="grid gap-5 border-b border-border p-6 sm:grid-cols-2 md:p-8">
+            <div className="min-w-0">
               <Metric
                 label={copy.ownSavings}
                 value={ownSavings}
@@ -427,7 +427,7 @@ export function ViabilityCalculator() {
               icon={<TrendingUp className="size-4" aria-hidden="true" />}
             />
           </div>
-          <div className="border-b border-border">
+          <div className="border-b border-border p-6 md:p-8">
             <Metric
               label={copy.totalGain}
               value={incremental}
@@ -492,7 +492,7 @@ export function ViabilityCalculator() {
           <ContextDivider />
 
           <div className="border-b border-border">
-            <div className="p-5 pb-0 md:p-7 md:pb-0">
+            <div className="p-6 pb-0 md:p-8 md:pb-0">
               <h2 className="text-xl font-medium tracking-tight">{copy.projectionTitle}</h2>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 {copy.projectionDescription}
@@ -511,7 +511,7 @@ export function ViabilityCalculator() {
               </div>
             </div>
             <GrowthChart months={year.months} ownSavingsCents={ownSavings} />
-            <div className="grid border-t border-border sm:grid-cols-3">
+            <div className="grid gap-4 border-t border-border p-6 sm:grid-cols-3 md:p-8">
               {[
                 [copy.yearTotal, money(annualIncremental)],
                 [copy.twelfth, money(twelfth.profitCents + ownSavings)],
@@ -519,7 +519,7 @@ export function ViabilityCalculator() {
               ].map(([label, value]) => (
                 <div
                   key={label}
-                  className="dots min-w-0 border-b border-border bg-primary/5 p-5 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0"
+                  className="min-w-0 rounded-md border border-primary/20 bg-primary/5 p-5"
                 >
                   <p className="text-xs leading-relaxed text-muted-foreground">{label}</p>
                   <p className="mt-2 text-lg font-medium break-words text-primary tabular-nums">
@@ -615,13 +615,13 @@ export function ViabilityCalculator() {
       <ContextDivider />
 
       <div className="border-t border-border">
-        <div className="p-5 md:p-7">
+        <div className="p-6 md:p-8">
           <h2 className="text-2xl font-medium tracking-tight">{copy.comparisonTitle}</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
             {copy.comparisonDescription}
           </p>
         </div>
-        <div className="grid border-t border-border sm:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-4 border-t border-border p-6 sm:grid-cols-2 md:p-8 xl:grid-cols-3">
           {benchmarks.map((preset) => {
             const fees =
               feePerSale(inputs.ticketCents, preset.rateBps, preset.fixedCents) * inputs.ownSales;
@@ -635,7 +635,7 @@ export function ViabilityCalculator() {
                 aria-pressed={platform === preset.id}
                 onClick={() => setPlatform(preset.id)}
                 className={cn(
-                  'h-auto justify-start rounded-none p-5 text-left [&>span]:w-full',
+                  'h-auto justify-start rounded-md p-6 text-left [&>span]:w-full',
                   selectionStyle(platform === preset.id),
                   platform === preset.id && '[&_.text-muted-foreground]:text-primary-foreground/90',
                 )}
@@ -670,7 +670,7 @@ export function ViabilityCalculator() {
               </Button>
             );
           })}
-          <div className="stripes min-w-0 border-t-2 border-primary bg-primary/10 p-5 sm:col-span-2 xl:col-span-1">
+          <div className="min-w-0 rounded-md border border-primary/30 bg-primary/5 p-6 sm:col-span-2">
             <h3 className="text-sm font-medium text-primary">{copy.paraganOption}</h3>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               {copy.comparisonOwnNote}
@@ -687,21 +687,13 @@ export function ViabilityCalculator() {
 
       <ContextDivider />
 
-      <div className="grid md:grid-cols-2">
+      <div className="grid gap-5 p-6 md:grid-cols-2 md:p-8">
         {copy.contextBlocks.map((block, index) => (
           <div
             key={block.asset}
-            className={cn(
-              'min-w-0 border-b border-border md:border-b-0',
-              index === 0 && 'md:border-r',
-            )}
+            className={cn('min-w-0 overflow-hidden rounded-md border border-border')}
           >
-            <div
-              className={cn(
-                'p-5 md:p-7',
-                index === 0 ? 'dots bg-primary/3' : 'stripes bg-primary/5',
-              )}
-            >
+            <div className={cn('p-6 md:p-8', index === 0 ? 'bg-primary/3' : 'bg-primary/5')}>
               <p className={cn(micro, 'mb-3 text-primary')}>{block.eyebrow}</p>
               <h2 className="text-xl font-medium tracking-tight">{block.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -713,7 +705,7 @@ export function ViabilityCalculator() {
               label={block.alt}
               className="rounded-none border-y border-border"
             />
-            <div className="p-5 md:p-7">
+            <div className="p-6 md:p-8">
               <ActionLink secondary href={block.href} className="text-sm">
                 {block.link}
               </ActionLink>
@@ -735,7 +727,7 @@ export function ViabilityCalculator() {
             ))}
           </div>
         </div>
-        <div className="stripes flex flex-col justify-center border-t border-border p-5 md:border-t-0 md:p-7">
+        <div className="flex flex-col justify-center border-t border-border p-6 md:border-t-0 md:p-8">
           <h2 className="max-w-sm text-2xl font-medium tracking-tight text-balance">
             {copy.ctaTitle}
           </h2>
