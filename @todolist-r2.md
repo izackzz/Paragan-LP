@@ -92,9 +92,9 @@
 
 ### Worker direto — `/integracoes`
 
-- [ ] `src/app/integracoes/page.tsx` + copy própria: hero dedicado → `IntegrationsSection` → blocos derivados de `PlatformSection` em `#api`, `#webhooks`, `#apps` → recorte de `ScaleSection` → FAQ específico.
-- [ ] `/integracoes`: explicar escopos/autenticação, eventos/entregas e fronteiras entre apps, processadores e sistemas próprios; reutilizar artes 08, 11, 20–22; não publicar catálogo de parceiros como disponibilidade homologada.
-- [ ] `/integracoes`: links contextuais para `/plataforma#multiadquirencia`, `/checkout`, `/contratacao` e `/contato`; documentação externa somente com destino confirmado.
+- [x] `src/app/integracoes/page.tsx` + copy própria: hero dedicado → `IntegrationsSection` → blocos derivados de `PlatformSection` em `#api`, `#webhooks`, `#apps` → recorte de `ScaleSection` → FAQ específico.
+- [x] `/integracoes`: explicar escopos/autenticação, eventos/entregas e fronteiras entre apps, processadores e sistemas próprios; reutilizar artes 08, 11, 20–22; não publicar catálogo de parceiros como disponibilidade homologada.
+- [x] `/integracoes`: links contextuais para `/plataforma#multiadquirencia`, `/checkout`, `/contratacao` e `/contato`; documentação externa somente com destino confirmado.
 
 ### Worker direto — `/solucoes`
 
