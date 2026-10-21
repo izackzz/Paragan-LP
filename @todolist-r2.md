@@ -1,5 +1,11 @@
 # Paragan LP — r2
 
+## Fase 9 — Refinar `/plataforma`
+
+- [x] `plataforma/page.tsx` + capacidade editorial: índice local, artes proporcionais e argumentos em grade.
+- [x] `plataforma.ts` + `page-structured-data.tsx`: copy, metadata e WebPage/BreadcrumbList coerentes.
+- [x] `/plataforma`: ESLint, Prettier e `tsc --noEmit --incremental false`.
+
 ## Fase 1 — Refinamento visual e conteúdo
 
 - [x] `fluid-hover-highlight.tsx` + blocos contíguos: raio medido por item; uma divisória por contato.
