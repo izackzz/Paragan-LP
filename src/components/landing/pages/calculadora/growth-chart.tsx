@@ -253,7 +253,10 @@ export function GrowthChart({
             aria-pressed={active === index}
             aria-label={`${copy.month} ${month.month}`}
             onClick={() => setActive(index)}
-            className={cn('min-w-11 flex-1 px-2 tabular-nums', selectionStyle(active === index))}
+            className={cn(
+              'min-h-11 min-w-11 flex-1 px-2 tabular-nums',
+              selectionStyle(active === index),
+            )}
           >
             {month.month}
           </Button>

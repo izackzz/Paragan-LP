@@ -1,19 +1,25 @@
 export const calculatorCopy = {
   metadata: {
-    title: 'Calculadora de viabilidade: de vendedor a plataforma | Paragan',
+    title: 'Calculadora de viabilidade para gateway white label | Paragan',
     description:
-      'Simule o custo das suas vendas em outras plataformas, a economia com infraestrutura própria e o resultado de atender outros sellers. Cenários ilustrativos e projeção de 12 meses.',
+      'Simule premissas de custo das suas vendas, infraestrutura própria e atendimento a outros sellers para avaliar a viabilidade de um gateway white label. Cenários ilustrativos, sem proposta comercial.',
     imageAlt: 'Paragan — calculadora de viabilidade de uma plataforma própria',
+  },
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Calculadora de viabilidade',
   },
   label: 'Calculadora de viabilidade',
   eyebrow: 'De vendedor a operador',
-  title: 'Hoje, você paga para vender.',
-  muted: 'E se a plataforma fosse sua?',
+  title: 'Calculadora de viabilidade para gateway white label.',
+  muted: 'Teste as premissas do seu modelo.',
   description:
     'Veja quanto das suas vendas fica em taxas. Depois, simule sua própria operação: economize nas vendas da sua marca e crie uma nova receita ao atender outros sellers.',
   simulation: 'Simulação, não proposta comercial',
   update: 'Os resultados acompanham suas escolhas. Valores em reais, por mês.',
   reset: 'Restaurar cenário',
+  assumptionsLabel: 'Premissas da simulação',
   stepOne: '01 / Suas vendas hoje',
   ownTitle: 'Comece pelo que você já vende.',
   ownDescription:
@@ -62,7 +68,7 @@ export const calculatorCopy = {
     'O restante é cartão à vista. Taxas de adquirência são hipóteses médias, separadas da infraestrutura.',
   monthlyCosts: 'Outros custos mensais (R$)',
   monthlyHint: 'Equipe, ferramentas, hospedagem e demais custos fixos que você quiser considerar.',
-  resultLabel: 'Seu cenário / mês 1',
+  resultLabel: 'Simulação inicial · mês 1',
   resultTitle: 'A diferença está em quem fica com a margem.',
   feesToday: 'Taxas nas suas vendas hoje',
   ownCost: 'Custo das suas vendas na Paragan',
