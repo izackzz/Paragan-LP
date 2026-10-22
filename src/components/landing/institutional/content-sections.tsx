@@ -75,8 +75,12 @@ function ContentImage({ image }: { image: PageImage }) {
 export function ModulePairsSection({
   heading,
   items,
+  indexTone = 'brand',
   ...identity
-}: HeadedSection & { items: readonly ModuleItem[] }) {
+}: HeadedSection & {
+  items: readonly ModuleItem[];
+  indexTone?: 'brand' | 'readable';
+}) {
   const pairs = Array.from({ length: Math.ceil(items.length / 2) }, (_, index) =>
     items.slice(index * 2, index * 2 + 2),
   );
@@ -103,7 +107,12 @@ export function ModulePairsSection({
                     className="platform-card scroll-mt-22 rounded-none bg-background p-6 lg:p-12"
                   >
                     <CardHeader className="h-fit min-w-0 gap-4">
-                      <p className="flex items-center gap-2 text-sm font-normal tracking-wide text-accent-2 uppercase">
+                      <p
+                        className={cn(
+                          'flex items-center gap-2 text-sm font-normal tracking-wide uppercase',
+                          indexTone === 'readable' ? 'text-foreground-2' : 'text-accent-2',
+                        )}
+                      >
                         {item.icon && <span aria-hidden="true">{item.icon}</span>}
                         {t('accessibility.itemIndex', {
                           number: formatIndex(pairIndex * 2 + itemIndex + 1),

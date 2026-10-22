@@ -13,6 +13,7 @@
 - [x] `/contato`: hero conciso, formulário/briefing acessível, breadcrumb e ContactPage estruturado.
 - [x] `/calculadora`: hierarquia de premissas/resultados, alvos acessíveis, breadcrumb e SEO.
 - [x] `/`: metadata própria, WebPage/Organization/WebSite/FAQ graph, contraste medido e tour responsivo.
+- [x] [P1] `/plataforma`: índices legíveis em claro e breadcrumb com alvo 44×44.
 
 ## Fase 1 — Refinamento visual e conteúdo
 
