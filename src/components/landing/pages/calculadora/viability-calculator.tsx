@@ -81,6 +81,10 @@ function Metric({
             'text-primary',
             negative && 'text-destructive',
           )}
+          role={main ? 'status' : undefined}
+          aria-live={main ? 'polite' : undefined}
+          aria-atomic={main ? 'true' : undefined}
+          aria-label={main ? `${label}: ${money(value)}` : undefined}
           data-metric={main ? 'incremental' : undefined}
         >
           {money(value)}
@@ -163,7 +167,7 @@ export function ViabilityCalculator() {
           >
             {copy.title} <span className="text-muted-foreground">{copy.muted}</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-foreground-2">
             {copy.description}
           </p>
         </div>
@@ -184,7 +188,7 @@ export function ViabilityCalculator() {
           </Button>
           <a
             href={viabilityDestinations.results}
-            className="w-fit text-xs font-medium underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
+            className="inline-flex min-h-11 w-fit items-center text-xs font-medium underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
           >
             {copy.viewResults}
           </a>
@@ -196,6 +200,7 @@ export function ViabilityCalculator() {
       <div className="grid min-w-0 lg:grid-cols-12">
         <form
           onSubmit={(event) => event.preventDefault()}
+          aria-label={copy.assumptionsLabel}
           className="min-w-0 border-b border-border bg-card/30 lg:col-span-5 lg:border-r lg:border-b-0"
         >
           <fieldset className={panel}>
@@ -373,10 +378,18 @@ export function ViabilityCalculator() {
           </fieldset>
         </form>
 
-        <div id="resultado" className="min-w-0 scroll-mt-22 lg:col-span-7">
+        <div
+          id="resultado"
+          role="region"
+          aria-labelledby={`${id}-results-title`}
+          className="min-w-0 scroll-mt-22 lg:col-span-7"
+        >
           <div className={panel}>
             <p className={cn(micro, 'mb-3 text-primary')}>{copy.resultLabel}</p>
-            <h2 className="max-w-lg text-2xl font-medium tracking-tight text-balance">
+            <h2
+              id={`${id}-results-title`}
+              className="max-w-lg text-2xl font-medium tracking-tight text-balance"
+            >
               {copy.resultTitle}
             </h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-2">

@@ -11,6 +11,7 @@
 - [x] `/solucoes`: índice navegável, cenários 1:1 com pontos full-width, breadcrumb e FAQ estruturado.
 - [x] `/contratacao`: escopo 2×2, implantação sequencial, responsabilidades equilibradas, calculadora e SEO.
 - [x] `/contato`: hero conciso, formulário/briefing acessível, breadcrumb e ContactPage estruturado.
+- [x] `/calculadora`: hierarquia de premissas/resultados, alvos acessíveis, breadcrumb e SEO.
 
 ## Fase 1 — Refinamento visual e conteúdo
 
