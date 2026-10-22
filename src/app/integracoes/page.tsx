@@ -1,12 +1,16 @@
+import Link from 'next/link';
 import {
   InstitutionalShell,
   PageHero,
-  EditorialSection,
-  ModulePairsSection,
   StepsSection,
   PageFaqSection,
   RelatedLinksSection,
 } from '@/components/landing/institutional';
+import {
+  IntegrationsAccessSection,
+  IntegrationsEditorialSection,
+} from '@/components/landing/pages/integracoes/integrations-editorial';
+import { PageStructuredData } from '@/components/landing/page-structured-data';
 import { integracoesCopy as copy } from '@/i18n/messages/pages/integracoes';
 import { pageMetadata } from '@/lib/page-metadata';
 
@@ -29,9 +33,51 @@ const relatedDestinations = {
 
 export const metadata = pageMetadata({ pathname, ...copy.metadata });
 
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: copy.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+
 export default function IntegracoesPage() {
   return (
     <InstitutionalShell>
+      <PageStructuredData
+        title={copy.metadata.title}
+        description={copy.metadata.description}
+        pathname={pathname}
+        homeLabel={copy.breadcrumb.home}
+        pageLabel={copy.breadcrumb.current}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <nav
+        aria-label={copy.breadcrumb.label}
+        className="landing-frame flex items-center border-b border-border px-5 py-2 text-sm text-foreground-2 md:px-7 xl:px-10"
+      >
+        <ol className="flex items-center gap-2">
+          <li>
+            <Link
+              className="inline-flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              href="/"
+            >
+              {copy.breadcrumb.home}
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" className="text-foreground">
+            {copy.breadcrumb.current}
+          </li>
+        </ol>
+      </nav>
       <PageHero
         {...copy.hero}
         links={[
@@ -39,7 +85,7 @@ export default function IntegracoesPage() {
           { label: copy.hero.secondaryAction, href: destinations.api, secondary: true },
         ]}
       />
-      <EditorialSection
+      <IntegrationsEditorialSection
         id="ecossistema"
         index={1}
         total={total}
@@ -47,15 +93,19 @@ export default function IntegracoesPage() {
         heading={copy.ecosystem.heading}
         items={copy.ecosystem.items.map((item) => ({
           ...item,
+          image: {
+            ...item.image,
+            asset: item.id === 'sistemas' ? 'architecture' : 'acquiring',
+          },
           link:
             'linkLabel' in item
               ? { label: item.linkLabel, href: destinations.acquiring }
               : undefined,
         }))}
       />
-      <ModulePairsSection id="api" index={2} total={total} {...copy.api} />
-      <EditorialSection id="webhooks" index={3} total={total} {...copy.webhooks} />
-      <EditorialSection
+      <IntegrationsAccessSection id="api" index={2} total={total} {...copy.api} />
+      <IntegrationsEditorialSection id="webhooks" index={3} total={total} {...copy.webhooks} />
+      <IntegrationsEditorialSection
         id="apps"
         index={4}
         total={total}
@@ -63,6 +113,7 @@ export default function IntegracoesPage() {
         heading={copy.apps.heading}
         items={copy.apps.items.map((item) => ({
           ...item,
+          image: { ...item.image, asset: 'architecture' },
           link: { label: item.linkLabel, href: destinations.checkout },
         }))}
       />

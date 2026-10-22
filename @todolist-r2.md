@@ -7,6 +7,7 @@
 - [x] `/plataforma`: ESLint, Prettier e `tsc --noEmit --incremental false`.
 - [x] `/checkout`: jornada 2×2, editorial com arte proporcional, breadcrumb e SEO específico.
 - [x] `/financeiro`: composição 1:2, editorial com pontos full-width, breadcrumb e FAQ estruturado.
+- [x] `/integracoes`: acesso 2×2, editoriais 1:1 com pontos full-width, breadcrumb e FAQ estruturado.
 
 ## Fase 1 — Refinamento visual e conteúdo
 

@@ -1,14 +1,19 @@
 export const integracoesCopy = {
   metadata: {
-    title: 'Integrações: API, webhooks e apps | Paragan',
+    title: 'API, webhooks e integrações de gateway | Paragan',
     description:
       'Entenda como conectar sistemas próprios ao seu gateway: API por escopo, webhooks assinados, apps dos sellers e adquirência com responsabilidades definidas.',
     imageAlt: 'Paragan — integrações entre gateway, sellers e sistemas próprios',
   },
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Integrações',
+  },
   hero: {
     eyebrow: 'Integrações',
-    title: 'Sistemas, eventos e apps.',
-    muted: 'Conexões com papéis definidos.',
+    title: 'Integrações de API e webhooks para gateway.',
+    muted: 'Apps e processadores têm papéis distintos.',
     description:
       'Seu sistema faz uma solicitação pela API. Um webhook informa o que mudou. Um app amplia a rotina do seller. A adquirência processa o pagamento. Entenda como essas peças trabalham juntas.',
     primaryAction: 'Conversar sobre a integração',
@@ -29,8 +34,10 @@ export const integracoesCopy = {
         description:
           'ERP, plataforma de vendas ou serviço interno: a API permite executar ações e consultar recursos autorizados. Os webhooks levam as mudanças de estado ao seu backend para alimentar os próximos passos.',
         image: {
-          asset: 'ecosystem',
+          asset: 'architecture',
           alt: 'Ecossistema de conexões da operação Paragan',
+          caption:
+            'Representação conceitual de sistemas próprios e responsabilidades; não é um catálogo de integrações homologadas.',
         },
         imageSide: 'right',
       },
@@ -42,6 +49,8 @@ export const integracoesCopy = {
         image: {
           asset: 'acquiring',
           alt: 'Representação da camada de adquirência e das rotas de pagamento',
+          caption:
+            'Ilustração conceitual: marcas e rotas representadas não confirmam disponibilidade ou homologação de parceiros.',
         },
         linkLabel: 'Conhecer a multiadquirência',
       },
@@ -89,6 +98,8 @@ export const integracoesCopy = {
         image: {
           asset: 'integrations',
           alt: 'Fluxo entre evento, entrega de webhook e reação do sistema integrado',
+          caption:
+            'Fluxo conceitual; eventos, recursos e capacidades dependem do contrato e da configuração da operação.',
         },
         imageSide: 'right',
         points: [
@@ -129,8 +140,10 @@ export const integracoesCopy = {
         description:
           'O seller consulta os apps disponíveis, revisa as permissões solicitadas e autoriza a instalação. Pode desinstalar a extensão quando ela deixar de fazer parte da operação.',
         image: {
-          asset: 'sellerAutomations',
+          asset: 'architecture',
           alt: 'Representação das conexões e automações na rotina dos sellers',
+          caption:
+            'Representação conceitual de permissões e extensões; não apresenta um catálogo de parceiros homologados.',
         },
         points: [
           {
