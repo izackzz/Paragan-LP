@@ -239,7 +239,7 @@ export function GrowthChart({
         </div>
       </div>
       <div
-        className="mt-6 flex flex-wrap gap-2 rounded-md border border-accent p-2"
+        className="mt-6 grid grid-cols-6 gap-1 rounded-md border border-accent p-2 sm:grid-cols-12"
         role="group"
         aria-label={copy.month}
       >
@@ -253,10 +253,7 @@ export function GrowthChart({
             aria-pressed={active === index}
             aria-label={`${copy.month} ${month.month}`}
             onClick={() => setActive(index)}
-            className={cn(
-              'min-h-11 min-w-11 flex-1 px-2 tabular-nums',
-              selectionStyle(active === index),
-            )}
+            className={cn('h-11 min-w-11 px-2 tabular-nums', selectionStyle(active === index))}
           >
             {month.month}
           </Button>
