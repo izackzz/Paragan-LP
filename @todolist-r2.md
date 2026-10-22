@@ -5,6 +5,7 @@
 - [x] `plataforma/page.tsx` + capacidade editorial: índice local, artes proporcionais e argumentos em grade.
 - [x] `plataforma.ts` + `page-structured-data.tsx`: copy, metadata e WebPage/BreadcrumbList coerentes.
 - [x] `/plataforma`: ESLint, Prettier e `tsc --noEmit --incremental false`.
+- [x] `/checkout`: jornada 2×2, editorial com arte proporcional, breadcrumb e SEO específico.
 
 ## Fase 1 — Refinamento visual e conteúdo
 
