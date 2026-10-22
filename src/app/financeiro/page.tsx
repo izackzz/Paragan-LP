@@ -54,7 +54,7 @@ export default function FinanceiroPage() {
         <ol className="flex items-center gap-2">
           <li>
             <Link
-              className="inline-flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
               href="/"
             >
               {copy.breadcrumb.home}
@@ -123,6 +123,7 @@ export default function FinanceiroPage() {
         label={copy.commercial.label}
         index={2}
         total={total}
+        indexTone="readable"
         heading={copy.commercial.heading}
         items={[
           {
@@ -185,6 +186,7 @@ export default function FinanceiroPage() {
         label={copy.faq.label}
         index={5}
         total={total}
+        accessibilityMode="readable"
         heading={copy.faq.heading}
         items={copy.faq.items}
       />
