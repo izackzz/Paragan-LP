@@ -67,7 +67,7 @@ export default function ContratacaoPage() {
         <ol className="flex items-center gap-2">
           <li>
             <Link
-              className="inline-flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
               href="/"
             >
               {copy.breadcrumb.home}
@@ -93,7 +93,7 @@ export default function ContratacaoPage() {
       />
       <ContractingDeploymentSection {...sections.deployment} {...copy.deployment} />
       <ResponsibilitiesSection {...sections.responsibilities} label={copy.responsibilities.label} />
-      <PageFaqSection {...sections.faq} {...copy.faq} />
+      <PageFaqSection {...sections.faq} accessibilityMode="readable" {...copy.faq} />
       <RelatedLinksSection
         {...sections.related}
         label={copy.related.label}
