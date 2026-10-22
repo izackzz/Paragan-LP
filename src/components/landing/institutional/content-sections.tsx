@@ -249,8 +249,12 @@ export function StepsSection({
 export function PageFaqSection({
   heading,
   items,
+  accessibilityMode = 'default',
   ...identity
-}: HeadedSection & { items: readonly QuestionItem[] }) {
+}: HeadedSection & {
+  items: readonly QuestionItem[];
+  accessibilityMode?: 'default' | 'readable';
+}) {
   return (
     <InstitutionalSection {...identity}>
       <div className="grid gap-0 md:grid-cols-2">
@@ -271,15 +275,35 @@ export function PageFaqSection({
               index={index}
               className="overflow-hidden rounded-none border-0 border-b border-border bg-transparent p-0 last:border-b-0"
             >
-              <AccordionTrigger className="min-h-16 rounded-none border-0 px-6 py-4 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-inset">
+              <AccordionTrigger
+                {...(accessibilityMode === 'readable'
+                  ? {
+                      id: `page-faq-trigger-${item.id}`,
+                      'aria-controls': `page-faq-panel-${item.id}`,
+                    }
+                  : {})}
+                className="min-h-16 rounded-none border-0 px-6 py-4 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-inset"
+              >
                 <span className="flex items-baseline gap-3.5 text-left text-sm leading-relaxed font-medium md:gap-5">
-                  <span className={cn(micro, 'shrink-0 text-accent-1')}>
+                  <span
+                    className={cn(
+                      micro,
+                      'shrink-0',
+                      accessibilityMode === 'readable' ? 'text-foreground-2' : 'text-accent-1',
+                    )}
+                  >
                     {formatIndex(index + 1)}
                   </span>
                   {item.question}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="border-t border-border p-0 [&>div]:p-0">
+              <AccordionContent
+                panelId={accessibilityMode === 'readable' ? `page-faq-panel-${item.id}` : undefined}
+                labelledBy={
+                  accessibilityMode === 'readable' ? `page-faq-trigger-${item.id}` : undefined
+                }
+                className="border-t border-border p-0 [&>div]:p-0"
+              >
                 <p className="px-6 pt-4 pb-6 text-sm leading-7 text-foreground-2">{item.answer}</p>
               </AccordionContent>
             </AccordionItem>
