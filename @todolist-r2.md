@@ -150,6 +150,6 @@
 
 - [x] [P1] `/financeiro`: índices legíveis, FAQ com painéis associados e breadcrumb 44×44.
 - [x] [P1] `/integracoes`: FAQ acessível e breadcrumb 44×44.
-- [ ] [P1] `/solucoes`: FAQ acessível e breadcrumb 44×44.
+- [x] [P1] `/solucoes`: FAQ acessível e breadcrumb 44×44.
 - [ ] [P1] `/contratacao`: FAQ acessível e breadcrumb 44×44.
 - [ ] [P1] `/calculadora`: contraste AA e alvos de toque 44×44.

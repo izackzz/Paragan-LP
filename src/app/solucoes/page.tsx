@@ -77,7 +77,7 @@ export default function SolucoesPage() {
         <ol className="flex items-center gap-2">
           <li>
             <Link
-              className="inline-flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
               href="/"
             >
               {copy.breadcrumb.home}
@@ -144,7 +144,13 @@ export default function SolucoesPage() {
         />
       ))}
       <StepsSection id="implantacao" index={5} total={total} {...copy.deployment} />
-      <PageFaqSection id="perguntas" index={6} total={total} {...copy.faq} />
+      <PageFaqSection
+        id="perguntas"
+        index={6}
+        total={total}
+        accessibilityMode="readable"
+        {...copy.faq}
+      />
       <RelatedLinksSection
         id="proximos-passos"
         index={7}
