@@ -569,10 +569,12 @@ AccordionTrigger.displayName = 'AccordionTrigger';
 
 interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
+  panelId?: string;
+  labelledBy?: string;
 }
 
 const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, panelId, labelledBy, ...props }, ref) => {
     const groupCtx = useAccordionGroup();
     const { isOpen } = useAccordionItemContext();
 
@@ -582,7 +584,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
     // the FF wrapper already drives `isOpen` from group state, we render the
     // motion.div directly — matching the Radix flavour's `forceMount asChild`
     // pattern in effective behaviour. Trigger + Header still provide ARIA.
-    return (
+    const content = (
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -607,6 +609,20 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
           </motion.div>
         )}
       </AnimatePresence>
+    );
+
+    if (!panelId) return content;
+
+    return (
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={labelledBy}
+        aria-hidden={!isOpen}
+        inert={!isOpen}
+      >
+        {content}
+      </div>
     );
   },
 );

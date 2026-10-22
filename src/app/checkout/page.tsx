@@ -17,6 +17,15 @@ import { pageMetadata } from '@/lib/page-metadata';
 export const metadata = pageMetadata({ pathname: '/checkout', ...copy.metadata });
 
 const total = 7;
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: copy.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
 
 export default function CheckoutPage() {
   return (
@@ -28,6 +37,12 @@ export default function CheckoutPage() {
         homeLabel={copy.breadcrumb.home}
         pageLabel={copy.breadcrumb.current}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData).replace(/</g, '\\u003c'),
+        }}
+      />
       <nav
         aria-label={copy.breadcrumb.label}
         className="landing-frame flex items-center border-b border-border px-5 py-2 text-sm text-foreground-2 md:px-7 xl:px-10"
@@ -35,7 +50,7 @@ export default function CheckoutPage() {
         <ol className="flex items-center gap-2">
           <li>
             <Link
-              className="inline-flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
               href="/"
             >
               {copy.breadcrumb.home}
@@ -73,11 +88,23 @@ export default function CheckoutPage() {
           {copy.journey.note}
         </p>
       </InstitutionalSection>
-      <ModulePairsSection id="configuracao" index={2} total={total} {...copy.composition} />
+      <ModulePairsSection
+        id="configuracao"
+        index={2}
+        total={total}
+        indexTone="readable"
+        {...copy.composition}
+      />
       <CheckoutEditorialSection id="assinaturas" index={3} total={total} {...copy.subscriptions} />
       <CheckoutEditorialSection id="entrega-digital" index={4} total={total} {...copy.delivery} />
       <CheckoutEditorialSection id="integracoes" index={5} total={total} {...copy.integrations} />
-      <PageFaqSection id="perguntas" index={6} total={total} {...copy.faq} />
+      <PageFaqSection
+        id="perguntas"
+        index={6}
+        total={total}
+        accessibilityMode="readable"
+        {...copy.faq}
+      />
       <RelatedLinksSection id="proximas-conexoes" index={7} total={total} {...copy.related} />
     </InstitutionalShell>
   );

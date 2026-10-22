@@ -14,6 +14,7 @@
 - [x] `/calculadora`: hierarquia de premissas/resultados, alvos acessíveis, breadcrumb e SEO.
 - [x] `/`: metadata própria, WebPage/Organization/WebSite/FAQ graph, contraste medido e tour responsivo.
 - [x] [P1] `/plataforma`: índices legíveis em claro e breadcrumb com alvo 44×44.
+- [x] [P1] `/checkout`: índices legíveis, painéis FAQ associados e FAQPage estruturado.
 
 ## Fase 1 — Refinamento visual e conteúdo
 
