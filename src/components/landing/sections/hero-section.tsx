@@ -52,7 +52,7 @@ export function HeroSection() {
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           {copy.supporting.primary}{' '}
-          <span className="text-accent-2">{copy.supporting.emphasis}</span>
+          <span className="text-foreground-2">{copy.supporting.emphasis}</span>
         </p>
       </div>
       <Frame
@@ -83,14 +83,14 @@ export function HeroSection() {
             ))}
           </TabsList>
           {previews.map((preview) => (
-            <TabPanel key={preview.value} value={preview.value}>
+            <TabPanel key={preview.value} value={preview.value} keepMounted>
               <ScreenshotTour width={preview.artwork.width} height={preview.artwork.height}>
                 <Image
                   src={preview.artwork.src}
                   alt={preview.image}
                   width={preview.artwork.width}
                   height={preview.artwork.height}
-                  sizes="200vw"
+                  sizes="(max-width: 640px) 400vw, 200vw"
                   quality={100}
                   preload={preview.value === 'gateway'}
                   className="block h-full w-full"

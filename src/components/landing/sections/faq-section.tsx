@@ -40,7 +40,7 @@ export function FaqSection() {
         <AccordionGroup
           type="single"
           defaultValue={questions[0][0]}
-          className="grid w-full max-w-full content-start gap-0 rounded-none border-0 p-0 [&>div]:rounded-none max-sm:border-t"
+          className="grid w-full max-w-full content-start gap-0 rounded-none border-0 p-0 max-sm:border-t [&>div]:rounded-none"
         >
           {questions.map(([id, { question, answer }], index) => (
             <AccordionItem
@@ -49,17 +49,22 @@ export function FaqSection() {
               index={index}
               className="overflow-hidden rounded-none border-0 border-b border-border bg-transparent p-0 last:border-b-0"
             >
-              <AccordionTrigger className="min-h-16 rounded-none border-0 px-6 py-4">
+              <AccordionTrigger
+                aria-controls={`home-faq-panel-${id}`}
+                className="min-h-16 rounded-none border-0 px-6 py-4"
+              >
                 <span className="flex items-baseline gap-3.5 text-left text-sm leading-relaxed font-medium md:gap-5">
-                  <span className={cn(micro, 'shrink-0 text-accent-1')}>
+                  <span className={cn(micro, 'shrink-0 text-foreground-2')}>
                     {formatIndex(index + 1)}
                   </span>
                   {question}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="border-t border-border p-0 [&>div]:p-0">
-                <p className="px-6 pt-4 pb-6 text-sm leading-7 text-foreground-2">{answer}</p>
-              </AccordionContent>
+              <div id={`home-faq-panel-${id}`}>
+                <AccordionContent className="border-t border-border p-0 [&>div]:p-0">
+                  <p className="px-6 pt-4 pb-6 text-sm leading-7 text-foreground-2">{answer}</p>
+                </AccordionContent>
+              </div>
             </AccordionItem>
           ))}
         </AccordionGroup>

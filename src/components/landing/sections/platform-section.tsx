@@ -85,7 +85,7 @@ export function PlatformSection() {
                     className="platform-card rounded-none bg-background p-6 lg:p-12"
                   >
                     <CardHeader className="h-fit min-w-0 gap-4 mask-b-from-75%">
-                      <h3 className="text-md flex items-center gap-2 font-normal tracking-wide text-accent-2 uppercase">
+                      <h3 className="text-md flex items-center gap-2 font-normal tracking-wide text-foreground-2 uppercase">
                         <module.icon
                           aria-hidden="true"
                           className="size-5 shrink-0"

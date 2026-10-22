@@ -13,11 +13,15 @@ import { SolutionsSection } from '@/components/landing/sections/solutions-sectio
 import { LaunchSection } from '@/components/landing/sections/launch-section';
 import { FaqSection } from '@/components/landing/sections/faq-section';
 import { ContactSection } from '@/components/landing/sections/contact-section';
-import { t } from '@/i18n';
+import { content, locale, t } from '@/i18n';
 import { destinations } from '@/config/site';
 import { siteSeo } from '@/config/seo';
 
+const homeMetadata = content('homeMetadata');
+
 export const metadata: Metadata = {
+  title: homeMetadata.title,
+  description: homeMetadata.description,
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -30,12 +34,18 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteId = `${siteSeo.url}/#website`;
+const organizationId = `${siteSeo.url}/#organization`;
+const pageId = `${siteSeo.url}/#webpage`;
+const faqId = `${siteSeo.url}/#perguntas`;
+const homeQuestions = content('questions');
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': `${siteSeo.url}/#organization`,
+      '@id': organizationId,
       name: siteSeo.name,
       url: `${siteSeo.url}/`,
       logo: `${siteSeo.url}/favicon-primary.png`,
@@ -43,12 +53,37 @@ const structuredData = {
     },
     {
       '@type': 'WebSite',
-      '@id': `${siteSeo.url}/#website`,
+      '@id': websiteId,
       url: `${siteSeo.url}/`,
       name: siteSeo.name,
       description: t('metadata.description'),
       inLanguage: 'pt-BR',
-      publisher: { '@id': `${siteSeo.url}/#organization` },
+      publisher: { '@id': organizationId },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': pageId,
+      url: `${siteSeo.url}/`,
+      name: homeMetadata.title,
+      description: homeMetadata.description,
+      inLanguage: locale,
+      isPartOf: { '@id': websiteId },
+      publisher: { '@id': organizationId },
+      mainEntity: { '@id': faqId },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': faqId,
+      url: `${siteSeo.url}/#perguntas`,
+      name: `${homeQuestions.heading.primary} ${homeQuestions.heading.secondary}`,
+      inLanguage: locale,
+      isPartOf: { '@id': pageId },
+      mainEntityOfPage: { '@id': pageId },
+      mainEntity: Object.values(homeQuestions.items).map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
     },
   ],
 };
@@ -58,7 +93,9 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
       />
       <div aria-hidden="true" className="stripes landing-side-stripes left-0" />
       <div aria-hidden="true" className="stripes landing-side-stripes right-0" />
