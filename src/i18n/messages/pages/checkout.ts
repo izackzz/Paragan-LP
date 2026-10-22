@@ -8,16 +8,21 @@ import type {
 } from '@/components/landing/institutional';
 
 export const checkoutPage = {
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Checkout',
+  },
   metadata: {
-    title: 'Checkout, ofertas e entrega digital | Paragan',
+    title: 'Checkout de pagamentos white label | Paragan',
     description:
-      'Entenda como o checkout Paragan conecta produtos, ofertas, cupons, pagamento, assinaturas e acesso autorizado a conteúdo digital sob a sua marca.',
+      'Conheça o checkout de pagamentos white label da Paragan: ofertas, cupons, adicionais, assinaturas condicionadas e entrega digital autorizada.',
     imageAlt: 'Paragan — checkout, ofertas e experiência de compra white label',
   },
   hero: {
     eyebrow: 'Checkout · da oferta ao acesso',
-    title: 'Produto, oferta e pagamento.',
-    muted: 'Uma jornada com continuidade.',
+    title: 'Checkout de pagamentos white label.',
+    muted: 'Da oferta à confirmação.',
     description:
       'O produto apresenta. A oferta define a condição. O checkout reúne a escolha e o pagamento. Depois da confirmação, a experiência continua com recibo, integrações e acesso digital autorizado.',
     links: [
