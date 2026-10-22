@@ -15,6 +15,8 @@
 - [x] `/`: metadata própria, WebPage/Organization/WebSite/FAQ graph, contraste medido e tour responsivo.
 - [x] [P1] `/plataforma`: índices legíveis em claro e breadcrumb com alvo 44×44.
 - [x] [P1] `/checkout`: índices legíveis, painéis FAQ associados e FAQPage estruturado.
+- [x] [P1] `/financeiro`: índices legíveis, painéis FAQ associados e breadcrumb 44×44.
+- [x] [P1] `/checkout`: contrastes legíveis, FAQ ligado por id e alvos 44×44.
 
 ## Fase 1 — Refinamento visual e conteúdo
 
