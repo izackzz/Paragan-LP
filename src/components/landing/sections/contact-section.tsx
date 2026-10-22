@@ -25,13 +25,24 @@ const perspectives = Object.entries(copy.perspectives);
 export function ContactSection({
   index = presentation.sections.inquiry,
   total = presentation.sectionCount,
+  variant = 'home',
+  pageCopy,
 }: {
   index?: number;
   total?: number;
+  variant?: 'home' | 'page';
+  pageCopy?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    validationError: string;
+  };
 } = {}) {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([interests[0][0]]);
   const [brief, setBrief] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
+  const [formError, setFormError] = useState('');
+  const dedicatedPage = variant === 'page';
 
   function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -54,6 +65,11 @@ export function ContactSection({
       }),
     );
     setCopyStatus('');
+    setFormError('');
+  }
+
+  function reportInvalid() {
+    if (pageCopy) setFormError(pageCopy.validationError);
   }
 
   async function copyBrief() {
@@ -71,43 +87,74 @@ export function ContactSection({
         <SectionLabel number={formatIndex(index)} total={total}>
           {copy.label}
         </SectionLabel>
-        <div className="grid lg:grid-cols-2">
-          <div className="border-b border-border p-6 md:p-8 lg:border-r lg:border-b-0 xl:p-10">
-            <div className="sticky top-47 flex flex-col items-start gap-8">
-              <SectionHeading
-                eyebrow={copy.heading.eyebrow}
-                title={copy.heading.primary}
-                muted={copy.heading.secondary}
-                description={copy.heading.description}
-              />
-              <ol className="w-full border-t border-border">
-                {perspectives.map(([id, { title, description }], index) => (
-                  <li key={id} className="flex gap-4 border-b border-border py-5 last:border-b-0">
-                    <span className={cn(micro, 'pt-0.5 text-accent-2')}>
-                      {formatIndex(index + 1)}
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="text-sm font-medium">{title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+        <div className={cn('grid', dedicatedPage ? 'mx-auto max-w-4xl' : 'lg:grid-cols-2')}>
+          {!dedicatedPage && (
+            <div className="border-b border-border p-6 md:p-8 lg:border-r lg:border-b-0 xl:p-10">
+              <div className="sticky top-47 flex flex-col items-start gap-8">
+                <SectionHeading
+                  eyebrow={copy.heading.eyebrow}
+                  title={copy.heading.primary}
+                  muted={copy.heading.secondary}
+                  description={copy.heading.description}
+                />
+                <ol className="w-full border-t border-border">
+                  {perspectives.map(([id, { title, description }], index) => (
+                    <li key={id} className="flex gap-4 border-b border-border py-5 last:border-b-0">
+                      <span className={cn(micro, 'pt-0.5 text-accent-2')}>
+                        {formatIndex(index + 1)}
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-sm font-medium">{title}</h3>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                          {description}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </div>
-          </div>
+          )}
 
-          <form onSubmit={prepare} aria-labelledby="contact-form-title" className="min-w-0">
+          <form
+            onSubmit={prepare}
+            onInvalidCapture={reportInvalid}
+            onInput={() => setFormError('')}
+            onChange={() => setFormError('')}
+            aria-labelledby="contact-form-title"
+            className="min-w-0"
+          >
             <div className="border-b border-border p-6 md:p-8">
-              <p className={cn(micro, 'mb-3 text-muted-foreground')}>{copy.form.eyebrow}</p>
-              <h3 id="contact-form-title" className="text-lg font-medium tracking-tight">
-                {copy.form.title}
-              </h3>
+              <p
+                className={cn(
+                  micro,
+                  'mb-3',
+                  dedicatedPage ? 'text-foreground-2' : 'text-muted-foreground',
+                )}
+              >
+                {dedicatedPage ? pageCopy?.eyebrow : copy.form.eyebrow}
+              </p>
+              {dedicatedPage ? (
+                <h2 id="contact-form-title" className="text-lg font-medium tracking-tight">
+                  {pageCopy?.title}
+                </h2>
+              ) : (
+                <h3 id="contact-form-title" className="text-lg font-medium tracking-tight">
+                  {copy.form.title}
+                </h3>
+              )}
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {copy.form.description}
+                {dedicatedPage ? pageCopy?.description : copy.form.description}
               </p>
             </div>
+            {formError && (
+              <p
+                role="alert"
+                className="border-b border-destructive px-6 py-4 text-sm text-destructive md:px-8"
+              >
+                {formError}
+              </p>
+            )}
 
             <div className="grid gap-5 p-6 md:p-8">
               <div className="grid gap-5 sm:grid-cols-2">
@@ -149,6 +196,7 @@ export function ContactSection({
                   name="email"
                   type="email"
                   autoComplete="email"
+                  spellCheck={dedicatedPage ? false : undefined}
                   placeholder={copy.fields.email.placeholder}
                   required
                   maxLength={254}
@@ -275,9 +323,16 @@ export function ContactSection({
                   maxLength={2000}
                   placeholder={copy.fields.message.placeholder}
                   required
+                  aria-describedby={dedicatedPage ? 'contact-message-hint' : undefined}
                   className="min-h-32"
                 />
-                <p className="text-xs leading-relaxed text-muted-foreground">
+                <p
+                  id={dedicatedPage ? 'contact-message-hint' : undefined}
+                  className={cn(
+                    'text-xs leading-relaxed',
+                    dedicatedPage ? 'text-foreground-2' : 'text-muted-foreground',
+                  )}
+                >
                   {copy.fields.message.hint}
                 </p>
               </div>
@@ -300,7 +355,12 @@ export function ContactSection({
                 role="region"
                 aria-label={copy.brief.region}
               >
-                <p role="status" className="mb-4 text-sm">
+                <p
+                  role="status"
+                  aria-live={dedicatedPage ? 'polite' : undefined}
+                  aria-atomic={dedicatedPage ? 'true' : undefined}
+                  className="mb-4 text-sm"
+                >
                   {copy.brief.ready}
                 </p>
                 <Label htmlFor="conversation-brief" className="text-sm font-normal">
@@ -322,7 +382,15 @@ export function ContactSection({
                 >
                   {copy.brief.copy}
                 </Button>
-                <p role="status" className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                <p
+                  role="status"
+                  aria-live={dedicatedPage ? 'polite' : undefined}
+                  aria-atomic={dedicatedPage ? 'true' : undefined}
+                  className={cn(
+                    'mt-3 text-xs leading-relaxed',
+                    dedicatedPage ? 'text-foreground-2' : 'text-muted-foreground',
+                  )}
+                >
                   {copyStatus}
                 </p>
               </div>

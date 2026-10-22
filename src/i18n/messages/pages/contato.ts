@@ -1,17 +1,28 @@
 export const contatoCopy = {
   metadata: {
-    title: 'Contato | Converse com a Paragan',
+    title: 'Contato sobre gateway white label | Paragan',
     description:
-      'Conte sobre sua operação, seus objetivos e suas dúvidas. Comece uma conversa com a Paragan a partir do que faz sentido para o seu negócio.',
+      'Converse com a Paragan sobre um gateway de pagamentos white label. Prepare um briefing local para copiar e compartilhar; esta página não envia dados automaticamente.',
     imageAlt: 'Paragan — uma conversa sobre a sua operação de pagamentos',
   },
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Contato',
+  },
   hero: {
-    eyebrow: 'Contato',
-    title: 'Seu próximo passo',
-    muted: 'começa pelo seu cenário.',
+    eyebrow: 'Fale com a Paragan',
+    title: 'Contato sobre gateway de pagamentos white label.',
+    muted: 'Comece pelo contexto da sua operação.',
     description:
-      'Lançar, migrar ou incorporar pagamentos? Conte quem sua empresa atende, quais fluxos precisa oferecer e o que deseja avaliar. Esse contexto orienta a conversa sobre a plataforma e a implantação.',
-    primaryAction: 'Contar sobre minha operação',
-    secondaryAction: 'Entender a contratação',
+      'Conte quem sua empresa atende e quais fluxos precisa oferecer. A conversa ajuda a avaliar a aderência do produto, as dependências e a implantação.',
+    primaryAction: 'Entender a contratação',
+  },
+  form: {
+    eyebrow: 'Briefing local',
+    title: 'Prepare o contexto da conversa.',
+    description:
+      'Preencha os campos e revise o resumo gerado no navegador. Nada é enviado automaticamente; você escolhe se e como compartilhar.',
+    validationError: 'Revise os campos obrigatórios indicados pelo navegador antes de continuar.',
   },
 } as const;

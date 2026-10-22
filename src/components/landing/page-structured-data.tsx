@@ -6,19 +6,21 @@ export function PageStructuredData({
   pathname,
   homeLabel,
   pageLabel,
+  pageType = 'WebPage',
 }: {
   title: string;
   description: string;
   pathname: `/${string}`;
   homeLabel: string;
   pageLabel: string;
+  pageType?: 'WebPage' | 'ContactPage';
 }) {
   const url = new URL(pathname, siteSeo.url).toString();
   const data = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'WebPage',
+        '@type': pageType,
         '@id': url,
         url,
         name: title,
