@@ -145,3 +145,11 @@
 - [x] [P1] `accordion.tsx`: observar resize do grupo; fundo expandido acompanha largura e conteúdo sem overflow ao trocar breakpoint.
 - [x] [P1] `action-link.tsx` + `primitives.tsx`: compor Link/Button no cliente; CTA renderiza uma única âncora, sem botão externo inerte.
 - [x] [P1] `layout.tsx`: inicializar tema com `next/script` antes da hidratação; preferência do sistema e persistência manual funcionais.
+
+## Fase 9 — Acessibilidade e contraste por rota
+
+- [x] [P1] `/financeiro`: índices legíveis, FAQ com painéis associados e breadcrumb 44×44.
+- [ ] [P1] `/integracoes`: FAQ acessível e breadcrumb 44×44.
+- [ ] [P1] `/solucoes`: FAQ acessível e breadcrumb 44×44.
+- [ ] [P1] `/contratacao`: FAQ acessível e breadcrumb 44×44.
+- [ ] [P1] `/calculadora`: contraste AA e alvos de toque 44×44.
