@@ -70,7 +70,7 @@ function Metric({
     >
       <CardHeader className="mb-4 flex-row items-start justify-between gap-3 p-0">
         <CardTitle className="text-sm leading-relaxed font-medium">{label}</CardTitle>
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-foreground-2">
           {icon}
         </span>
       </CardHeader>
@@ -78,7 +78,7 @@ function Metric({
         <p
           className={cn(
             'font-display text-2xl leading-tight font-medium tracking-tight break-words tabular-nums md:text-3xl',
-            'text-primary',
+            'text-foreground-2',
             negative && 'text-destructive',
           )}
           role={main ? 'status' : undefined}
@@ -160,7 +160,7 @@ export function ViabilityCalculator() {
       </SectionLabel>
       <div className="grid border-b border-border lg:grid-cols-12">
         <div className="p-5 py-8 md:p-7 md:py-10 lg:col-span-8 xl:p-10">
-          <p className={cn(micro, 'mb-4 text-primary')}>{copy.eyebrow}</p>
+          <p className={cn(micro, 'mb-4 text-foreground-2')}>{copy.eyebrow}</p>
           <h1
             id="calculator-title"
             className="max-w-3xl text-3xl leading-tight font-medium tracking-tight text-balance md:text-4xl"
@@ -173,7 +173,7 @@ export function ViabilityCalculator() {
         </div>
         <div className="flex flex-col justify-center gap-5 border-t border-border p-6 md:p-8 lg:col-span-4 lg:border-t-0 lg:border-l xl:p-10">
           <span className="flex items-center gap-2 text-xs font-medium">
-            <Scale className="size-4 text-primary" aria-hidden="true" />
+            <Scale className="size-4 text-foreground-2" aria-hidden="true" />
             {copy.simulation}
           </span>
           <p className="text-xs leading-relaxed text-muted-foreground">{copy.update}</p>
@@ -205,7 +205,7 @@ export function ViabilityCalculator() {
         >
           <fieldset className={panel}>
             <legend className="sr-only">{copy.stepOne}</legend>
-            <p className={cn(micro, 'mb-4 text-primary')}>{copy.stepOne}</p>
+            <p className={cn(micro, 'mb-4 text-foreground-2')}>{copy.stepOne}</p>
             <h2 className="text-lg font-medium tracking-tight">{copy.ownTitle}</h2>
             <p className="mt-2 mb-6 text-xs leading-relaxed text-muted-foreground">
               {copy.ownDescription}
@@ -261,7 +261,7 @@ export function ViabilityCalculator() {
 
           <fieldset className={panel}>
             <legend className="sr-only">{copy.stepTwo}</legend>
-            <p className={cn(micro, 'mb-4 text-primary')}>{copy.stepTwo}</p>
+            <p className={cn(micro, 'mb-4 text-foreground-2')}>{copy.stepTwo}</p>
             <h2 className="text-lg font-medium tracking-tight">{copy.sellersTitle}</h2>
             <p className="mt-2 mb-6 text-xs leading-relaxed text-muted-foreground">
               {copy.sellersDescription}
@@ -385,7 +385,7 @@ export function ViabilityCalculator() {
           className="min-w-0 scroll-mt-22 lg:col-span-7"
         >
           <div className={panel}>
-            <p className={cn(micro, 'mb-3 text-primary')}>{copy.resultLabel}</p>
+            <p className={cn(micro, 'mb-3 text-foreground-2')}>{copy.resultLabel}</p>
             <h2
               id={`${id}-results-title`}
               className="max-w-lg text-2xl font-medium tracking-tight text-balance"
@@ -535,7 +535,7 @@ export function ViabilityCalculator() {
                   className="min-w-0 rounded-md border border-primary/20 bg-primary/5 p-5"
                 >
                   <p className="text-xs leading-relaxed text-muted-foreground">{label}</p>
-                  <p className="mt-2 text-lg font-medium break-words text-primary tabular-nums">
+                  <p className="mt-2 text-lg font-medium break-words text-foreground-2 tabular-nums">
                     {value}
                   </p>
                 </div>
@@ -595,7 +595,7 @@ export function ViabilityCalculator() {
                 {money(month.sellerFeeCents)}{' '}
                 <span className="text-xs font-normal text-muted-foreground">{copy.perSale}</span>
               </p>
-              <p className="mt-2 text-xs text-primary">
+              <p className="mt-2 text-xs text-foreground-2">
                 {percent(month.effectiveRate)} · {copy.effective}
               </p>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
@@ -684,7 +684,7 @@ export function ViabilityCalculator() {
             );
           })}
           <div className="min-w-0 rounded-md border border-primary/30 bg-primary/5 p-6 sm:col-span-2">
-            <h3 className="text-sm font-medium text-primary">{copy.paraganOption}</h3>
+            <h3 className="text-sm font-medium text-foreground-2">{copy.paraganOption}</h3>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               {copy.comparisonOwnNote}
             </p>
@@ -707,7 +707,7 @@ export function ViabilityCalculator() {
             className={cn('min-w-0 overflow-hidden rounded-md border border-border')}
           >
             <div className={cn('p-6 md:p-8', index === 0 ? 'bg-primary/3' : 'bg-primary/5')}>
-              <p className={cn(micro, 'mb-3 text-primary')}>{block.eyebrow}</p>
+              <p className={cn(micro, 'mb-3 text-foreground-2')}>{block.eyebrow}</p>
               <h2 className="text-xl font-medium tracking-tight">{block.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {block.description}
