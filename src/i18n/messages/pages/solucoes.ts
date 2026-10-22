@@ -1,14 +1,22 @@
 export const solucoesCopy = {
   metadata: {
-    title: 'Soluções para cada momento da operação | Paragan',
+    title: 'Soluções para gateway white label | Paragan',
     description:
       'Avalie os caminhos para lançar um gateway, migrar uma operação ou incorporar pagamentos à sua plataforma. Entenda escopo, dependências e próximos passos.',
     imageAlt: 'Paragan — caminhos para estruturar uma operação de pagamentos',
   },
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Soluções',
+  },
+  scenarioNavigation: {
+    label: 'Escolha seu cenário',
+  },
   hero: {
     eyebrow: 'Soluções · ponto de partida',
-    title: 'A mesma base de pagamentos.',
-    muted: 'Decisões diferentes para cada operação.',
+    title: 'Soluções para gateway de pagamentos white label.',
+    muted: 'Um caminho para cada operação.',
     description:
       'Começar uma marca, substituir uma estrutura existente ou conectar pagamentos a um produto são projetos distintos. Encontre seu cenário e veja o que precisa estar definido antes da implantação.',
     primaryAction: 'Conversar sobre meu cenário',
@@ -27,19 +35,19 @@ export const solucoesCopy = {
     points: [
       {
         id: 'lancamento-publico',
-        title: 'Contexto de entrada',
+        title: 'Público e responsabilidades',
         description:
           'Defina o perfil dos sellers, os meios de pagamento necessários e a equipe que vai acompanhar as primeiras contas.',
       },
       {
         id: 'lancamento-recursos',
-        title: 'O que avaliar na plataforma',
+        title: 'Marca, governança e condições',
         description:
           'Marca e domínio, onboarding, permissões e condições comerciais precisam formar uma rotina que sua equipe consiga operar.',
       },
       {
         id: 'lancamento-decisao',
-        title: 'A próxima decisão',
+        title: 'Parceiros e habilitações',
         description:
           'Delimite a primeira oferta, confirme os parceiros necessários e atribua os responsáveis por contratação, credenciais e habilitações. Esse recorte orienta a configuração inicial do gateway.',
       },
@@ -62,19 +70,19 @@ export const solucoesCopy = {
     points: [
       {
         id: 'migracao-origem',
-        title: 'Contexto de entrada',
+        title: 'Origem, contratos e responsáveis',
         description:
           'Identifique o sistema atual, os formatos de exportação, os contratos vigentes e os responsáveis por dados, integrações e atendimento.',
       },
       {
         id: 'migracao-fluxos',
-        title: 'O que avaliar na transição',
+        title: 'Novas vendas e obrigações legadas',
         description:
           'Mapeie cadastros, novas cobranças, eventos e conciliação. Defina como tratar saldos, estornos e disputas anteriores, incluindo os fluxos que precisam continuar na origem.',
       },
       {
         id: 'migracao-limites',
-        title: 'A próxima decisão',
+        title: 'Dados e continuidade possível',
         description:
           'Defina o recorte de entrada e os critérios de validação. Importação de dados e continuidade das assinaturas dependem da origem e dos contratos; tokens não têm transferência universal.',
       },
@@ -97,19 +105,19 @@ export const solucoesCopy = {
     points: [
       {
         id: 'plataformas-papeis',
-        title: 'Contexto de entrada',
+        title: 'Participantes e cadastro',
         description:
           'Identifique os participantes, o responsável pela venda e pelo atendimento, e como cada seller será cadastrado e autorizado.',
       },
       {
         id: 'plataformas-integracao',
-        title: 'O que avaliar na integração',
+        title: 'Pagamentos, eventos e falhas',
         description:
           'Relacione criação e consulta de pagamentos, confirmação por eventos e acompanhamento financeiro. Defina permissões e o tratamento de falhas entre os sistemas.',
       },
       {
         id: 'plataformas-financeiro',
-        title: 'A próxima decisão',
+        title: 'Distribuição e liquidação',
         description:
           'Valide participantes, comissões e regras de distribuição com o parceiro. Defina como os valores serão registrados e liquidados, de acordo com os recursos habilitados para esse fluxo.',
       },
@@ -132,19 +140,19 @@ export const solucoesCopy = {
     points: [
       {
         id: 'projeto-contexto',
-        title: 'Contexto de entrada',
+        title: 'Público, venda e restrições',
         description:
           'Reúna público, tipo de venda, rotina atual e principal restrição. Uma hipótese clara é mais útil que uma lista de funcionalidades sem prioridade.',
       },
       {
         id: 'projeto-recorte',
-        title: 'O que avaliar primeiro',
+        title: 'Configuração, integração ou terceiro',
         description:
           'Escolha a jornada inicial e separe o que cabe em configuração, o que exige integração e o que depende de terceiros ou está fora da oferta.',
       },
       {
         id: 'projeto-escopo',
-        title: 'A próxima decisão',
+        title: 'Escopo para avaliação',
         description:
           'Transforme a jornada prioritária em um escopo inicial de avaliação. Separe os recursos existentes das integrações e demandas adicionais que precisarão de análise técnica e comercial.',
       },
