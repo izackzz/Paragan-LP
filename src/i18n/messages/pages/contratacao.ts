@@ -1,14 +1,19 @@
 export const contratacaoCopy = {
   metadata: {
-    title: 'Contratação e implantação | Paragan',
+    title: 'Contratação de gateway white label | Paragan',
     description:
       'Entenda o que avaliar para operar com a Paragan: uso da plataforma, implantação, integrações, custos e responsabilidades definidos por escopo.',
     imageAlt: 'Paragan — definição de escopo e implantação de uma operação white label',
   },
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Contratação',
+  },
   hero: {
     eyebrow: 'Contratação',
-    title: 'Uma plataforma pronta.',
-    muted: 'Um escopo para a sua operação.',
+    title: 'Contratação de gateway de pagamentos white label.',
+    muted: 'Escopo, custos e responsabilidades claros.',
     description:
       'Comece pelo que você precisa operar. A avaliação identifica módulos, integrações e trabalho de implantação; a proposta registra o que está incluído, os custos e a responsabilidade de cada parte.',
     primaryAction: 'Conversar sobre minha operação',
@@ -26,6 +31,11 @@ export const contratacaoCopy = {
       description:
         'Quatro frentes orientam a avaliação. Nem toda operação precisa de desenvolvimento próprio; nem toda configuração resolve uma necessidade de integração.',
     },
+    proposalNote:
+      'A proposta separa o uso da plataforma, a implantação e os serviços específicos acordados, além dos custos dos parceiros.',
+    calculatorNote:
+      'A calculadora testa premissas editáveis; é uma simulação ilustrativa, não preço ou proposta comercial.',
+    calculatorLabel: 'Simular um cenário',
     items: [
       {
         id: 'uso-da-plataforma',
@@ -128,6 +138,7 @@ export const contratacaoCopy = {
       },
     ],
     maintenance: {
+      eyebrow: 'Continuidade após a ativação',
       title: 'Depois da ativação, a operação continua.',
       description:
         'Manutenção da plataforma, evolução do produto e uma nova customização não são o mesmo trabalho. Cobertura, prioridades, canais e eventuais serviços adicionais são alinhados no acordo; mudanças de escopo precisam de nova avaliação.',
