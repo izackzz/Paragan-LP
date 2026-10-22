@@ -1,13 +1,18 @@
 export const financeiroCopy = {
   metadata: {
-    title: 'Gestão financeira do gateway | Paragan',
+    title: 'Financeiro para gateway de pagamentos | Paragan',
     description:
-      'Entenda receitas, taxas e custos registrados. Organize condições por seller, saldos, reservas, extratos e solicitações de saque no seu gateway.',
+      'Organize taxas, comissões, saldos, reservas, extratos e solicitações de saque no financeiro do seu gateway de pagamentos, sem confundir registros com liquidação.',
     imageAlt: 'Paragan — gestão financeira para o seu gateway',
+  },
+  breadcrumb: {
+    label: 'Navegação estrutural',
+    home: 'Início',
+    current: 'Financeiro',
   },
   hero: {
     eyebrow: 'Financeiro do gateway',
-    title: 'Da receita ao saldo disponível.',
+    title: 'Financeiro para gateway de pagamentos.',
     muted: 'Cada valor com seu contexto.',
     description:
       'Da condição comercial ao lançamento no extrato: organize taxas e comissões, acompanhe saldos e reservas e conduza solicitações de saque com contexto para decidir.',

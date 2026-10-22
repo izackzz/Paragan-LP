@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import {
   InstitutionalShell,
   InstitutionalSection,
   PageHero,
   ModulePairsSection,
-  EditorialSection,
   StepsSection,
   PageFaqSection,
   RelatedLinksSection,
@@ -12,6 +12,8 @@ import { ArtPlaceholder, SectionHeading } from '@/components/landing/primitives'
 import { Reveal } from '@/components/landing/reveal';
 import { cardTitle, cardDescription } from '@/components/landing/styles';
 import { illustrationAssets } from '@/config/illustrations';
+import { CheckoutEditorialSection } from '@/components/landing/pages/checkout/checkout-editorial';
+import { PageStructuredData } from '@/components/landing/page-structured-data';
 import { financeiroCopy as copy } from '@/i18n/messages/pages/financeiro';
 import { pageMetadata } from '@/lib/page-metadata';
 
@@ -19,10 +21,51 @@ export const metadata = pageMetadata({ pathname: '/financeiro', ...copy.metadata
 
 const total = 6;
 const composition = illustrationAssets.financialComposition;
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: copy.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
 
 export default function FinanceiroPage() {
   return (
     <InstitutionalShell>
+      <PageStructuredData
+        title={copy.metadata.title}
+        description={copy.metadata.description}
+        pathname="/financeiro"
+        homeLabel={copy.breadcrumb.home}
+        pageLabel={copy.breadcrumb.current}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <nav
+        aria-label={copy.breadcrumb.label}
+        className="landing-frame flex items-center border-b border-border px-5 py-2 text-sm text-foreground-2 md:px-7 xl:px-10"
+      >
+        <ol className="flex items-center gap-2">
+          <li>
+            <Link
+              className="inline-flex min-h-11 items-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              href="/"
+            >
+              {copy.breadcrumb.home}
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" className="text-foreground">
+            {copy.breadcrumb.current}
+          </li>
+        </ol>
+      </nav>
       <PageHero
         eyebrow={copy.hero.eyebrow}
         title={copy.hero.title}
@@ -51,19 +94,22 @@ export default function FinanceiroPage() {
                 width={composition.width}
                 height={composition.height}
                 label={copy.overview.imageAlt}
-                className="rounded-md border bg-background/90"
+                className="mx-auto w-full max-w-2xl rounded-md border bg-background/90"
               />
-              <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              <p className="mx-auto mt-4 w-full max-w-2xl text-sm leading-relaxed text-foreground-2">
                 {copy.overview.caption}
               </p>
             </div>
           </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-4">
-            {copy.overview.items.map((item) => (
+          <div className="grid border-t border-border md:grid-cols-2">
+            {copy.overview.items.map((item, index) => (
               <div
                 key={item.id}
-                className="min-w-0 border-t border-border p-6 md:p-8 md:odd:border-r xl:border-r xl:last:border-r-0"
+                className={`min-w-0 border-b border-border p-6 md:p-8 ${index % 2 === 0 ? 'md:border-r' : ''}`}
               >
+                <p className="mb-3 font-mono text-sm text-foreground-2">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
                 <h3 className={cardTitle}>{item.title}</h3>
                 <p className={cardDescription}>{item.description}</p>
               </div>
@@ -103,7 +149,7 @@ export default function FinanceiroPage() {
         ]}
       />
 
-      <EditorialSection
+      <CheckoutEditorialSection
         id="saldos-e-reservas"
         label={copy.balances.label}
         index={3}
