@@ -19,6 +19,11 @@ const messages = {
     brandTitle: 'Brand — Paragan',
     brandDescription: 'Trevo Paragan em animação ASCII.',
   },
+  homeMetadata: {
+    title: 'Gateway white label para sua operação de pagamentos | Paragan',
+    description:
+      'Conheça a plataforma white label da Paragan: gateway, checkout, gestão de sellers, financeiro e integrações para estruturar sua operação de pagamentos.',
+  },
   accessibility: {
     skipContent: 'Pular para o conteúdo',
     primaryNavigation: 'Navegação principal',

@@ -12,6 +12,7 @@
 - [x] `/contratacao`: escopo 2×2, implantação sequencial, responsabilidades equilibradas, calculadora e SEO.
 - [x] `/contato`: hero conciso, formulário/briefing acessível, breadcrumb e ContactPage estruturado.
 - [x] `/calculadora`: hierarquia de premissas/resultados, alvos acessíveis, breadcrumb e SEO.
+- [x] `/`: metadata própria, WebPage/Organization/WebSite/FAQ graph, contraste medido e tour responsivo.
 
 ## Fase 1 — Refinamento visual e conteúdo
 

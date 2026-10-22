@@ -64,7 +64,7 @@ export function CheckoutSection() {
             key={id}
             className="min-w-0 border-t border-border p-6 md:border-r md:p-8 md:last:border-r-0"
           >
-            <p className={cn(micro, 'mb-4 text-accent-2')}>
+            <p className={cn(micro, 'mb-4 text-foreground-2')}>
               {t('accessibility.itemIndex', {
                 number: formatIndex(index + 1),
                 label: step.eyebrow,
