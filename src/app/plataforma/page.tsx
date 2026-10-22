@@ -37,7 +37,7 @@ export default function PlatformPage() {
       >
         <Link
           href="/"
-          className="inline-flex min-h-11 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
         >
           {copy.homeLabel}
         </Link>
@@ -64,7 +64,13 @@ export default function PlatformPage() {
       <InstitutionalSection id="paineis" label={copy.panels.label} index={1} total={total}>
         <PlatformPanelTour />
       </InstitutionalSection>
-      <ModulePairsSection id="identidade" index={2} total={total} {...copy.identity} />
+      <ModulePairsSection
+        id="identidade"
+        index={2}
+        total={total}
+        indexTone="readable"
+        {...copy.identity}
+      />
       <InstitutionalSection id="gestao-sellers" label={copy.sellers.label} index={3} total={total}>
         <CapabilityIntro heading={copy.sellers.heading} />
         {copy.sellers.items.map((item, index) => (
