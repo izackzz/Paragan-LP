@@ -15,20 +15,22 @@ export function ScaleSection() {
         {copy.label}
       </SectionLabel>
       <Reveal className="grid md:grid-cols-3">
-        <div className="border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
-          <div className="sticky top-47 flex flex-col justify-start gap-6">
-            <SectionHeading title={copy.heading.primary} muted={copy.heading.secondary} />
-            <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
+        <div className="grid md:col-span-3 md:grid-cols-5">
+          <div className="border-b border-border p-6 md:col-span-2 md:border-r md:border-b-0 md:p-8">
+            <div className="sticky top-47 flex flex-col justify-start gap-6">
+              <SectionHeading title={copy.heading.primary} muted={copy.heading.secondary} />
+              <p className="text-sm leading-relaxed text-muted-foreground">{copy.description}</p>
+            </div>
           </div>
-        </div>
-        <div className="bg-card p-6 md:col-span-2 md:p-10">
-          <ArtPlaceholder
-            src={illustrationAssets.architecture.src}
-            width={illustrationAssets.architecture.width}
-            height={illustrationAssets.architecture.height}
-            label={copy.illustration}
-            className={cn('rounded-md border bg-background/90')}
-          />
+          <div className="bg-card p-6 md:col-span-3 md:p-10">
+            <ArtPlaceholder
+              src={illustrationAssets.architecture.src}
+              width={illustrationAssets.architecture.width}
+              height={illustrationAssets.architecture.height}
+              label={copy.illustration}
+              className={cn('rounded-md border bg-background/90')}
+            />
+          </div>
         </div>
         {Object.entries(copy.items).map(([id, { title, description }]) => (
           <div
