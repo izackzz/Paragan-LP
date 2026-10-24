@@ -79,8 +79,8 @@ export default function FinanceiroPage() {
 
       <InstitutionalSection id="composicao" label={copy.overview.label} index={1} total={total}>
         <Reveal>
-          <div className="grid md:grid-cols-3">
-            <div className="min-w-0 border-b border-border p-6 md:border-r md:border-b-0 md:p-8">
+          <div className="grid md:grid-cols-5">
+            <div className="min-w-0 border-b border-border p-6 md:col-span-2 md:border-r md:border-b-0 md:p-8">
               <div className="sticky top-47">
                 <SectionHeading
                   {...copy.overview.heading}
@@ -88,7 +88,7 @@ export default function FinanceiroPage() {
                 />
               </div>
             </div>
-            <div className="flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10">
+            <div className="flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-3 md:p-10">
               <ArtPlaceholder
                 src={composition.src}
                 width={composition.width}

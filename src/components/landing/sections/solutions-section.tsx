@@ -26,10 +26,10 @@ export function SolutionsSection() {
       </div>
       <Reveal>
         {solutions.map((solution, index) => (
-          <div key={solution.id} className="grid border-t border-border md:grid-cols-3">
+          <div key={solution.id} className="grid border-t border-border md:grid-cols-5">
             <div
               className={cn(
-                'flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-2 md:p-10',
+                'flex min-w-0 flex-col justify-center bg-card p-6 md:col-span-3 md:p-10',
                 index % 2 === 1 && 'md:order-2',
               )}
             >
@@ -43,7 +43,7 @@ export function SolutionsSection() {
             </div>
             <div
               className={cn(
-                'flex flex-col items-start justify-end gap-4 border-t border-border p-6 md:border-t-0 md:border-l md:p-8',
+                'flex flex-col items-start justify-end gap-4 border-t border-border p-6 md:col-span-2 md:border-t-0 md:border-l md:p-8',
                 index % 2 === 1 && 'md:order-1 md:border-r md:border-l-0',
               )}
             >

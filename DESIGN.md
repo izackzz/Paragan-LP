@@ -213,8 +213,8 @@ Existem módulos que usam `p-6 md:p-8` (24 → 32px), mídia `md:p-10` (40px) e 
 
 - Cards conectados: `gap-0`, linha compartilhada, borda externa da seção.
 - Três benefícios: uma coluna no mobile, três em `md`.
-- Conteúdo + mídia: grade de três colunas em `md`, texto 1/3 e mídia 2/3.
-- Soluções: mídia 2/3, texto 1/3, alternância de lado em desktop.
+- Conteúdo + mídia: grade de cinco colunas em `md`, texto 2/5 e mídia 3/5.
+- Soluções: mídia 3/5, texto 2/5, alternância de lado em desktop.
 - FAQ: duas colunas em `md`.
 - Contato: duas colunas em `lg`.
 - Plataforma: pares em duas colunas apenas em `lg`; uma coluna abaixo disso.

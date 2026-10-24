@@ -147,7 +147,7 @@ export function ModulePairsSection({
   );
 }
 
-/** The connected 1:2 editorial rows used by Solutions/Finance/Integrations. */
+/** Connected 2:3 editorial rows for text and illustration. */
 export function EditorialSection({
   heading,
   items,
@@ -163,11 +163,11 @@ export function EditorialSection({
             <div
               key={item.id}
               id={item.id}
-              className="grid scroll-mt-22 border-t border-border md:grid-cols-3"
+              className="grid scroll-mt-22 border-t border-border md:grid-cols-5"
             >
               <div
                 className={cn(
-                  'flex min-w-0 flex-col items-start justify-center gap-4 p-6 md:p-8',
+                  'flex min-w-0 flex-col items-start justify-center gap-4 p-6 md:col-span-2 md:p-8',
                   !imageOnRight && 'md:order-2',
                 )}
               >
@@ -195,7 +195,7 @@ export function EditorialSection({
               </div>
               <div
                 className={cn(
-                  'flex min-w-0 flex-col justify-center border-t border-border bg-card p-6 md:col-span-2 md:border-t-0 md:p-10',
+                  'flex min-w-0 flex-col justify-center border-t border-border bg-card p-6 md:col-span-3 md:border-t-0 md:p-10',
                   imageOnRight ? 'md:border-l' : 'md:order-1 md:border-r',
                 )}
               >
