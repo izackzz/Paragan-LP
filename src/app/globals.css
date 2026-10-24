@@ -331,7 +331,7 @@
 @utility landing-frame {
   margin-inline: auto;
   width: calc(100% - 1.5rem);
-  max-width: 75rem;
+  max-width: 84rem;
   border-inline: 1px solid var(--border);
 
   @media (width >= 48rem) {
@@ -343,12 +343,12 @@
   }
 }
 
-/* Match the space outside landing-frame, including its 75rem width cap. */
+/* Match the space outside landing-frame, including its 84rem width cap. */
 .landing-side-stripes {
   --landing-side-gutter: 0.75rem;
   position: fixed;
   inset-block: 0;
-  width: max(var(--landing-side-gutter), calc((100% - 75rem) / 2));
+  width: max(var(--landing-side-gutter), calc((100% - 84rem) / 2));
   z-index: 60;
   pointer-events: none;
 }

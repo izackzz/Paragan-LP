@@ -180,7 +180,7 @@ Hero: título em duas linhas e descrição limitada a `max-w-2xl`. `SectionHeadi
 | ≥ 48rem (`md`) | `calc(100% - 2.5rem)` | 20px |
 | ≥ 80rem (`xl`) | `calc(100% - 5rem)` | 40px |
 
-Largura máxima **75rem / 1200px**, centralizada, com bordas laterais de 1px. Acima do limite, as margens crescem simetricamente.
+Largura máxima **84rem / 1344px**, centralizada, com bordas laterais de 1px. Acima do limite, as margens crescem simetricamente.
 
 As faixas `.landing-side-stripes` são fixas, sem eventos de ponteiro, `z-60`, e acompanham a largura externa do frame, incluindo seu limite máximo. Não colocá-las dentro de um container com largura diferente.
 
@@ -693,7 +693,7 @@ Para página legal, manter leitura em `max-w-2xl` e títulos sem exagero; não c
 
 **Pode variar:** assunto, número de seções, alinhamento do heading conforme layout, proporção de mídia adequada à demonstração, presença de FAQ, sequência editorial, arte específica e ação principal.
 
-**Não pode variar sem revisão do sistema:** paleta, famílias tipográficas, frame de 75rem, estratégia de tema, mecânica de fluid hover, escala de motion, anatomia de controles, padrões de foco, centralização de copy e organização do shell.
+**Não pode variar sem revisão do sistema:** paleta, famílias tipográficas, frame de 84rem, estratégia de tema, mecânica de fluid hover, escala de motion, anatomia de controles, padrões de foco, centralização de copy e organização do shell.
 
 ## 19. Receita para um componente novo
 
