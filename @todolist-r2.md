@@ -153,3 +153,10 @@
 - [x] [P1] `/solucoes`: FAQ acessível e breadcrumb 44×44.
 - [x] [P1] `/contratacao`: FAQ acessível e breadcrumb 44×44.
 - [x] [P1] `/calculadora`: contraste AA e alvos de toque 44×44.
+
+## Fase 10 — Mega menu institucional
+
+- [x] `mega-menu.tsx` + `config/navigation.ts`: 1–3 colunas, destaque/ilustração opcionais e placeholder local; largura independente dos triggers.
+- [x] `site-header.tsx`: categorias mobile, Voltar, foco, Escape e fechamento ao navegar; temas e reduced motion preservados.
+- [x] `src/app/*/page.tsx` + `page-structured-data.tsx`: remover breadcrumbs visuais e `BreadcrumbList`.
+- [x] Arquivos alterados: lint, formatação, typecheck e navegador; variantes de colunas/arte, desktop/mobile e JSON-LD.

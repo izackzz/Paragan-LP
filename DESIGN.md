@@ -519,7 +519,11 @@ A sequência conta uma história: promessa → capacidades → operação → ve
 
 Sticky no topo, `z-50`, fundo `background/90`, blur discreto, borda inferior. Linha interna com altura mínima 80px. Desktop completo apenas em `xl`; abaixo disso, menu móvel. CTA do header visível a partir de `sm`; toggle de tema permanece disponível.
 
-Menu desktop: introdução e links em duas colunas com fluid hover. Menu mobile: disclosures nativos `details/summary`, links verticais, fechamento ao navegar e Escape devolvendo foco ao toggle. `aria-expanded` e `aria-controls` no toggle. Não abrir navegação por hover como única forma de acesso.
+Mega menu global: `src/components/landing/mega-menu.tsx`, configurado em `src/config/navigation.ts`, com copy em `megaMenu` e `navigation` no catálogo. `columns` aceita uma, duas ou três colunas; cada grupo tem título opcional e links com ícone/descrição opcionais. `promotion` é opcional; `promotion.showIllustration: false` oculta a arte sem remover o conteúdo do destaque. `promotion.illustration` recebe `src`, `alt`, `width` e `height`; sem esse objeto, o componente exibe um placeholder local, não uma arte final.
+
+Desktop: painel centralizado no viewport, largura calculada pelas colunas e pelo destaque, limitada à tela, independente da largura dos triggers. Reutiliza NavigationMenu/Radix e fluid hover; abre por ponteiro ou teclado, fecha por Escape/clique externo/navegação. Mobile: lista de categorias → grupos de links, botão Voltar com restauração de foco, scroll interno limitado à altura disponível e fechamento por Escape/navegação. O toggle mantém `aria-expanded` e um alvo `aria-controls` existente mesmo quando fechado. Usar links e listas de navegação, não `role="menu"` de aplicativo.
+
+Páginas institucionais não usam breadcrumbs visuais nem `BreadcrumbList` nos dados estruturados. Índices de seções são independentes e permanecem disponíveis.
 
 ### 14.2 Offsets e z-index
 

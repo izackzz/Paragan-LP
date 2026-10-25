@@ -13,6 +13,14 @@ import {
   CreditCardIcon,
   Sun03Icon,
   Moon02Icon,
+  WebhookIcon,
+  CodeIcon,
+  Calculator01Icon,
+  ChartLineData01Icon,
+  PackageIcon,
+  RepeatIcon,
+  Rocket01Icon,
+  ShuffleIcon,
 } from '@hugeicons/core-free-icons';
 import type { ComponentType } from 'react';
 
@@ -38,6 +46,14 @@ export const icons = {
   dashboard: wrap(DashboardSquare01Icon),
   users: wrap(UserGroupIcon),
   'credit-card': wrap(CreditCardIcon),
+  webhook: wrap(WebhookIcon),
+  code: wrap(CodeIcon),
+  calculator: wrap(Calculator01Icon),
+  chart: wrap(ChartLineData01Icon),
+  package: wrap(PackageIcon),
+  repeat: wrap(RepeatIcon),
+  launch: wrap(Rocket01Icon),
+  routing: wrap(ShuffleIcon),
 };
 export type IconName = keyof typeof icons;
 export type IconLibrary = 'hugeicons';
