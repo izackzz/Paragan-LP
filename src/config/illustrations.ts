@@ -17,31 +17,31 @@ function asset(id: string, width: number, height: number, src?: string): Illustr
 }
 
 // IDs seguem docs/copy/07-roteiro-de-ilustracoes-e-motion.md.
-// Sem src: manter o placeholder até a entrega da peça. Para trocar por SVG,
-// altere somente o caminho aqui; os componentes preservam seus textos alternativos.
+// Ilustrações SVG pareadas pela numeração; nomes semânticos vêm dos PNGs originais.
+// Screenshots permanecem raster. Os componentes preservam seus textos alternativos.
 export const illustrationAssets = {
   gateway: asset('01', 4096, 2379, '/assets/screenshots/page-admin.png'),
   seller: asset('02', 4096, 2379, '/assets/screenshots/page-seller.png'),
   staff: asset('03', 4096, 2379, '/assets/screenshots/page-staff.png'),
-  identity: asset('04', 1000, 500, '/assets/illustrations/04 - identidade.png'),
-  policies: asset('05', 1000, 500, '/assets/illustrations/05 - Regras comerciais.png'),
-  people: asset('06', 1000, 500, '/assets/illustrations/06 - Pessoas.png'),
-  engagement: asset('07', 1000, 500, '/assets/illustrations/07 - Relacionamento.png'),
-  acquiring: asset('08', 1000, 500, '/assets/illustrations/08 - Adquirência.png'),
-  finance: asset('09', 1000, 500, '/assets/illustrations/09 - Saldos e extrato.png'),
-  checkout: asset('10', 1000, 500, '/assets/illustrations/10 - Oferta e resumo.png'),
-  integrations: asset('11', 1000, 500, '/assets/illustrations/11 - Evento e entrega.png'),
-  launch: asset('12', 1200, 640, '/assets/illustrations/12 - Lançamento.png'),
-  migration: asset('13', 1200, 640, '/assets/illustrations/13 - Migracao.png'),
-  projectPlanning: asset('14', 1200, 640, '/assets/illustrations/14 - Definição do projeto.png'),
-  controlManagement: asset('15', 1000, 850, '/assets/illustrations/15 - Controle operacional.png'),
-  controlCommercial: asset('16', 1000, 850, '/assets/illustrations/16 - Controle comercial.png'),
-  controlFinance: asset('17', 1000, 850, '/assets/illustrations/17 - Controle financeiro.png'),
-  financialComposition: asset('18', 1200, 800, '/assets/illustrations/18 - Composicao financeira.png'),
+  identity: asset('04', 1000, 500, '/assets/illustrations/svg/04-identidade.svg'),
+  policies: asset('05', 1000, 500, '/assets/illustrations/svg/05-regras-comerciais.svg'),
+  people: asset('06', 1000, 500, '/assets/illustrations/svg/06-pessoas.svg'),
+  engagement: asset('07', 1000, 500, '/assets/illustrations/svg/07-relacionamento.svg'),
+  acquiring: asset('08', 1000, 500, '/assets/illustrations/svg/08-adquirencia.svg'),
+  finance: asset('09', 1000, 500, '/assets/illustrations/svg/09-saldos-e-extrato.svg'),
+  checkout: asset('10', 1000, 500, '/assets/illustrations/svg/10-oferta-e-resumo.svg'),
+  integrations: asset('11', 1000, 500, '/assets/illustrations/svg/11-evento-e-entrega.svg'),
+  launch: asset('12', 1200, 640, '/assets/illustrations/svg/12-lancamento.svg'),
+  migration: asset('13', 1200, 640, '/assets/illustrations/svg/13-migracao.svg'),
+  projectPlanning: asset('14', 1200, 640, '/assets/illustrations/svg/14-definicao-do-projeto.svg'),
+  controlManagement: asset('15', 1000, 850, '/assets/illustrations/svg/15-controle-operacional.svg'),
+  controlCommercial: asset('16', 1000, 850, '/assets/illustrations/svg/16-controle-comercial.svg'),
+  controlFinance: asset('17', 1000, 850, '/assets/illustrations/svg/17-controle-financeiro.svg'),
+  financialComposition: asset('18', 1200, 800, '/assets/illustrations/svg/18-composicao-financeira.svg'),
   checkoutJourney: asset('19', 2750, 2450, '/assets/screenshots/checkout.png'),
-  ecosystem: asset('20', 1200, 720, '/assets/illustrations/20 - Ecossistema.png'), 
-  sellerAutomations: asset('21', 1200, 600, '/assets/illustrations/21 - Automacoes dos sellers.png'), 
-  architecture: asset('22', 1200, 700, '/assets/illustrations/22 - Arquitetura e isolamento.png'), 
+  ecosystem: asset('20', 1200, 720, '/assets/illustrations/svg/20-ecossistema.svg'),
+  sellerAutomations: asset('21', 1200, 600, '/assets/illustrations/svg/21-automacoes-dos-sellers.svg'),
+  architecture: asset('22', 1200, 700, '/assets/illustrations/svg/22-arquitetura-e-isolamento.svg'),
 };
 
 // Chaves correspondem às abas e aos cards da copy atual.
