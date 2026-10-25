@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Brand } from './primitives';
@@ -12,9 +13,11 @@ import { cn } from '@/lib/utils';
 import { t } from '@/i18n';
 import { destinations } from '@/config/site';
 import { megaMenus } from '@/config/navigation';
+import { springs } from '@/lib/springs';
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const reducedMotion = useReducedMotion();
   const headerRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const MenuIcon = open ? icons.x : icons.menu;
@@ -80,37 +83,39 @@ export function SiteHeader() {
             </Button>
           </div>
         </div>
-        <nav
+        <motion.nav
           id="mobile-navigation"
-          hidden={!open}
+          aria-hidden={!open}
+          inert={!open}
           aria-label={t('accessibility.mobileNavigation')}
-          className="overflow-y-auto overscroll-contain border-t border-border pb-6 xl:hidden"
-          style={{ maxHeight: 'calc(100dvh - 5rem)' }}
+          initial={false}
+          animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+          transition={reducedMotion ? { duration: 0 } : { ...springs.slow, bounce: 0 }}
+          className="overflow-hidden xl:hidden"
         >
-          {open && (
-            <MobileMegaMenu
-              menus={megaMenus}
-              backLabel={t('megaMenu.back')}
-              onNavigate={() => setOpen(false)}
-            />
-          )}
-          <div className="border-t border-border px-3 py-3">
-            <Link
-              href={destinations.header.actions.plans}
-              onClick={() => setOpen(false)}
-              className="flex min-h-11 items-center rounded-md px-3 py-3 text-sm hover:bg-hover"
-            >
-              {t('actions.plans')}
-            </Link>
-          </div>
-          <div className="px-3">
-            <Button asChild variant="primary" className="min-h-11 w-full">
-              <Link href={destinations.header.actions.contact} onClick={() => setOpen(false)}>
-                {t('actions.contact')}
+          <div
+            className="my-3 overflow-y-auto overscroll-contain rounded-2xl border border-border bg-background p-3"
+            style={{ maxHeight: 'calc(100dvh - 6.5rem)' }}
+          >
+            <MobileMegaMenu menus={megaMenus} onNavigate={() => setOpen(false)} />
+            <div className="mt-3 rounded-xl border border-border bg-surface-2 p-1">
+              <Link
+                href={destinations.header.actions.plans}
+                onClick={() => setOpen(false)}
+                className="flex min-h-11 items-center rounded-lg px-3 py-3 text-sm font-medium text-foreground-2 hover:bg-surface-3"
+              >
+                {t('actions.plans')}
               </Link>
-            </Button>
+            </div>
+            <div className="mt-3">
+              <Button asChild variant="primary" className="min-h-11 w-full rounded-xl">
+                <Link href={destinations.header.actions.contact} onClick={() => setOpen(false)}>
+                  {t('actions.contact')}
+                </Link>
+              </Button>
+            </div>
           </div>
-        </nav>
+        </motion.nav>
       </div>
     </header>
   );

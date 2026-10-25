@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -16,6 +16,7 @@ import {
 import { icons, type IconName } from '@/lib/icon-map';
 import { cn } from '@/lib/utils';
 import { FluidGroup } from './fluid-group';
+import { MobileMenuDisclosure } from './mobile-menu-disclosure';
 
 export type MegaMenuLink = {
   id: string;
@@ -52,6 +53,36 @@ export type MegaMenuDefinition = {
 
 const columns = { 1: 'grid-cols-1', 2: 'grid-cols-2', 3: 'grid-cols-3' };
 
+function MenuColumn({
+  column,
+  mobile,
+  index,
+  children,
+}: {
+  column: MegaMenuColumn;
+  mobile: boolean;
+  index: number;
+  children: ReactNode;
+}) {
+  if (mobile) {
+    return column.title ? (
+      <MobileMenuDisclosure title={column.title} group>
+        {children}
+      </MobileMenuDisclosure>
+    ) : (
+      <div className="rounded-xl bg-surface-2 p-2">{children}</div>
+    );
+  }
+  return (
+    <div className={cn('min-w-0 p-3 md:p-4', index > 0 && 'border-l border-border')}>
+      {column.title && (
+        <p className="px-3 pt-2 pb-3 text-sm font-medium text-foreground-2">{column.title}</p>
+      )}
+      {children}
+    </div>
+  );
+}
+
 /** Navigation links, not an application role="menu": native Tab/Link behavior stays intact. */
 export function MegaMenuPanel({
   menu,
@@ -68,36 +99,23 @@ export function MegaMenuPanel({
   return (
     <div className={cn('flex min-w-0', mobile ? 'flex-col' : 'items-stretch')}>
       <div className="min-w-0 flex-1">
-        <p className="border-b border-border px-5 py-4 text-sm leading-relaxed text-foreground-2 md:px-6">
+        <p
+          className={cn(
+            'text-sm leading-relaxed',
+            mobile
+              ? 'mb-3 rounded-lg bg-surface-1 px-3 py-3 text-foreground-3'
+              : 'border-b border-border px-5 py-4 text-foreground-2 md:px-6',
+          )}
+        >
           {menu.intro}
         </p>
         <div
           data-mega-menu-columns={menu.columns.length}
-          className={cn(
-            'grid',
-            mobile ? menu.columns.length > 1 && 'sm:grid-cols-2' : columns[menu.columns.length],
-          )}
+          className={cn('grid', mobile ? 'gap-3' : columns[menu.columns.length])}
         >
           {menu.columns.map((column, index) => (
-            <div
-              key={column.id}
-              className={cn(
-                'min-w-0 p-3 md:p-4',
-                mobile && index === 2 && 'sm:col-span-2',
-                index > 0 &&
-                  (mobile
-                    ? index === 2
-                      ? 'border-t border-border'
-                      : 'border-t border-border sm:border-t-0 sm:border-l'
-                    : 'border-l border-border'),
-              )}
-            >
-              {column.title && (
-                <p className="px-3 pt-2 pb-3 text-sm font-medium text-foreground-2">
-                  {column.title}
-                </p>
-              )}
-              <FluidGroup as="ul" axis="y" className="space-y-1">
+            <MenuColumn key={column.id} column={column} mobile={mobile} index={index}>
+              <FluidGroup as="ul" axis="y" className={mobile ? 'space-y-2' : 'space-y-1'}>
                 {column.items.map((item) => {
                   const Icon = item.icon && icons[item.icon];
                   const current = !item.href.includes('#') && pathname === item.href;
@@ -106,10 +124,20 @@ export function MegaMenuPanel({
                       href={item.href}
                       aria-current={current ? 'page' : undefined}
                       onClick={onNavigate}
-                      className="group/mega-link flex min-h-11 min-w-0 items-start gap-3 rounded-md p-3 text-foreground outline-offset-2 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-focus-ring"
+                      className={cn(
+                        'group/mega-link flex min-h-11 min-w-0 items-start gap-3 p-3 text-foreground outline-offset-2 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-focus-ring',
+                        mobile
+                          ? 'rounded-lg border border-border/60 bg-surface-1 hover:bg-surface-3'
+                          : 'rounded-md',
+                      )}
                     >
                       {Icon && (
-                        <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-border bg-background text-foreground-2 transition-colors group-hover/mega-link:border-foreground-4">
+                        <span
+                          className={cn(
+                            'flex size-10 shrink-0 items-center justify-center border border-border text-foreground-2 transition-colors group-hover/mega-link:border-foreground-4',
+                            mobile ? 'rounded-lg bg-surface-3' : 'rounded-md bg-background',
+                          )}
+                        >
                           <Icon size={20} />
                         </span>
                       )}
@@ -118,7 +146,12 @@ export function MegaMenuPanel({
                           {item.title}
                         </span>
                         {item.description && (
-                          <span className="mt-1 block text-sm leading-relaxed text-pretty text-foreground-2">
+                          <span
+                            className={cn(
+                              'mt-1 block text-sm leading-relaxed text-pretty',
+                              mobile ? 'text-foreground-3' : 'text-foreground-2',
+                            )}
+                          >
                             {item.description}
                           </span>
                         )}
@@ -126,7 +159,9 @@ export function MegaMenuPanel({
                     </Link>
                   );
                   return mobile ? (
-                    <div key={item.id}>{link}</div>
+                    <div key={item.id} className="rounded-lg">
+                      {link}
+                    </div>
                   ) : (
                     <NavigationMenuLink
                       key={item.id}
@@ -138,7 +173,7 @@ export function MegaMenuPanel({
                   );
                 })}
               </FluidGroup>
-            </div>
+            </MenuColumn>
           ))}
         </div>
       </div>
@@ -146,7 +181,7 @@ export function MegaMenuPanel({
         <div
           className={cn(
             'p-4',
-            mobile ? 'border-t border-border' : 'w-80 shrink-0 border-l border-border',
+            mobile ? 'mt-3 rounded-xl bg-surface-2 p-2' : 'w-80 shrink-0 border-l border-border',
           )}
         >
           <Link
@@ -244,55 +279,18 @@ export function DesktopMegaMenu({
 
 export function MobileMegaMenu({
   menus,
-  backLabel,
   onNavigate,
 }: {
   menus: readonly MegaMenuDefinition[];
-  backLabel: string;
   onNavigate: () => void;
 }) {
-  const [active, setActive] = useState<string | null>(null);
-  const back = useRef<HTMLButtonElement>(null);
-  const menu = menus.find((item) => item.id === active);
-  const Arrow = icons['chevron-right'];
-  useEffect(() => {
-    if (active) back.current?.focus();
-  }, [active]);
-  if (menu) {
-    return (
-      <div>
-        <button
-          ref={back}
-          type="button"
-          onClick={() => {
-            setActive(null);
-            requestAnimationFrame(() => document.getElementById(`mobile-menu-${menu.id}`)?.focus());
-          }}
-          className="flex min-h-14 w-full items-center gap-3 border-b border-border px-5 text-left text-sm font-medium hover:bg-hover focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-ring"
-        >
-          <span className="rotate-180">
-            <Arrow size={18} />
-          </span>
-          {backLabel}
-          <span className="ml-auto text-foreground-3">{menu.title}</span>
-        </button>
-        <MegaMenuPanel menu={menu} mobile onNavigate={onNavigate} />
-      </div>
-    );
-  }
   return (
-    <ul className="divide-y divide-border">
+    <ul className="space-y-3">
       {menus.map((item) => (
         <li key={item.id}>
-          <button
-            id={`mobile-menu-${item.id}`}
-            type="button"
-            onClick={() => setActive(item.id)}
-            className="flex min-h-14 w-full items-center justify-between gap-3 rounded-md px-5 py-4 text-left text-base font-medium hover:bg-hover focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-ring"
-          >
-            {item.title}
-            <Arrow size={18} />
-          </button>
+          <MobileMenuDisclosure title={item.title}>
+            <MegaMenuPanel menu={item} mobile onNavigate={onNavigate} />
+          </MobileMenuDisclosure>
         </li>
       ))}
     </ul>
