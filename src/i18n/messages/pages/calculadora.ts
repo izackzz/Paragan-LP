@@ -5,11 +5,6 @@ export const calculatorCopy = {
       'Simule premissas de custo das suas vendas, infraestrutura própria e atendimento a outros sellers para avaliar a viabilidade de um gateway white label. Cenários ilustrativos, sem proposta comercial.',
     imageAlt: 'Paragan — calculadora de viabilidade de uma plataforma própria',
   },
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Calculadora de viabilidade',
-  },
   label: 'Calculadora de viabilidade',
   eyebrow: 'De vendedor a operador',
   title: 'Calculadora de viabilidade para gateway white label.',

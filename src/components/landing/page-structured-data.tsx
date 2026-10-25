@@ -4,15 +4,11 @@ export function PageStructuredData({
   title,
   description,
   pathname,
-  homeLabel,
-  pageLabel,
   pageType = 'WebPage',
 }: {
   title: string;
   description: string;
   pathname: `/${string}`;
-  homeLabel: string;
-  pageLabel: string;
   pageType?: 'WebPage' | 'ContactPage';
 }) {
   const url = new URL(pathname, siteSeo.url).toString();
@@ -27,13 +23,6 @@ export function PageStructuredData({
         description,
         inLanguage: 'pt-BR',
         isPartOf: { '@type': 'WebSite', name: siteSeo.name, url: siteSeo.url },
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: homeLabel, item: siteSeo.url },
-          { '@type': 'ListItem', position: 2, name: pageLabel, item: url },
-        ],
       },
     ],
   };

@@ -14,7 +14,6 @@ import { Reveal } from '@/components/landing/reveal';
 import { plataformaCopy as copy } from '@/i18n/messages/pages/plataforma';
 import { pageMetadata } from '@/lib/page-metadata';
 import { PageStructuredData } from '@/components/landing/page-structured-data';
-import Link from 'next/link';
 
 export const metadata = pageMetadata({ pathname: '/plataforma', ...copy.metadata });
 
@@ -27,25 +26,8 @@ export default function PlatformPage() {
         title={copy.metadata.title}
         description={copy.metadata.description}
         pathname="/plataforma"
-        homeLabel={copy.homeLabel}
-        pageLabel={copy.pageLabel}
       />
       <PageHero {...copy.hero} />
-      <nav
-        aria-label={copy.breadcrumbLabel}
-        className="landing-frame flex items-center gap-2 border-b border-border px-5 py-3 text-sm text-foreground-2 md:px-7 xl:px-10"
-      >
-        <Link
-          href="/"
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-        >
-          {copy.homeLabel}
-        </Link>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page" className="text-foreground">
-          {copy.pageLabel}
-        </span>
-      </nav>
       <nav
         aria-label={copy.sectionIndexLabel}
         className="landing-frame grid grid-cols-2 border-b border-border text-sm md:grid-cols-3 xl:grid-cols-6"
