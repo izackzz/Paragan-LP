@@ -160,3 +160,9 @@
 - [x] `site-header.tsx`: categorias mobile, Voltar, foco, Escape e fechamento ao navegar; temas e reduced motion preservados.
 - [x] `src/app/*/page.tsx` + `page-structured-data.tsx`: remover breadcrumbs visuais e `BreadcrumbList`.
 - [x] Arquivos alterados: lint, formatação, typecheck e navegador; variantes de colunas/arte, desktop/mobile e JSON-LD.
+
+## Fase 11 — Accordions no menu mobile
+
+- [x] `mobile-menu-disclosure.tsx` + header: expansão fluida principal/categorias/grupos; painéis fechados inertes, Escape e reduced motion.
+- [x] `mega-menu.tsx`: raios suaves, superfícies por nível e hierarquia de texto mobile; desktop preservado.
+- [x] Verificação: lint/typecheck, animação medida por frame, navegação/teclado e contraste nos dois temas.

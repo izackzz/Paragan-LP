@@ -124,7 +124,6 @@ const messages = {
     },
   },
   megaMenu: {
-    back: 'Voltar',
     illustrationPlaceholder: 'Ilustração em breve',
     groups: {
       operation: 'Operação e gestão',
