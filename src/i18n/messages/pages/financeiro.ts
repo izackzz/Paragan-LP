@@ -5,11 +5,6 @@ export const financeiroCopy = {
       'Organize taxas, comissões, saldos, reservas, extratos e solicitações de saque no financeiro do seu gateway de pagamentos, sem confundir registros com liquidação.',
     imageAlt: 'Paragan — gestão financeira para o seu gateway',
   },
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Financeiro',
-  },
   hero: {
     eyebrow: 'Financeiro do gateway',
     title: 'Financeiro para gateway de pagamentos.',

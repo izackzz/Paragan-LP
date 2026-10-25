@@ -5,11 +5,6 @@ export const integracoesCopy = {
       'Entenda como conectar sistemas próprios ao seu gateway: API por escopo, webhooks assinados, apps dos sellers e adquirência com responsabilidades definidas.',
     imageAlt: 'Paragan — integrações entre gateway, sellers e sistemas próprios',
   },
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Integrações',
-  },
   hero: {
     eyebrow: 'Integrações',
     title: 'Integrações de API e webhooks para gateway.',

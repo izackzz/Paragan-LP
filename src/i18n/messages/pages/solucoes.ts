@@ -5,11 +5,6 @@ export const solucoesCopy = {
       'Avalie os caminhos para lançar um gateway, migrar uma operação ou incorporar pagamentos à sua plataforma. Entenda escopo, dependências e próximos passos.',
     imageAlt: 'Paragan — caminhos para estruturar uma operação de pagamentos',
   },
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Soluções',
-  },
   scenarioNavigation: {
     label: 'Escolha seu cenário',
   },

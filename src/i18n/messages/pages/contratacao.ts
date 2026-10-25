@@ -5,11 +5,6 @@ export const contratacaoCopy = {
       'Entenda o que avaliar para operar com a Paragan: uso da plataforma, implantação, integrações, custos e responsabilidades definidos por escopo.',
     imageAlt: 'Paragan — definição de escopo e implantação de uma operação white label',
   },
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Contratação',
-  },
   hero: {
     eyebrow: 'Contratação',
     title: 'Contratação de gateway de pagamentos white label.',

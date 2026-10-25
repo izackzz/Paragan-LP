@@ -8,11 +8,6 @@ import type {
 } from '@/components/landing/institutional';
 
 export const checkoutPage = {
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Checkout',
-  },
   metadata: {
     title: 'Checkout de pagamentos white label | Paragan',
     description:

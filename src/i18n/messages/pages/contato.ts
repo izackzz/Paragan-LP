@@ -5,11 +5,6 @@ export const contatoCopy = {
       'Converse com a Paragan sobre um gateway de pagamentos white label. Prepare um briefing local para copiar e compartilhar; esta página não envia dados automaticamente.',
     imageAlt: 'Paragan — uma conversa sobre a sua operação de pagamentos',
   },
-  breadcrumb: {
-    label: 'Navegação estrutural',
-    home: 'Início',
-    current: 'Contato',
-  },
   hero: {
     eyebrow: 'Fale com a Paragan',
     title: 'Contato sobre gateway de pagamentos white label.',

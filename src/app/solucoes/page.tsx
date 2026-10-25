@@ -61,8 +61,6 @@ export default function SolucoesPage() {
         title={copy.metadata.title}
         description={copy.metadata.description}
         pathname={pathname}
-        homeLabel={copy.breadcrumb.home}
-        pageLabel={copy.breadcrumb.current}
       />
       <script
         type="application/ld+json"
@@ -70,25 +68,6 @@ export default function SolucoesPage() {
           __html: JSON.stringify(faqStructuredData).replace(/</g, '\\u003c'),
         }}
       />
-      <nav
-        aria-label={copy.breadcrumb.label}
-        className="landing-frame flex items-center border-b border-border px-5 py-2 text-sm text-foreground-2 md:px-7 xl:px-10"
-      >
-        <ol className="flex items-center gap-2">
-          <li>
-            <Link
-              className="inline-flex min-h-11 min-w-11 items-center justify-center underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-brand"
-              href="/"
-            >
-              {copy.breadcrumb.home}
-            </Link>
-          </li>
-          <li aria-hidden="true">/</li>
-          <li aria-current="page" className="text-foreground">
-            {copy.breadcrumb.current}
-          </li>
-        </ol>
-      </nav>
       <PageHero
         {...copy.hero}
         links={[

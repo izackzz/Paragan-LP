@@ -78,9 +78,6 @@ export const plataformaCopy = {
       alt: string;
     })[],
   },
-  breadcrumbLabel: 'Você está aqui',
-  homeLabel: 'Início',
-  pageLabel: 'Plataforma',
   sectionIndexLabel: 'Nesta página',
   sectionIndex: [
     { label: 'Painéis', href: '#paineis' },
