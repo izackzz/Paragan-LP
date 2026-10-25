@@ -123,6 +123,29 @@ const messages = {
       },
     },
   },
+  megaMenu: {
+    back: 'Voltar',
+    illustrationPlaceholder: 'Ilustração em breve',
+    groups: {
+      operation: 'Operação e gestão',
+      sales: 'Vendas e financeiro',
+      project: 'Seu próximo projeto',
+      viability: 'Venda e viabilidade',
+      connections: 'Conexões da operação',
+    },
+    promotions: {
+      platform: {
+        title: 'Uma plataforma. A sua marca.',
+        description: 'Conheça os painéis e o que conecta cada papel da operação.',
+        label: 'Explorar a plataforma',
+      },
+      integrations: {
+        title: 'Conexões com contexto.',
+        description: 'Entenda os papéis de APIs, eventos e apps no seu ecossistema.',
+        label: 'Conhecer as integrações',
+      },
+    },
+  },
   footer: {
     eyebrow: 'Paragan / Plataforma white-label',
     tagline: 'Produto, configuração e implantação para sua operação.',
