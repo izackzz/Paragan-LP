@@ -14,6 +14,7 @@ import { t } from '@/i18n';
 import { destinations } from '@/config/site';
 import { megaMenus } from '@/config/navigation';
 import { springs } from '@/lib/springs';
+import { blogCopy } from '@/i18n/messages/pages/blog';
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -62,6 +63,12 @@ export function SiteHeader() {
             action={{ title: t('actions.plans'), href: destinations.header.actions.plans }}
           />
           <div className="flex items-center gap-2">
+            <Link
+              href={destinations.blog}
+              className="hidden min-h-11 items-center rounded-md px-3 text-sm text-foreground-2 hover:bg-hover xl:inline-flex"
+            >
+              {blogCopy.title}
+            </Link>
             <ThemeToggle />
             <Button asChild variant="primary" size="sm" className="hidden sm:inline-flex">
               <Link href={destinations.header.actions.contact}>{t('actions.contact')}</Link>
@@ -98,6 +105,13 @@ export function SiteHeader() {
             style={{ maxHeight: 'calc(100dvh - 6.5rem)' }}
           >
             <MobileMegaMenu menus={megaMenus} onNavigate={() => setOpen(false)} />
+            <Link
+              href={destinations.blog}
+              onClick={() => setOpen(false)}
+              className="mt-3 flex min-h-11 items-center rounded-lg px-3 py-3 text-sm text-foreground-2 hover:bg-surface-3"
+            >
+              {blogCopy.title}
+            </Link>
             <div className="mt-3 rounded-xl border border-border bg-surface-2 p-1">
               <Link
                 href={destinations.header.actions.plans}

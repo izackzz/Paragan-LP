@@ -3,7 +3,7 @@ import { presentation } from './src/config/site';
 
 const nextConfig: NextConfig = {
   async headers() {
-    return ['/ascii/:path*', '/globe/:path*'].map((source) => ({
+    return ['/ascii/:path*', '/globe/:path*', '/blog/mock-post.json'].map((source) => ({
       source,
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }],
     }));

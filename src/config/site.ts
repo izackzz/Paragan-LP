@@ -23,6 +23,7 @@ export const destinations = {
   content: '#conteudo',
   home: '/#inicio',
   contact: '/contato',
+  blog: '/blog',
   preview: '/#previa-produto',
   checkout: '/checkout',
   finance: '/financeiro',

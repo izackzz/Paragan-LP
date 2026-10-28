@@ -5,3 +5,4 @@ coverage/
 docs/refs/
 public/assets/brand/*.svg
 public/assets/illustrations/*.svg
+src/content/blog*.generated.json
