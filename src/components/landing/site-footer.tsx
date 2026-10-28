@@ -12,6 +12,7 @@ import { RenderAscii } from '../ascii/render-ascii';
 import { MotionRenderAscii } from '../ascii/motion-render-ascii';
 import { content, t } from '@/i18n';
 import { destinations } from '@/config/site';
+import { blogCopy } from '@/i18n/messages/pages/blog';
 
 const copy = content('footer');
 const groups = Object.entries(destinations.footer.groups).map(([id, links]) => ({
@@ -98,6 +99,12 @@ export function SiteFooter() {
               ))}
             </ul>
             <nav aria-label={t('accessibility.socialNavigation')}>
+              <Link
+                href={destinations.blog}
+                className="mb-3 inline-flex min-h-11 items-center rounded-md px-3 text-sm text-muted-foreground hover:text-foreground"
+              >
+                {blogCopy.title}
+              </Link>
               <FluidGroup
                 as="ul"
                 className="m-0 grid list-none grid-cols-2 gap-1 rounded-lg border border-border p-2"

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "mock": true,
+  "posts": [
+    {
+      "slug": "lorem-ipsum",
+      "frontMatter": {
+        "title": "Lorem ipsum dolor sit amet",
+        "slug": "lorem-ipsum",
+        "date": "2026-10-28T10:15:00-03:00",
+        "author": "Equipe Paragan — demonstração",
+        "authors": [{ "name": "Equipe Paragan — demonstração", "kind": "organization" }],
+        "layout": "post",
+        "draft": false,
+        "mock": true,
+        "excerpt": "Post fictício para demonstrar a composição editorial, a tipografia e a renderização Markdown do blog da Paragan.",
+        "category": "Demonstração",
+        "featured": true,
+        "images": {
+          "/images/blog/illustration-placeholder.svg": {
+            "width": 1200,
+            "height": 675,
+            "caption": "Ilustração de demonstração, alinhada à mesma largura do texto."
+          }
+        },
+        "tags": ["lorem-ipsum", "demonstracao", "markdown"],
+        "lang": "pt-BR",
+        "seo": {
+          "meta_title": "Lorem ipsum — demonstração do blog Paragan",
+          "meta_description": "Conteúdo fictício usado exclusivamente para validar o layout e os componentes Markdown do blog da Paragan.",
+          "noindex": true
+        }
+      },
+      "bodyMarkdown": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.\n\nPraesent commodo cursus magna, vel scelerisque nisl consectetur et. **Donec sed odio dui.** Etiam porta sem malesuada magna mollis euismod. *Aenean lacinia bibendum nulla sed consectetur.*\n\n## Lorem ipsum dolor sit amet\n\nCras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Consulte a [plataforma Paragan](/plataforma) para conhecer o conteúdo institucional real.\n\n![Ilustração editorial de demonstração com um quadro de paisagem.](/images/blog/illustration-placeholder.svg)\n\n### Consectetur adipiscing elit\n\nNullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. O termo `lorem_ipsum` demonstra a aparência do código inline.\n\n- Lorem ipsum dolor sit amet.\n- Consectetur adipiscing elit.\n  - Integer posuere erat a ante.\n  - Vestibulum id ligula porta felis.\n- Aenean eu leo quam.\n\n## Uma sequência editorial\n\n1. Donec ullamcorper nulla non metus auctor fringilla.\n2. Nulla vitae elit libero, a pharetra augue.\n3. Curabitur blandit tempus porttitor.\n\n> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.\n\n## Exemplo de código\n\nO trecho abaixo é ilustrativo e não representa um endpoint ou contrato da API Paragan.\n\n```json title=demonstracao.json\n{\n  \"title\": \"Lorem ipsum\",\n  \"mock\": true,\n  \"items\": [\"dolor\", \"sit\", \"amet\"]\n}\n```\n\n## Conteúdo em tabela\n\n| Elemento | Exemplo | Observação |\n| :--- | :--- | :--- |\n| Título | Lorem ipsum | Conteúdo fictício |\n| Descrição | Dolor sit amet | Validação de leitura |\n| Categoria | Demonstração | Sem informação comercial |\n\n### Formatações complementares\n\n~~Texto removido~~ e **texto destacado** permitem conferir a hierarquia visual. Uma referência de demonstração aparece ao final desta frase.[^nota]\n\n- [x] Exemplo de item marcado.\n- [ ] Exemplo de item não marcado.\n\n---\n\n## Próximos passos\n\nMorbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Acesse [contato](/contato) ou retorne ao [blog](/blog).\n\n[^nota]: Nota de rodapé fictícia para conferir numeração, navegação e retorno ao texto.\n"
+    }
+  ]
+}

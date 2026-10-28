@@ -1,0 +1,8 @@
+[
+  { "slug": "geral", "name": "Geral", "description": "Publicações da Paragan." },
+  {
+    "slug": "demonstracao",
+    "name": "Demonstração",
+    "description": "Conteúdo fictício para conhecer o blog."
+  }
+]

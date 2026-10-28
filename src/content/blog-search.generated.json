@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "lorem-ipsum",
+    "title": "Lorem ipsum dolor sit amet",
+    "excerpt": "Post fictício para demonstrar a composição editorial, a tipografia e a renderização Markdown do blog da Paragan.",
+    "tags": [
+      "lorem-ipsum",
+      "demonstracao",
+      "markdown"
+    ],
+    "authors": [
+      {
+        "name": "Equipe Paragan — demonstração",
+        "kind": "organization"
+      }
+    ],
+    "category": {
+      "slug": "demonstracao",
+      "name": "Demonstração",
+      "description": "Conteúdo fictício para conhecer o blog."
+    }
+  }
+]
