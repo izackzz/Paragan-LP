@@ -1,46 +1,12 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from '@/components/ui/select';
+import { VelocityTabs } from '@/components/ui/velocity-tabs';
 import type { Category } from '@/lib/blog/types';
 import { listingUrl } from '@/lib/blog/urls';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
-export function CategoryFilter({
-  categories,
-  selected,
-}: {
-  categories: Category[];
-  selected?: string;
-}) {
-  const router = useRouter();
-  return (
-    <div className="lg:hidden">
-      <Select
-        value={selected ?? 'all'}
-        onValueChange={(value) => router.push(listingUrl(1, value === 'all' ? undefined : value))}
-      >
-        <SelectTrigger
-          aria-label={copy.categories}
-          className="min-h-11 min-w-36 rounded-md border-border bg-background text-sm"
-        >
-          <SelectValue>
-            {categories.find((category) => category.slug === selected)?.name ?? copy.all}
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">{copy.all}</SelectItem>
-          {categories.map((category) => (
-            <SelectItem key={category.slug} value={category.slug}>
-              {category.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  );
+
+export function CategoryFilter({ categories, selected }: { categories: Category[]; selected?: string }) {
+  const tabs = [{ value: 'all', label: copy.all, href: '/blog' }, ...categories.map((category) => ({ value: category.slug, label: category.name, href: listingUrl(1, category.slug) }))];
+  return <div className="min-w-0 max-w-full overflow-x-auto py-1"><VelocityTabs tabs={tabs} value={selected ?? 'all'} aria-label={copy.categories}
+    className="w-max min-w-64 rounded-xl border-border bg-surface-1 p-1"
+    tabClassName="min-h-10 px-5 whitespace-nowrap" indicatorClassName="rounded-lg bg-foreground shadow-sm" /></div>;
 }

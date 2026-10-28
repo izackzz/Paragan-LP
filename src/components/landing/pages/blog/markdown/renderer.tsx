@@ -1,12 +1,11 @@
-import { Fragment, type CSSProperties, type ReactNode } from 'react';
-import Image from 'next/image';
+import { Fragment, type ReactNode } from 'react';
 import Link from 'next/link';
-import { LinkIcon, FileCode2 } from 'lucide-react';
+import { LinkIcon } from 'lucide-react';
 import type { Nodes, Image as ImageNode } from 'mdast';
 import type { BlogPost } from '@/lib/blog/types';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
-import { ArtPlaceholder } from '@/components/landing/primitives';
-import { CopyButton } from '../copy-button';
+import ImagePreview from '@/components/spectrumui/image-preview';
+import { ArticleCodeBlock } from './article-code-block';
 import styles from '../blog.module.css';
 
 export function MarkdownRenderer({ post }: { post: BlogPost }) {
@@ -17,42 +16,14 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
   function image(node: ImageNode, inline = false) {
     const media = post.images[node.url];
     if (!media) return null;
-    const content =
-      node.url === '/images/blog/illustration-placeholder.svg' ? (
-        <ArtPlaceholder
-          src={media.src}
-          label={media.alt}
-          width={media.width}
-          height={media.height}
-        />
-      ) : (
-        <Image
-          src={media.src}
-          alt={media.alt}
-          width={media.width}
-          height={media.height}
-          sizes="(min-width: 1280px) 600px, (min-width: 1024px) 58vw, 90vw"
-          className="h-auto w-full"
-        />
-      );
+    const content = <ImagePreview src={media.src} alt={media.alt} width={media.width} height={media.height} />;
     if (inline)
       return (
-        <span className="my-6 block overflow-hidden rounded-xl border border-border">
-          {
-            <Image
-              src={media.src}
-              alt={media.alt}
-              width={media.width}
-              height={media.height}
-              sizes="(min-width: 1024px) 640px, 90vw"
-              className="h-auto w-full"
-            />
-          }
-        </span>
+        <span className="my-6 block">{content}</span>
       );
     return (
       <figure className={styles.media}>
-        <div className={styles.mediaFrame}>{content}</div>
+        {content}
         {(media.caption || node.title) && (
           <figcaption className={styles.caption}>{media.caption ?? node.title}</figcaption>
         )}
@@ -107,12 +78,13 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         return <hr key={key} />;
       case 'link':
         return node.url.startsWith('/') ? (
-          <Link href={node.url} key={key} title={node.title ?? undefined}>
+          <Link href={node.url} key={key} title={node.title ?? undefined} className="text-blue-600 dark:text-blue-400">
             {children}
           </Link>
         ) : (
           <a
             href={node.url}
+            className="text-blue-600 dark:text-blue-400"
             key={key}
             title={node.title ?? undefined}
             rel={node.url.startsWith('https:') ? 'noopener noreferrer' : undefined}
@@ -143,46 +115,7 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         );
       case 'code': {
         const block = post.code[String(node.data?.id)];
-        return (
-          <div
-            key={key}
-            className="min-w-0 overflow-hidden rounded-lg border border-border bg-surface-1"
-          >
-            <div className="flex items-center justify-between gap-3 border-b border-border px-4 text-sm text-foreground-3">
-              <span className="flex min-w-0 items-center gap-2">
-                <FileCode2 size={16} aria-hidden="true" />
-                <span className="truncate">{block.title}</span>
-              </span>
-              <CopyButton value={node.value} />
-            </div>
-            <pre tabIndex={0} aria-label={block.title}>
-              <code>
-                {block.lines.map((line, index) => (
-                  <Fragment key={index}>
-                    <span>
-                      {line.map((token, tokenIndex) => (
-                        <span
-                          key={tokenIndex}
-                          style={
-                            {
-                              color: token.color,
-                              fontStyle:
-                                token.fontStyle && token.fontStyle & 1 ? 'italic' : undefined,
-                              fontWeight: token.fontStyle && token.fontStyle & 2 ? 600 : undefined,
-                            } as CSSProperties
-                          }
-                        >
-                          {token.content}
-                        </span>
-                      ))}
-                    </span>
-                    {index < block.lines.length - 1 ? '\n' : ''}
-                  </Fragment>
-                ))}
-              </code>
-            </pre>
-          </div>
-        );
+        return <ArticleCodeBlock key={key} block={block} code={node.value} meta={node.meta ?? ''} />;
       }
       case 'table':
         return (
