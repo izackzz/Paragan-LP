@@ -1,9 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Search, X } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { BeamSearch } from '@/components/spectrumui/beam-search';
 import { Button } from '@/components/ui/button';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
 import type { SearchPost } from '@/lib/blog/types';
@@ -21,7 +19,6 @@ export function BlogSearch() {
   const [index, setIndex] = useState<SearchPost[] | null>(null);
   const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle');
   const ref = useRef<HTMLDivElement>(null);
-  const input = useRef<HTMLInputElement>(null);
   const controller = useRef<AbortController | null>(null);
   async function load() {
     if (index || state === 'loading') return;
@@ -77,53 +74,14 @@ export function BlogSearch() {
       onKeyDown={(event) => {
         if (event.key === 'Escape') {
           setOpen(false);
-          input.current?.focus();
+          ref.current?.querySelector('input')?.focus();
         }
       }}
     >
-      <Label htmlFor="blog-search" className="sr-only">
-        {copy.search}
-      </Label>
-      <div className="relative">
-        <Search
-          size={16}
-          aria-hidden="true"
-          className="pointer-events-none absolute top-3.5 left-3 text-foreground-3"
-        />
-        <Input
-          ref={input}
-          id="blog-search"
-          type="search"
-          placeholder={copy.searchPlaceholder}
-          value={query}
-          autoComplete="off"
-          className="min-h-11 rounded-md border-border bg-surface-1 pr-11 pl-9 text-sm"
-          aria-controls="blog-search-results"
-          aria-expanded={open}
-          onFocus={() => {
-            setOpen(true);
-            void load();
-          }}
-          onChange={(event) => {
-            setQuery(event.target.value);
-            setOpen(true);
-          }}
-        />
-        {query && (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-0 right-0 min-h-11 min-w-11 rounded-md"
-            aria-label={copy.clear}
-            onClick={() => {
-              setQuery('');
-              input.current?.focus();
-            }}
-          >
-            <X size={16} aria-hidden="true" />
-          </Button>
-        )}
-      </div>
+      <BeamSearch value={query} placeholder={copy.searchPlaceholder} colorVariant="ocean" clearLabel={copy.clear}
+        onChange={(value) => { setQuery(value); setOpen(true); }}
+        inputProps={{ id: 'blog-search', 'aria-label': copy.search, 'aria-controls': 'blog-search-results',
+          autoComplete: 'off', onFocus: () => { setOpen(true); void load(); } }} />
       <div
         id="blog-search-results"
         hidden={!open || (!term && state !== 'error' && state !== 'loading')}

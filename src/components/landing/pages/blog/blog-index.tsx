@@ -23,31 +23,10 @@ export function BlogIndex({ page = 1, category }: { page?: number; category?: st
           __html: serializeJsonLd(listingStructuredData(allPosts, listingUrl(page, category))),
         }}
       />
-      <h1 className={cn(styles.title, 'mb-6 lg:mb-8')}>{copy.title}</h1>
+      <h1 className={cn(styles.title, 'mb-4')}>{copy.title}</h1>
+      <p className="mb-8 max-w-xl text-base leading-relaxed text-foreground-3">{copy.description}</p>
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
-        <nav aria-label={copy.categories} className="hidden flex-wrap items-center gap-6 lg:flex">
-          {[{ slug: '', name: copy.all }, ...categories].map((item) => (
-            <Link
-              href={listingUrl(1, item.slug || undefined)}
-              key={item.slug}
-              aria-current={(category ?? '') === item.slug ? 'page' : undefined}
-              className="inline-flex min-h-11 items-center border-b-2 border-transparent text-sm text-foreground-3 transition-colors hover:text-foreground aria-[current=page]:border-foreground aria-[current=page]:text-foreground"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
         <CategoryFilter categories={categories} selected={category} />
-        <noscript>
-          <nav aria-label={copy.categories} className="flex flex-wrap gap-4 lg:hidden">
-            <Link href="/blog">{copy.all}</Link>
-            {categories.map((item) => (
-              <Link href={listingUrl(1, item.slug)} key={item.slug}>
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-        </noscript>
         <div className="flex w-full items-center gap-3 sm:ml-auto sm:w-auto">
           <BlogSearch />
           <a
@@ -60,13 +39,13 @@ export function BlogIndex({ page = 1, category }: { page?: number; category?: st
         </div>
       </div>
       {allPosts.some((post) => post.frontMatter.mock) && (
-        <div className="mt-8 rounded-lg border border-border bg-surface-1 px-5 py-4 text-sm text-foreground-3">
+        <div className="mt-6 rounded-xl border border-blue-500/15 bg-blue-500/5 px-5 py-4 text-sm text-foreground-3">
           <p className="mb-1 font-medium text-foreground">{copy.mock}</p>
           <p>{copy.mockDescription}</p>
         </div>
       )}
       {data.featured.length > 0 && (
-        <section aria-label={copy.featured} className="mt-10 mb-6 lg:mt-8 lg:mb-24">
+        <section aria-label={copy.featured} className="mt-8 mb-8 lg:mb-12">
           <h2 className="sr-only">{copy.featured}</h2>
           <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
             {data.featured.map((post) => (

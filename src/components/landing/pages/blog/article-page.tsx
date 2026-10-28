@@ -12,6 +12,7 @@ import { AuthorList } from './author-list';
 import { ArticleActions } from './article-actions';
 import { formatPostDate } from './post-card';
 import styles from './blog.module.css';
+import { ArticleToc } from './article-toc';
 
 export function ArticlePage({ post }: { post: BlogPost }) {
   const fm = post.frontMatter;
@@ -35,6 +36,7 @@ export function ArticlePage({ post }: { post: BlogPost }) {
         </header>
       </div>
       <div className={styles.grid}>
+        <ArticleToc headings={post.headings} />
         <aside aria-label={copy.published} className={styles.meta}>
           <time dateTime={fm.date}>{formatPostDate(fm.date)}</time>
           <p>{copy.reading(post.readingMinutes)}</p>

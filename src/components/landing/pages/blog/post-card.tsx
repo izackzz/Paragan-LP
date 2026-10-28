@@ -28,7 +28,7 @@ export function PostCard({ post, featured = false }: { post: BlogPost; featured?
         <Card
           className={cn(
             'h-full rounded-sm p-6 pb-8 transition-colors hover:bg-hover',
-            featured ? 'lg:min-h-105' : 'border-b border-border lg:border-0',
+                featured ? 'min-h-80 border border-border bg-card hover:border-blue-500/30' : 'border border-border/70 bg-card/40',
           )}
         >
           <CardHeader className="gap-5 p-0">
