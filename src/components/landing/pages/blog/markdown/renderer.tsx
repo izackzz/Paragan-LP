@@ -1,6 +1,8 @@
 import { Fragment, type ReactNode } from 'react';
 import Link from 'next/link';
-import { LinkIcon } from 'lucide-react';
+import { HeadingAnchor } from '../heading-anchor';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { ScrollFade } from '@/components/ui/scroll-fade';
 import type { Nodes, Image as ImageNode } from 'mdast';
 import type { BlogPost } from '@/lib/blog/types';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
@@ -16,11 +18,10 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
   function image(node: ImageNode, inline = false) {
     const media = post.images[node.url];
     if (!media) return null;
-    const content = <ImagePreview src={media.src} alt={media.alt} width={media.width} height={media.height} />;
-    if (inline)
-      return (
-        <span className="my-6 block">{content}</span>
-      );
+    const content = (
+      <ImagePreview src={media.src} alt={media.alt} width={media.width} height={media.height} />
+    );
+    if (inline) return <span className="my-6 block">{content}</span>;
     return (
       <figure className={styles.media}>
         {content}
@@ -52,14 +53,7 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         const title = post.headings.find((heading) => heading.id === id)?.title ?? '';
         return (
           <Tag id={id} key={key}>
-            <a
-              data-heading-link
-              href={`#${id}`}
-              aria-label={copy.headingLink(title)}
-              className={styles.headingLink}
-            >
-              <LinkIcon size={16} aria-hidden="true" />
-            </a>
+            <HeadingAnchor id={id} title={title} slug={post.slug} />
             {children}
           </Tag>
         );
@@ -78,7 +72,12 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         return <hr key={key} />;
       case 'link':
         return node.url.startsWith('/') ? (
-          <Link href={node.url} key={key} title={node.title ?? undefined} className="text-blue-600 dark:text-blue-400">
+          <Link
+            href={node.url}
+            key={key}
+            title={node.title ?? undefined}
+            className="text-blue-600 dark:text-blue-400"
+          >
             {children}
           </Link>
         ) : (
@@ -115,43 +114,48 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         );
       case 'code': {
         const block = post.code[String(node.data?.id)];
-        return <ArticleCodeBlock key={key} block={block} code={node.value} meta={node.meta ?? ''} />;
+        return (
+          <ArticleCodeBlock key={key} block={block} code={node.value} meta={node.meta ?? ''} />
+        );
       }
       case 'table':
         return (
-          <div
-            key={key}
-            className="max-w-full overflow-x-auto rounded-lg border border-border"
-            tabIndex={0}
-            role="region"
-            aria-label={copy.table}
-          >
-            <table>
-              <thead>
-                <tr>
-                  {node.children[0].children.map((cell, index) => (
-                    <th
-                      scope="col"
-                      key={index}
-                      style={{ textAlign: node.align?.[index] ?? undefined }}
-                    >
-                      {cell.children.map(render)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {node.children.slice(1).map((row, rowIndex) => (
-                  <tr key={rowIndex}>
-                    {row.children.map((cell, index) => (
-                      <td key={index} style={{ textAlign: node.align?.[index] ?? undefined }}>
-                        {cell.children.map(render)}
-                      </td>
+          <div key={key} className={styles.tableFrame}>
+            <ScrollFade className="[--scroll-fade-background:var(--background)]">
+              <ScrollArea
+                orientation="horizontal"
+                className="w-full min-w-0"
+                viewportClassName={styles.tableViewport}
+                viewportProps={{ tabIndex: 0, role: 'region', 'aria-label': copy.table }}
+              >
+                <table>
+                  <thead>
+                    <tr>
+                      {node.children[0].children.map((cell, index) => (
+                        <th
+                          scope="col"
+                          key={index}
+                          style={{ textAlign: node.align?.[index] ?? undefined }}
+                        >
+                          {cell.children.map(render)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {node.children.slice(1).map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        {row.children.map((cell, index) => (
+                          <td key={index} style={{ textAlign: node.align?.[index] ?? undefined }}>
+                            {cell.children.map(render)}
+                          </td>
+                        ))}
+                      </tr>
                     ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                  </tbody>
+                </table>
+              </ScrollArea>
+            </ScrollFade>
           </div>
         );
       case 'footnoteReference': {
@@ -180,7 +184,7 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
     <div className={styles.prose}>
       {body}
       {notes.length > 0 && (
-        <section aria-label={copy.note} className="mt-12 border-t border-border pt-6 text-sm">
+        <section aria-label={copy.note} className={styles.footnotes}>
           <h2 className="sr-only">{copy.note}</h2>
           <ol>
             {notes.map((note, index) => (
@@ -188,6 +192,7 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
                 {note.children.map(render)}{' '}
                 {(references.get(note.identifier) ?? []).map((reference, occurrence) => (
                   <a
+                    data-footnote-back
                     key={reference}
                     href={`#${reference}`}
                     aria-label={`${copy.noteBack} ${occurrence + 1}`}

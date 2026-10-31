@@ -78,10 +78,26 @@ export function BlogSearch() {
         }
       }}
     >
-      <BeamSearch value={query} placeholder={copy.searchPlaceholder} colorVariant="ocean" clearLabel={copy.clear}
-        onChange={(value) => { setQuery(value); setOpen(true); }}
-        inputProps={{ id: 'blog-search', 'aria-label': copy.search, 'aria-controls': 'blog-search-results',
-          autoComplete: 'off', onFocus: () => { setOpen(true); void load(); } }} />
+      <BeamSearch
+        value={query}
+        placeholder={copy.searchPlaceholder}
+        colorVariant="ocean"
+        clearLabel={copy.clear}
+        onChange={(value) => {
+          setQuery(value);
+          setOpen(true);
+        }}
+        inputProps={{
+          id: 'blog-search',
+          'aria-label': copy.search,
+          'aria-controls': 'blog-search-results',
+          autoComplete: 'off',
+          onFocus: () => {
+            setOpen(true);
+            void load();
+          },
+        }}
+      />
       <div
         id="blog-search-results"
         hidden={!open || (!term && state !== 'error' && state !== 'loading')}

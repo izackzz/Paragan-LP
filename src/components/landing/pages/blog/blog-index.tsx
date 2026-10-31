@@ -24,7 +24,9 @@ export function BlogIndex({ page = 1, category }: { page?: number; category?: st
         }}
       />
       <h1 className={cn(styles.title, 'mb-4')}>{copy.title}</h1>
-      <p className="mb-8 max-w-xl text-base leading-relaxed text-foreground-3">{copy.description}</p>
+      <p className="mb-8 max-w-xl text-base leading-relaxed text-foreground-3">
+        {copy.description}
+      </p>
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
         <CategoryFilter categories={categories} selected={category} />
         <div className="flex w-full items-center gap-3 sm:ml-auto sm:w-auto">
