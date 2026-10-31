@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useReducedMotion } from 'motion/react';
 import { BorderBeam, type BorderBeamColorVariant } from 'border-beam';
 import { Search, X } from 'lucide-react';
 
@@ -8,7 +9,10 @@ import { cn } from '@/lib/utils';
 import { useSurfaceTheme, type SurfaceTheme } from '@/components/spectrumui/use-surface-theme';
 
 export interface BeamSearchProps {
-  inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange'>;
+  inputProps?: Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    'value' | 'defaultValue' | 'onChange'
+  >;
   clearLabel?: string;
   value?: string;
   defaultValue?: string;
@@ -42,6 +46,7 @@ export function BeamSearch({
   clearLabel = 'Limpar busca',
 }: BeamSearchProps) {
   const resolved = useSurfaceTheme(theme);
+  const reducedMotion = useReducedMotion();
   const [inner, setInner] = React.useState(defaultValue);
   const [focused, setFocused] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -57,7 +62,7 @@ export function BeamSearch({
       size="line"
       colorVariant={colorVariant}
       theme={resolved}
-      active={alwaysOn || focused}
+      active={!reducedMotion && (alwaysOn || focused)}
       className={cn('w-full', className)}
     >
       <label
@@ -74,8 +79,14 @@ export function BeamSearch({
           value={current}
           placeholder={placeholder}
           onChange={(event) => update(event.target.value)}
-          onFocus={(event) => { setFocused(true); inputProps?.onFocus?.(event); }}
-          onBlur={(event) => { setFocused(false); inputProps?.onBlur?.(event); }}
+          onFocus={(event) => {
+            setFocused(true);
+            inputProps?.onFocus?.(event);
+          }}
+          onBlur={(event) => {
+            setFocused(false);
+            inputProps?.onBlur?.(event);
+          }}
           onKeyDown={(event) => {
             if (event.key === 'Enter') onSubmit?.(current);
             inputProps?.onKeyDown?.(event);

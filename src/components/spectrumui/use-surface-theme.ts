@@ -19,6 +19,8 @@ function subscribe(onChange: () => void) {
 
 function read(): 'dark' | 'light' {
   const list = document.documentElement.classList;
+  const explicit = document.documentElement.dataset.theme;
+  if (explicit === 'light' || explicit === 'dark') return explicit;
   if (list.contains('dark')) return 'dark';
   if (list.contains('light')) return 'light';
   return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light';

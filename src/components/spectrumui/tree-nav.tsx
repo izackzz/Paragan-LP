@@ -1,10 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { animate, motion, useMotionValue, useTransform } from 'motion/react';
+import { animate, motion, useMotionValue, useTransform, useReducedMotion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
-import { usePrefersReducedMotion } from '@/components/spectrumui/use-typewriter';
 
 export interface TreeNavItem {
   depth?: number;
@@ -31,7 +30,7 @@ export interface TreeNavProps {
   className?: string;
 }
 
-const ROW_H = 40;
+const ROW_H = 56;
 const MARKER = 7;
 /** Horizontal centre of the rail inside the 24px gutter. */
 const RAIL_X = 10;
@@ -50,11 +49,11 @@ export function TreeNav({
   onSelect,
   className,
 }: TreeNavProps) {
-  const listRef = React.useRef<HTMLUListElement>(null);
+  const listRef = React.useRef<HTMLDivElement>(null);
   const rowRefs = React.useRef<(HTMLLIElement | null)[]>([]);
   const centersRef = React.useRef<number[]>([]);
   const hoveredRef = React.useRef<number | null>(null);
-  const reduced = usePrefersReducedMotion();
+  const reduced = useReducedMotion();
   const activeIndex = items.findIndex((item) => item.href === activeHref);
   // Handlers and the measurer read these through refs so they never go stale
   // and never need to be re-created; the sync runs before the measure effect.
@@ -131,8 +130,8 @@ export function TreeNav({
 
   return (
     <div
-      ref={listRef as unknown as React.Ref<HTMLDivElement>}
-      className={cn('relative flex flex-col gap-0.5 ps-6', className)}
+      ref={listRef}
+      className={cn('relative flex w-full min-w-0 flex-col gap-0.5 ps-6', className)}
       onPointerLeave={leave}
     >
       {/* Tree rail with a dot terminal, an accent run that grows to the marked
@@ -172,50 +171,52 @@ export function TreeNav({
           springs back on leave. */}
       <motion.span
         aria-hidden
-        className="pointer-events-none absolute end-0 start-6 top-0 rounded-lg bg-black/4 will-change-transform dark:bg-white/6"
+        className="pointer-events-none absolute start-6 end-0 top-0 rounded-lg bg-black/4 will-change-transform dark:bg-white/6"
         style={{ height: ROW_H, y: pillY, opacity: visibility }}
       />
 
-      <ul className="relative m-0 list-none p-0">{items.map((item, index) => {
-        const isActive = index === activeIndex;
-        return (
-          <li
-            key={item.href}
-            ref={(el) => {
-              rowRefs.current[index] = el;
-            }}
-            className="relative"
-            onPointerEnter={() => enter(index)}
-          >
-            <Link
-              href={item.href}
-              target={item.external ? '_blank' : undefined}
-              rel={item.external ? 'noreferrer' : undefined}
-              aria-current={isActive ? 'location' : undefined}
-              onClick={onSelect ? (event) => onSelect(item, event) : undefined}
-              onFocus={() => enter(index)}
-              onBlur={leave}
-              className={cn(
-                'flex min-h-10 items-center gap-2 rounded-lg px-3 py-2 text-[13px] leading-5 antialiased transition-colors duration-150 ease-out',
-                item.depth === 3 && 'pl-6 text-xs',
-                // Before the first measurement the pill has no position yet, so
-                // the active row paints its own background for that one frame.
-                isActive && !measured && 'bg-black/4 dark:bg-white/6',
-                isActive
-                  ? 'font-medium text-neutral-900 dark:text-neutral-100'
-                  : 'font-normal text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',
-              )}
+      <ul className="relative m-0 w-full min-w-0 list-none p-0">
+        {items.map((item, index) => {
+          const isActive = index === activeIndex;
+          return (
+            <li
+              key={item.href}
+              ref={(el) => {
+                rowRefs.current[index] = el;
+              }}
+              className="relative w-full min-w-0"
+              onPointerEnter={() => enter(index)}
             >
-              <span className="text-pretty">{item.label}</span>
-              {item.badge && (
-                <span className="inline-flex h-[18px] shrink-0 items-center rounded-[6px] bg-[#2b7fff]/8 px-[5px] text-xs font-medium leading-none text-[#1447e6] dark:bg-[#2b7fff]/[0.14] dark:text-blue-400">
-                  {item.badge}
-                </span>
-              )}
-            </Link>
-          </li>
-        );
-      })}</ul>
+              <Link
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noreferrer' : undefined}
+                aria-current={isActive ? 'location' : undefined}
+                onClick={onSelect ? (event) => onSelect(item, event) : undefined}
+                onFocus={() => enter(index)}
+                onBlur={leave}
+                className={cn(
+                  'flex h-14 w-full min-w-0 items-center gap-2 rounded-md bg-surface-1 px-3 py-2 text-[13px] leading-5 antialiased transition-colors duration-200 ease-out hover:bg-surface-2',
+                  item.depth === 3 && 'pl-6 text-xs',
+                  // Before the first measurement the pill has no position yet, so
+                  // the active row paints its own background for that one frame.
+                  isActive && !measured && 'bg-black/4 dark:bg-white/6',
+                  isActive
+                    ? 'font-medium text-neutral-900 dark:text-neutral-100'
+                    : 'font-normal text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',
+                )}
+              >
+                <span className="line-clamp-2 min-w-0 text-pretty wrap-anywhere">{item.label}</span>
+                {item.badge && (
+                  <span className="inline-flex h-[18px] shrink-0 items-center rounded-[6px] bg-[#2b7fff]/8 px-[5px] text-xs leading-none font-medium text-[#1447e6] dark:bg-[#2b7fff]/[0.14] dark:text-blue-400">
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
