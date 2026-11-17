@@ -228,7 +228,7 @@
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: 0.875rem;
-  background: var(--surface-1);
+  /* background: var(--surface-1); */
 }
 .codeFrame {
   --blog-code-foreground: #e2e8f0;

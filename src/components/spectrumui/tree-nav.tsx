@@ -200,7 +200,7 @@ export function TreeNav({
                   item.depth === 3 && 'pl-6 text-xs',
                   // Before the first measurement the pill has no position yet, so
                   // the active row paints its own background for that one frame.
-                  isActive && !measured && 'bg-black/4 dark:bg-white/6',
+                  isActive && !measured && '',
                   isActive
                     ? 'font-medium text-neutral-900 dark:text-neutral-100'
                     : 'font-normal text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',

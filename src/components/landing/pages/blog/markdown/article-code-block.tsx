@@ -91,7 +91,7 @@ export function ArticleCodeBlock({
   const requested = option(meta, 'accent') ?? 'blue';
   const accent = ['blue', 'violet', 'amber', 'emerald'].includes(requested) ? requested : 'blue';
   return (
-    <div className={`dark ${styles.codeFrame}`} data-accent={accent}>
+    <div className={`dark overflow-hidden ${styles.codeFrame}`} data-accent={accent}>
       <CodeBlock
         composedContent
         lines={lines}
