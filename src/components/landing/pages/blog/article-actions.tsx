@@ -1,15 +1,16 @@
 'use client';
 import { useState } from 'react';
-import { Menu } from '@base-ui/react/menu';
-import { ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { FileText, LinkIcon, LoaderCircle } from 'lucide-react';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
+import styles from './blog.module.css';
 
 export function ArticleActions({ url, sourceUrl }: { url: string; sourceUrl: string }) {
   const [status, setStatus] = useState('');
-  const [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState<'link' | 'markdown' | null>(null);
   async function write(markdown: boolean) {
-    setBusy(true);
+    if (busy) return;
+    setStatus('');
+    setBusy(markdown ? 'markdown' : 'link');
     try {
       // Start the clipboard operation in the activation event, including Safari's permission window.
       const text = markdown
@@ -31,49 +32,50 @@ export function ArticleActions({ url, sourceUrl }: { url: string; sourceUrl: str
     } catch {
       setStatus(copy.copyError);
     } finally {
-      setBusy(false);
+      setBusy(null);
     }
   }
   return (
-    <div className="max-w-full">
-      <Menu.Root>
-        <Menu.Trigger
-          render={<Button variant="ghost" size="sm" className="min-h-11 rounded-md px-0 text-sm" />}
-          disabled={busy}
-          aria-busy={busy}
-        >
-          <span className="flex items-center gap-2">
-            {copy.copy}
-            <ChevronDown size={14} aria-hidden="true" />
-          </span>
-        </Menu.Trigger>
-        <Menu.Portal>
-          <Menu.Positioner sideOffset={8} className="z-50">
-            <Menu.Popup className="min-w-48 rounded-lg border border-border bg-popover p-1 text-sm text-popover-foreground shadow-md outline-none">
-              <Menu.Item
-                className="flex min-h-11 cursor-pointer items-center rounded-md px-3 outline-none data-highlighted:bg-hover"
-                onClick={() => void write(false)}
-              >
-                {copy.copyLink}
-              </Menu.Item>
-              <Menu.Item
-                className="flex min-h-11 cursor-pointer items-center rounded-md px-3 outline-none data-highlighted:bg-hover"
-                onClick={() => void write(true)}
-              >
-                {copy.copyMarkdown}
-              </Menu.Item>
-            </Menu.Popup>
-          </Menu.Positioner>
-        </Menu.Portal>
-      </Menu.Root>
-      <p role="status" className="text-xs leading-relaxed text-foreground-3">
+    <section className={styles.articleActions} aria-labelledby="article-tools">
+      <h2 id="article-tools" className={styles.sidebarTitle}>
+        {copy.tools}
+      </h2>
+      <button
+        type="button"
+        className={styles.toolButton}
+        disabled={busy !== null}
+        aria-busy={busy === 'link'}
+        onClick={() => void write(false)}
+      >
+        {busy === 'link' ? (
+          <LoaderCircle size={15} aria-hidden="true" className="animate-spin" />
+        ) : (
+          <LinkIcon size={15} aria-hidden="true" />
+        )}
+        {copy.copyLink}
+      </button>
+      <button
+        type="button"
+        className={styles.toolButton}
+        disabled={busy !== null}
+        aria-busy={busy === 'markdown'}
+        onClick={() => void write(true)}
+      >
+        {busy === 'markdown' ? (
+          <LoaderCircle size={15} aria-hidden="true" className="animate-spin" />
+        ) : (
+          <FileText size={15} aria-hidden="true" />
+        )}
+        {copy.copyMarkdown}
+      </button>
+      <p role="status" className={styles.copyStatus}>
         {status}
       </p>
       {status === copy.copyError && (
-        <a href={sourceUrl} className="text-xs underline">
-          {copy.copyMarkdown}
+        <a href={sourceUrl} className={styles.sourceLink}>
+          {copy.source}
         </a>
       )}
-    </div>
+    </section>
   );
 }

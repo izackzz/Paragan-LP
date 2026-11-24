@@ -23,33 +23,32 @@ export function BlogIndex({ page = 1, category }: { page?: number; category?: st
           __html: serializeJsonLd(listingStructuredData(allPosts, listingUrl(page, category))),
         }}
       />
-      <h1 className={cn(styles.title, 'mb-4')}>{copy.title}</h1>
-      <p className="mb-8 max-w-xl text-base leading-relaxed text-foreground-3">
-        {copy.description}
-      </p>
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
-        <CategoryFilter categories={categories} selected={category} />
-        <div className="flex w-full items-center gap-3 sm:ml-auto sm:w-auto">
+      <header className={styles.indexHeader}>
+        <div>
+          <p className={styles.eyebrow}>{copy.eyebrow}</p>
+          <h1 className={styles.indexTitle}>{copy.title}</h1>
+          <p className={styles.indexDescription}>{copy.description}</p>
+        </div>
+        <div className={styles.searchTools}>
           <BlogSearch />
-          <a
-            href="/blog/feed.xml"
-            aria-label={copy.feed}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border text-foreground-3 hover:bg-hover hover:text-foreground"
-          >
+          <a href="/blog/feed.xml" aria-label={copy.feed} className={styles.iconLink}>
             <Rss size={16} aria-hidden="true" />
           </a>
         </div>
+      </header>
+      <div className={styles.filterBar}>
+        <CategoryFilter categories={categories} selected={category} />
+        <span className={styles.archiveLabel}>{copy.archive}</span>
       </div>
       {allPosts.some((post) => post.frontMatter.mock) && (
-        <div className="mt-6 rounded-xl border border-blue-500/15 bg-blue-500/5 px-5 py-4 text-sm text-foreground-3">
-          <p className="mb-1 font-medium text-foreground">{copy.mock}</p>
-          <p>{copy.mockDescription}</p>
-        </div>
+        <p className={styles.demoNotice}>{copy.mockDescription}</p>
       )}
       {data.featured.length > 0 && (
-        <section aria-label={copy.featured} className="mt-8 mb-8 lg:mb-12">
-          <h2 className="sr-only">{copy.featured}</h2>
-          <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <section aria-labelledby="blog-featured" className={styles.featuredSection}>
+          <h2 id="blog-featured" className={styles.sectionLabel}>
+            {copy.featured}
+          </h2>
+          <ul role="list" className={styles.featuredGrid}>
             {data.featured.map((post) => (
               <li className="min-w-0" key={post.slug}>
                 <PostCard post={post} featured />
@@ -58,34 +57,33 @@ export function BlogIndex({ page = 1, category }: { page?: number; category?: st
           </ul>
         </section>
       )}
-      <section aria-labelledby="blog-posts" className="mt-10 lg:mt-8">
-        <h2 className="sr-only" id="blog-posts">
-          {copy.posts}
-        </h2>
-        {allPosts.length === 0 ? (
-          <div className="py-24">
-            <h3 className="font-display text-3xl">{copy.empty}</h3>
-            <p className="mt-4 text-foreground-3">{copy.emptyDescription}</p>
-          </div>
-        ) : (
-          <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
-            {data.posts.map((post) => (
-              <li className="min-w-0" key={post.slug}>
-                <PostCard post={post} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      {(data.posts.length > 0 || allPosts.length === 0) && (
+        <section aria-labelledby="blog-posts" className={styles.postsSection}>
+          <h2 className={styles.sectionLabel} id="blog-posts">
+            {copy.posts}
+          </h2>
+          {allPosts.length === 0 ? (
+            <div className={styles.emptyState}>
+              <h3 className="font-display text-3xl">{copy.empty}</h3>
+              <p className="mt-4 text-foreground-3">{copy.emptyDescription}</p>
+            </div>
+          ) : (
+            <ul role="list" className={styles.postsGrid}>
+              {data.posts.map((post) => (
+                <li className="min-w-0" key={post.slug}>
+                  <PostCard post={post} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
       {data.pages > 1 && (
-        <nav
-          aria-label={copy.pagination}
-          className="mt-16 flex flex-wrap items-center justify-center gap-4"
-        >
+        <nav aria-label={copy.pagination} className={styles.pagination}>
           {page > 1 && (
             <Link
               rel="prev"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm hover:bg-hover"
+              className={styles.paginationLink}
               href={listingUrl(page - 1, category)}
             >
               <ArrowLeft size={16} aria-hidden="true" />
@@ -98,7 +96,7 @@ export function BlogIndex({ page = 1, category }: { page?: number; category?: st
           {page < data.pages && (
             <Link
               rel="next"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm hover:bg-hover"
+              className={styles.paginationLink}
               href={listingUrl(page + 1, category)}
             >
               {copy.more}

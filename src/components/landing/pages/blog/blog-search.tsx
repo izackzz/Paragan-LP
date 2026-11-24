@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { BeamSearch } from '@/components/spectrumui/beam-search';
+import { Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
 import type { SearchPost } from '@/lib/blog/types';
 import { postUrl } from '@/lib/blog/urls';
+import styles from './blog.module.css';
 
 const normalize = (text: string) =>
   text
@@ -67,7 +68,7 @@ export function BlogSearch() {
   return (
     <div
       ref={ref}
-      className="relative w-full sm:w-64"
+      className={styles.search}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
       }}
@@ -78,26 +79,43 @@ export function BlogSearch() {
         }
       }}
     >
-      <BeamSearch
-        value={query}
-        placeholder={copy.searchPlaceholder}
-        colorVariant="ocean"
-        clearLabel={copy.clear}
-        onChange={(value) => {
-          setQuery(value);
-          setOpen(true);
-        }}
-        inputProps={{
-          id: 'blog-search',
-          'aria-label': copy.search,
-          'aria-controls': 'blog-search-results',
-          autoComplete: 'off',
-          onFocus: () => {
+      <label htmlFor="blog-search" className={styles.searchLabel}>
+        {copy.search}
+      </label>
+      <div className={styles.searchField}>
+        <Search size={16} aria-hidden="true" className={styles.searchIcon} />
+        <input
+          id="blog-search"
+          type="search"
+          value={query}
+          placeholder={copy.searchPlaceholder}
+          aria-controls="blog-search-results"
+          autoComplete="off"
+          onChange={(event) => {
+            setQuery(event.target.value);
             setOpen(true);
             void load();
-          },
-        }}
-      />
+          }}
+          onFocus={() => {
+            setOpen(true);
+            void load();
+          }}
+        />
+        {query && (
+          <button
+            type="button"
+            className={styles.searchClear}
+            aria-label={copy.clear}
+            onClick={() => {
+              setQuery('');
+              setTerm('');
+              ref.current?.querySelector('input')?.focus();
+            }}
+          >
+            <X size={15} aria-hidden="true" />
+          </button>
+        )}
+      </div>
       <div
         id="blog-search-results"
         hidden={!open || (!term && state !== 'error' && state !== 'loading')}

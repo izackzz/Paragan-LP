@@ -52,7 +52,7 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         const Tag = `h${node.depth}` as 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
         const title = post.headings.find((heading) => heading.id === id)?.title ?? '';
         return (
-          <Tag id={id} key={key}>
+          <Tag id={id} key={key} tabIndex={-1}>
             <HeadingAnchor id={id} title={title} slug={post.slug} />
             {children}
           </Tag>
@@ -72,18 +72,12 @@ export function MarkdownRenderer({ post }: { post: BlogPost }) {
         return <hr key={key} />;
       case 'link':
         return node.url.startsWith('/') ? (
-          <Link
-            href={node.url}
-            key={key}
-            title={node.title ?? undefined}
-            className="text-blue-600 dark:text-blue-400"
-          >
+          <Link href={node.url} key={key} title={node.title ?? undefined}>
             {children}
           </Link>
         ) : (
           <a
             href={node.url}
-            className="text-blue-600 dark:text-blue-400"
             key={key}
             title={node.title ?? undefined}
             rel={node.url.startsWith('https:') ? 'noopener noreferrer' : undefined}

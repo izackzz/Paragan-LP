@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Check, LinkIcon } from 'lucide-react';
 import { absoluteUrl, postUrl } from '@/lib/blog/urls';
+import { blogCopy as copy } from '@/i18n/messages/pages/blog';
 import styles from './blog.module.css';
 
 export function HeadingAnchor({ id, title, slug }: { id: string; title: string; slug: string }) {
@@ -15,12 +16,17 @@ export function HeadingAnchor({ id, title, slug }: { id: string; title: string; 
       <a
         data-heading-link
         href={`#${id}`}
-        aria-label={`Copiar link para a seção: ${title}`}
+        aria-label={copy.copyHeading(title)}
         className={styles.headingLink}
         data-copied={copied || undefined}
         onClick={() => {
+          if (!navigator.clipboard?.writeText) {
+            setCopied(false);
+            setError(true);
+            return;
+          }
           void navigator.clipboard
-            ?.writeText(`${absoluteUrl(postUrl(slug))}#${id}`)
+            .writeText(`${absoluteUrl(postUrl(slug))}#${id}`)
             .then(() => {
               setCopied(true);
               setError(false);
@@ -42,7 +48,7 @@ export function HeadingAnchor({ id, title, slug }: { id: string; title: string; 
         />
       </a>
       <span role="status" className="sr-only">
-        {copied ? 'Link copiado!' : error ? 'Não foi possível copiar o link.' : ''}
+        {copied ? copy.copied : error ? copy.copyError : ''}
       </span>
     </>
   );

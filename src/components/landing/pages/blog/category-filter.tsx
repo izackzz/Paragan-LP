@@ -1,8 +1,9 @@
-'use client';
-import { VelocityTabs } from '@/components/ui/velocity-tabs';
+import Link from 'next/link';
+import { FluidGroup } from '@/components/landing/fluid-group';
 import type { Category } from '@/lib/blog/types';
 import { listingUrl } from '@/lib/blog/urls';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
+import styles from './blog.module.css';
 
 export function CategoryFilter({
   categories,
@@ -20,15 +21,19 @@ export function CategoryFilter({
     })),
   ];
   return (
-    <div className="max-w-full min-w-0 overflow-x-auto py-1">
-      <VelocityTabs
-        tabs={tabs}
-        value={selected ?? 'all'}
-        aria-label={copy.categories}
-        className="w-max min-w-64 rounded-xl border-border bg-surface-1 p-1"
-        tabClassName="min-h-10 px-5 whitespace-nowrap"
-        indicatorClassName="rounded-lg bg-foreground shadow-sm"
-      />
-    </div>
+    <nav aria-label={copy.categories} className={styles.categoryNav}>
+      <FluidGroup axis="x" as="ul" className={styles.categoryList}>
+        {tabs.map((tab) => (
+          <Link
+            key={tab.value}
+            href={tab.href}
+            aria-current={tab.value === (selected ?? 'all') ? 'page' : undefined}
+            className={styles.categoryLink}
+          >
+            {tab.label}
+          </Link>
+        ))}
+      </FluidGroup>
+    </nav>
   );
 }
