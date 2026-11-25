@@ -206,7 +206,7 @@
 - [ ] `normalize.ts`: converter `author: string` em lista normalizada; resolver múltiplos autores por ID ou objeto, sem criar links/perfis fictícios.
 - [ ] `normalize.ts`: autor desconhecido mantém nome original sem avatar; cadastro opcional fornece bio, cargo, URL HTTPS e imagem com dimensões.
 - [ ] `normalize.ts`: categoria ausente vira `Geral`; categorias explícitas resolvem cadastro; tags não viram categorias automaticamente.
-- [ ] `normalize.ts`: deduplicar tags por forma normalizada, preservando label editorial; não criar páginas de tag/autor nesta entrega.
+- [x] `normalize.ts`: deduplicar tags por forma normalizada, preservando label editorial; não criar páginas de tag/autor nesta entrega.
 - [ ] `normalize.ts`: preservar Front Matter original como dados JSON e documento Markdown integral em `sourceMarkdown`; normalizar datas para ISO sem perder o offset textual original.
 - [x] `normalize.ts`: manter corpo sem Front Matter em `bodyMarkdown`; não truncar conteúdo, listas, tabelas, referências ou blocos de código.
 - [ ] `schema.ts`: rejeitar slugs duplicados, barras, traversal, caracteres de controle e slugs reservados `category`, `page`, `feed.xml` e `search`.
@@ -224,7 +224,7 @@
 - [x] `compile.ts`: extrair texto, word count, tempo estimado a 220 palavras/minuto e índice H2/H3; mínimo de um minuto para artigo não vazio.
 - [x] `compile.ts`: destacar código no build com Shiki, linguagens sob demanda e fallback plaintext; serializar tokens, nunca carregar o highlighter no navegador.
 - [ ] `compile.ts`: preservar linhas vazias, tabs, caracteres escapados e conteúdo literal do código; metadados opcionais de fence limitados a título, linguagem e linhas destacadas.
-- [ ] `compile.ts`: resolver links `.md`, imagens relativas e âncoras para URLs públicas; referência interna inexistente falha na validação de conteúdo.
+- [x] `compile.ts`: resolver links `.md`, imagens relativas e âncoras para URLs públicas; referência interna inexistente falha na validação de conteúdo.
 - [ ] `compile.ts`: bloquear HTML bruto ativo, scripts, handlers, estilos e protocolos perigosos; nó não suportado gera erro explícito, não omissão silenciosa.
 - [ ] `compile.ts`: inventariar HTML/extensões presentes nos posts reais; suportar HTML editorial apenas via allowlist sanitizada e testes antes de aceitar a fonte.
 - [ ] `blog.generated.json`: incluir `schemaVersion`, hash das fontes, autores/categorias públicos e posts com fonte integral, corpo, metadata, AST, headings, mídia e métricas.
@@ -336,7 +336,7 @@
 - [ ] `structured-data.ts`: grafo `Blog`, `CollectionPage` e `ItemList` na galeria; posições/URLs correspondem exclusivamente aos posts exibidos naquela página.
 - [ ] Artigo JSON-LD: `BlogPosting`, `headline`, `description`, `image`, `datePublished`, `dateModified`, `author`, `publisher`, `mainEntityOfPage`, `inLanguage`, `wordCount` e `isPartOf`.
 - [ ] Publisher: reutilizar identidade/URL Paragan e logo público real; `Person` para pessoa, `Organization` para autoria institucional explícita; sem perfis `sameAs` inventados.
-- [ ] JSON-LD: serializar escapando `<` como em `page-structured-data.tsx`; bloquear quebra de `<script>` em título, texto ou Front Matter.
+- [x] JSON-LD: serializar escapando `<` como em `page-structured-data.tsx`; bloquear quebra de `<script>` em título, texto ou Front Matter.
 - [ ] `src/app/sitemap.ts`: incluir blog, posts indexáveis, categorias e páginas válidas; `lastModified` de atualização/publicação real, nunca `new Date()` por request.
 - [ ] `src/app/robots.ts` + metadata: preservar regras existentes; conteúdo `noindex` excluído de sitemap, sem bloquear por robots.txt a leitura da diretiva.
 - [ ] `src/app/blog/feed.xml/route.ts`: RSS 2.0 estático com título, excerpt, URL, GUID, autor e datas reais; XML escapado, Content-Type correto e link RSS funcional na toolbar.
