@@ -62,6 +62,27 @@ test('validação não reescreve espaços editoriais de campos válidos', () => 
   assert.equal(value.author, ' Nome do autor ');
   assert.equal(value.excerpt, ' Descrição original. ');
 });
+test('autoria estruturada exige ao menos um autor com nome ou referência efetiva', () => {
+  for (const authors of [[], [' '], [{ name: '\t\n' }]]) {
+    const result = frontMatterSchema.safeParse({ ...raw, authors });
+    assert.equal(result.success, false, JSON.stringify(authors));
+    if (!result.success)
+      assert.ok(result.error.issues.some((issue) => issue.path[0] === 'authors'));
+  }
+});
+test('SEO opcional informado exige conteúdo, sem apagar espaços de valores válidos', () => {
+  for (const field of ['meta_title', 'meta_description']) {
+    assert.equal(
+      frontMatterSchema.safeParse({ ...raw, seo: { ...raw.seo, [field]: ' \n ' } }).success,
+      false,
+      field,
+    );
+  }
+  assert.equal(
+    frontMatterSchema.parse({ ...raw, seo: { meta_title: ' Título original ' } }).seo.meta_title,
+    ' Título original ',
+  );
+});
 test('rascunhos e futuros não ficam públicos; instante da geração é explícito', () => {
   const now = Date.parse(metadata.date);
   assert.ok(isPublished(metadata, now));

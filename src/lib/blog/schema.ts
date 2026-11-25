@@ -17,7 +17,7 @@ const imagePath = z
   .refine((value) => safeUrl(value, true), 'Imagem deve usar caminho local ou HTTPS');
 export const authorSchema = z.object({
   id: z.string().optional(),
-  name: z.string().min(1),
+  name: editorialText,
   url: z.string().url().startsWith('https://').optional(),
   avatar: imagePath.optional(),
   role: z.string().optional(),
@@ -31,7 +31,10 @@ export const frontMatterSchema = z
     date,
     updated_at: date.optional(),
     author: editorialText,
-    authors: z.array(z.union([z.string().min(1), authorSchema])).optional(),
+    authors: z
+      .array(z.union([editorialText, authorSchema]))
+      .min(1)
+      .optional(),
     layout: z.literal('post').default('post'),
     draft: z.boolean().default(false),
     mock: z.boolean().default(false),
@@ -55,8 +58,8 @@ export const frontMatterSchema = z
       .default({}),
     seo: z
       .object({
-        meta_title: z.string().min(1).optional(),
-        meta_description: z.string().min(1).optional(),
+        meta_title: editorialText.optional(),
+        meta_description: editorialText.optional(),
         canonical: z.string().url().startsWith('https://').optional(),
         og_image: imagePath.optional(),
         og_image_alt: z.string().optional(),
