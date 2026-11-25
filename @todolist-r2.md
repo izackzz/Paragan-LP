@@ -221,7 +221,7 @@
 - [ ] `scripts/blog/generate.mts`: descobrir fontes em ordem estável; parsear YAML sem execução de tags, limitar tamanho/profundidade e falhar com diagnóstico acionável.
 - [ ] `compile.ts`: compilar CommonMark + GFM em árvore JSON serializável e tipada; sem execução de MDX, JSX, imports, expressões ou componentes vindos do post.
 - [x] `compile.ts`: gerar IDs determinísticos e únicos de headings, preservar acentos no texto e resolver headings repetidos com sufixos estáveis.
-- [ ] `compile.ts`: extrair texto, word count, tempo estimado a 220 palavras/minuto e índice H2/H3; mínimo de um minuto para artigo não vazio.
+- [x] `compile.ts`: extrair texto, word count, tempo estimado a 220 palavras/minuto e índice H2/H3; mínimo de um minuto para artigo não vazio.
 - [x] `compile.ts`: destacar código no build com Shiki, linguagens sob demanda e fallback plaintext; serializar tokens, nunca carregar o highlighter no navegador.
 - [ ] `compile.ts`: preservar linhas vazias, tabs, caracteres escapados e conteúdo literal do código; metadados opcionais de fence limitados a título, linguagem e linhas destacadas.
 - [ ] `compile.ts`: resolver links `.md`, imagens relativas e âncoras para URLs públicas; referência interna inexistente falha na validação de conteúdo.
@@ -304,7 +304,7 @@
 
 - [ ] `markdown/renderer.tsx`: renderizar AST validada como elementos React sem HTML arbitrário; conteúdo integral presente no HTML inicial, sem fetch client para leitura.
 - [ ] `markdown/text.tsx`: parágrafos, quebras, ênfase, strong, del, escapes, entidades e texto Unicode com espaçamento preservado e semântica nativa.
-- [ ] Headings: H1 pertence ao título editorial; H1 inicial idêntico é deduplicado, demais H1 do corpo são erro editorial com orientação para H2.
+- [x] Headings: H1 pertence ao título editorial; H1 inicial idêntico é deduplicado, demais H1 do corpo são erro editorial com orientação para H2.
 - [ ] `markdown/heading.tsx`: H2 32px, H3 24px/28px, H4–H6 hierárquicos; IDs estáveis, scroll margin acima do header e âncora acessível no hover/foco.
 - [ ] Headings mobile: ícone de âncora dentro da área segura, sem margem negativa que provoque overflow; heading continua legível sem hover.
 - [ ] `markdown/link.tsx`: links inline sublinhados com underline-offset, internos via Next Link e externos com protocolo permitido; `_blank` somente explícito com `noopener noreferrer`.
@@ -375,3 +375,7 @@
 - [x] Navegador dev: comparar galeria/artigo com HTML de referência nos dois temas; validar categorias, busca, cópia, RSS, paginação, teclado e leitura sem JS.
 - [ ] Aceite SEO: inspecionar HTML inicial e respostas 200/404/redirect das rotas; dados estruturados coerentes, nenhum draft em arquivo público e nenhum post dependente de hidratação.
 - [ ] Encerramento: marcar somente checkboxes implementados; sem build fora de Docker, release ou deploy automático nesta fase de planejamento.
+
+### Correções do compilador
+
+- [x] [P2] `compile.ts#nodeText` + `tests/blog/markdown.test.ts`: preservar palavras inline, separar blocos/quebras e deduplicar H1 formatado; regressão RED→GREEN.

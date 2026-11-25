@@ -14,7 +14,20 @@ import { categorySlug, safeUrl } from './urls';
 const theme = createCssVariablesTheme({ name: 'paragan-blog', variablePrefix: '--blog-code-' });
 export function nodeText(node: Nodes): string {
   if ('value' in node) return node.value;
-  return 'children' in node ? node.children.map(nodeText).join(' ') : '';
+  if (node.type === 'break') return '\n';
+  if (!('children' in node)) return '';
+  // Phrasing children already contain editorial whitespace; only blocks need separators.
+  const inline = [
+    'paragraph',
+    'heading',
+    'emphasis',
+    'strong',
+    'delete',
+    'link',
+    'linkReference',
+    'tableCell',
+  ].includes(node.type);
+  return node.children.map(nodeText).join(inline ? '' : '\n');
 }
 export async function compileMarkdown(
   body: string,
