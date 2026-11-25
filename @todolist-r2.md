@@ -379,3 +379,4 @@
 ### Correções do compilador
 
 - [x] [P2] `compile.ts#nodeText` + `tests/blog/markdown.test.ts`: preservar palavras inline, separar blocos/quebras e deduplicar H1 formatado; regressão RED→GREEN.
+- [x] [P2] `schema.ts` + `tests/blog/content.test.ts`: rejeitar título/autor/excerpt só com espaços, sem reescrever texto válido; regressão RED→GREEN.

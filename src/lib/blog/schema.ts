@@ -9,6 +9,9 @@ const slug = z
     'Slug reservado',
   );
 const date = z.iso.datetime({ offset: true });
+const editorialText = z.string().refine((value) => value.trim().length > 0, {
+  message: 'Informe texto editorial, não apenas espaços',
+});
 const imagePath = z
   .string()
   .refine((value) => safeUrl(value, true), 'Imagem deve usar caminho local ou HTTPS');
@@ -23,16 +26,16 @@ export const authorSchema = z.object({
 export const categorySchema = z.object({ slug, name: z.string().min(1), description: z.string() });
 export const frontMatterSchema = z
   .object({
-    title: z.string().min(1),
+    title: editorialText,
     slug,
     date,
     updated_at: date.optional(),
-    author: z.string().min(1),
+    author: editorialText,
     authors: z.array(z.union([z.string().min(1), authorSchema])).optional(),
     layout: z.literal('post').default('post'),
     draft: z.boolean().default(false),
     mock: z.boolean().default(false),
-    excerpt: z.string().min(1),
+    excerpt: editorialText,
     category: z.string().default('Geral'),
     tags: z.array(z.string().min(1)).default([]),
     lang: z.literal('pt-BR').default('pt-BR'),

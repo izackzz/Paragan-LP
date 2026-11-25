@@ -42,6 +42,26 @@ test('schema rejeita campos inválidos e datas impossíveis', () => {
     );
   }
 });
+test('publicação rejeita título, autoria e descrição sem conteúdo editorial', () => {
+  for (const field of ['title', 'author', 'excerpt'] as const) {
+    for (const blank of [' ', '\t\n', '\u00a0']) {
+      const result = frontMatterSchema.safeParse({ ...raw, [field]: blank });
+      assert.equal(result.success, false, `${field}: ${JSON.stringify(blank)}`);
+      if (!result.success) assert.ok(result.error.issues.some((issue) => issue.path[0] === field));
+    }
+  }
+});
+test('validação não reescreve espaços editoriais de campos válidos', () => {
+  const value = frontMatterSchema.parse({
+    ...raw,
+    title: '  Texto editorial  ',
+    author: ' Nome do autor ',
+    excerpt: ' Descrição original. ',
+  });
+  assert.equal(value.title, '  Texto editorial  ');
+  assert.equal(value.author, ' Nome do autor ');
+  assert.equal(value.excerpt, ' Descrição original. ');
+});
 test('rascunhos e futuros não ficam públicos; instante da geração é explícito', () => {
   const now = Date.parse(metadata.date);
   assert.ok(isPublished(metadata, now));
