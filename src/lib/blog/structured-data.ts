@@ -1,7 +1,7 @@
 import { siteSeo } from '@/config/seo';
 import { blogCopy } from '@/i18n/messages/pages/blog';
 import { absoluteUrl, postUrl } from './urls';
-import type { BlogPost } from './types';
+import type { BlogPost, BlogPostSummary } from './types';
 
 export const serializeJsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
 export function articleStructuredData(post: BlogPost) {
@@ -32,7 +32,7 @@ export function articleStructuredData(post: BlogPost) {
     isPartOf: { '@type': 'Blog', '@id': absoluteUrl('/blog') },
   };
 }
-export function listingStructuredData(posts: BlogPost[], pathname: string) {
+export function listingStructuredData(posts: BlogPostSummary[], pathname: string) {
   return {
     '@context': 'https://schema.org',
     '@graph': [

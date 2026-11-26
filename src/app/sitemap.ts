@@ -3,7 +3,8 @@ import { siteSeo } from '@/config/seo';
 import { getIndexablePosts, getCategories, getPage } from '@/lib/blog/repository';
 import { absoluteUrl, listingUrl, postUrl } from '@/lib/blog/urls';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 60;
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const institutional = [
     '/',
     '/plataforma',
@@ -15,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contato',
     '/calculadora',
   ].map((pathname) => ({ url: `${siteSeo.url}${pathname}` }));
-  const posts = getIndexablePosts();
+  const posts = await getIndexablePosts();
   if (!posts.length) return institutional;
   const lastModified = new Date(
     Math.max(
@@ -23,9 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   );
   const listings: MetadataRoute.Sitemap = [];
-  for (const category of [undefined, ...getCategories().map((item) => item.slug)]) {
-    if (getPage(1, category).noindex) continue;
-    for (let page = 1; page <= getPage(1, category).pages; page++)
+  for (const category of [undefined, ...(await getCategories()).map((item) => item.slug)]) {
+    const data = await getPage(1, category);
+    if (data.noindex) continue;
+    for (let page = 1; page <= data.pages; page++)
       listings.push({ url: absoluteUrl(listingUrl(page, category)), lastModified });
   }
   return [

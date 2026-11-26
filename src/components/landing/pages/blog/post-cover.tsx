@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { BlogPost } from '@/lib/blog/types';
+import type { BlogPostSummary } from '@/lib/blog/types';
 import styles from './blog.module.css';
 
 export function PostCover({
@@ -7,7 +7,7 @@ export function PostCover({
   fallback = false,
   preload = false,
 }: {
-  post: BlogPost;
+  post: BlogPostSummary;
   fallback?: boolean;
   preload?: boolean;
 }) {

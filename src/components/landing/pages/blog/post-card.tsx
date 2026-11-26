@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import type { BlogPost } from '@/lib/blog/types';
+import type { BlogPostSummary } from '@/lib/blog/types';
 import { postUrl } from '@/lib/blog/urls';
 import { blogCopy as copy } from '@/i18n/messages/pages/blog';
 import { AuthorList } from './author-list';
@@ -16,7 +16,13 @@ export function formatPostDate(date: string, short = false) {
     timeZone: 'America/Sao_Paulo',
   }).format(new Date(date));
 }
-export function PostCard({ post, featured = false }: { post: BlogPost; featured?: boolean }) {
+export function PostCard({
+  post,
+  featured = false,
+}: {
+  post: BlogPostSummary;
+  featured?: boolean;
+}) {
   return (
     <article className={cn(styles.postCard, featured && styles.featuredCard)}>
       {featured && <PostCover post={post} fallback />}

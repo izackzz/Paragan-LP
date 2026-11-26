@@ -38,6 +38,10 @@ export type BlogPost = {
   readingMinutes: number;
 };
 export type BlogData = { schemaVersion: number; sourceHash: string; posts: BlogPost[] };
+export type BlogPostSummary = Pick<
+  BlogPost,
+  'slug' | 'frontMatter' | 'authors' | 'category' | 'images'
+>;
 export type SearchPost = Pick<BlogPost, 'slug' | 'category' | 'authors'> & {
   title: string;
   excerpt: string;

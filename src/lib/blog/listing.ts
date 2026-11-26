@@ -1,6 +1,6 @@
-import type { BlogPost } from './types';
+import type { BlogPostSummary } from './types';
 export const pageSize = 12;
-export function getListing(posts: BlogPost[], page = 1, category?: string) {
+export function getListing<T extends BlogPostSummary>(posts: T[], page = 1, category?: string) {
   const filtered = category ? posts.filter((post) => post.category.slug === category) : posts;
   const featured = category
     ? []

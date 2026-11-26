@@ -11,9 +11,8 @@ import { BlogSearch } from './blog-search';
 import { CategoryFilter } from './category-filter';
 import styles from './blog.module.css';
 
-export function BlogIndex({ page = 1, category }: { page?: number; category?: string }) {
-  const data = getPage(page, category);
-  const categories = getCategories();
+export async function BlogIndex({ page = 1, category }: { page?: number; category?: string }) {
+  const [data, categories] = await Promise.all([getPage(page, category), getCategories()]);
   const allPosts = [...data.featured, ...data.posts];
   return (
     <div className={cn(frame, styles.container)} id="inicio">

@@ -7,7 +7,6 @@
     "blog:generate": "tsx scripts/blog/generate.mts",
     "blog:check": "tsx scripts/blog/generate.mts --check",
     "test:blog": "tsx --test tests/blog/*.test.ts",
-    "prebuild": "pnpm blog:generate",
     "generate:ascii": "node scripts/generate-ascii.mjs",
     "generate:ascii:static": "node scripts/generate-static-ascii.mjs",
     "dev": "next dev",

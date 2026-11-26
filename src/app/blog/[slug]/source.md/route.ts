@@ -1,11 +1,11 @@
-import { getPostBySlug, getPublishedPosts } from '@/lib/blog/repository';
+import { getPostBySlug } from '@/lib/blog/repository';
 export const dynamic = 'force-static';
-export const dynamicParams = false;
+export const revalidate = 60;
 export function generateStaticParams() {
-  return getPublishedPosts().map(({ slug }) => ({ slug }));
+  return [];
 }
 export async function GET(_request: Request, { params }: { params: Promise<{ slug: string }> }) {
-  const post = getPostBySlug((await params).slug);
+  const post = await getPostBySlug((await params).slug);
   return new Response(post?.sourceMarkdown ?? '', {
     status: post ? 200 : 404,
     headers: {

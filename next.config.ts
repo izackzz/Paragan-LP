@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'zaamwnkdbidondtryjsj.supabase.co',
+        pathname: '/storage/v1/object/public/blog-assets/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
         hostname: new URL(presentation.placeholder.origin).hostname,
         pathname: '/**',
       },
